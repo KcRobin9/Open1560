@@ -22,6 +22,12 @@ define_dummy_symbol(mmai_aiPath);
 
 #include "aiIntersection.h"
 
+
+
+#include "aiVehicleOpponent.h"
+#include "aiVehicleSpline.h"
+
+
 Vector3* aiPath::CenterVertice(i32 index)
 {
     if (index >= 0 && index < VertexCount)
@@ -78,4 +84,87 @@ Vector3* aiPath::VertZDir(i32 index)
 void aiPath::Blocked(b32 blocked)
 {
     IsBlocked = blocked || IsAlwaysBlocked;
+}
+
+b32 aiPath::RoadCapacity(aiVehicleSpline* spline, i32 lane)
+{
+    aiVehicleSpline* lane_vehicle = Vehicles[lane];
+
+    if (!lane_vehicle)
+        return true;
+
+    f32 road_dist = lane_vehicle->RailSet.RoadDist;
+    f32 back_bumper_dist = lane_vehicle->RailSet.BackBumperDist;
+
+    for (aiVehicleSpline* ahead = spline->Next[spline->RailSet.TargetLane]; ahead != nullptr;
+        ahead = ahead->Next[ahead->RailSet.TargetLane])
+    {
+        if (ahead->RailSet.CurLink->Id != spline->RailSet.CurLink->Id ||
+            spline->RailSet.RoadDist >= ahead->RailSet.RoadDist)
+        {
+            break;
+        }
+
+        if (ahead->RailSet.NextLink->Id == spline->RailSet.NextLink->Id)
+            back_bumper_dist = ahead->TotLength() + back_bumper_dist;
+    }
+
+    f32 total_length = spline->TotLength() + back_bumper_dist;
+
+    return road_dist > total_length;
+}
+
+
+
+f32 aiPath::SubSectionLength(i32 start_index, i32 end_index)
+{
+    return SubSectionOffsets[end_index] - SubSectionOffsets[start_index];
+}
+
+
+void aiPath::SubSectionPt(Vector3& out, i32 lane, i32 subsection, f32 dist)
+{
+    i32 vertex_index = subsection + lane * VertexCount;
+    Vector3& vertex = LaneVertices[vertex_index];
+    Vector3& prev_vertex = LaneVertices[vertex_index - 1];
+
+    f32 subsection_length = SubSectionLength(vertex_index - 1, vertex_index);
+    f32 t = 1.0f - dist / subsection_length;
+
+    out = prev_vertex + (vertex - prev_vertex) * t;
+}
+
+
+
+
+
+
+f32 aiPath::SubSectionDist(f32 road_dist, i32 lane)
+{
+    f32 lane_length = SubSectionLength(VertexCount * lane + 1, VertexCount * (lane + 1) - 1);
+
+    if (road_dist > 0.0f)
+    {
+        if (road_dist >= lane_length)
+            road_dist = lane_length;
+    }
+    else
+    {
+        road_dist = 0.0f;
+    }
+
+    if (VertexCount <= 1)
+        return -1.0f;
+
+    i32 lane_start = VertexCount * lane;
+    i32 subsection = 1;
+    f32 start_offset = SubSectionOffsets[lane_start + 1];
+    for (i32 i = lane_start + 1; road_dist > SubSectionOffsets[i] - start_offset + 0.00001f; ++i)
+    {
+        ++subsection;
+        if (subsection >= VertexCount)
+            return -1.0f;
+    }
+
+    return road_dist - (SubSectionOffsets[lane_start + subsection - 1] - start_offset);
 }

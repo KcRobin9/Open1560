@@ -139,7 +139,7 @@ public:
     ARTS_IMPORT void ResetVehicleReactTicks();
 
     // ?RoadCapacity@aiPath@@QAEHPAVaiVehicleSpline@@H@Z
-    ARTS_IMPORT i32 RoadCapacity(aiVehicleSpline* arg1, i32 arg2);
+    ARTS_EXPORT b32 RoadCapacity(aiVehicleSpline* spline, i32 lane);
 
     // ?RoadDistance@aiPath@@QAEXAAVVector3@@PAFPAMF2@Z
     ARTS_IMPORT void RoadDistance(Vector3& arg1, i16* arg2, f32* arg3, i16 arg4, f32* arg5);
@@ -154,13 +154,13 @@ public:
     ARTS_IMPORT void SubSectionDir(Vector3& arg1, i32 arg2, i32 arg3, f32 arg4);
 
     // ?SubSectionDist@aiPath@@QAEMMH@Z
-    ARTS_IMPORT f32 SubSectionDist(f32 arg1, i32 arg2);
+    ARTS_EXPORT f32 SubSectionDist(f32 road_dist, i32 lane);
 
     // ?SubSectionLength@aiPath@@QAEMHH@Z
-    ARTS_IMPORT f32 SubSectionLength(i32 arg1, i32 arg2);
+    ARTS_EXPORT f32 SubSectionLength(i32 start_index, i32 end_index);
 
     // ?SubSectionPt@aiPath@@QAEXAAVVector3@@HHM@Z
-    ARTS_IMPORT void SubSectionPt(Vector3& arg1, i32 arg2, i32 arg3, f32 arg4);
+    ARTS_EXPORT void SubSectionPt(Vector3& out, i32 lane, i32 subsection, f32 dist);
 
     // ?UpdateAmbients@aiPath@@QAEXXZ
     ARTS_IMPORT void UpdateAmbients();
