@@ -68,6 +68,10 @@ extern b32 EnableSmoke;
 // ?ForceSmoke@@3HA
 extern b32 ForceSmoke;
 
+#define MM_IMPACT_AUDIO_1 1
+#define MM_IMPACT_AUDIO_9 9
+#define MM_IMPACT_AUDIO_26 26
+
 class mmCarSim final : public asNode
 {
 public:
@@ -184,6 +188,11 @@ public:
     // ?SnowTex@mmCarSim@@2PAVagiTexDef@@A
     ARTS_IMPORT static agiTexDef* SnowTex;
 
+    bool IsPlayer() const
+    {
+        return PlayerCarAudio != nullptr;
+    }
+
     asOverSample OverSample;
     asInertialCS ICS;
     asLinearCS LCS;
@@ -283,7 +292,7 @@ public:
     i32 EnableExhaust;
     Vector3 ExhaustSmokeOffset;
     f32 SlipPercentThresh;
-    Callback OnPlayerImpact;
+    Callback OnImpact;
     asParticles GrassParticles;
     asParticles SmokeParticles;
     asBirthRule AsphaltRule;

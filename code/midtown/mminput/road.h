@@ -23,22 +23,23 @@
 class mmRoadFF final : public mmEffectFF
 {
 public:
-    // ?Assign@mmRoadFF@@QAEHJJ@Z
-    ARTS_IMPORT i32 Assign(ilong arg1, ilong arg2);
-
     // ?Init@mmRoadFF@@UAEHPAUIDirectInputDevice2A@@@Z
-    ARTS_IMPORT i32 Init(IDirectInputDevice2A* arg1) override;
+    b32 Init(IDirectInputDevice2A* device) override;
 
     // ?Play@mmRoadFF@@UAEHXZ
-    ARTS_IMPORT i32 Play() override;
-
-    // ?SetValues@mmRoadFF@@UAEHMM@Z
-    ARTS_IMPORT i32 SetValues(f32 arg1, f32 arg2) override;
+    b32 Play() override;
 
     // ?Stop@mmRoadFF@@UAEHXZ
-    ARTS_IMPORT i32 Stop() override;
+    b32 Stop() override;
 
-    u8 gap80[0x14];
+    // ?SetValues@mmRoadFF@@UAEHMM@Z
+    b32 SetValues(f32 a, f32 b) override;
+
+    // ?Assign@mmRoadFF@@QAEHJJ@Z
+    b32 Assign(ilong period, ilong magnitude);
+
+private:
+    DIPERIODIC Period {};
 };
 
 check_size(mmRoadFF, 0x94);

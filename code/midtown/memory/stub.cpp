@@ -22,43 +22,55 @@ define_dummy_symbol(memory_stub);
 
 #include "allocator.h"
 
-ARTS_MSVC_DIAGNOSTIC_IGNORED(28251);
+ARTS_MSVC_DIAGNOSTIC_IGNORED(28251); // Inconsistent annotation for function
+
+static thread_local asMemoryAllocator* THREADHEAP {};
+
+static asMemoryAllocator* Allocator()
+{
+    asMemoryAllocator* result = THREADHEAP;
+
+    if (result == nullptr)
+        result = CURHEAP;
+
+    return result;
+}
 
 ARTS_NOINLINE void* operator new(std::size_t size)
 {
-    return CURHEAP->Allocate(size, DefaultNewAlignment, ArReturnAddress());
+    return Allocator()->Allocate(size, DefaultNewAlignment, ArReturnAddress());
 }
 
 ARTS_NOINLINE void* operator new[](std::size_t size)
 {
-    return CURHEAP->Allocate(size, DefaultNewAlignment, ArReturnAddress());
+    return Allocator()->Allocate(size, DefaultNewAlignment, ArReturnAddress());
 }
 
 ARTS_NOINLINE void operator delete(void* ptr) noexcept
 {
-    CURHEAP->Free(ptr);
+    Allocator()->Free(ptr);
 }
 
 ARTS_NOINLINE void operator delete[](void* ptr) noexcept
 {
-    CURHEAP->Free(ptr);
+    Allocator()->Free(ptr);
 }
 
 ARTS_NOINLINE void operator delete(void* ptr, std::size_t sz) noexcept
 {
-    CURHEAP->Free(ptr, sz);
+    Allocator()->Free(ptr, sz);
 }
 
 ARTS_NOINLINE void operator delete[](void* ptr, std::size_t sz) noexcept
 {
-    CURHEAP->Free(ptr, sz);
+    Allocator()->Free(ptr, sz);
 }
 
 ARTS_NOINLINE void* arts_calloc(std::size_t num, std::size_t size)
 {
     std::size_t len = num * size;
 
-    void* ptr = CURHEAP->Allocate(len, DefaultNewAlignment, ArReturnAddress());
+    void* ptr = Allocator()->Allocate(len, DefaultNewAlignment, ArReturnAddress());
 
     if (ptr)
         std::memset(ptr, 0, len);
@@ -68,28 +80,28 @@ ARTS_NOINLINE void* arts_calloc(std::size_t num, std::size_t size)
 
 ARTS_NOINLINE void arts_free(void* ptr)
 {
-    CURHEAP->Free(ptr);
+    Allocator()->Free(ptr);
 }
 
 ARTS_NOINLINE void* arts_malloc(std::size_t size)
 {
-    return CURHEAP->Allocate(size, DefaultNewAlignment, ArReturnAddress());
+    return Allocator()->Allocate(size, DefaultNewAlignment, ArReturnAddress());
 }
 
 ARTS_NOINLINE std::size_t arts_msize(void* ptr)
 {
-    return CURHEAP->SizeOf(ptr);
+    return Allocator()->SizeOf(ptr);
 }
 
 ARTS_NOINLINE void* arts_realloc(void* ptr, std::size_t size)
 {
-    return CURHEAP->Reallocate(ptr, size, ArReturnAddress());
+    return Allocator()->Reallocate(ptr, size, ArReturnAddress());
 }
 
 // ?arts_operator_new@@YAPAXI@Z
 ARTS_EXPORT ARTS_NOINLINE void* arts_operator_new(std::size_t size)
 {
-    void* result = CURHEAP->Allocate(size, DefaultNewAlignment, ArReturnAddress());
+    void* result = Allocator()->Allocate(size, DefaultNewAlignment, ArReturnAddress());
 
     // The game expects memory to be zeroed
 
@@ -102,30 +114,24 @@ ARTS_EXPORT ARTS_NOINLINE void* arts_operator_new(std::size_t size)
 // ?arts_operator_delete@@YAXPAX@Z
 ARTS_EXPORT ARTS_NOINLINE void arts_operator_delete(void* ptr)
 {
-    CURHEAP->Free(ptr);
+    Allocator()->Free(ptr);
 }
 
 ARTS_NOINLINE void* arts_aligned_alloc(std::size_t size, std::size_t align)
 {
-    return CURHEAP->Allocate(size, align, ArReturnAddress());
+    return Allocator()->Allocate(size, align, ArReturnAddress());
 }
 
 ARTS_NOINLINE void arts_aligned_free(void* ptr, [[maybe_unused]] std::size_t align)
 {
-    CURHEAP->Free(ptr);
+    Allocator()->Free(ptr);
 }
-
-// FIXME: Not thread-safe
-static asMemoryAllocator* SAVEDHEAP = nullptr;
 
 ArWithStaticHeap::ArWithStaticHeap()
-{
-    ArAssert(SAVEDHEAP == nullptr, "Already allocator statically");
-    SAVEDHEAP = std::exchange(CURHEAP, StaticAllocator());
-}
+    : Saved(std::exchange(THREADHEAP, StaticAllocator()))
+{}
 
 ArWithStaticHeap::~ArWithStaticHeap()
 {
-    ArAssert(SAVEDHEAP != nullptr, "Not allocating statically");
-    CURHEAP = std::exchange(SAVEDHEAP, nullptr);
+    THREADHEAP = Saved;
 }

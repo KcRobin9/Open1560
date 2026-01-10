@@ -605,7 +605,8 @@ public:
         *pdidi = {sizeof(*pdidi)};
 
         pdidi->guidInstance = GUID_Joystick;
-        arts_strncpy(pdidi->tszInstanceName, "SDL Unified Game Controller", ARTS_TRUNCATE);
+        const char* name = (Gamepad.Gamepads.size() == 1) ? SDL_GetGamepadName(Gamepad.Gamepads[0]) : nullptr;
+        arts_sprintf(pdidi->tszInstanceName, "%s (SDL)", name ? name : "Unified Game Controller");
         pdidi->dwDevType = MAKEWORD(DIDEVTYPE_JOYSTICK, DIDEVTYPEJOYSTICK_GAMEPAD);
 
         return DI_OK;
@@ -783,10 +784,7 @@ public:
     {
         if (dwDevType == DIDEVTYPE_JOYSTICK && dwFlags == DIEDFL_ATTACHEDONLY)
         {
-            int num_gamepads = 0;
-            SDL_JoystickID* gamepads = SDL_GetGamepads(&num_gamepads);
-
-            if (num_gamepads)
+            if (SDL_HasGamepad())
             {
                 DIDEVICEINSTANCEA dev_inst = {sizeof(dev_inst)};
                 dev_inst.guidInstance = GUID_Joystick;
@@ -795,8 +793,6 @@ public:
 
                 lpCallback(&dev_inst, pvRef);
             }
-
-            SDL_free(gamepads);
 
             return DI_OK;
         }

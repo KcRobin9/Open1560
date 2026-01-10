@@ -36,7 +36,7 @@ mmVehList::~mmVehList()
     VehicleListPtr = nullptr;
 }
 
-i32 mmVehList::GetVehicleID(char* name)
+i32 mmVehList::GetVehicleID(aconst char* name)
 {
     for (i32 i = 0; i < NumVehicles; ++i)
     {
@@ -73,7 +73,7 @@ void mmVehList::Init(i32 /*arg1*/)
     NumVehicles = 0;
 }
 
-void mmVehList::Load(char* name)
+void mmVehList::Load(const char* name)
 {
     Ptr<mmVehInfo> info = arnew mmVehInfo();
 

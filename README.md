@@ -14,6 +14,7 @@ The intention is to allow the fixing of bugs, implementation of new features and
 
 Notable changes include:
 * OpenGL Renderer
+* SDL Gamepad Support
 * Audio Fixes
 * Crash Fixes
 * Input Fixes

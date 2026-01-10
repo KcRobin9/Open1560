@@ -55,16 +55,22 @@ public:
     ARTS_EXPORT void EnableDriving(b32 enabled);
 
     // ?GetBound@mmCar@@UAEPAVasBound@@XZ | inline
-    asBound* GetBound() override;
+    asBound* GetBound() override
+    {
+        return &Sim.Bound;
+    }
 
     // ?GetClass@mmCar@@UAEPAVMetaClass@@XZ
     ARTS_IMPORT MetaClass* GetClass() override;
 
     // ?GetICS@mmCar@@UAEPAVasInertialCS@@XZ | inline
-    asInertialCS* GetICS() override;
+    asInertialCS* GetICS() override
+    {
+        return &Sim.ICS;
+    }
 
     // ?Impact@mmCar@@QAEXPAVmmIntersection@@PAVVector3@@MH1@Z
-    ARTS_IMPORT void Impact(mmIntersection* arg1, Vector3* arg2, f32 arg3, i32 arg4, Vector3* arg5);
+    ARTS_EXPORT void Impact(mmIntersection* isect, Vector3* velocity, f32 energy, i32 audio_id, Vector3* impulse);
 
     // ?Init@mmCar@@QAEXPADHH@Z
     ARTS_IMPORT void Init(aconst char* arg1, i32 arg2, i32 arg3);
@@ -141,16 +147,3 @@ check_size(mmCar, 0x230C);
 
 // ?EggNameIndex@@YAHPAD@Z
 ARTS_EXPORT i32 EggNameIndex(char* name);
-
-// ?ffval@@3MA
-ARTS_IMPORT extern f32 ffval;
-
-inline asBound* mmCar::GetBound()
-{
-    return &Sim.Bound;
-}
-
-inline asInertialCS* mmCar::GetICS()
-{
-    return &Sim.ICS;
-}

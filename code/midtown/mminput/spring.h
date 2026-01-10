@@ -23,22 +23,23 @@
 class mmSpringFF final : public mmEffectFF
 {
 public:
-    // ?Assign@mmSpringFF@@QAEHJ@Z
-    ARTS_IMPORT i32 Assign(ilong arg1);
-
     // ?Init@mmSpringFF@@UAEHPAUIDirectInputDevice2A@@@Z
-    ARTS_IMPORT i32 Init(IDirectInputDevice2A* arg1) override;
+    ARTS_IMPORT b32 Init(IDirectInputDevice2A* device) override;
 
     // ?Play@mmSpringFF@@UAEHXZ
-    ARTS_IMPORT i32 Play() override;
-
-    // ?SetValues@mmSpringFF@@UAEHMM@Z
-    ARTS_IMPORT i32 SetValues(f32 arg1, f32 arg2) override;
+    ARTS_IMPORT b32 Play() override;
 
     // ?Stop@mmSpringFF@@UAEHXZ
-    ARTS_IMPORT i32 Stop() override;
+    ARTS_IMPORT b32 Stop() override;
 
-    u8 gap80[0x1C];
+    // ?SetValues@mmSpringFF@@UAEHMM@Z
+    ARTS_IMPORT b32 SetValues(f32 a, f32 b) override;
+
+    // ?Assign@mmSpringFF@@QAEHJ@Z
+    ARTS_IMPORT b32 Assign(ilong coeff);
+
+private:
+    DICONDITION Condition {};
 };
 
 check_size(mmSpringFF, 0x9C);

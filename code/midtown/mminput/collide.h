@@ -23,22 +23,24 @@
 class mmCollideFF final : public mmEffectFF
 {
 public:
-    // ?Assign@mmCollideFF@@QAEHJJ@Z
-    ARTS_IMPORT i32 Assign(ilong arg1, ilong arg2);
-
     // ?Init@mmCollideFF@@UAEHPAUIDirectInputDevice2A@@@Z
-    ARTS_IMPORT i32 Init(IDirectInputDevice2A* arg1) override;
+    b32 Init(IDirectInputDevice2A* device) override;
 
     // ?Play@mmCollideFF@@UAEHXZ
-    ARTS_IMPORT i32 Play() override;
-
-    // ?SetValues@mmCollideFF@@UAEHMM@Z
-    ARTS_IMPORT i32 SetValues(f32 arg1, f32 arg2) override;
+    b32 Play() override;
 
     // ?Stop@mmCollideFF@@UAEHXZ
-    ARTS_IMPORT i32 Stop() override;
+    b32 Stop() override;
 
-    u8 gap80[0x18];
+    // ?SetValues@mmCollideFF@@UAEHMM@Z
+    b32 SetValues(f32 a, f32 b) override;
+
+    // ?Assign@mmCollideFF@@QAEHJJ@Z
+    b32 Assign(ilong gain, ilong direction);
+
+private:
+    DIPERIODIC Period {};
+    u32 field_94 {};
 };
 
 check_size(mmCollideFF, 0x98);

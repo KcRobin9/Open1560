@@ -20,7 +20,27 @@ define_dummy_symbol(mminput_joystick);
 
 #include "joystick.h"
 
+#include "collide.h"
+#include "friction.h"
 #include "input.h"
+#include "road.h"
+#include "spring.h"
+
+mmJoystick::mmJoystick() = default;
+
+mmJoystick::~mmJoystick()
+{
+    SpringFF = nullptr;
+    FrictionFF = nullptr;
+    RoadFF = nullptr;
+    CollideFF = nullptr;
+
+    if (Device)
+    {
+        Device->Unacquire();
+        Device->Release();
+    }
+}
 
 f32 mmJoystick::GetAxis(i32 axis)
 {
@@ -48,6 +68,30 @@ f32 mmJoystick::GetAxis(i32 axis)
 
         default: return 0.0f;
     }
+}
+
+void mmJoystick::InputCreateEffect()
+{
+    RoadFF = arnew mmRoadFF();
+    SpringFF = arnew mmSpringFF();
+    CollideFF = arnew mmCollideFF();
+    FrictionFF = arnew mmFrictionFF();
+}
+
+void mmJoystick::InputInitEffect()
+{
+    RoadFF->Init(Device);
+    SpringFF->Init(Device);
+    CollideFF->Init(Device);
+    FrictionFF->Init(Device);
+}
+
+void mmJoystick::InputStopEffect()
+{
+    RoadFF->Stop();
+    SpringFF->Stop();
+    CollideFF->Stop();
+    FrictionFF->Stop();
 }
 
 ulong mmJoystick::Poll()

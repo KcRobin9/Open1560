@@ -42,11 +42,13 @@ void* arts_aligned_alloc(std::size_t size, std::size_t align);
 
 void arts_aligned_free(void* ptr, std::size_t align);
 
+class asMemoryAllocator;
+
 struct ArWithStaticHeap
 {
     ArWithStaticHeap();
-
     ~ArWithStaticHeap();
+    asMemoryAllocator* Saved {};
 };
 
 #define ARTS_ZEROED                               \

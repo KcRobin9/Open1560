@@ -20,12 +20,52 @@ define_dummy_symbol(mminput_effect);
 
 #include "effect.h"
 
-i32 mmEffectFF::Play()
+mmEffectFF::mmEffectFF()
 {
-    return 0;
+    // TODO: Remove this, initialize Effect during Init
+    Effect.dwSize = sizeof(Effect);
+    Effect.dwGain = DI_FFNOMINALMAX;
+    Effect.dwTriggerButton = DIEB_NOTRIGGER;
+    Effect.rgdwAxes = Axes;
+    Effect.rglDirection = Directions;
 }
 
-i32 mmEffectFF::Stop()
+mmEffectFF::~mmEffectFF()
 {
-    return 0;
+    ReleaseEffect();
+}
+
+b32 mmEffectFF::Play()
+{
+    return false;
+}
+
+b32 mmEffectFF::Stop()
+{
+    return false;
+}
+
+b32 mmEffectFF::SetValues(f32 /*a*/, f32 /*b*/)
+{
+    return true;
+}
+
+void mmEffectFF::ReleaseEffect()
+{
+    if (DIEffect)
+    {
+        DIEffect->Release();
+        DIEffect = nullptr;
+    }
+}
+
+BOOL PASCAL inputEnumEffectTypeProc(LPCDIEFFECTINFOA pdei, LPVOID pvRef)
+{
+    if (pvRef)
+    {
+        *static_cast<LPGUID>(pvRef) = pdei->guid;
+        Displayf("Enum Effect GUID = %x", pdei->guid.Data1);
+    }
+
+    return FALSE;
 }

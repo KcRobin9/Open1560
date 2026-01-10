@@ -18,33 +18,48 @@
 
 #pragma once
 
-struct DIEFFECTINFOA;
-struct IDirectInputDevice2A;
+#include <dinput.h>
 
 // ?inputEnumEffectTypeProc@@YGHPBUDIEFFECTINFOA@@PAX@Z
-ARTS_IMPORT i32 ARTS_STDCALL inputEnumEffectTypeProc(const DIEFFECTINFOA* arg1, void* arg2);
+ARTS_EXPORT BOOL PASCAL inputEnumEffectTypeProc(LPCDIEFFECTINFOA pdei, LPVOID pvRef);
 
 class mmEffectFF
 {
 public:
     // ??0mmEffectFF@@QAE@XZ
-    ARTS_IMPORT mmEffectFF();
+    mmEffectFF();
 
-    // ??1mmEffectFF@@QAE@XZ
-    ARTS_IMPORT ~mmEffectFF();
+#ifdef ARTS_STANDALONE
+    virtual
+#endif
+        // ??1mmEffectFF@@QAE@XZ
+        ~mmEffectFF();
 
-    virtual i32 Init(IDirectInputDevice2A* arg1) = 0;
+    virtual b32 Init(IDirectInputDevice2A* device) = 0;
 
     // ?Play@mmEffectFF@@UAEHXZ | inline
-    ARTS_EXPORT virtual i32 Play();
+    virtual b32 Play();
 
     // ?Stop@mmEffectFF@@UAEHXZ | inline
-    ARTS_EXPORT virtual i32 Stop();
+    virtual b32 Stop();
 
     // ?SetValues@mmEffectFF@@UAEHMM@Z | inline
-    ARTS_IMPORT virtual i32 SetValues(f32 arg1, f32 arg2);
+    virtual b32 SetValues(f32 a, f32 b);
 
-    u8 gap4[0x7C];
+protected:
+    void ReleaseEffect();
+
+    i32 field_4 {};
+    i32 field_8 {};
+    i32 field_C {};
+    DIEFFECT Effect {};
+    DIENVELOPE Envelope {};
+    DWORD Axes[2] {};
+    LONG Directions[2] {};
+    GUID EffectGuid {};
+    IDirectInputEffect* DIEffect {};
+    b32 Enabled {};
+    b32 IsPlaying {};
 };
 
-check_size(mmEffectFF, 0x80);
+check_size(mmEffectFF, 0x84);

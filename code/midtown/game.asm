@@ -1437,7 +1437,7 @@ ALIGN 16
 loc_405070:
     mov eax, dword ptr [esi+38h]
     mov dword ptr [esi+40h], 1
-    lea ecx, [eax+edi*1+120h]
+    lea ecx, [eax+edi+120h]
     push ecx
     push ebx
     mov ecx, esi
@@ -5169,7 +5169,7 @@ loc_4081D9:
     mov eax, dword ptr [ebp-0B4h]
     cmp eax, esi
     jge loc_4081FE
-    mov byte ptr [ebx+eax*1], 1
+    mov byte ptr [ebx+eax], 1
 
 loc_4081FE:
     inc edi
@@ -5182,7 +5182,7 @@ loc_408203:
     jle loc_408214
 
 loc_408209:
-    cmp byte ptr [eax+ebx*1], 0
+    cmp byte ptr [eax+ebx], 0
     jz loc_408214
     inc eax
     cmp eax, esi
@@ -13906,7 +13906,7 @@ ALIGN 16
     jmp loc_40E52F
 
 loc_40E485:
-    lea edx, [edi+esi*1]
+    lea edx, [edi+esi]
     cmp ebx, edx
     jge loc_40E4D6
     mov ecx, dword ptr [?Instance@MenuManager@@2PAV1@A]
@@ -29080,7 +29080,7 @@ loc_41CFD6:
     call ?GetPositionVector4@@YAAAVVector4@@H@Z
     mov edx, dword ptr [edi+1EEB4h]
     add esp, 4
-    lea ecx, [edx+ebx*1+10h]
+    lea ecx, [edx+ebx+10h]
     mov edx, dword ptr [eax]
     mov dword ptr [ecx], edx
     mov edx, dword ptr [eax+4]
@@ -29110,7 +29110,7 @@ loc_41CFD6:
     call ?GetPositionVector4@@YAAAVVector4@@H@Z
     mov ecx, dword ptr [edi+1EEB4h]
     add esp, 4
-    lea edx, [ecx+ebx*1+20h]
+    lea edx, [ecx+ebx+20h]
     mov ecx, dword ptr [eax]
     add ebx, 30h
     mov dword ptr [edx], ecx
@@ -29305,8 +29305,8 @@ ALIGN 16
     mov dword ptr [edx+20h], ebx
     mov eax, dword ptr [esi+1EEB4h]
     mov ecx, dword ptr [esi+1EEA8h]
-    fld dword ptr [eax+edi*1+20h]
-    lea eax, [eax+edi*1+20h]
+    fld dword ptr [eax+edi+20h]
+    lea eax, [eax+edi+20h]
     add ecx, 30h
     fstp dword ptr [ebp-0Ch]
     fld dword ptr [eax+4]
@@ -29325,8 +29325,8 @@ ALIGN 16
     mov dword ptr [eax+20h], ebx
     mov ecx, dword ptr [esi+1EEB4h]
     mov edx, dword ptr [esi+1EEACh]
-    fld dword ptr [ecx+edi*1+10h]
-    lea eax, [ecx+edi*1+10h]
+    fld dword ptr [ecx+edi+10h]
+    lea eax, [ecx+edi+10h]
     add edx, 30h
     fstp dword ptr [ebp-0Ch]
     fld dword ptr [eax+4]
@@ -37456,7 +37456,7 @@ loc_4240B5:
     push eax
     mov eax, dword ptr [edi+2Ch]
     add ecx, eax
-    lea edx, [ecx+edx*1+1]
+    lea edx, [ecx+edx+1]
     mov ecx, dword ptr [?CurrentPipe@agiPipeline@@2PAV1@A]
     push edx
     call dword ptr [ebx+40h]
@@ -40092,8 +40092,8 @@ loc_425F59:
 
 loc_425F92:
     mov edx, dword ptr [esi+148h]
-    mov eax, dword ptr [edx+edi*1+8Ch]
-    lea ecx, [edx+edi*1]
+    mov eax, dword ptr [edx+edi+8Ch]
+    lea ecx, [edx+edi]
     add eax, 10h
     push eax
     push 0
@@ -40107,7 +40107,7 @@ loc_425F92:
     mov edx, dword ptr [esi+148h]
     lea ecx, [ebp-10h]
     push ecx
-    lea ecx, [edx+edi*1+54h]
+    lea ecx, [edx+edi+54h]
     call ?GetFGColor@mmTextNode@@QAEIXZ
     push eax
     mov ecx, esi
@@ -40145,7 +40145,7 @@ loc_426020:
     mov eax, dword ptr [esi+188h]
     mov ecx, dword ptr [esi+14Ch]
     shl eax, 7
-    lea eax, [ecx+eax*1-80h]
+    lea eax, [ecx+eax-80h]
     mov ecx, dword ptr [eax+18h]
     and ecx, edx
     mov dword ptr [eax+18h], ecx
@@ -40526,8 +40526,8 @@ loc_4264CA:
 loc_4264DD:
     mov ecx, dword ptr [edi+54h]
     push 101010h
-    mov edx, dword ptr [ecx+esi*1]
-    lea eax, [ecx+esi*1]
+    mov edx, dword ptr [ecx+esi]
+    lea eax, [ecx+esi]
     mov ecx, dword ptr [ebp+10h]
     push edx
     add eax, 10h
@@ -40536,7 +40536,7 @@ loc_4264DD:
     call ?CreateFitBitmap@mmText@@SAPAVagiBitmap@@PADPAXHH@Z
     mov edx, dword ptr [edi+54h]
     add esp, 10h
-    mov dword ptr [edx+esi*1+20h], eax
+    mov dword ptr [edx+esi+20h], eax
     add esi, 24h
     dec ebx
     jnz loc_4264DD
@@ -40732,7 +40732,7 @@ loc_4266E8:
     push 0
     fst dword ptr [ebp-20h]
     fstp dword ptr [ebp-2Ch]
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     push ecx
     push 1
     push 40000000h
@@ -40740,7 +40740,7 @@ loc_4266E8:
     call ?DrawCard@agiMeshSet@@SAXAAVVector3@@MIII@Z
     mov eax, dword ptr [ebx+54h]
     add esp, 14h
-    cmp dword ptr [esi+eax*1+0Ch], 11 ; PATCH: OPP_ICON_BLANK
+    cmp dword ptr [esi+eax+0Ch], 11 ; PATCH: OPP_ICON_BLANK
     jge loc_426794
     mov eax, dword ptr [ebx+40h]
     mov ecx, dword ptr [?agiCurState@@3VagiRendState@@A+8]
@@ -40761,7 +40761,7 @@ loc_426754:
     mov dword ptr [ebp-54h], eax
     mov dword ptr [ebp-50h], ecx
     add esp, 4
-    mov eax, dword ptr [esi+edx*1+0Ch]
+    mov eax, dword ptr [esi+edx+0Ch]
     lea ecx, [ebp-58h]
     dec eax
     push eax
@@ -40893,7 +40893,7 @@ loc_4267EF:
 
 loc_4268F7:
     mov ecx, dword ptr [ebx+54h]
-    lea eax, [eax+ecx*1+8]
+    lea eax, [eax+ecx+8]
     mov ecx, dword ptr [eax]
     test ecx, ecx
     jz loc_426A20
@@ -40986,7 +40986,7 @@ loc_4268F7:
     mov edx, dword ptr [ebp-0Ch]
     fld dword ptr [ebp-14h]
     mov dword ptr [edi], eax
-    mov eax, dword ptr [edx+ecx*1+20h]
+    mov eax, dword ptr [edx+ecx+20h]
     mov ecx, dword ptr [ebp-8]
     fstp dword ptr [edi+4]
     inc ecx
@@ -41042,7 +41042,7 @@ loc_426A77:
 loc_426A82:
     shl ecx, 4
     fstp st
-    lea eax, [ebp+ecx*1-158h]
+    lea eax, [ebp+ecx-158h]
     mov ecx, eax
     mov edx, dword ptr [ecx]
     mov dword ptr [ebp-68h], edx
@@ -43488,7 +43488,7 @@ loc_428A34:
 
 loc_428A39:
     mov edx, dword ptr [esi+1D4h]
-    mov ecx, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [edi+edx]
     cmp ecx, ebx
     jz loc_428A4D
     push 1
@@ -43920,7 +43920,7 @@ ALIGN 16
 
 loc_42913A:
     mov eax, dword ptr [esi+250h]
-    lea edx, [eax+ebx*1]
+    lea edx, [eax+ebx]
     mov eax, dword ptr [ebp-20h]
     cmp eax, edx
     jle loc_429160
@@ -49398,18 +49398,18 @@ loc_42DDEB:
     mov edx, dword ptr [eax+0Ch]
     mov eax, dword ptr [esi+5Ch]
     mov dword ptr [ebp-14h], edx
-    fstp dword ptr [ebx+eax*1]
+    fstp dword ptr [ebx+eax]
     mov ecx, dword ptr [esi+5Ch]
     mov eax, dword ptr [ebp+0Ch]
     fld dword ptr [ebp-1Ch]
     test eax, eax
-    fstp dword ptr [ebx+ecx*1+4]
+    fstp dword ptr [ebx+ecx+4]
     mov edx, dword ptr [esi+5Ch]
     lea eax, [ebp+8]
     fld dword ptr [ebp-18h]
     lea ecx, [ebp-78h]
     push eax
-    fstp dword ptr [ebx+edx*1+8]
+    fstp dword ptr [ebx+edx+8]
     mov dword ptr [ebp+8], 0
     push ecx
     jz loc_42DE4A
@@ -49528,12 +49528,12 @@ loc_42DF4A:
     jz loc_42DFA5
     mov edx, dword ptr [esi+5Ch]
     push ecx
-    fld dword ptr [ebx+edx*1-4]
-    fld dword ptr [ebx+edx*1-0Ch]
-    fsub dword ptr [ebx+edx*1]
+    fld dword ptr [ebx+edx-4]
+    fld dword ptr [ebx+edx-0Ch]
+    fsub dword ptr [ebx+edx]
     fxch st(1)
-    fsub dword ptr [ebx+edx*1+8]
-    lea eax, [ebx+edx*1]
+    fsub dword ptr [ebx+edx+8]
+    lea eax, [ebx+edx]
     fpatan
     fmul dword ptr [flt_61AF4C]
     fstp dword ptr [esp]
@@ -49553,7 +49553,7 @@ loc_42DFA5:
     mov eax, dword ptr [esi+5Ch]
     push ecx
     fmul dword ptr [flt_61AF50]
-    lea ecx, [ebx+eax*1-0Ch]
+    lea ecx, [ebx+eax-0Ch]
     sub esp, 0Ch
     mov edx, esp
     mov eax, dword ptr [ecx]
@@ -49634,8 +49634,8 @@ loc_42E08E:
     mov ecx, dword ptr [esi+5Ch]
     mov edx, dword ptr [ebp-38h]
     sub esp, 8
-    fld dword ptr [edx+ecx*1+8]
-    lea eax, [edx+ecx*1]
+    fld dword ptr [edx+ecx+8]
+    lea eax, [edx+ecx]
     fstp qword ptr [esp]
     fld dword ptr [eax+4]
     sub esp, 8
@@ -49806,15 +49806,15 @@ loc_42E240:
     mov eax, dword ptr [esi+5Ch]
     push 0
     fld dword ptr [ebp-48h]
-    fstp dword ptr [ebx+eax*1]
+    fstp dword ptr [ebx+eax]
     mov ecx, dword ptr [esi+5Ch]
     mov eax, dword ptr [ebp+0Ch]
     fld dword ptr [ebp-44h]
     test eax, eax
-    fstp dword ptr [ebx+ecx*1+4]
+    fstp dword ptr [ebx+ecx+4]
     mov edx, dword ptr [esi+5Ch]
     fld dword ptr [ebp-40h]
-    fstp dword ptr [ebx+edx*1+8]
+    fstp dword ptr [ebx+edx+8]
     mov dword ptr [ebp+8], 0
     jnz loc_42E278
     lea eax, [ebp+8]
@@ -49915,12 +49915,12 @@ loc_42E343:
     jz loc_42E38E
     mov edx, dword ptr [esi+5Ch]
     push ecx
-    fld dword ptr [ebx+edx*1-4]
-    fld dword ptr [ebx+edx*1-0Ch]
-    fsub dword ptr [ebx+edx*1]
+    fld dword ptr [ebx+edx-4]
+    fld dword ptr [ebx+edx-0Ch]
+    fsub dword ptr [ebx+edx]
     fxch st(1)
-    fsub dword ptr [ebx+edx*1+8]
-    lea eax, [ebx+edx*1]
+    fsub dword ptr [ebx+edx+8]
+    lea eax, [ebx+edx]
     fpatan
     fmul dword ptr [flt_61AF4C]
     fstp dword ptr [esp]
@@ -49940,7 +49940,7 @@ loc_42E38E:
     mov eax, dword ptr [esi+5Ch]
     push ecx
     fmul dword ptr [flt_61AF50]
-    lea ecx, [ebx+eax*1-0Ch]
+    lea ecx, [ebx+eax-0Ch]
     sub esp, 0Ch
     mov edx, esp
     mov eax, dword ptr [ecx]
@@ -50018,8 +50018,8 @@ loc_42E474:
     mov edx, dword ptr [esi+5Ch]
     sub esp, 8
     sub esp, 8
-    fld dword ptr [ebx+edx*1+8]
-    lea eax, [ebx+edx*1]
+    fld dword ptr [ebx+edx+8]
+    lea eax, [ebx+edx]
     fstp qword ptr [esp+8]
     fld dword ptr [eax+4]
     fstp qword ptr [esp]
@@ -50141,15 +50141,15 @@ loc_42E590:
     mov eax, dword ptr [esi+5Ch]
     shl ebx, 2
     mov dword ptr [ebp-3Ch], edx
-    fstp dword ptr [ebx+eax*1]
+    fstp dword ptr [ebx+eax]
     mov ecx, dword ptr [esi+5Ch]
     mov eax, dword ptr [ebp+0Ch]
     fld dword ptr [ebp-44h]
     test eax, eax
-    fstp dword ptr [ebx+ecx*1+4]
+    fstp dword ptr [ebx+ecx+4]
     mov edx, dword ptr [esi+5Ch]
     fld dword ptr [ebp-40h]
-    fstp dword ptr [ebx+edx*1+8]
+    fstp dword ptr [ebx+edx+8]
     mov dword ptr [ebp+8], 0
     jnz loc_42E5ED
     lea eax, [ebp+8]
@@ -50289,12 +50289,12 @@ loc_42E718:
     jz loc_42E763
     mov edx, dword ptr [esi+5Ch]
     push ecx
-    fld dword ptr [ebx+edx*1-4]
-    fld dword ptr [ebx+edx*1-0Ch]
-    fsub dword ptr [ebx+edx*1]
+    fld dword ptr [ebx+edx-4]
+    fld dword ptr [ebx+edx-0Ch]
+    fsub dword ptr [ebx+edx]
     fxch st(1)
-    fsub dword ptr [ebx+edx*1+8]
-    lea eax, [ebx+edx*1]
+    fsub dword ptr [ebx+edx+8]
+    lea eax, [ebx+edx]
     fpatan
     fmul dword ptr [flt_61AF4C]
     fstp dword ptr [esp]
@@ -50314,7 +50314,7 @@ loc_42E763:
     push eax
     push ecx
     push ecx
-    lea eax, [ebx+edx*1-0Ch]
+    lea eax, [ebx+edx-0Ch]
     fstp dword ptr [esp]
     mov edx, dword ptr [eax]
     sub esp, 0Ch
@@ -50350,8 +50350,8 @@ loc_42E7CE:
     mov eax, dword ptr [esi+5Ch]
     mov edx, dword ptr [esi+88h]
     push ecx
-    fld dword ptr [ebx+eax*1+8]
-    fld dword ptr [ebx+eax*1]
+    fld dword ptr [ebx+eax+8]
+    fld dword ptr [ebx+eax]
     fsub dword ptr [eax]
     fxch st(1)
     fsub dword ptr [eax+8]
@@ -50412,8 +50412,8 @@ loc_42E887:
     mov ecx, dword ptr [esi+5Ch]
     sub esp, 8
     sub esp, 8
-    fld dword ptr [ebx+ecx*1+8]
-    lea eax, [ebx+ecx*1]
+    fld dword ptr [ebx+ecx+8]
+    lea eax, [ebx+ecx]
     fstp qword ptr [esp+8]
     fld dword ptr [eax+4]
     fstp qword ptr [esp]
@@ -51250,7 +51250,7 @@ loc_42F150:
     or edi, -1
 
 loc_42F15B:
-    lea eax, [edx+edi*1]
+    lea eax, [edx+edi]
     cdq
     idiv esi
     test edx, edx
@@ -51727,9 +51727,9 @@ loc_42F66E:
     mov ecx, dword ptr [ebp-4]
     fld dword ptr [ebp+3Ch]
     fld dword ptr [ebp+38h]
-    fsub dword ptr [eax+ecx*1+4]
+    fsub dword ptr [eax+ecx+4]
     fxch st(1)
-    fsub dword ptr [eax+ecx*1+8]
+    fsub dword ptr [eax+ecx+8]
     add eax, ecx
     fld dword ptr [ebp+34h]
     fsub dword ptr [eax]
@@ -57718,8 +57718,8 @@ loc_434768:
 loc_434791:
     mov edx, dword ptr [esi+14h]
     shl eax, 2
-    mov edx, dword ptr [eax+edx*1]
-    mov dword ptr [ecx+eax*1], edx
+    mov edx, dword ptr [eax+edx]
+    mov dword ptr [ecx+eax], edx
     mov eax, dword ptr [ebp-10h]
     xor edx, edx
     inc eax
@@ -58671,14 +58671,14 @@ loc_4351EC:
     movsx ecx, word ptr [eax+0Ch]
     imul ecx, edx
     mov eax, dword ptr [eax+60h]
-    lea ecx, [ecx+edi*1-3]
+    lea ecx, [ecx+edi-3]
     lea ecx, [ecx+ecx*2]
     lea ecx, [eax+ecx*4]
     mov eax, dword ptr [ebp+0Ch]
     movsx eax, word ptr [eax+0Ch]
     fld dword ptr [ecx]
     imul eax, edx
-    lea edi, [eax+edi*1-4]
+    lea edi, [eax+edi-4]
     mov eax, dword ptr [ebp+0Ch]
     mov eax, dword ptr [eax+60h]
     lea edx, [edi+edi*2]
@@ -59399,11 +59399,11 @@ loc_435AC4:
 loc_435AD8:
     mov edx, dword ptr [ebx+30h]
     push edi
-    mov ecx, dword ptr [esi+edx*1]
+    mov ecx, dword ptr [esi+edx]
     call ?ReadBinary@aiPath@@QAEXPAVStream@@@Z
     mov eax, dword ptr [ebx+30h]
     mov dword ptr [ebp-10h], 2
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     movsx edx, word ptr [ecx+0Ch]
     dec edx
     cmp edx, 2
@@ -59416,7 +59416,7 @@ loc_435B09:
     mov ecx, dword ptr [ebp-1Ch]
 
 loc_435B0C:
-    mov edi, dword ptr [esi+eax*1]
+    mov edi, dword ptr [esi+eax]
     test ecx, ecx
     jl loc_435B23
     movsx eax, word ptr [edi+0Ch]
@@ -59443,7 +59443,7 @@ loc_435B48:
     mov eax, dword ptr [ebx+30h]
     mov ecx, dword ptr [ebp-10h]
     mov edx, dword ptr [ebp-1Ch]
-    mov ebx, dword ptr [esi+eax*1]
+    mov ebx, dword ptr [esi+eax]
     lea esi, [ecx-1]
     test esi, esi
     lea ecx, [edx-0Ch]
@@ -59534,7 +59534,7 @@ loc_435C41:
     mov eax, dword ptr [ebp-14h]
     mov dword ptr [esi+14h], edi
     mov edx, dword ptr [ecx+30h]
-    mov ecx, dword ptr [eax+edx*1]
+    mov ecx, dword ptr [eax+edx]
     xor eax, eax
     mov ax, word ptr [esi+10h]
     movsx edx, word ptr [ecx+0Eh]
@@ -59556,7 +59556,7 @@ loc_435C76:
     mov edx, dword ptr [ebp-14h]
     inc ecx
     add ebx, 0Ch
-    mov edx, dword ptr [edx+eax*1]
+    mov edx, dword ptr [edx+eax]
     mov dword ptr [ebp-1Ch], ebx
     mov ebx, dword ptr [ebp-20h]
     mov dword ptr [ebp-10h], ecx
@@ -59971,7 +59971,7 @@ loc_436090::
     lea edi, [ebx+eax*2]
     shl edi, 2
     mov ecx, dword ptr [esi+5Ch]
-    movsx edx, word ptr [edi+ecx*1+10h]
+    movsx edx, word ptr [edi+ecx+10h]
     push edx
     push offset asc_637EB4
     call ?Displayf@@YAXPBDZZ
@@ -59994,7 +59994,7 @@ loc_4360DE:
     add ecx, dword ptr [esi+64h]
     call ?Reset@aiPedestrian@@QAEXXZ
     mov eax, dword ptr [esi+64h]
-    mov dword ptr [ebx+eax*1+98h], 0
+    mov dword ptr [ebx+eax+98h], 0
     inc edi
     add ebx, 0ACh
     movsx ecx, word ptr [esi+68h]
@@ -60010,9 +60010,9 @@ loc_436105:
 
 loc_436116:
     mov edx, dword ptr [esi+38h]
-    mov dword ptr [ebx+edx*1+94h], 0
+    mov dword ptr [ebx+edx+94h], 0
     mov eax, dword ptr [esi+38h]
-    mov eax, dword ptr [ebx+eax*1+0B4h]
+    mov eax, dword ptr [ebx+eax+0B4h]
     cmp word ptr [eax+8], -1
     jle loc_436182
     mov ecx, dword ptr [?Instance@mmCullCity@@0PAV1@A]
@@ -60020,7 +60020,7 @@ loc_436116:
     add ecx, 34AD8h
     call ?Unparent@mmInstChain@@QAEXPAVmmInstance@@@Z
     mov ecx, dword ptr [esi+38h]
-    mov eax, dword ptr [ebx+ecx*1+0B4h]
+    mov eax, dword ptr [ebx+ecx+0B4h]
     mov al, byte ptr [eax+0Bh]
     test al, al
     jz loc_436177
@@ -60114,7 +60114,7 @@ loc_436238::
     sub edi, ebx
     shl edi, 2
     mov ecx, dword ptr [esi+48h]
-    movsx edx, word ptr [edi+ecx*1+10h]
+    movsx edx, word ptr [edi+ecx+10h]
     push edx
     push offset asc_637EC4
     call ?Displayf@@YAXPBDZZ
@@ -60365,7 +60365,7 @@ loc_436541::
     lea edi, [ebx+eax*2]
     shl edi, 2
     mov ecx, dword ptr [esi+5Ch]
-    movsx edx, word ptr [edi+ecx*1+10h]
+    movsx edx, word ptr [edi+ecx+10h]
     push edx
     push offset asc_637ED4
     call ?Displayf@@YAXPBDZZ
@@ -60425,7 +60425,7 @@ loc_4365DD::
     sub edi, ebx
     shl edi, 2
     mov ecx, dword ptr [esi+48h]
-    movsx edx, word ptr [edi+ecx*1+10h]
+    movsx edx, word ptr [edi+ecx+10h]
     push edx
     push offset asc_637EE4
     call ?Displayf@@YAXPBDZZ
@@ -60781,7 +60781,7 @@ loc_436946:
     mov edx, dword ptr [?ARTSPTR@@3PAVasSimulation@@A]
     mov ecx, dword ptr [esi+38h]
     fld dword ptr [edx+13Ch]
-    mov ecx, dword ptr [ecx+edi*1+0B8h]
+    mov ecx, dword ptr [ecx+edi+0B8h]
     fmul dword ptr [?AIMAP@@3VaiMap@@A+94h]
     push ecx
     lea eax, [ecx+0Ch]
@@ -60796,8 +60796,8 @@ loc_436946:
     call dword ptr [edx+10h]
     mov eax, dword ptr [esi+38h]
     push ebx
-    mov edx, dword ptr [eax+edi*1]
-    lea ecx, [eax+edi*1]
+    mov edx, dword ptr [eax+edi]
+    lea ecx, [eax+edi]
     call dword ptr [edx+10h]
     mov ecx, dword ptr [esi+38h]
     push 1
@@ -60813,7 +60813,7 @@ loc_436A3C:
     mov edx, dword ptr [?ARTSPTR@@3PAVasSimulation@@A]
     mov eax, dword ptr [esi+38h]
     fld dword ptr [edx+13Ch]
-    mov ecx, dword ptr [eax+edi*1+0B8h]
+    mov ecx, dword ptr [eax+edi+0B8h]
     fmul dword ptr [?AIMAP@@3VaiMap@@A+94h]
     push ecx
     lea eax, [ecx+0Ch]
@@ -60828,8 +60828,8 @@ loc_436A3C:
     call dword ptr [edx+10h]
     mov eax, dword ptr [esi+38h]
     push ebx
-    mov edx, dword ptr [eax+edi*1]
-    lea ecx, [eax+edi*1]
+    mov edx, dword ptr [eax+edi]
+    lea ecx, [eax+edi]
     call dword ptr [edx+10h]
     mov ecx, dword ptr [esi+38h]
     push 1
@@ -60843,7 +60843,7 @@ loc_436AA6:
     jz loc_436AFD
     mov word ptr [ecx+0C0h], bx
     mov eax, dword ptr [esi+38h]
-    mov eax, dword ptr [eax+edi*1+0B8h]
+    mov eax, dword ptr [eax+edi+0B8h]
     fld dword ptr [eax+18h]
     fmul dword ptr [flt_61B250]
     fld dword ptr [eax+1Ch]
@@ -60869,7 +60869,7 @@ loc_436AFD:
     jz loc_436B7F
     mov word ptr [ecx+0C0h], bx
     mov eax, dword ptr [esi+38h]
-    mov eax, dword ptr [eax+edi*1+0B8h]
+    mov eax, dword ptr [eax+edi+0B8h]
     fld dword ptr [eax+18h]
     fmul dword ptr [flt_61B250]
     fld dword ptr [eax+1Ch]
@@ -60897,8 +60897,8 @@ loc_436B52:
     call dword ptr [edx+10h]
     mov eax, dword ptr [esi+38h]
     push ebx
-    mov edx, dword ptr [eax+edi*1]
-    lea ecx, [eax+edi*1]
+    mov edx, dword ptr [eax+edi]
+    lea ecx, [eax+edi]
     call dword ptr [edx+10h]
     mov ecx, dword ptr [esi+38h]
     push 1
@@ -60913,7 +60913,7 @@ loc_436B7F:
     mov word ptr [ecx+0C0h], bx
     mov eax, dword ptr [esi+38h]
     push 1
-    mov ecx, dword ptr [eax+edi*1+0B8h]
+    mov ecx, dword ptr [eax+edi+0B8h]
     fld dword ptr [ecx+4]
     fld dword ptr [ecx+8]
     fld dword ptr [ecx]
@@ -60949,7 +60949,7 @@ loc_436BE9:
     mov word ptr [ecx+0C0h], bx
     mov eax, dword ptr [esi+38h]
     push 1
-    mov ecx, dword ptr [eax+edi*1+0B8h]
+    mov ecx, dword ptr [eax+edi+0B8h]
     fld dword ptr [ecx]
     fld dword ptr [ecx+4]
     fld dword ptr [ecx+8]
@@ -60986,8 +60986,8 @@ loc_436C56:
     call dword ptr [edx+10h]
     mov eax, dword ptr [esi+38h]
     push ebx
-    mov edx, dword ptr [eax+edi*1]
-    lea ecx, [eax+edi*1]
+    mov edx, dword ptr [eax+edi]
+    lea ecx, [eax+edi]
     call dword ptr [edx+10h]
 
 loc_436C6D:
@@ -61192,7 +61192,7 @@ loc_436E0B:
     mov dx, word ptr [eax+0Eh]
     mov word ptr [esi], dx
     mov eax, dword ptr [eax+14h]
-    mov ecx, dword ptr [eax+ecx*1]
+    mov ecx, dword ptr [eax+ecx]
     mov eax, dword ptr [ecx]
     pop edi
     pop esi
@@ -61238,14 +61238,14 @@ loc_436E7D:
     mov edx, dword ptr [eax+14h]
     lea ecx, [esi*4]
     mov esi, dword ptr [ebp+0Ch]
-    mov edx, dword ptr [edx+ecx*1]
+    mov edx, dword ptr [edx+ecx]
     mov dx, word ptr [edx+4]
     mov word ptr [esi], dx
     mov esi, dword ptr [ebp+10h]
     mov dx, word ptr [eax+0Eh]
     mov word ptr [esi], dx
     mov eax, dword ptr [eax+14h]
-    mov ecx, dword ptr [eax+ecx*1]
+    mov ecx, dword ptr [eax+ecx]
     mov eax, dword ptr [ecx]
     pop edi
     pop esi
@@ -61277,7 +61277,7 @@ loc_436ED3:
     lea ecx, [edx*4]
     mov edx, dword ptr [eax+14h]
     pop edi
-    mov edx, dword ptr [edx+ecx*1]
+    mov edx, dword ptr [edx+ecx]
     mov dx, word ptr [edx+4]
     mov word ptr [esi], dx
     mov esi, dword ptr [ebp+10h]
@@ -61286,7 +61286,7 @@ loc_436ED3:
     mov eax, dword ptr [eax+14h]
     pop esi
     pop ebx
-    mov ecx, dword ptr [eax+ecx*1]
+    mov ecx, dword ptr [eax+ecx]
     mov eax, dword ptr [ecx]
     mov esp, ebp
     pop ebp
@@ -65574,7 +65574,7 @@ loc_43990A:
 loc_439A65:
     mov edx, dword ptr [edi+14h]
     shl ebx, 2
-    mov eax, dword ptr [edx+ebx*1]
+    mov eax, dword ptr [edx+ebx]
     mov edx, dword ptr [esi+28h]
     mov ecx, dword ptr [eax]
     mov eax, dword ptr [edx+ecx*4]
@@ -65598,7 +65598,7 @@ loc_439A65:
     push eax
     mov eax, dword ptr [edi+14h]
     lea edx, [ebp-0FA0h]
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     mov eax, dword ptr [esi+9Ch]
     push edx
     push 0
@@ -66067,7 +66067,7 @@ loc_439E8A:
 loc_439FE5:
     mov edx, dword ptr [edi+14h]
     shl ebx, 2
-    mov eax, dword ptr [edx+ebx*1]
+    mov eax, dword ptr [edx+ebx]
     mov edx, dword ptr [esi+28h]
     mov ecx, dword ptr [eax]
     mov eax, dword ptr [edx+ecx*4]
@@ -66091,7 +66091,7 @@ loc_439FE5:
     push eax
     mov eax, dword ptr [edi+14h]
     lea edx, [ebp-0FA0h]
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     mov eax, dword ptr [esi+0A0h]
     push edx
     push 0
@@ -66607,7 +66607,7 @@ loc_43A6ED:
     movsx edx, word ptr [ebx+0Ch]
     imul edx, ecx
     mov ecx, dword ptr [ebp+8]
-    lea ecx, [edx+ecx*1-2]
+    lea ecx, [edx+ecx-2]
     lea edx, [ecx+ecx*2]
     mov ecx, dword ptr [ebx+60h]
     movsx ebx, word ptr [edi+2Ch]
@@ -66869,7 +66869,7 @@ loc_43A973:
     movsx ecx, word ptr [edi+2Ch]
     imul edx, ecx
     mov ecx, dword ptr [ebp+8]
-    lea ecx, [edx+ecx*1-2]
+    lea ecx, [edx+ecx-2]
     lea edx, [ecx+ecx*2]
     mov ecx, dword ptr [ebx+60h]
     mov ebx, dword ptr [ebp-0Ch]
@@ -67113,7 +67113,7 @@ loc_43AC0B:
     movsx eax, word ptr [esi+0Ch]
     imul edx, ebx
     mov ecx, dword ptr [ecx]
-    lea eax, [edx+eax*1-2]
+    lea eax, [edx+eax-2]
     mov edx, dword ptr [esi+60h]
     movsx ebx, word ptr [ecx+10h]
     lea eax, [eax+eax*2]
@@ -67641,9 +67641,9 @@ ALIGN 16
     mov esi, dword ptr [ebx+0A0h]
     lea ecx, [eax*8]
     shl edx, 3
-    mov eax, dword ptr [esi+ecx*1]
+    mov eax, dword ptr [esi+ecx]
     mov dword ptr [ebp-0Ch], 0
-    mov edi, dword ptr [edx+esi*1]
+    mov edi, dword ptr [edx+esi]
     mov dword ptr [ebp-1Ch], ecx
     mov dword ptr [ebp-18h], edi
     mov edi, dword ptr [ebp+8]
@@ -67665,10 +67665,10 @@ loc_43B1BA:
     mov dword ptr [ebp-8], eax
     jle loc_43B1F6
     mov eax, dword ptr [ebp-1Ch]
-    mov eax, dword ptr [esi+eax*1+4]
+    mov eax, dword ptr [esi+eax+4]
     mov eax, dword ptr [eax+edi*4]
     mov dword ptr [ebp-10h], eax
-    mov eax, dword ptr [edx+esi*1+4]
+    mov eax, dword ptr [edx+esi+4]
 
 loc_43B1D7:
     mov edi, dword ptr [ebp-10h]
@@ -67692,7 +67692,7 @@ loc_43B1F6:
     test eax, eax
     jnz loc_43B216
     mov ecx, dword ptr [ebp-1Ch]
-    mov eax, dword ptr [esi+ecx*1+4]
+    mov eax, dword ptr [esi+ecx+4]
     mov ecx, dword ptr [eax+edi*4]
     mov eax, dword ptr [ebp-4]
     mov dword ptr [eax], ecx
@@ -67725,11 +67725,11 @@ loc_43B233:
     mov dword ptr [ebp-4], eax
     jle loc_43B27C
     mov eax, dword ptr [ebx+0A0h]
-    mov esi, dword ptr [edx+eax*1+4]
+    mov esi, dword ptr [edx+eax+4]
     mov esi, dword ptr [esi+ecx*4]
     mov dword ptr [ebp-10h], esi
     mov esi, dword ptr [ebp-1Ch]
-    mov eax, dword ptr [eax+esi*1+4]
+    mov eax, dword ptr [eax+esi+4]
 
 loc_43B259:
     mov esi, dword ptr [ebp-10h]
@@ -67753,7 +67753,7 @@ loc_43B27C:
     jnz loc_43B365
     mov eax, dword ptr [ebx+0A0h]
     mov esi, dword ptr [ebx+30h]
-    mov eax, dword ptr [edx+eax*1+4]
+    mov eax, dword ptr [edx+eax+4]
     mov eax, dword ptr [eax+ecx*4]
     mov eax, dword ptr [esi+eax*4]
     mov esi, dword ptr [eax+0C0h]
@@ -67772,7 +67772,7 @@ loc_43B2B3:
     push esi
     mov dword ptr [ebp-10h], eax
     mov eax, dword ptr [ebx+0A0h]
-    mov edx, dword ptr [edx+eax*1+4]
+    mov edx, dword ptr [edx+eax+4]
     mov eax, dword ptr [edx+ecx*4]
     mov ecx, dword ptr [ebx+30h]
     mov ecx, dword ptr [ecx+eax*4]
@@ -67917,7 +67917,7 @@ loc_43B3F9:
 loc_43B418:
     test eax, eax
     jle loc_43B42A
-    mov esi, dword ptr [esi+ecx*1+4]
+    mov esi, dword ptr [esi+ecx+4]
     mov ecx, eax
     lea edi, [ebp-404h]
     rep movsd
@@ -68103,8 +68103,8 @@ ALIGN 16
     shl eax, 3
     shl ecx, 3
     mov dword ptr [ebp-18h], eax
-    mov eax, dword ptr [edx+eax*1]
-    mov esi, dword ptr [ecx+edx*1]
+    mov eax, dword ptr [edx+eax]
+    mov esi, dword ptr [ecx+edx]
     mov dword ptr [ebp-10h], eax
     test eax, eax
     mov dword ptr [ebp-1Ch], ecx
@@ -68124,10 +68124,10 @@ loc_43B5E8:
     test esi, esi
     jle loc_43B62F
     mov eax, dword ptr [ebp-18h]
-    mov eax, dword ptr [edx+eax*1+4]
+    mov eax, dword ptr [edx+eax+4]
     mov eax, dword ptr [eax+ebx*4]
     mov dword ptr [ebp-14h], eax
-    mov eax, dword ptr [ecx+edx*1+4]
+    mov eax, dword ptr [ecx+edx+4]
 
 loc_43B60F:
     mov esi, dword ptr [ebp-14h]
@@ -68149,7 +68149,7 @@ loc_43B62F:
     test eax, eax
     jnz loc_43B64F
     mov eax, dword ptr [ebp-18h]
-    mov eax, dword ptr [edx+eax*1+4]
+    mov eax, dword ptr [edx+eax+4]
     mov esi, dword ptr [eax+ebx*4]
     mov eax, dword ptr [ebp-8]
     mov dword ptr [eax], esi
@@ -68185,9 +68185,9 @@ loc_43B675:
     jle loc_43B6B8
     mov edx, dword ptr [edi+9Ch]
     mov ebx, dword ptr [ebp-18h]
-    mov esi, dword ptr [ecx+edx*1+4]
-    mov edx, dword ptr [edx+ebx*1+4]
-    mov esi, dword ptr [esi+eax*1]
+    mov esi, dword ptr [ecx+edx+4]
+    mov edx, dword ptr [edx+ebx+4]
+    mov esi, dword ptr [esi+eax]
 
 loc_43B698:
     cmp dword ptr [edx], esi
@@ -68211,8 +68211,8 @@ loc_43B6B8:
     mov edx, dword ptr [edi+9Ch]
     mov esi, dword ptr [edi+30h]
     xor ebx, ebx
-    mov edx, dword ptr [edx+ecx*1+4]
-    mov edx, dword ptr [edx+eax*1]
+    mov edx, dword ptr [edx+ecx+4]
+    mov edx, dword ptr [edx+eax]
     mov edx, dword ptr [esi+edx*4]
     movsx edx, word ptr [edx+10h]
     test edx, edx
@@ -68223,11 +68223,11 @@ loc_43B6B8:
 loc_43B6EB:
     mov edx, dword ptr [edi+9Ch]
     mov esi, dword ptr [edi+30h]
-    mov edx, dword ptr [edx+ecx*1+4]
-    mov edx, dword ptr [edx+eax*1]
+    mov edx, dword ptr [edx+ecx+4]
+    mov edx, dword ptr [edx+eax]
     mov edx, dword ptr [esi+edx*4]
     mov esi, dword ptr [ebp+8]
-    mov esi, dword ptr [edx+esi*1-4]
+    mov esi, dword ptr [edx+esi-4]
     test esi, esi
     jz loc_43B7A6
 
@@ -68235,11 +68235,11 @@ loc_43B70D:
     mov edx, dword ptr [ebp+8]
     push ebx
     push esi
-    mov edx, dword ptr [esi+edx*1]
+    mov edx, dword ptr [esi+edx]
     mov dword ptr [ebp-14h], edx
     mov edx, dword ptr [edi+9Ch]
-    mov ecx, dword ptr [edx+ecx*1+4]
-    mov edx, dword ptr [ecx+eax*1]
+    mov ecx, dword ptr [edx+ecx+4]
+    mov edx, dword ptr [ecx+eax]
     mov eax, dword ptr [edi+30h]
     mov ecx, dword ptr [eax+edx*4]
     call ?PopVehicle@aiPath@@QAEXPAVaiVehicleSpline@@H@Z
@@ -68322,7 +68322,7 @@ loc_43B7EF:
     mov ebx, dword ptr [ecx]
     lea esi, [ebx*4]
     mov dword ptr [ebp+8], esi
-    mov eax, dword ptr [esi+edx*1]
+    mov eax, dword ptr [esi+edx]
     cmp word ptr [eax+16h], 0
     jnz loc_43BA36
     cmp word ptr [eax+22h], 0
@@ -68359,7 +68359,7 @@ loc_43B84F:
 loc_43B852:
     mov edx, dword ptr [edi+30h]
     fld dword ptr [ebp-1Ch]
-    mov eax, dword ptr [esi+edx*1]
+    mov eax, dword ptr [esi+edx]
     fmul dword ptr [?MMSTATE@@3UmmStatePack@@A+48h]
     movsx ecx, word ptr [eax+10h]
     movsx edx, word ptr [eax+0Ch]
@@ -68387,11 +68387,11 @@ loc_43B852:
 loc_43B8AA:
     mov eax, dword ptr [ebp-38h]
     mov edx, dword ptr [edi+30h]
-    lea ecx, [eax+esi*1-3]
+    lea ecx, [eax+esi-3]
     mov eax, dword ptr [ebp-8]
     push ecx
     push esi
-    mov ecx, dword ptr [edx+eax*1]
+    mov ecx, dword ptr [edx+eax]
     call ?SubSectionLength@aiPath@@QAEMHH@Z
     fdiv dword ptr [ebp-3Ch]
     mov eax, dword ptr [ebp-30h]
@@ -68413,7 +68413,7 @@ loc_43B8D4:
     mov eax, dword ptr [ebp+8]
     mov edx, dword ptr [edi+30h]
     mov dword ptr [ebp-8], eax
-    mov eax, dword ptr [eax+edx*1]
+    mov eax, dword ptr [eax+edx]
     mov dword ptr [esi+3Ch], eax
     call ?frand@@YAMXZ
     fmul dword ptr [flt_61B290]
@@ -69770,9 +69770,9 @@ loc_43CAC1:
     mov ecx, dword ptr [ebx+60h]
     mov edx, edi
     mov esi, edi
-    fld dword ptr [edi+ecx*1-0Ch]
-    fsub dword ptr [edi+ecx*1]
-    lea eax, [edi+ecx*1]
+    fld dword ptr [edi+ecx-0Ch]
+    fsub dword ptr [edi+ecx]
+    lea eax, [edi+ecx]
     mov ecx, dword ptr [ebx+70h]
     add edx, ecx
     fstp dword ptr [ebp-20h]
@@ -69897,16 +69897,16 @@ loc_43CC09:
     mov edx, dword ptr [ebx+74h]
     mov ecx, edi
     mov esi, edi
-    fld dword ptr [edi+eax*1+0Ch]
-    fsub dword ptr [edi+eax*1-0Ch]
+    fld dword ptr [edi+eax+0Ch]
+    fsub dword ptr [edi+eax-0Ch]
     add ecx, edx
     fstp dword ptr [ebp-20h]
-    fld dword ptr [edi+eax*1+10h]
-    fsub dword ptr [edi+eax*1-8]
+    fld dword ptr [edi+eax+10h]
+    fsub dword ptr [edi+eax-8]
     mov edx, dword ptr [ebp-20h]
     fstp dword ptr [ebp-1Ch]
-    fld dword ptr [edi+eax*1+14h]
-    fsub dword ptr [edi+eax*1-4]
+    fld dword ptr [edi+eax+14h]
+    fsub dword ptr [edi+eax-4]
     mov eax, dword ptr [ebp-1Ch]
     mov dword ptr [ecx], edx
     fstp dword ptr [ebp-18h]
@@ -70072,9 +70072,9 @@ loc_43CDD2:
     mov esi, 1
     lea eax, [eax+eax*2]
     shl eax, 2
-    lea ecx, [edx+eax*1-0Ch]
+    lea ecx, [edx+eax-0Ch]
     mov edx, dword ptr [ebx+78h]
-    lea eax, [eax+edx*1-0Ch]
+    lea eax, [eax+edx-0Ch]
     mov edx, dword ptr [ecx]
     mov dword ptr [eax], edx
     mov edx, dword ptr [ecx+4]
@@ -70106,9 +70106,9 @@ loc_43CDD2:
     movsx eax, word ptr [ebx+0Ch]
     lea eax, [eax+eax*2]
     shl eax, 2
-    lea edx, [ecx+eax*1-0Ch]
+    lea edx, [ecx+eax-0Ch]
     mov ecx, dword ptr [ebx+7Ch]
-    lea eax, [eax+ecx*1-0Ch]
+    lea eax, [eax+ecx-0Ch]
     mov ecx, dword ptr [edx]
     mov dword ptr [eax], ecx
     mov ecx, dword ptr [edx+4]
@@ -70172,9 +70172,9 @@ loc_43CED2:
     fadd st, st
     fxch st(1)
     fxch st(2)
-    fadd dword ptr [ecx+edi*1]
-    fld dword ptr [ecx+edi*1+4]
-    fld dword ptr [ecx+edi*1+8]
+    fadd dword ptr [ecx+edi]
+    fld dword ptr [ecx+edi+4]
+    fld dword ptr [ecx+edi+8]
     fxch st(4)
     fstp dword ptr [ebp-10h]
     add ecx, edi
@@ -70451,9 +70451,9 @@ loc_43D174:
     mov edx, dword ptr [esi+64h]
     mov ecx, dword ptr [esi+70h]
     mov edi, ebx
-    fld dword ptr [ebx+edx*1-0Ch]
-    fsub dword ptr [ebx+edx*1]
-    lea eax, [ebx+edx*1]
+    fld dword ptr [ebx+edx-0Ch]
+    fsub dword ptr [ebx+edx]
+    lea eax, [ebx+edx]
     fstp dword ptr [ebp-14h]
     fld dword ptr [eax-8]
     fsub dword ptr [eax+4]
@@ -70574,16 +70574,16 @@ loc_43D2AE:
     mov edx, dword ptr [esi+74h]
     mov ecx, ebx
     mov edi, ebx
-    fld dword ptr [ebx+eax*1+0Ch]
-    fsub dword ptr [ebx+eax*1-0Ch]
+    fld dword ptr [ebx+eax+0Ch]
+    fsub dword ptr [ebx+eax-0Ch]
     add ecx, edx
     fstp dword ptr [ebp-14h]
-    fld dword ptr [ebx+eax*1+10h]
-    fsub dword ptr [ebx+eax*1-8]
+    fld dword ptr [ebx+eax+10h]
+    fsub dword ptr [ebx+eax-8]
     mov edx, dword ptr [ebp-14h]
     fstp dword ptr [ebp-10h]
-    fld dword ptr [ebx+eax*1+14h]
-    fsub dword ptr [ebx+eax*1-4]
+    fld dword ptr [ebx+eax+14h]
+    fsub dword ptr [ebx+eax-4]
     mov eax, dword ptr [ebp-10h]
     mov dword ptr [ecx], edx
     fstp dword ptr [ebp-0Ch]
@@ -70642,7 +70642,7 @@ loc_43D36F:
     mov edi, dword ptr [esi+68h]
     mov ecx, eax
     fld dword ptr [esi+28h]
-    fld dword ptr [ecx+edi*1]
+    fld dword ptr [ecx+edi]
     mov ebx, dword ptr [esi+64h]
     add ecx, edi
     fmul st, st(1)
@@ -70688,9 +70688,9 @@ loc_43D36F:
     mov dword ptr [edx+8], ebx
     mov edx, dword ptr [esi+68h]
     fld dword ptr [esi+28h]
-    fld dword ptr [ecx+edx*1]
-    fld dword ptr [ecx+edx*1+4]
-    fld dword ptr [ecx+edx*1+8]
+    fld dword ptr [ecx+edx]
+    fld dword ptr [ecx+edx+4]
+    fld dword ptr [ecx+edx+8]
     fxch st(2)
     fmul st, st(3)
     fxch st(1)
@@ -70746,9 +70746,9 @@ loc_43D474:
     mov edi, 1
     lea eax, [eax+eax*2]
     shl eax, 2
-    lea edx, [eax+ecx*1-0Ch]
+    lea edx, [eax+ecx-0Ch]
     mov ecx, dword ptr [esi+78h]
-    lea eax, [eax+ecx*1-0Ch]
+    lea eax, [eax+ecx-0Ch]
     mov ecx, dword ptr [edx]
     mov dword ptr [eax], ecx
     mov ecx, dword ptr [edx+4]
@@ -70787,7 +70787,7 @@ loc_43D4F3:
     mov ebx, dword ptr [esi+68h]
     mov eax, edx
     fld dword ptr [esi+28h]
-    fld dword ptr [eax+ebx*1]
+    fld dword ptr [eax+ebx]
     add eax, ebx
     mov ebx, dword ptr [esi+64h]
     fmul st, st(1)
@@ -70841,8 +70841,8 @@ loc_43D56E:
     mov dword ptr [ebp+0Ch], 0
     lea eax, [eax+eax*2]
     shl eax, 2
-    lea edx, [eax+edx*1-0Ch]
-    lea eax, [eax+edi*1-0Ch]
+    lea edx, [eax+edx-0Ch]
+    lea eax, [eax+edi-0Ch]
     mov edi, dword ptr [edx]
     mov dword ptr [eax], edi
     mov edi, dword ptr [edx+4]
@@ -70927,9 +70927,9 @@ loc_43D63A:
     movsx eax, word ptr [esi+0Ch]
     lea eax, [eax+eax*2]
     shl eax, 2
-    lea ecx, [edx+eax*1-0Ch]
+    lea ecx, [edx+eax-0Ch]
     mov edx, dword ptr [esi+64h]
-    lea eax, [edx+eax*1-0Ch]
+    lea eax, [edx+eax-0Ch]
     mov edx, dword ptr [ecx]
     mov dword ptr [eax], edx
     mov edx, dword ptr [ecx+4]
@@ -71030,7 +71030,7 @@ loc_43D74F:
 
 loc_43D76F:
     mov eax, dword ptr [esi+64h]
-    lea ecx, [ebx+eax*1]
+    lea ecx, [ebx+eax]
     lea edx, [ecx-0Ch]
     push edx
     call ?Dist@Vector3@@QBEMABV1@@Z
@@ -72000,7 +72000,7 @@ loc_43E123:
     mov ecx, dword ptr [ebp-4]
     add esp, 4
     imul ecx, eax
-    lea eax, [ecx+esi*1]
+    lea eax, [ecx+esi]
     mov ecx, dword ptr [edi+60h]
     lea edx, [eax+eax*2]
     inc eax
@@ -72083,12 +72083,12 @@ loc_43E1FC:
     call ?DrawColor@@YAXAAVVector3@@@Z
     mov eax, dword ptr [edi+64h]
     add esp, 4
-    lea ecx, [esi+eax*1]
-    mov edx, dword ptr [esi+eax*1]
+    lea ecx, [esi+eax]
+    mov edx, dword ptr [esi+eax]
     mov dword ptr [ebp-1Ch], edx
     mov edx, dword ptr [ecx+4]
     mov dword ptr [ebp-18h], edx
-    lea edx, [esi+eax*1+0Ch]
+    lea edx, [esi+eax+0Ch]
     mov ecx, dword ptr [ecx+8]
     fld dword ptr [ebp-18h]
     fsub dword ptr [flt_61B344]
@@ -72154,12 +72154,12 @@ loc_43E2BE:
     mov ecx, dword ptr [esi+6Ch]
     mov ebx, dword ptr [ebp-4]
     imul eax, edx
-    fld dword ptr [ecx+ebx*1+8]
-    fld dword ptr [ecx+ebx*1+4]
+    fld dword ptr [ecx+ebx+8]
+    fld dword ptr [ecx+ebx+4]
     fmul dword ptr [flt_61B348]
     fxch st(1)
     fmul dword ptr [flt_61B348]
-    fld dword ptr [ecx+ebx*1]
+    fld dword ptr [ecx+ebx]
     fmul dword ptr [flt_61B348]
     add ecx, ebx
     mov edx, dword ptr [esi+60h]
@@ -72457,7 +72457,7 @@ loc_43E720:
     retn 8
 
 loc_43E745:
-    lea eax, [ecx+edi*1]
+    lea eax, [ecx+edi]
     mov ecx, dword ptr [ebp-4]
     mov edx, dword ptr [ecx+60h]
     lea eax, [eax+eax*2]
@@ -72780,7 +72780,7 @@ loc_43EA96:
     mov eax, dword ptr [ebp-8]
     fld st(2)
     fld st(2)
-    fld dword ptr [eax+edx*1]
+    fld dword ptr [eax+edx]
     fld dword ptr [esi-4]
     fld st(4)
     fxch st(4)
@@ -75009,7 +75009,7 @@ loc_44042C:
     mov eax, dword ptr [edi+30h]
     test eax, eax
     jz loc_440440
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_440440
     mov edx, dword ptr [ecx]
@@ -75020,7 +75020,7 @@ loc_440440:
     mov eax, dword ptr [edi+78h]
     test eax, eax
     jz loc_440454
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_440454
     mov eax, dword ptr [ecx]
@@ -75031,7 +75031,7 @@ loc_440454:
     mov eax, dword ptr [edi+34h]
     test eax, eax
     jz loc_440468
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_440468
     mov edx, dword ptr [ecx]
@@ -75042,7 +75042,7 @@ loc_440468:
     mov eax, dword ptr [edi+38h]
     test eax, eax
     jz loc_44047C
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_44047C
     mov eax, dword ptr [ecx]
@@ -75053,7 +75053,7 @@ loc_44047C:
     mov eax, dword ptr [edi+3Ch]
     test eax, eax
     jz loc_440490
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_440490
     mov edx, dword ptr [ecx]
@@ -75064,7 +75064,7 @@ loc_440490:
     mov eax, dword ptr [edi+40h]
     test eax, eax
     jz loc_4404A4
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_4404A4
     mov eax, dword ptr [ecx]
@@ -75075,7 +75075,7 @@ loc_4404A4:
     mov eax, dword ptr [edi+60h]
     test eax, eax
     jz loc_4404B8
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_4404B8
     mov edx, dword ptr [ecx]
@@ -75086,7 +75086,7 @@ loc_4404B8:
     mov eax, dword ptr [edi+64h]
     test eax, eax
     jz loc_4404CC
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_4404CC
     mov eax, dword ptr [ecx]
@@ -75097,7 +75097,7 @@ loc_4404CC:
     mov eax, dword ptr [edi+44h]
     test eax, eax
     jz loc_4404E0
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_4404E0
     mov edx, dword ptr [ecx]
@@ -75108,7 +75108,7 @@ loc_4404E0:
     mov eax, dword ptr [edi+48h]
     test eax, eax
     jz loc_4404F4
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_4404F4
     mov eax, dword ptr [ecx]
@@ -75119,7 +75119,7 @@ loc_4404F4:
     mov eax, dword ptr [edi+4Ch]
     test eax, eax
     jz loc_440508
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_440508
     mov edx, dword ptr [ecx]
@@ -75130,7 +75130,7 @@ loc_440508:
     mov eax, dword ptr [edi+50h]
     test eax, eax
     jz loc_44051C
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_44051C
     mov eax, dword ptr [ecx]
@@ -75141,7 +75141,7 @@ loc_44051C:
     mov eax, dword ptr [edi+54h]
     test eax, eax
     jz loc_440530
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_440530
     mov edx, dword ptr [ecx]
@@ -75152,7 +75152,7 @@ loc_440530:
     mov eax, dword ptr [edi+58h]
     test eax, eax
     jz loc_440544
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_440544
     mov eax, dword ptr [ecx]
@@ -75163,7 +75163,7 @@ loc_440544:
     mov eax, dword ptr [edi+5Ch]
     test eax, eax
     jz loc_440558
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_440558
     mov edx, dword ptr [ecx]
@@ -75174,7 +75174,7 @@ loc_440558:
     mov eax, dword ptr [edi+68h]
     test eax, eax
     jz loc_44056C
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_44056C
     mov eax, dword ptr [ecx]
@@ -75185,7 +75185,7 @@ loc_44056C:
     mov eax, dword ptr [edi+7Ch]
     test eax, eax
     jz loc_44058A
-    mov ebx, dword ptr [esi+eax*1]
+    mov ebx, dword ptr [esi+eax]
     test ebx, ebx
     jz loc_44058A
     mov ecx, ebx
@@ -75198,7 +75198,7 @@ loc_44058A:
     mov eax, dword ptr [edi+6Ch]
     test eax, eax
     jz loc_44059E
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_44059E
     mov edx, dword ptr [ecx]
@@ -75209,7 +75209,7 @@ loc_44059E:
     mov eax, dword ptr [edi+70h]
     test eax, eax
     jz loc_4405B2
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_4405B2
     mov eax, dword ptr [ecx]
@@ -75220,7 +75220,7 @@ loc_4405B2:
     mov eax, dword ptr [edi+74h]
     test eax, eax
     jz loc_4405C6
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_4405C6
     mov edx, dword ptr [ecx]
@@ -75509,7 +75509,7 @@ loc_44081B:
     mov ax, di
     pop edi
     pop esi
-    mov byte ptr [edx+ebx*1], 1
+    mov byte ptr [edx+ebx], 1
     pop ebx
     pop ebp
     retn 4
@@ -75581,7 +75581,7 @@ loc_4408CB:
     mov ax, di
     pop edi
     pop esi
-    mov byte ptr [edx+ebx*1], 1
+    mov byte ptr [edx+ebx], 1
     pop ebx
     pop ebp
     retn 4
@@ -75653,7 +75653,7 @@ loc_44097B:
     mov ax, di
     pop edi
     pop esi
-    mov byte ptr [edx+ebx*1], 1
+    mov byte ptr [edx+ebx], 1
     pop ebx
     pop ebp
     retn 4
@@ -75684,7 +75684,7 @@ loc_4409C9:
     mov ecx, dword ptr [esi+20h]
     mov dword ptr [ecx+edi*4], 0
     mov edx, dword ptr [esi+8Ch]
-    mov byte ptr [edx+edi*1], 0
+    mov byte ptr [edx+edi], 0
     dec word ptr [esi+82h]
     cmp word ptr [esi+82h], 0
     jge loc_440A00
@@ -75724,7 +75724,7 @@ loc_440A39:
     mov ecx, dword ptr [esi+24h]
     mov dword ptr [ecx+edi*4], 0
     mov edx, dword ptr [esi+8Ch]
-    mov byte ptr [edx+edi*1], 0
+    mov byte ptr [edx+edi], 0
     dec word ptr [esi+82h]
     cmp word ptr [esi+82h], 0
     jge loc_440A70
@@ -75764,7 +75764,7 @@ loc_440AA9:
     mov ecx, dword ptr [esi+28h]
     mov dword ptr [ecx+edi*4], 0
     mov edx, dword ptr [esi+8Ch]
-    mov byte ptr [edx+edi*1], 0
+    mov byte ptr [edx+edi], 0
     dec word ptr [esi+82h]
     cmp word ptr [esi+82h], 0
     jge loc_440AE0
@@ -75799,13 +75799,13 @@ ALIGN 16
 
 loc_440B18:
     mov eax, dword ptr [edi+20h]
-    mov edx, dword ptr [esi+eax*1]
+    mov edx, dword ptr [esi+eax]
     test edx, edx
     jnz loc_440BD6
     mov ecx, dword ptr [edi+24h]
     test ecx, ecx
     jz loc_440B4F
-    cmp dword ptr [esi+ecx*1], 0
+    cmp dword ptr [esi+ecx], 0
     jz loc_440B4F
     cmp word ptr [ebp-4], bx
     jnz loc_440C23
@@ -75818,13 +75818,13 @@ loc_440B18:
 loc_440B4F:
     movsx esi, bx
     shl esi, 2
-    mov eax, dword ptr [esi+eax*1]
+    mov eax, dword ptr [esi+eax]
     test eax, eax
     jz loc_440B8C
     mov ecx, dword ptr [edi+28h]
     mov edx, dword ptr [ebp-8]
     mov eax, dword ptr [eax+11Ch]
-    mov ecx, dword ptr [edx+ecx*1]
+    mov ecx, dword ptr [edx+ecx]
     mov dword ptr [ebp-10h], eax
     call ?GetDistanceToPlayer2@aiVehiclePolice@@QAEMXZ
     fcomp dword ptr [ebp-10h]
@@ -75833,19 +75833,19 @@ loc_440B4F:
     jnz loc_440C23
     mov eax, dword ptr [edi+28h]
     mov ecx, dword ptr [ebp-8]
-    mov ecx, dword ptr [ecx+eax*1]
+    mov ecx, dword ptr [ecx+eax]
     jmp loc_440BC5
 
 loc_440B8C:
     mov eax, dword ptr [edi+28h]
-    cmp dword ptr [eax+esi*1], 0
+    cmp dword ptr [eax+esi], 0
     jz loc_440C23
     mov edx, dword ptr [ebp-8]
-    mov ecx, dword ptr [edx+eax*1]
+    mov ecx, dword ptr [edx+eax]
     call ?GetDistanceToPlayer2@aiVehiclePolice@@QAEMXZ
     mov eax, dword ptr [edi+28h]
     fstp dword ptr [ebp-14h]
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?GetDistanceToPlayer2@aiVehiclePolice@@QAEMXZ
     fcomp dword ptr [ebp-14h]
     fnstsw ax
@@ -75853,7 +75853,7 @@ loc_440B8C:
     jz loc_440C23
     mov ecx, dword ptr [edi+28h]
     mov edx, dword ptr [ebp-8]
-    mov ecx, dword ptr [edx+ecx*1]
+    mov ecx, dword ptr [edx+ecx]
 
 loc_440BC5:
     call ?GetAudioPtr@aiVehiclePolice@@QAEPAVmmPoliceCarAudio@@XZ
@@ -75910,7 +75910,7 @@ loc_440C3D:
     jz loc_440C8D
     movsx esi, bx
     shl esi, 2
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     test ecx, ecx
     jz loc_440C8D
     mov eax, dword ptr [ebp+8]
@@ -75922,11 +75922,11 @@ loc_440C3D:
     test ah, 41h
     jnz loc_440CD2
     mov eax, dword ptr [edi+28h]
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?UnAssignSounds@aiVehiclePolice@@QAEXXZ
     mov ecx, dword ptr [edi+28h]
     mov ax, bx
-    mov dword ptr [esi+ecx*1], 0
+    mov dword ptr [esi+ecx], 0
     pop edi
     pop esi
     pop ebx
@@ -75938,7 +75938,7 @@ loc_440C8D:
     mov edx, dword ptr [edi+20h]
     movsx esi, bx
     shl esi, 2
-    mov ecx, dword ptr [esi+edx*1]
+    mov ecx, dword ptr [esi+edx]
     test ecx, ecx
     jz loc_440CD2
     mov eax, dword ptr [ebp+8]
@@ -75952,7 +75952,7 @@ loc_440C8D:
     call ?UnAssignSounds@aiVehicleAmbient@@QAEXXZ
     mov ecx, dword ptr [edi+20h]
     mov ax, bx
-    mov dword ptr [esi+ecx*1], 0
+    mov dword ptr [esi+ecx], 0
     pop edi
     pop esi
     pop ebx
@@ -76015,32 +76015,32 @@ loc_440D2D:
 
 loc_440D39:
     mov eax, dword ptr [esi+24h]
-    mov ecx, dword ptr [ebx+eax*1]
+    mov ecx, dword ptr [ebx+eax]
     test ecx, ecx
     jnz loc_440DB2
     movsx edi, word ptr [ebp-4]
     shl edi, 2
-    mov edx, dword ptr [edi+eax*1]
+    mov edx, dword ptr [edi+eax]
     mov eax, dword ptr [esi+28h]
     test edx, edx
     jz loc_440D6F
-    mov ecx, dword ptr [ebx+eax*1]
+    mov ecx, dword ptr [ebx+eax]
     call ?GetDistanceToPlayer2@aiVehiclePolice@@QAEMXZ
     mov ecx, dword ptr [esi+24h]
     fstp dword ptr [ebp-0Ch]
-    mov ecx, dword ptr [edi+ecx*1]
+    mov ecx, dword ptr [edi+ecx]
     call ?GetDistanceToPlayer2@aiVehicleOpponent@@QAEMXZ
     fcomp dword ptr [ebp-0Ch]
     jmp loc_440D8E
 
 loc_440D6F:
-    cmp dword ptr [eax+edi*1], 0
+    cmp dword ptr [eax+edi], 0
     jz loc_440DB2
-    mov ecx, dword ptr [ebx+eax*1]
+    mov ecx, dword ptr [ebx+eax]
     call ?GetDistanceToPlayer2@aiVehiclePolice@@QAEMXZ
     mov ecx, dword ptr [esi+28h]
     fstp dword ptr [ebp-0Ch]
-    mov ecx, dword ptr [edi+ecx*1]
+    mov ecx, dword ptr [edi+ecx]
     call ?GetDistanceToPlayer2@aiVehiclePolice@@QAEMXZ
     fcomp dword ptr [ebp-0Ch]
 
@@ -76049,7 +76049,7 @@ loc_440D8E:
     test ah, 1
     jz loc_440E0C
     mov edx, dword ptr [esi+28h]
-    mov ecx, dword ptr [ebx+edx*1]
+    mov ecx, dword ptr [ebx+edx]
     call ?GetAudioPtr@aiVehiclePolice@@QAEPAVmmPoliceCarAudio@@XZ
     mov cl, byte ptr [eax+10Dh]
     test cl, cl
@@ -76064,12 +76064,12 @@ loc_440DB2:
     jz loc_440DE5
     movsx edi, word ptr [ebp-4]
     shl edi, 2
-    cmp dword ptr [eax+edi*1], 0
+    cmp dword ptr [eax+edi], 0
     jz loc_440DE5
     call ?GetDistanceToPlayer2@aiVehicleOpponent@@QAEMXZ
     mov ecx, dword ptr [esi+28h]
     fstp dword ptr [ebp-0Ch]
-    mov ecx, dword ptr [edi+ecx*1]
+    mov ecx, dword ptr [edi+ecx]
     call ?GetDistanceToPlayer2@aiVehiclePolice@@QAEMXZ
     fcomp dword ptr [ebp-0Ch]
     fnstsw ax
@@ -76107,24 +76107,24 @@ loc_440E20:
     jz loc_440E76
     movsx edi, word ptr [ebp-4]
     shl edi, 2
-    cmp dword ptr [eax+edi*1], 0
+    cmp dword ptr [eax+edi], 0
     jz loc_440E76
     mov ecx, dword ptr [ebp+8]
     call ?GetDistanceToPlayer2@aiVehicleOpponent@@QAEMXZ
     mov eax, dword ptr [esi+28h]
     fstp dword ptr [ebp+8]
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     call ?GetDistanceToPlayer2@aiVehiclePolice@@QAEMXZ
     fcomp dword ptr [ebp+8]
     fnstsw ax
     test ah, 41h
     jnz loc_440EBD
     mov ecx, dword ptr [esi+28h]
-    mov ecx, dword ptr [edi+ecx*1]
+    mov ecx, dword ptr [edi+ecx]
     call ?UnAssignSounds@aiVehiclePolice@@QAEXXZ
     mov edx, dword ptr [esi+28h]
     mov ax, word ptr [ebp-4]
-    mov dword ptr [edi+edx*1], 0
+    mov dword ptr [edi+edx], 0
     pop edi
     pop esi
     pop ebx
@@ -76140,18 +76140,18 @@ loc_440E76:
     call ?GetDistanceToPlayer2@aiVehicleOpponent@@QAEMXZ
     mov eax, dword ptr [esi+24h]
     fstp dword ptr [ebp+8]
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     call ?GetDistanceToPlayer2@aiVehicleOpponent@@QAEMXZ
     fcomp dword ptr [ebp+8]
     fnstsw ax
     test ah, 41h
     jnz loc_440EBD
     mov ecx, dword ptr [esi+24h]
-    mov ecx, dword ptr [edi+ecx*1]
+    mov ecx, dword ptr [edi+ecx]
     call ?UnAssignSounds@aiVehicleOpponent@@QAEXXZ
     mov edx, dword ptr [esi+24h]
     mov ax, word ptr [ebp-4]
-    mov dword ptr [edi+edx*1], ebx
+    mov dword ptr [edi+edx], ebx
     pop edi
     pop esi
     pop ebx
@@ -76248,7 +76248,7 @@ loc_440F7C:
 loc_440F7F:
     mov edi, dword ptr [edi+28h]
     mov ecx, dword ptr [ebp-0Ch]
-    mov ecx, dword ptr [ecx+edi*1]
+    mov ecx, dword ptr [ecx+edi]
     test ecx, ecx
     jnz loc_441002
     test al, al
@@ -76259,11 +76259,11 @@ loc_440F7F:
     jz loc_44105F
     movsx eax, bx
     shl eax, 2
-    mov ecx, dword ptr [eax+edi*1]
+    mov ecx, dword ptr [eax+edi]
     test ecx, ecx
     jz loc_440FDA
     mov eax, dword ptr [ebp-0Ch]
-    mov edx, dword ptr [eax+edx*1]
+    mov edx, dword ptr [eax+edx]
     test edx, edx
     jz loc_44105F
     mov edx, dword ptr [edx+11Ch]
@@ -76276,11 +76276,11 @@ loc_440F7F:
     jmp loc_44105C
 
 loc_440FDA:
-    mov eax, dword ptr [eax+edx*1]
+    mov eax, dword ptr [eax+edx]
     test eax, eax
     jz loc_44105F
     mov ecx, dword ptr [ebp-0Ch]
-    mov edx, dword ptr [ecx+edx*1]
+    mov edx, dword ptr [ecx+edx]
     test edx, edx
     jz loc_44105F
     fld dword ptr [edx+11Ch]
@@ -76312,13 +76312,13 @@ loc_441002:
 loc_441030:
     movsx esi, bx
     shl esi, 2
-    cmp dword ptr [esi+edi*1], 0
+    cmp dword ptr [esi+edi], 0
     jz loc_44105F
     call ?GetDistanceToPlayer2@aiVehiclePolice@@QAEMXZ
     mov ecx, dword ptr [ebp-10h]
     fstp dword ptr [ebp-1Ch]
     mov edx, dword ptr [ecx+28h]
-    mov ecx, dword ptr [esi+edx*1]
+    mov ecx, dword ptr [esi+edx]
     call ?GetDistanceToPlayer2@aiVehiclePolice@@QAEMXZ
     fcomp dword ptr [ebp-1Ch]
     fnstsw ax
@@ -76345,7 +76345,7 @@ loc_44107C:
     jz loc_4410CC
     movsx esi, bx
     shl esi, 2
-    mov eax, dword ptr [esi+eax*1]
+    mov eax, dword ptr [esi+eax]
     test eax, eax
     jz loc_4410CC
     mov eax, dword ptr [eax+11Ch]
@@ -76357,11 +76357,11 @@ loc_44107C:
     test ah, 1
     jz loc_44111C
     mov ecx, dword ptr [edi+20h]
-    mov ecx, dword ptr [esi+ecx*1]
+    mov ecx, dword ptr [esi+ecx]
     call ?UnAssignSounds@aiVehicleAmbient@@QAEXXZ
     mov edx, dword ptr [edi+20h]
     mov ax, bx
-    mov dword ptr [esi+edx*1], 0
+    mov dword ptr [esi+edx], 0
     pop edi
     pop esi
     pop ebx
@@ -76373,23 +76373,23 @@ loc_4410CC:
     mov eax, dword ptr [edi+28h]
     movsx esi, bx
     shl esi, 2
-    cmp dword ptr [esi+eax*1], 0
+    cmp dword ptr [esi+eax], 0
     jz loc_44111C
     mov ecx, dword ptr [ebp+8]
     call ?GetDistanceToPlayer2@aiVehiclePolice@@QAEMXZ
     mov ecx, dword ptr [edi+28h]
     fstp dword ptr [ebp+8]
-    mov ecx, dword ptr [esi+ecx*1]
+    mov ecx, dword ptr [esi+ecx]
     call ?GetDistanceToPlayer2@aiVehiclePolice@@QAEMXZ
     fcomp dword ptr [ebp+8]
     fnstsw ax
     test ah, 41h
     jnz loc_44111C
     mov edx, dword ptr [edi+28h]
-    mov ecx, dword ptr [esi+edx*1]
+    mov ecx, dword ptr [esi+edx]
     call ?UnAssignSounds@aiVehiclePolice@@QAEXXZ
     mov eax, dword ptr [edi+28h]
-    mov dword ptr [esi+eax*1], 0
+    mov dword ptr [esi+eax], 0
     mov ax, bx
     pop edi
     pop esi
@@ -76492,13 +76492,13 @@ loc_4411B0:
 loc_4411C0:
     movsx esi, bx
     shl esi, 2
-    mov ecx, dword ptr [esi+edi*1]
+    mov ecx, dword ptr [esi+edi]
     call ?UnAssignSounds@aiVehicleAmbient@@QAEXXZ
     mov ecx, dword ptr [ebp-4]
     pop edi
     mov ax, bx
     mov edx, dword ptr [ecx+20h]
-    mov dword ptr [edx+esi*1], 0
+    mov dword ptr [edx+esi], 0
     pop esi
     pop ebx
     mov esp, ebp
@@ -76566,7 +76566,7 @@ loc_441247:
 
 loc_441250:
     mov eax, dword ptr [ebx+24h]
-    mov ecx, dword ptr [eax+edi*1]
+    mov ecx, dword ptr [eax+edi]
     test ecx, ecx
     jz loc_441281
     call ?GetDistanceToPlayer2@aiVehicleOpponent@@QAEMXZ
@@ -76594,12 +76594,12 @@ loc_44128A:
     movsx esi, word ptr [ebp-4]
     mov eax, dword ptr [ebx+24h]
     shl esi, 2
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?UnAssignSounds@aiVehicleOpponent@@QAEXXZ
     mov ecx, dword ptr [ebx+24h]
     mov ax, word ptr [ebp-4]
     pop edi
-    mov dword ptr [ecx+esi*1], 0
+    mov dword ptr [ecx+esi], 0
     pop esi
     pop ebx
     mov esp, ebp
@@ -76618,7 +76618,7 @@ ALIGN 16
 
 loc_4412D5:
     movsx esi, ax
-    cmp byte ptr [esi+ecx*1], 0
+    cmp byte ptr [esi+ecx], 0
     jz loc_4412F5
     inc eax
     cmp ax, dx
@@ -76667,7 +76667,7 @@ loc_44133B:
 
 loc_44134C:
     mov ecx, dword ptr [esi+2Ch]
-    mov ecx, dword ptr [edi+ecx*1]
+    mov ecx, dword ptr [edi+ecx]
     call ?Update@AddOnCarAudio@@QAEXXZ
     add edi, 4
     dec ebx
@@ -76683,7 +76683,7 @@ loc_44136E:
     mov eax, dword ptr [esi+20h]
     test eax, eax
     jz loc_441383
-    mov eax, dword ptr [edi+eax*1]
+    mov eax, dword ptr [edi+eax]
     test eax, eax
     jz loc_441383
     mov ecx, eax
@@ -76693,7 +76693,7 @@ loc_441383:
     mov eax, dword ptr [esi+24h]
     test eax, eax
     jz loc_441398
-    mov eax, dword ptr [edi+eax*1]
+    mov eax, dword ptr [edi+eax]
     test eax, eax
     jz loc_441398
     mov ecx, eax
@@ -76703,7 +76703,7 @@ loc_441398:
     mov eax, dword ptr [esi+28h]
     test eax, eax
     jz loc_4413AD
-    mov eax, dword ptr [edi+eax*1]
+    mov eax, dword ptr [edi+eax]
     test eax, eax
     jz loc_4413AD
     mov ecx, eax
@@ -76718,7 +76718,7 @@ loc_4413AD:
     mov eax, dword ptr [esi+30h]
     test eax, eax
     jz loc_4413D5
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     mov edx, dword ptr [ecx]
     call dword ptr [edx+18h]
 
@@ -76726,7 +76726,7 @@ loc_4413D5:
     mov eax, dword ptr [esi+78h]
     test eax, eax
     jz loc_4413E4
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     mov eax, dword ptr [ecx]
     call dword ptr [eax+18h]
 
@@ -76734,7 +76734,7 @@ loc_4413E4:
     mov eax, dword ptr [esi+68h]
     test eax, eax
     jz loc_4413F3
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     mov edx, dword ptr [ecx]
     call dword ptr [edx+18h]
 
@@ -76742,7 +76742,7 @@ loc_4413F3:
     mov eax, dword ptr [esi+6Ch]
     test eax, eax
     jz loc_441402
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     mov eax, dword ptr [ecx]
     call dword ptr [eax+18h]
 
@@ -76750,7 +76750,7 @@ loc_441402:
     mov eax, dword ptr [esi+70h]
     test eax, eax
     jz loc_441411
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     mov edx, dword ptr [ecx]
     call dword ptr [edx+18h]
 
@@ -76758,7 +76758,7 @@ loc_441411:
     mov eax, dword ptr [esi+74h]
     test eax, eax
     jz loc_441420
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     mov eax, dword ptr [ecx]
     call dword ptr [eax+18h]
 
@@ -76766,7 +76766,7 @@ loc_441420:
     mov eax, dword ptr [esi+38h]
     test eax, eax
     jz loc_44142F
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     mov edx, dword ptr [ecx]
     call dword ptr [edx+18h]
 
@@ -76774,7 +76774,7 @@ loc_44142F:
     mov eax, dword ptr [esi+3Ch]
     test eax, eax
     jz loc_44143E
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     mov eax, dword ptr [ecx]
     call dword ptr [eax+18h]
 
@@ -76782,7 +76782,7 @@ loc_44143E:
     mov eax, dword ptr [esi+40h]
     test eax, eax
     jz loc_44144D
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     mov edx, dword ptr [ecx]
     call dword ptr [edx+18h]
 
@@ -76790,7 +76790,7 @@ loc_44144D:
     mov eax, dword ptr [esi+60h]
     test eax, eax
     jz loc_44145C
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     mov eax, dword ptr [ecx]
     call dword ptr [eax+18h]
 
@@ -76798,7 +76798,7 @@ loc_44145C:
     mov eax, dword ptr [esi+64h]
     test eax, eax
     jz loc_44146B
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     mov edx, dword ptr [ecx]
     call dword ptr [edx+18h]
 
@@ -76806,7 +76806,7 @@ loc_44146B:
     mov eax, dword ptr [esi+44h]
     test eax, eax
     jz loc_44147A
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     mov eax, dword ptr [ecx]
     call dword ptr [eax+18h]
 
@@ -76814,7 +76814,7 @@ loc_44147A:
     mov eax, dword ptr [esi+48h]
     test eax, eax
     jz loc_441489
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     mov edx, dword ptr [ecx]
     call dword ptr [edx+18h]
 
@@ -76822,7 +76822,7 @@ loc_441489:
     mov eax, dword ptr [esi+4Ch]
     test eax, eax
     jz loc_441498
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     mov eax, dword ptr [ecx]
     call dword ptr [eax+18h]
 
@@ -76830,7 +76830,7 @@ loc_441498:
     mov eax, dword ptr [esi+50h]
     test eax, eax
     jz loc_4414A7
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     mov edx, dword ptr [ecx]
     call dword ptr [edx+18h]
 
@@ -76838,7 +76838,7 @@ loc_4414A7:
     mov eax, dword ptr [esi+54h]
     test eax, eax
     jz loc_4414B6
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     mov eax, dword ptr [ecx]
     call dword ptr [eax+18h]
 
@@ -76846,7 +76846,7 @@ loc_4414B6:
     mov eax, dword ptr [esi+58h]
     test eax, eax
     jz loc_4414C5
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     mov edx, dword ptr [ecx]
     call dword ptr [edx+18h]
 
@@ -76854,7 +76854,7 @@ loc_4414C5:
     mov eax, dword ptr [esi+5Ch]
     test eax, eax
     jz loc_4414D4
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     mov eax, dword ptr [ecx]
     call dword ptr [eax+18h]
 
@@ -77020,7 +77020,7 @@ loc_44169B:
     mov ecx, dword ptr [edi+2Ch]
     mov eax, dword ptr [ebp+8]
     push eax
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?EchoOn@AddOnCarAudio@@QAEXM@Z
     add esi, 4
     dec ebx
@@ -77038,17 +77038,17 @@ loc_4416C4:
     mov eax, dword ptr [edi+30h]
     test eax, eax
     jz loc_4416F6
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     push 2
     call ?SetEffect@AudSound@@QAEXH@Z
     mov eax, dword ptr [edi+30h]
     mov ebx, dword ptr [ebp+8]
     push ebx
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov ecx, dword ptr [edi+30h]
     push 3F75C28Fh
-    mov ecx, dword ptr [esi+ecx*1]
+    mov ecx, dword ptr [esi+ecx]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
     jmp loc_4416F9
 
@@ -77059,224 +77059,224 @@ loc_4416F9:
     mov eax, dword ptr [edi+78h]
     test eax, eax
     jz loc_441726
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     push 2
     call ?SetEffect@AudSound@@QAEXH@Z
     mov edx, dword ptr [edi+78h]
     push ebx
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov eax, dword ptr [edi+78h]
     push 3F75C28Fh
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_441726:
     mov eax, dword ptr [edi+68h]
     test eax, eax
     jz loc_441753
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     push 2
     call ?SetEffect@AudSound@@QAEXH@Z
     mov ecx, dword ptr [edi+68h]
     push ebx
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov edx, dword ptr [edi+68h]
     push 3F75C28Fh
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_441753:
     mov eax, dword ptr [edi+6Ch]
     test eax, eax
     jz loc_441780
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     push 2
     call ?SetEffect@AudSound@@QAEXH@Z
     mov eax, dword ptr [edi+6Ch]
     push ebx
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov ecx, dword ptr [edi+6Ch]
     push 3F75C28Fh
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_441780:
     mov eax, dword ptr [edi+70h]
     test eax, eax
     jz loc_4417AD
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     push 2
     call ?SetEffect@AudSound@@QAEXH@Z
     mov edx, dword ptr [edi+70h]
     push ebx
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov eax, dword ptr [edi+70h]
     push 3F75C28Fh
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_4417AD:
     mov eax, dword ptr [edi+74h]
     test eax, eax
     jz loc_4417DA
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     push 2
     call ?SetEffect@AudSound@@QAEXH@Z
     mov ecx, dword ptr [edi+74h]
     push ebx
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov edx, dword ptr [edi+74h]
     push 3F75C28Fh
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_4417DA:
     mov eax, dword ptr [edi+38h]
     test eax, eax
     jz loc_44180B
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     push 2
     call ?SetEffect@AudSound@@QAEXH@Z
     mov eax, dword ptr [edi+38h]
     push 3EB33333h
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov ecx, dword ptr [edi+38h]
     push 3F75C28Fh
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_44180B:
     mov eax, dword ptr [edi+3Ch]
     test eax, eax
     jz loc_44183C
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     push 2
     call ?SetEffect@AudSound@@QAEXH@Z
     mov edx, dword ptr [edi+3Ch]
     push 3EB33333h
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov eax, dword ptr [edi+3Ch]
     push 3F75C28Fh
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_44183C:
     mov eax, dword ptr [edi+60h]
     test eax, eax
     jz loc_44186D
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     push 2
     call ?SetEffect@AudSound@@QAEXH@Z
     mov ecx, dword ptr [edi+60h]
     push 3EB33333h
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov edx, dword ptr [edi+60h]
     push 3F75C28Fh
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_44186D:
     mov eax, dword ptr [edi+64h]
     test eax, eax
     jz loc_44189E
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     push 2
     call ?SetEffect@AudSound@@QAEXH@Z
     mov eax, dword ptr [edi+64h]
     push 3EB33333h
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov ecx, dword ptr [edi+64h]
     push 3F75C28Fh
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_44189E:
     mov eax, dword ptr [edi+40h]
     test eax, eax
     jz loc_4418CF
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     push 2
     call ?SetEffect@AudSound@@QAEXH@Z
     mov edx, dword ptr [edi+40h]
     push 3EB33333h
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov eax, dword ptr [edi+40h]
     push 3F75C28Fh
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_4418CF:
     mov eax, dword ptr [edi+44h]
     test eax, eax
     jz loc_441900
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     push 2
     call ?SetEffect@AudSound@@QAEXH@Z
     mov ecx, dword ptr [edi+44h]
     push 3EB33333h
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov edx, dword ptr [edi+44h]
     push 3F75C28Fh
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_441900:
     mov eax, dword ptr [edi+54h]
     test eax, eax
     jz loc_441931
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     push 2
     call ?SetEffect@AudSound@@QAEXH@Z
     mov eax, dword ptr [edi+54h]
     push 3EB33333h
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov ecx, dword ptr [edi+54h]
     push 3F75C28Fh
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_441931:
     mov eax, dword ptr [edi+58h]
     test eax, eax
     jz loc_441962
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     push 2
     call ?SetEffect@AudSound@@QAEXH@Z
     mov edx, dword ptr [edi+58h]
     push 3EB33333h
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov eax, dword ptr [edi+58h]
     push 3F75C28Fh
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_441962:
     mov eax, dword ptr [edi+50h]
     test eax, eax
     jz loc_441993
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     push 2
     call ?SetEffect@AudSound@@QAEXH@Z
     mov ecx, dword ptr [edi+50h]
     push 3EB33333h
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov edx, dword ptr [edi+50h]
     push 3F75C28Fh
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_441993:
@@ -77315,7 +77315,7 @@ ALIGN 16
 
 loc_4419E4:
     mov eax, dword ptr [esi+2Ch]
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     call ?EchoOff@AddOnCarAudio@@QAEXXZ
     add edi, 4
     dec ebx
@@ -77332,7 +77332,7 @@ loc_441A06:
     mov eax, dword ptr [esi+30h]
     test eax, eax
     jz loc_441A17
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     push 2
     call ?DisableEffect@AudSound@@QAEXH@Z
 
@@ -77340,7 +77340,7 @@ loc_441A17:
     mov eax, dword ptr [esi+78h]
     test eax, eax
     jz loc_441A28
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     push 2
     call ?DisableEffect@AudSound@@QAEXH@Z
 
@@ -77348,7 +77348,7 @@ loc_441A28:
     mov eax, dword ptr [esi+68h]
     test eax, eax
     jz loc_441A39
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     push 2
     call ?DisableEffect@AudSound@@QAEXH@Z
 
@@ -77356,7 +77356,7 @@ loc_441A39:
     mov eax, dword ptr [esi+6Ch]
     test eax, eax
     jz loc_441A4A
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     push 2
     call ?DisableEffect@AudSound@@QAEXH@Z
 
@@ -77364,7 +77364,7 @@ loc_441A4A:
     mov eax, dword ptr [esi+70h]
     test eax, eax
     jz loc_441A5B
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     push 2
     call ?DisableEffect@AudSound@@QAEXH@Z
 
@@ -77372,7 +77372,7 @@ loc_441A5B:
     mov eax, dword ptr [esi+74h]
     test eax, eax
     jz loc_441A6C
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     push 2
     call ?DisableEffect@AudSound@@QAEXH@Z
 
@@ -77380,7 +77380,7 @@ loc_441A6C:
     mov eax, dword ptr [esi+38h]
     test eax, eax
     jz loc_441A7D
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     push 2
     call ?DisableEffect@AudSound@@QAEXH@Z
 
@@ -77388,7 +77388,7 @@ loc_441A7D:
     mov eax, dword ptr [esi+3Ch]
     test eax, eax
     jz loc_441A8E
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     push 2
     call ?DisableEffect@AudSound@@QAEXH@Z
 
@@ -77396,7 +77396,7 @@ loc_441A8E:
     mov eax, dword ptr [esi+40h]
     test eax, eax
     jz loc_441A9F
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     push 2
     call ?DisableEffect@AudSound@@QAEXH@Z
 
@@ -77404,7 +77404,7 @@ loc_441A9F:
     mov eax, dword ptr [esi+60h]
     test eax, eax
     jz loc_441AB0
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     push 2
     call ?DisableEffect@AudSound@@QAEXH@Z
 
@@ -77412,7 +77412,7 @@ loc_441AB0:
     mov eax, dword ptr [esi+64h]
     test eax, eax
     jz loc_441AC1
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     push 2
     call ?DisableEffect@AudSound@@QAEXH@Z
 
@@ -77420,7 +77420,7 @@ loc_441AC1:
     mov eax, dword ptr [esi+44h]
     test eax, eax
     jz loc_441AD2
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     push 2
     call ?DisableEffect@AudSound@@QAEXH@Z
 
@@ -77428,7 +77428,7 @@ loc_441AD2:
     mov eax, dword ptr [esi+58h]
     test eax, eax
     jz loc_441AE3
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     push 2
     call ?DisableEffect@AudSound@@QAEXH@Z
 
@@ -77436,7 +77436,7 @@ loc_441AE3:
     mov eax, dword ptr [esi+5Ch]
     test eax, eax
     jz loc_441AF4
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     push 2
     call ?DisableEffect@AudSound@@QAEXH@Z
 
@@ -77444,7 +77444,7 @@ loc_441AF4:
     mov eax, dword ptr [esi+48h]
     test eax, eax
     jz loc_441B05
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     push 2
     call ?DisableEffect@AudSound@@QAEXH@Z
 
@@ -77452,7 +77452,7 @@ loc_441B05:
     mov eax, dword ptr [esi+4Ch]
     test eax, eax
     jz loc_441B16
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     push 2
     call ?DisableEffect@AudSound@@QAEXH@Z
 
@@ -77460,7 +77460,7 @@ loc_441B16:
     mov eax, dword ptr [esi+50h]
     test eax, eax
     jz loc_441B27
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     push 2
     call ?DisableEffect@AudSound@@QAEXH@Z
 
@@ -77468,7 +77468,7 @@ loc_441B27:
     mov eax, dword ptr [esi+54h]
     test eax, eax
     jz loc_441B38
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     push 2
     call ?DisableEffect@AudSound@@QAEXH@Z
 
@@ -77523,19 +77523,19 @@ loc_441B9F:
     mov ecx, dword ptr [esi+38h]
     push 0
     shl ebx, 2
-    mov ecx, dword ptr [ecx+ebx*1]
+    mov ecx, dword ptr [ecx+ebx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_441BDB
     mov edx, dword ptr [esi+7Ch]
     mov ecx, dword ptr [esi+68h]
     push eax
-    mov eax, dword ptr [edx+ebx*1]
-    mov edx, dword ptr [ecx+ebx*1]
+    mov eax, dword ptr [edx+ebx]
+    mov edx, dword ptr [ecx+ebx]
     push eax
     mov eax, dword ptr [esi+38h]
     push edx
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     push ecx
     mov ecx, edi
     call ?AssignSounds@aiVehicleOpponent@@QAEXPAVAudSound@@0PAVmmOpponentImpactAudio@@0@Z
@@ -77560,19 +77560,19 @@ loc_441BEF:
     mov edx, dword ptr [esi+60h]
     push 0
     shl ebx, 2
-    mov ecx, dword ptr [edx+ebx*1]
+    mov ecx, dword ptr [edx+ebx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_441C2B
     mov edx, dword ptr [esi+68h]
     push eax
     mov eax, dword ptr [esi+7Ch]
-    mov ecx, dword ptr [eax+ebx*1]
-    mov eax, dword ptr [edx+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
+    mov eax, dword ptr [edx+ebx]
     push ecx
     mov ecx, dword ptr [esi+60h]
     push eax
-    mov edx, dword ptr [ecx+ebx*1]
+    mov edx, dword ptr [ecx+ebx]
     mov ecx, edi
     push edx
     call ?AssignSounds@aiVehicleOpponent@@QAEXPAVAudSound@@0PAVmmOpponentImpactAudio@@0@Z
@@ -77597,20 +77597,20 @@ loc_441C3F:
     mov eax, dword ptr [esi+64h]
     push 0
     shl ebx, 2
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_441C7B
     mov ecx, dword ptr [esi+7Ch]
     push eax
     mov eax, dword ptr [esi+68h]
-    mov edx, dword ptr [ecx+ebx*1]
-    mov ecx, dword ptr [eax+ebx*1]
+    mov edx, dword ptr [ecx+ebx]
+    mov ecx, dword ptr [eax+ebx]
     push edx
     mov edx, dword ptr [esi+64h]
     push ecx
     mov ecx, edi
-    mov eax, dword ptr [edx+ebx*1]
+    mov eax, dword ptr [edx+ebx]
     push eax
     call ?AssignSounds@aiVehicleOpponent@@QAEXPAVAudSound@@0PAVmmOpponentImpactAudio@@0@Z
     pop edi
@@ -77634,19 +77634,19 @@ loc_441C8F:
     mov ecx, dword ptr [esi+44h]
     push 0
     shl ebx, 2
-    mov ecx, dword ptr [ecx+ebx*1]
+    mov ecx, dword ptr [ecx+ebx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_441CCB
     mov edx, dword ptr [esi+7Ch]
     mov ecx, dword ptr [esi+68h]
     push eax
-    mov eax, dword ptr [edx+ebx*1]
-    mov edx, dword ptr [ecx+ebx*1]
+    mov eax, dword ptr [edx+ebx]
+    mov edx, dword ptr [ecx+ebx]
     push eax
     mov eax, dword ptr [esi+44h]
     push edx
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     push ecx
     mov ecx, edi
     call ?AssignSounds@aiVehicleOpponent@@QAEXPAVAudSound@@0PAVmmOpponentImpactAudio@@0@Z
@@ -77671,19 +77671,19 @@ loc_441CDF:
     mov edx, dword ptr [esi+48h]
     push 0
     shl ebx, 2
-    mov ecx, dword ptr [edx+ebx*1]
+    mov ecx, dword ptr [edx+ebx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_441D1B
     mov edx, dword ptr [esi+68h]
     push eax
     mov eax, dword ptr [esi+7Ch]
-    mov ecx, dword ptr [eax+ebx*1]
-    mov eax, dword ptr [edx+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
+    mov eax, dword ptr [edx+ebx]
     push ecx
     mov ecx, dword ptr [esi+48h]
     push eax
-    mov edx, dword ptr [ecx+ebx*1]
+    mov edx, dword ptr [ecx+ebx]
     mov ecx, edi
     push edx
     call ?AssignSounds@aiVehicleOpponent@@QAEXPAVAudSound@@0PAVmmOpponentImpactAudio@@0@Z
@@ -77708,20 +77708,20 @@ loc_441D2F:
     mov eax, dword ptr [esi+4Ch]
     push 0
     shl ebx, 2
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_441D6B
     mov ecx, dword ptr [esi+7Ch]
     push eax
     mov eax, dword ptr [esi+68h]
-    mov edx, dword ptr [ecx+ebx*1]
-    mov ecx, dword ptr [eax+ebx*1]
+    mov edx, dword ptr [ecx+ebx]
+    mov ecx, dword ptr [eax+ebx]
     push edx
     mov edx, dword ptr [esi+4Ch]
     push ecx
     mov ecx, edi
-    mov eax, dword ptr [edx+ebx*1]
+    mov eax, dword ptr [edx+ebx]
     push eax
     call ?AssignSounds@aiVehicleOpponent@@QAEXPAVAudSound@@0PAVmmOpponentImpactAudio@@0@Z
     pop edi
@@ -77745,19 +77745,19 @@ loc_441D7F:
     mov ecx, dword ptr [esi+50h]
     push 0
     shl ebx, 2
-    mov ecx, dword ptr [ecx+ebx*1]
+    mov ecx, dword ptr [ecx+ebx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_441DBB
     mov edx, dword ptr [esi+7Ch]
     mov ecx, dword ptr [esi+68h]
     push eax
-    mov eax, dword ptr [edx+ebx*1]
-    mov edx, dword ptr [ecx+ebx*1]
+    mov eax, dword ptr [edx+ebx]
+    mov edx, dword ptr [ecx+ebx]
     push eax
     mov eax, dword ptr [esi+50h]
     push edx
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     push ecx
     mov ecx, edi
     call ?AssignSounds@aiVehicleOpponent@@QAEXPAVAudSound@@0PAVmmOpponentImpactAudio@@0@Z
@@ -77782,19 +77782,19 @@ loc_441DCF:
     mov edx, dword ptr [esi+54h]
     push 0
     shl ebx, 2
-    mov ecx, dword ptr [edx+ebx*1]
+    mov ecx, dword ptr [edx+ebx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_441E0B
     mov edx, dword ptr [esi+68h]
     push eax
     mov eax, dword ptr [esi+7Ch]
-    mov ecx, dword ptr [eax+ebx*1]
-    mov eax, dword ptr [edx+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
+    mov eax, dword ptr [edx+ebx]
     push ecx
     mov ecx, dword ptr [esi+54h]
     push eax
-    mov edx, dword ptr [ecx+ebx*1]
+    mov edx, dword ptr [ecx+ebx]
     mov ecx, edi
     push edx
     call ?AssignSounds@aiVehicleOpponent@@QAEXPAVAudSound@@0PAVmmOpponentImpactAudio@@0@Z
@@ -77819,20 +77819,20 @@ loc_441E1F:
     mov eax, dword ptr [esi+58h]
     push 0
     shl ebx, 2
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_441E61
     mov ecx, dword ptr [esi+74h]
     mov eax, dword ptr [esi+7Ch]
-    mov edx, dword ptr [ecx+ebx*1]
-    mov ecx, dword ptr [eax+ebx*1]
+    mov edx, dword ptr [ecx+ebx]
+    mov ecx, dword ptr [eax+ebx]
     push edx
     mov edx, dword ptr [esi+68h]
     push ecx
     mov ecx, dword ptr [esi+58h]
-    mov eax, dword ptr [edx+ebx*1]
-    mov edx, dword ptr [ecx+ebx*1]
+    mov eax, dword ptr [edx+ebx]
+    mov edx, dword ptr [ecx+ebx]
     push eax
     push edx
     mov ecx, edi
@@ -77858,20 +77858,20 @@ loc_441E75:
     mov eax, dword ptr [esi+5Ch]
     push 0
     shl ebx, 2
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_441EB7
     mov ecx, dword ptr [esi+74h]
     mov eax, dword ptr [esi+7Ch]
-    mov edx, dword ptr [ecx+ebx*1]
-    mov ecx, dword ptr [eax+ebx*1]
+    mov edx, dword ptr [ecx+ebx]
+    mov ecx, dword ptr [eax+ebx]
     push edx
     mov edx, dword ptr [esi+68h]
     push ecx
     mov ecx, dword ptr [esi+5Ch]
-    mov eax, dword ptr [edx+ebx*1]
-    mov edx, dword ptr [ecx+ebx*1]
+    mov eax, dword ptr [edx+ebx]
+    mov edx, dword ptr [ecx+ebx]
     push eax
     push edx
     mov ecx, edi
@@ -77897,20 +77897,20 @@ loc_441ECB:
     mov eax, dword ptr [esi+48h]
     push 0
     shl ebx, 2
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_441F07
     mov ecx, dword ptr [esi+7Ch]
     push eax
     mov eax, dword ptr [esi+68h]
-    mov edx, dword ptr [ecx+ebx*1]
-    mov ecx, dword ptr [eax+ebx*1]
+    mov edx, dword ptr [ecx+ebx]
+    mov ecx, dword ptr [eax+ebx]
     push edx
     mov edx, dword ptr [esi+48h]
     push ecx
     mov ecx, edi
-    mov eax, dword ptr [edx+ebx*1]
+    mov eax, dword ptr [edx+ebx]
     push eax
     call ?AssignSounds@aiVehicleOpponent@@QAEXPAVAudSound@@0PAVmmOpponentImpactAudio@@0@Z
     pop edi
@@ -77974,19 +77974,19 @@ ALIGN 16
     mov ecx, dword ptr [esi+38h]
     push 0
     shl edi, 2
-    mov ecx, dword ptr [ecx+edi*1]
+    mov ecx, dword ptr [ecx+edi]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_441FD4
     mov edx, dword ptr [esi+7Ch]
     mov ecx, dword ptr [esi+68h]
     push eax
-    mov eax, dword ptr [edx+edi*1]
-    mov edx, dword ptr [ecx+edi*1]
+    mov eax, dword ptr [edx+edi]
+    mov edx, dword ptr [ecx+edi]
     push eax
     mov eax, dword ptr [esi+48h]
     push edx
-    mov ecx, dword ptr [eax+edi*1]
+    mov ecx, dword ptr [eax+edi]
     push ecx
     mov ecx, ebx
     call ?AssignSounds@aiVehicleOpponent@@QAEXPAVAudSound@@0PAVmmOpponentImpactAudio@@0@Z
@@ -78028,15 +78028,15 @@ loc_44201C:
     movsx eax, word ptr [ebp+0Ch]
     mov ecx, dword ptr [esi+74h]
     shl eax, 2
-    mov edx, dword ptr [ecx+eax*1]
+    mov edx, dword ptr [ecx+eax]
     push edx
 
 loc_44202A:
     mov ecx, dword ptr [esi+7Ch]
-    mov edx, dword ptr [ecx+eax*1]
+    mov edx, dword ptr [ecx+eax]
     mov ecx, dword ptr [esi+68h]
     push edx
-    mov edx, dword ptr [ecx+eax*1]
+    mov edx, dword ptr [ecx+eax]
     mov ecx, ebx
     push edx
     push edi
@@ -78125,32 +78125,32 @@ loc_44210D:
     push 0
     movsx edi, di
     shl edi, 2
-    mov ecx, dword ptr [edi+ecx*1]
+    mov ecx, dword ptr [edi+ecx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_44216C
     mov edx, dword ptr [esi+30h]
     push eax
-    mov ecx, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [edi+edx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_44216C
     mov eax, dword ptr [esi+78h]
     mov edx, dword ptr [esi+7Ch]
-    mov ecx, dword ptr [eax+edi*1]
-    mov eax, dword ptr [edx+edi*1]
+    mov ecx, dword ptr [eax+edi]
+    mov eax, dword ptr [edx+edi]
     push ecx
     mov ecx, dword ptr [esi+68h]
     push eax
     mov eax, dword ptr [esi+38h]
-    mov edx, dword ptr [ecx+edi*1]
-    mov ecx, dword ptr [edi+eax*1]
+    mov edx, dword ptr [ecx+edi]
+    mov ecx, dword ptr [edi+eax]
     push edx
     mov edx, dword ptr [esi+34h]
     push ecx
     mov ecx, dword ptr [esi+30h]
-    mov eax, dword ptr [edx+edi*1]
-    mov edx, dword ptr [edi+ecx*1]
+    mov eax, dword ptr [edx+edi]
+    mov edx, dword ptr [edi+ecx]
     push eax
     push edx
     mov ecx, ebx
@@ -78176,32 +78176,32 @@ loc_442180:
     push 0
     movsx edi, di
     shl edi, 2
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_4421DF
     mov ecx, dword ptr [esi+30h]
     push eax
-    mov ecx, dword ptr [edi+ecx*1]
+    mov ecx, dword ptr [edi+ecx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_4421DF
     mov edx, dword ptr [esi+78h]
     mov ecx, dword ptr [esi+7Ch]
-    mov eax, dword ptr [edx+edi*1]
-    mov edx, dword ptr [ecx+edi*1]
+    mov eax, dword ptr [edx+edi]
+    mov edx, dword ptr [ecx+edi]
     push eax
     mov eax, dword ptr [esi+68h]
     push edx
     mov edx, dword ptr [esi+60h]
-    mov ecx, dword ptr [eax+edi*1]
-    mov eax, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [eax+edi]
+    mov eax, dword ptr [edi+edx]
     push ecx
     mov ecx, dword ptr [esi+34h]
     push eax
     mov eax, dword ptr [esi+30h]
-    mov edx, dword ptr [ecx+edi*1]
-    mov ecx, dword ptr [edi+eax*1]
+    mov edx, dword ptr [ecx+edi]
+    mov ecx, dword ptr [edi+eax]
     push edx
     push ecx
     mov ecx, ebx
@@ -78227,32 +78227,32 @@ loc_4421F3:
     push 0
     movsx edi, di
     shl edi, 2
-    mov ecx, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [edi+edx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_442252
     push eax
     mov eax, dword ptr [esi+30h]
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_442252
     mov ecx, dword ptr [esi+78h]
     mov eax, dword ptr [esi+7Ch]
-    mov edx, dword ptr [ecx+edi*1]
-    mov ecx, dword ptr [eax+edi*1]
+    mov edx, dword ptr [ecx+edi]
+    mov ecx, dword ptr [eax+edi]
     push edx
     mov edx, dword ptr [esi+68h]
     push ecx
     mov ecx, dword ptr [esi+64h]
-    mov eax, dword ptr [edx+edi*1]
-    mov edx, dword ptr [edi+ecx*1]
+    mov eax, dword ptr [edx+edi]
+    mov edx, dword ptr [edi+ecx]
     push eax
     mov eax, dword ptr [esi+34h]
     push edx
     mov edx, dword ptr [esi+30h]
-    mov ecx, dword ptr [eax+edi*1]
-    mov eax, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [eax+edi]
+    mov eax, dword ptr [edi+edx]
     push ecx
     push eax
     mov ecx, ebx
@@ -78278,32 +78278,32 @@ loc_442266:
     push 0
     movsx edi, di
     shl edi, 2
-    mov ecx, dword ptr [edi+ecx*1]
+    mov ecx, dword ptr [edi+ecx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_4422C5
     mov edx, dword ptr [esi+30h]
     push eax
-    mov ecx, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [edi+edx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_4422C5
     mov eax, dword ptr [esi+78h]
     mov edx, dword ptr [esi+7Ch]
-    mov ecx, dword ptr [eax+edi*1]
-    mov eax, dword ptr [edx+edi*1]
+    mov ecx, dword ptr [eax+edi]
+    mov eax, dword ptr [edx+edi]
     push ecx
     mov ecx, dword ptr [esi+68h]
     push eax
     mov eax, dword ptr [esi+44h]
-    mov edx, dword ptr [ecx+edi*1]
-    mov ecx, dword ptr [edi+eax*1]
+    mov edx, dword ptr [ecx+edi]
+    mov ecx, dword ptr [edi+eax]
     push edx
     mov edx, dword ptr [esi+34h]
     push ecx
     mov ecx, dword ptr [esi+30h]
-    mov eax, dword ptr [edx+edi*1]
-    mov edx, dword ptr [edi+ecx*1]
+    mov eax, dword ptr [edx+edi]
+    mov edx, dword ptr [edi+ecx]
     push eax
     push edx
     mov ecx, ebx
@@ -78329,32 +78329,32 @@ loc_4422D9:
     push 0
     movsx edi, di
     shl edi, 2
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_442338
     mov ecx, dword ptr [esi+30h]
     push eax
-    mov ecx, dword ptr [edi+ecx*1]
+    mov ecx, dword ptr [edi+ecx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_442338
     mov edx, dword ptr [esi+78h]
     mov ecx, dword ptr [esi+7Ch]
-    mov eax, dword ptr [edx+edi*1]
-    mov edx, dword ptr [ecx+edi*1]
+    mov eax, dword ptr [edx+edi]
+    mov edx, dword ptr [ecx+edi]
     push eax
     mov eax, dword ptr [esi+68h]
     push edx
     mov edx, dword ptr [esi+48h]
-    mov ecx, dword ptr [eax+edi*1]
-    mov eax, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [eax+edi]
+    mov eax, dword ptr [edi+edx]
     push ecx
     mov ecx, dword ptr [esi+34h]
     push eax
     mov eax, dword ptr [esi+30h]
-    mov edx, dword ptr [ecx+edi*1]
-    mov ecx, dword ptr [edi+eax*1]
+    mov edx, dword ptr [ecx+edi]
+    mov ecx, dword ptr [edi+eax]
     push edx
     push ecx
     mov ecx, ebx
@@ -78380,32 +78380,32 @@ loc_44234C:
     push 0
     movsx edi, di
     shl edi, 2
-    mov ecx, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [edi+edx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_4423AB
     push eax
     mov eax, dword ptr [esi+30h]
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_4423AB
     mov ecx, dword ptr [esi+78h]
     mov eax, dword ptr [esi+7Ch]
-    mov edx, dword ptr [ecx+edi*1]
-    mov ecx, dword ptr [eax+edi*1]
+    mov edx, dword ptr [ecx+edi]
+    mov ecx, dword ptr [eax+edi]
     push edx
     mov edx, dword ptr [esi+68h]
     push ecx
     mov ecx, dword ptr [esi+4Ch]
-    mov eax, dword ptr [edx+edi*1]
-    mov edx, dword ptr [edi+ecx*1]
+    mov eax, dword ptr [edx+edi]
+    mov edx, dword ptr [edi+ecx]
     push eax
     mov eax, dword ptr [esi+34h]
     push edx
     mov edx, dword ptr [esi+30h]
-    mov ecx, dword ptr [eax+edi*1]
-    mov eax, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [eax+edi]
+    mov eax, dword ptr [edi+edx]
     push ecx
     push eax
     mov ecx, ebx
@@ -78431,32 +78431,32 @@ loc_4423BF:
     push 0
     movsx edi, di
     shl edi, 2
-    mov ecx, dword ptr [edi+ecx*1]
+    mov ecx, dword ptr [edi+ecx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_44241E
     mov edx, dword ptr [esi+30h]
     push eax
-    mov ecx, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [edi+edx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_44241E
     mov eax, dword ptr [esi+78h]
     mov edx, dword ptr [esi+7Ch]
-    mov ecx, dword ptr [eax+edi*1]
-    mov eax, dword ptr [edx+edi*1]
+    mov ecx, dword ptr [eax+edi]
+    mov eax, dword ptr [edx+edi]
     push ecx
     mov ecx, dword ptr [esi+68h]
     push eax
     mov eax, dword ptr [esi+50h]
-    mov edx, dword ptr [ecx+edi*1]
-    mov ecx, dword ptr [edi+eax*1]
+    mov edx, dword ptr [ecx+edi]
+    mov ecx, dword ptr [edi+eax]
     push edx
     mov edx, dword ptr [esi+34h]
     push ecx
     mov ecx, dword ptr [esi+30h]
-    mov eax, dword ptr [edx+edi*1]
-    mov edx, dword ptr [edi+ecx*1]
+    mov eax, dword ptr [edx+edi]
+    mov edx, dword ptr [edi+ecx]
     push eax
     push edx
     mov ecx, ebx
@@ -78482,32 +78482,32 @@ loc_442432:
     push 0
     movsx edi, di
     shl edi, 2
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_442491
     mov ecx, dword ptr [esi+30h]
     push eax
-    mov ecx, dword ptr [edi+ecx*1]
+    mov ecx, dword ptr [edi+ecx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_442491
     mov edx, dword ptr [esi+78h]
     mov ecx, dword ptr [esi+7Ch]
-    mov eax, dword ptr [edx+edi*1]
-    mov edx, dword ptr [ecx+edi*1]
+    mov eax, dword ptr [edx+edi]
+    mov edx, dword ptr [ecx+edi]
     push eax
     mov eax, dword ptr [esi+68h]
     push edx
     mov edx, dword ptr [esi+54h]
-    mov ecx, dword ptr [eax+edi*1]
-    mov eax, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [eax+edi]
+    mov eax, dword ptr [edi+edx]
     push ecx
     mov ecx, dword ptr [esi+34h]
     push eax
     mov eax, dword ptr [esi+30h]
-    mov edx, dword ptr [ecx+edi*1]
-    mov ecx, dword ptr [edi+eax*1]
+    mov edx, dword ptr [ecx+edi]
+    mov ecx, dword ptr [edi+eax]
     push edx
     push ecx
     mov ecx, ebx
@@ -78533,32 +78533,32 @@ loc_4424A5:
     push 0
     movsx edi, di
     shl edi, 2
-    mov ecx, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [edi+edx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_442504
     push eax
     mov eax, dword ptr [esi+30h]
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_442504
     mov ecx, dword ptr [esi+78h]
     mov eax, dword ptr [esi+7Ch]
-    mov edx, dword ptr [ecx+edi*1]
-    mov ecx, dword ptr [eax+edi*1]
+    mov edx, dword ptr [ecx+edi]
+    mov ecx, dword ptr [eax+edi]
     push edx
     mov edx, dword ptr [esi+68h]
     push ecx
     mov ecx, dword ptr [esi+58h]
-    mov eax, dword ptr [edx+edi*1]
-    mov edx, dword ptr [edi+ecx*1]
+    mov eax, dword ptr [edx+edi]
+    mov edx, dword ptr [edi+ecx]
     push eax
     mov eax, dword ptr [esi+34h]
     push edx
     mov edx, dword ptr [esi+30h]
-    mov ecx, dword ptr [eax+edi*1]
-    mov eax, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [eax+edi]
+    mov eax, dword ptr [edi+edx]
     push ecx
     push eax
     mov ecx, ebx
@@ -78584,32 +78584,32 @@ loc_442518:
     push 0
     movsx edi, di
     shl edi, 2
-    mov ecx, dword ptr [edi+ecx*1]
+    mov ecx, dword ptr [edi+ecx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_442577
     mov edx, dword ptr [esi+30h]
     push eax
-    mov ecx, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [edi+edx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_442577
     mov eax, dword ptr [esi+78h]
     mov edx, dword ptr [esi+7Ch]
-    mov ecx, dword ptr [eax+edi*1]
-    mov eax, dword ptr [edx+edi*1]
+    mov ecx, dword ptr [eax+edi]
+    mov eax, dword ptr [edx+edi]
     push ecx
     mov ecx, dword ptr [esi+68h]
     push eax
     mov eax, dword ptr [esi+5Ch]
-    mov edx, dword ptr [ecx+edi*1]
-    mov ecx, dword ptr [edi+eax*1]
+    mov edx, dword ptr [ecx+edi]
+    mov ecx, dword ptr [edi+eax]
     push edx
     mov edx, dword ptr [esi+34h]
     push ecx
     mov ecx, dword ptr [esi+30h]
-    mov eax, dword ptr [edx+edi*1]
-    mov edx, dword ptr [edi+ecx*1]
+    mov eax, dword ptr [edx+edi]
+    mov edx, dword ptr [edi+ecx]
     push eax
     push edx
     mov ecx, ebx
@@ -78635,32 +78635,32 @@ loc_44258B:
     push 0
     movsx edi, di
     shl edi, 2
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_4425EA
     mov ecx, dword ptr [esi+30h]
     push eax
-    mov ecx, dword ptr [edi+ecx*1]
+    mov ecx, dword ptr [edi+ecx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_4425EA
     mov edx, dword ptr [esi+78h]
     mov ecx, dword ptr [esi+7Ch]
-    mov eax, dword ptr [edx+edi*1]
-    mov edx, dword ptr [ecx+edi*1]
+    mov eax, dword ptr [edx+edi]
+    mov edx, dword ptr [ecx+edi]
     push eax
     mov eax, dword ptr [esi+68h]
     push edx
     mov edx, dword ptr [esi+48h]
-    mov ecx, dword ptr [eax+edi*1]
-    mov eax, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [eax+edi]
+    mov eax, dword ptr [edi+edx]
     push ecx
     mov ecx, dword ptr [esi+34h]
     push eax
     mov eax, dword ptr [esi+30h]
-    mov edx, dword ptr [ecx+edi*1]
-    mov ecx, dword ptr [edi+eax*1]
+    mov edx, dword ptr [ecx+edi]
+    mov ecx, dword ptr [edi+eax]
     push edx
     push ecx
     mov ecx, ebx
@@ -78709,7 +78709,7 @@ ALIGN 16
     mov edx, dword ptr [edi+6Ch]
     xor ecx, ecx
     mov cl, byte ptr [ebx+135h]
-    mov edx, dword ptr [esi+edx*1]
+    mov edx, dword ptr [esi+edx]
     movsx eax, ax
     cmp eax, 7
     mov dword ptr [edx+48h], ecx
@@ -78719,20 +78719,20 @@ ALIGN 16
 loc_44266E:
     mov eax, dword ptr [edi+38h]
     push 0
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_4426A9
     mov ecx, dword ptr [edi+7Ch]
     mov eax, dword ptr [edi+70h]
-    mov edx, dword ptr [ecx+esi*1]
-    mov ecx, dword ptr [eax+esi*1]
+    mov edx, dword ptr [ecx+esi]
+    mov ecx, dword ptr [eax+esi]
     push edx
     mov edx, dword ptr [edi+6Ch]
     push ecx
     mov ecx, dword ptr [edi+38h]
-    mov eax, dword ptr [esi+edx*1]
-    mov edx, dword ptr [esi+ecx*1]
+    mov eax, dword ptr [esi+edx]
+    mov edx, dword ptr [esi+ecx]
     push eax
     push edx
     mov ecx, ebx
@@ -78756,20 +78756,20 @@ loc_4426A9:
 loc_4426BD:
     mov eax, dword ptr [edi+40h]
     push 0
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_4426F8
     mov ecx, dword ptr [edi+7Ch]
     mov eax, dword ptr [edi+70h]
-    mov edx, dword ptr [ecx+esi*1]
-    mov ecx, dword ptr [eax+esi*1]
+    mov edx, dword ptr [ecx+esi]
+    mov ecx, dword ptr [eax+esi]
     push edx
     mov edx, dword ptr [edi+6Ch]
     push ecx
     mov ecx, dword ptr [edi+40h]
-    mov eax, dword ptr [esi+edx*1]
-    mov edx, dword ptr [esi+ecx*1]
+    mov eax, dword ptr [esi+edx]
+    mov edx, dword ptr [esi+ecx]
     push eax
     push edx
     mov ecx, ebx
@@ -78793,20 +78793,20 @@ loc_4426F8:
 loc_44270C:
     mov eax, dword ptr [edi+58h]
     push 0
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_442747
     mov ecx, dword ptr [edi+7Ch]
     mov eax, dword ptr [edi+70h]
-    mov edx, dword ptr [ecx+esi*1]
-    mov ecx, dword ptr [eax+esi*1]
+    mov edx, dword ptr [ecx+esi]
+    mov ecx, dword ptr [eax+esi]
     push edx
     mov edx, dword ptr [edi+6Ch]
     push ecx
     mov ecx, dword ptr [edi+58h]
-    mov eax, dword ptr [esi+edx*1]
-    mov edx, dword ptr [esi+ecx*1]
+    mov eax, dword ptr [esi+edx]
+    mov edx, dword ptr [esi+ecx]
     push eax
     push edx
     mov ecx, ebx
@@ -78830,20 +78830,20 @@ loc_442747:
 loc_44275B:
     mov eax, dword ptr [edi+5Ch]
     push 0
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_442796
     mov ecx, dword ptr [edi+7Ch]
     mov eax, dword ptr [edi+70h]
-    mov edx, dword ptr [ecx+esi*1]
-    mov ecx, dword ptr [eax+esi*1]
+    mov edx, dword ptr [ecx+esi]
+    mov ecx, dword ptr [eax+esi]
     push edx
     mov edx, dword ptr [edi+6Ch]
     push ecx
     mov ecx, dword ptr [edi+5Ch]
-    mov eax, dword ptr [esi+edx*1]
-    mov edx, dword ptr [esi+ecx*1]
+    mov eax, dword ptr [esi+edx]
+    mov edx, dword ptr [esi+ecx]
     push eax
     push edx
     mov ecx, ebx
@@ -78867,20 +78867,20 @@ loc_442796:
 loc_4427AA:
     mov eax, dword ptr [edi+38h]
     push 0
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_4427E5
     mov ecx, dword ptr [edi+7Ch]
     mov eax, dword ptr [edi+70h]
-    mov edx, dword ptr [ecx+esi*1]
-    mov ecx, dword ptr [eax+esi*1]
+    mov edx, dword ptr [ecx+esi]
+    mov ecx, dword ptr [eax+esi]
     push edx
     mov edx, dword ptr [edi+6Ch]
     push ecx
     mov ecx, dword ptr [edi+38h]
-    mov eax, dword ptr [esi+edx*1]
-    mov edx, dword ptr [esi+ecx*1]
+    mov eax, dword ptr [esi+edx]
+    mov edx, dword ptr [esi+ecx]
     push eax
     push edx
     mov ecx, ebx
@@ -79098,7 +79098,7 @@ loc_442A06:
     mov dword ptr [ebp-4], -1
     movsx esi, di
     shl esi, 2
-    mov dword ptr [esi+ecx*1], eax
+    mov dword ptr [esi+ecx], eax
     jmp loc_442A5B
 
 loc_442A1B:
@@ -79125,68 +79125,68 @@ loc_442A48:
     mov dword ptr [ebp-4], -1
     movsx esi, di
     shl esi, 2
-    mov dword ptr [esi+edx*1], eax
+    mov dword ptr [esi+edx], eax
 
 loc_442A5B:
     mov eax, dword ptr [ebx+30h]
     push 0
     push offset asc_638B3C
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?Load@AudSound@@QAEHPADH@Z
     mov ecx, dword ptr [ebx+30h]
     push -1
     push 0
-    mov ecx, dword ptr [esi+ecx*1]
+    mov ecx, dword ptr [esi+ecx]
     call ?SetVolume@AudSound@@QAEXMH@Z
     mov edx, dword ptr [ebx+30h]
     push 1
     push offset asc_638B50
-    mov ecx, dword ptr [esi+edx*1]
+    mov ecx, dword ptr [esi+edx]
     call ?Load@AudSound@@QAEHPADH@Z
     mov eax, dword ptr [ebx+30h]
     push -1
     push 0
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?SetVolume@AudSound@@QAEXMH@Z
     mov ecx, dword ptr [ebx+30h]
     push 2
     push offset asc_638B68
-    mov ecx, dword ptr [esi+ecx*1]
+    mov ecx, dword ptr [esi+ecx]
     call ?Load@AudSound@@QAEHPADH@Z
     mov edx, dword ptr [ebx+30h]
     push -1
     push 0
-    mov ecx, dword ptr [esi+edx*1]
+    mov ecx, dword ptr [esi+edx]
     call ?SetVolume@AudSound@@QAEXMH@Z
     mov eax, dword ptr [ebx+30h]
     push 3
     push offset asc_638B7C
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?Load@AudSound@@QAEHPADH@Z
     mov ecx, dword ptr [ebx+30h]
     push -1
     push 0
-    mov ecx, dword ptr [esi+ecx*1]
+    mov ecx, dword ptr [esi+ecx]
     call ?SetVolume@AudSound@@QAEXMH@Z
     mov edx, dword ptr [ebx+30h]
     push 13h
-    mov ecx, dword ptr [esi+edx*1]
+    mov ecx, dword ptr [esi+edx]
     call ?SetPriority@AudSound@@QAEXH@Z
     mov eax, dword ptr [ebx+30h]
     push 2
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?SetEffect@AudSound@@QAEXH@Z
     mov ecx, dword ptr [ebx+30h]
     push 3EB33333h
-    mov ecx, dword ptr [esi+ecx*1]
+    mov ecx, dword ptr [esi+ecx]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov edx, dword ptr [ebx+30h]
     push 3F75C28Fh
-    mov ecx, dword ptr [esi+edx*1]
+    mov ecx, dword ptr [esi+edx]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
     mov eax, dword ptr [ebx+30h]
     push 2
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?DisableEffect@AudSound@@QAEXH@Z
     call ?GetDSound3DMask@AudManager@@SA?BIXZ
     mov ecx, dword ptr [?MMSTATE@@3UmmStatePack@@A+13Ch]
@@ -79208,14 +79208,14 @@ loc_442A5B:
     call ??0AudSound@@QAE@KHF@Z
     mov ecx, dword ptr [ebx+34h]
     mov dword ptr [ebp-4], -1
-    mov dword ptr [esi+ecx*1], eax
+    mov dword ptr [esi+ecx], eax
     jmp loc_442BBD
 
 loc_442B72:
     mov ecx, dword ptr [ebx+34h]
     xor eax, eax
     mov dword ptr [ebp-4], -1
-    mov dword ptr [esi+ecx*1], eax
+    mov dword ptr [esi+ecx], eax
     jmp loc_442BBD
 
 loc_442B83:
@@ -79240,22 +79240,22 @@ loc_442BAE:
 loc_442BB0:
     mov edx, dword ptr [ebx+34h]
     mov dword ptr [ebp-4], -1
-    mov dword ptr [esi+edx*1], eax
+    mov dword ptr [esi+edx], eax
 
 loc_442BBD:
     mov eax, dword ptr [ebx+34h]
     push 0
     push offset asc_638B90
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?Load@AudSound@@QAEHPADH@Z
     mov ecx, dword ptr [ebx+34h]
     push -1
     push 0
-    mov ecx, dword ptr [esi+ecx*1]
+    mov ecx, dword ptr [esi+ecx]
     call ?SetVolume@AudSound@@QAEXMH@Z
     mov edx, dword ptr [ebx+34h]
     push 13h
-    mov ecx, dword ptr [esi+edx*1]
+    mov ecx, dword ptr [esi+edx]
     call ?SetPriority@AudSound@@QAEXH@Z
     mov eax, dword ptr [ebp-10h]
     inc eax
@@ -79357,19 +79357,19 @@ loc_442CDD:
     shl esi, 2
     push offset asc_638B9C
     mov dword ptr [ebp-4], -1
-    mov dword ptr [esi+ecx*1], eax
+    mov dword ptr [esi+ecx], eax
     mov edx, dword ptr [ebx+68h]
-    mov ecx, dword ptr [esi+edx*1]
+    mov ecx, dword ptr [esi+edx]
     call ?Load@AudSound@@QAEHPADH@Z
     mov eax, dword ptr [ebx+68h]
     push 1
     push offset asc_638BAC
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?Load@AudSound@@QAEHPADH@Z
     mov ecx, dword ptr [ebx+68h]
     push 2
     push offset asc_638BB8
-    mov ecx, dword ptr [esi+ecx*1]
+    mov ecx, dword ptr [esi+ecx]
     call ?Load@AudSound@@QAEHPADH@Z
     push 3
     push offset asc_638BC8
@@ -79402,21 +79402,21 @@ loc_442D62:
     shl esi, 2
     push offset asc_638BD0
     mov dword ptr [ebp-4], -1
-    mov dword ptr [esi+edx*1], eax
+    mov dword ptr [esi+edx], eax
     mov eax, dword ptr [ebx+68h]
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?Load@AudSound@@QAEHPADH@Z
     mov ecx, dword ptr [ebx+68h]
     push 1
     push offset asc_638BDC
-    mov ecx, dword ptr [esi+ecx*1]
+    mov ecx, dword ptr [esi+ecx]
     call ?Load@AudSound@@QAEHPADH@Z
     mov edx, dword ptr [ebx+68h]
     push 0Eh
-    mov eax, dword ptr [esi+edx*1]
+    mov eax, dword ptr [esi+edx]
     mov dword ptr [eax+48h], 0
     mov eax, dword ptr [ebx+68h]
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     jmp loc_442E49
 
 loc_442DB3:
@@ -79443,51 +79443,51 @@ loc_442DD9:
     shl esi, 2
     push offset asc_638BE8
     mov dword ptr [ebp-4], -1
-    mov dword ptr [esi+ecx*1], eax
+    mov dword ptr [esi+ecx], eax
     mov edx, dword ptr [ebx+68h]
-    mov ecx, dword ptr [esi+edx*1]
+    mov ecx, dword ptr [esi+edx]
     call ?Load@AudSound@@QAEHPADH@Z
     mov eax, dword ptr [ebx+68h]
     push 1
     push offset asc_638BFC
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?Load@AudSound@@QAEHPADH@Z
     mov ecx, dword ptr [ebx+68h]
     push 2
     push offset asc_638C08
-    mov ecx, dword ptr [esi+ecx*1]
+    mov ecx, dword ptr [esi+ecx]
     call ?Load@AudSound@@QAEHPADH@Z
     push 3
     push offset asc_638C18
 
 loc_442E29:
     mov edx, dword ptr [ebx+68h]
-    mov ecx, dword ptr [esi+edx*1]
+    mov ecx, dword ptr [esi+edx]
     call ?Load@AudSound@@QAEHPADH@Z
     mov eax, dword ptr [ebx+68h]
     push 0Eh
-    mov eax, dword ptr [esi+eax*1]
+    mov eax, dword ptr [esi+eax]
     mov dword ptr [eax+48h], 3
     mov ecx, dword ptr [ebx+68h]
-    mov ecx, dword ptr [esi+ecx*1]
+    mov ecx, dword ptr [esi+ecx]
 
 loc_442E49:
     call ?SetPriority@AudSound@@QAEXH@Z
     mov edx, dword ptr [ebx+68h]
     push 2
-    mov ecx, dword ptr [esi+edx*1]
+    mov ecx, dword ptr [esi+edx]
     call ?SetEffect@AudSound@@QAEXH@Z
     mov eax, dword ptr [ebx+68h]
     push 3EB33333h
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov ecx, dword ptr [ebx+68h]
     push 3F75C28Fh
-    mov ecx, dword ptr [esi+ecx*1]
+    mov ecx, dword ptr [esi+ecx]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
     mov edx, dword ptr [ebx+68h]
     push 2
-    mov ecx, dword ptr [esi+edx*1]
+    mov ecx, dword ptr [esi+edx]
     call ?DisableEffect@AudSound@@QAEXH@Z
     inc edi
     cmp di, word ptr [ebx+80h]
@@ -79648,7 +79648,7 @@ loc_443028:
     mov ecx, dword ptr [edi+78h]
     movsx esi, ax
     shl esi, 2
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     test ecx, ecx
     jz loc_44308A
     push 0
@@ -79656,23 +79656,23 @@ loc_443028:
     call ?Load@AudSound@@QAEHPADH@Z
     mov edx, dword ptr [edi+78h]
     push 14h
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetPriority@AudSound@@QAEXH@Z
     mov eax, dword ptr [edi+78h]
     push 2
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?SetEffect@AudSound@@QAEXH@Z
     mov ecx, dword ptr [edi+78h]
     push 3EB33333h
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov edx, dword ptr [edi+78h]
     push 3F75C28Fh
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
     mov eax, dword ptr [edi+78h]
     push 2
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?DisableEffect@AudSound@@QAEXH@Z
     mov eax, dword ptr [ebp-4]
 
@@ -80063,7 +80063,7 @@ loc_44342C:
     movsx edi, bx
     shl edi, 2
     test bx, bx
-    mov dword ptr [edi+edx*1], eax
+    mov dword ptr [edi+edx], eax
     jnz loc_443452
     mov eax, dword ptr [esi+6Ch]
     push 0
@@ -80092,53 +80092,53 @@ loc_443467:
 loc_44347C:
     mov eax, dword ptr [esi+6Ch]
     push offset asc_638C68
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
 
 loc_443487:
     call ?Load@AudSound@@QAEHPADH@Z
     mov ecx, dword ptr [esi+6Ch]
     push 1
     push offset asc_638C74
-    mov ecx, dword ptr [edi+ecx*1]
+    mov ecx, dword ptr [edi+ecx]
     call ?Load@AudSound@@QAEHPADH@Z
     mov edx, dword ptr [esi+6Ch]
     push 2
     push offset asc_638C84
-    mov ecx, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [edi+edx]
     call ?Load@AudSound@@QAEHPADH@Z
     mov eax, dword ptr [esi+6Ch]
     push 3
     push offset asc_638C90
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     call ?Load@AudSound@@QAEHPADH@Z
     cmp word ptr [ebp-14h], 0
     jz loc_4434DE
     mov ecx, dword ptr [esi+6Ch]
     push 4B189680h
     push 459C4000h
-    mov ecx, dword ptr [edi+ecx*1]
+    mov ecx, dword ptr [edi+ecx]
     call ?SetRamp@AudSound@@QAEXMM@Z
 
 loc_4434DE:
     mov edx, dword ptr [esi+6Ch]
     push 14h
-    mov ecx, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [edi+edx]
     call ?SetPriority@AudSound@@QAEXH@Z
     mov eax, dword ptr [esi+6Ch]
     push 2
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     call ?SetEffect@AudSound@@QAEXH@Z
     mov ecx, dword ptr [esi+6Ch]
     push 3EB33333h
-    mov ecx, dword ptr [edi+ecx*1]
+    mov ecx, dword ptr [edi+ecx]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov edx, dword ptr [esi+6Ch]
     push 3F75C28Fh
-    mov ecx, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [edi+edx]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
     mov eax, dword ptr [esi+6Ch]
     push 2
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     call ?DisableEffect@AudSound@@QAEXH@Z
     inc ebx
     cmp bx, word ptr [esi+80h]
@@ -80231,68 +80231,68 @@ loc_44360C:
     shl esi, 2
     push offset asc_638C98
     mov dword ptr [ebp-4], -1
-    mov dword ptr [esi+edx*1], eax
+    mov dword ptr [esi+edx], eax
     mov eax, dword ptr [ebx+70h]
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?Load@AudSound@@QAEHPADH@Z
     mov ecx, dword ptr [ebx+70h]
     push 1
     push offset asc_638CA4
-    mov ecx, dword ptr [esi+ecx*1]
+    mov ecx, dword ptr [esi+ecx]
     call ?Load@AudSound@@QAEHPADH@Z
     mov edx, dword ptr [ebx+70h]
     push 2
     push offset asc_638CB4
-    mov ecx, dword ptr [esi+edx*1]
+    mov ecx, dword ptr [esi+edx]
     call ?Load@AudSound@@QAEHPADH@Z
     mov eax, dword ptr [ebx+70h]
     push 6
     push offset asc_638CC8
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?Load@AudSound@@QAEHPADH@Z
     mov ecx, dword ptr [ebx+70h]
     push 3
     push offset asc_638CD4
-    mov ecx, dword ptr [esi+ecx*1]
+    mov ecx, dword ptr [esi+ecx]
     call ?Load@AudSound@@QAEHPADH@Z
     mov edx, dword ptr [ebx+70h]
     push 4
     push offset asc_638CE4
-    mov ecx, dword ptr [esi+edx*1]
+    mov ecx, dword ptr [esi+edx]
     call ?Load@AudSound@@QAEHPADH@Z
     mov eax, dword ptr [ebx+70h]
     push 5
     push offset asc_638CEC
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?Load@AudSound@@QAEHPADH@Z
     cmp word ptr [ebp-14h], 0
     jz loc_4436B9
     mov ecx, dword ptr [ebx+70h]
     push 4B189680h
     push 459C4000h
-    mov ecx, dword ptr [esi+ecx*1]
+    mov ecx, dword ptr [esi+ecx]
     call ?SetRamp@AudSound@@QAEXMM@Z
 
 loc_4436B9:
     mov edx, dword ptr [ebx+70h]
     push 14h
-    mov ecx, dword ptr [esi+edx*1]
+    mov ecx, dword ptr [esi+edx]
     call ?SetPriority@AudSound@@QAEXH@Z
     mov eax, dword ptr [ebx+70h]
     push 2
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?SetEffect@AudSound@@QAEXH@Z
     mov ecx, dword ptr [ebx+70h]
     push 3EB33333h
-    mov ecx, dword ptr [esi+ecx*1]
+    mov ecx, dword ptr [esi+ecx]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov edx, dword ptr [ebx+70h]
     push 3F75C28Fh
-    mov ecx, dword ptr [esi+edx*1]
+    mov ecx, dword ptr [esi+edx]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
     mov eax, dword ptr [ebx+70h]
     push 2
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?DisableEffect@AudSound@@QAEXH@Z
     inc edi
     cmp di, word ptr [ebx+80h]
@@ -80891,29 +80891,29 @@ loc_443D06:
     shl esi, 2
     push offset asc_638E64
     mov dword ptr [ebp-4], -1
-    mov dword ptr [edx+esi*1], eax
+    mov dword ptr [edx+esi], eax
     mov eax, dword ptr [ebx+74h]
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?Load@AudSound@@QAEHPADH@Z
     mov ecx, dword ptr [ebx+74h]
     push 14h
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetPriority@AudSound@@QAEXH@Z
     mov edx, dword ptr [ebx+74h]
     push 2
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetEffect@AudSound@@QAEXH@Z
     mov eax, dword ptr [ebx+74h]
     push 3EB33333h
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov ecx, dword ptr [ebx+74h]
     push 3F75C28Fh
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
     mov edx, dword ptr [ebx+74h]
     push 2
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?DisableEffect@AudSound@@QAEXH@Z
     inc edi
     cmp di, word ptr [ebx+80h]
@@ -80974,14 +80974,14 @@ ALIGN 16
     movsx esi, ax
     mov eax, dword ptr [edi+28h]
     shl esi, 2
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?GetDistanceToPlayer2@aiVehiclePolice@@QAEMXZ
     fcomp dword ptr [flt_61B394]
     fnstsw ax
     test ah, 41h
     jz loc_443E3F
     mov ecx, dword ptr [edi+28h]
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?PlayVoice@aiVehiclePolice@@QAEXXZ
     mov ax, 1
     pop edi
@@ -81028,7 +81028,7 @@ loc_443E83:
 
 loc_443E86:
     mov eax, dword ptr [ecx+28h]
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     test ecx, ecx
     jnz loc_443E9A
     cmp si, di
@@ -81052,7 +81052,7 @@ loc_443EAE:
 loc_443EB6:
     mov ecx, dword ptr [ebp-4]
     mov edx, dword ptr [ecx+28h]
-    mov ecx, dword ptr [edx+ebx*1]
+    mov ecx, dword ptr [edx+ebx]
     call ?GetDistanceToPlayer2@aiVehiclePolice@@QAEMXZ
     mov ecx, dword ptr [ebp-4]
     fstp dword ptr [ebp-8]
@@ -81212,7 +81212,7 @@ loc_444059:
     mov eax, dword ptr [edx+20h]
     mov byte ptr [ebp-4], 0
     test esi, esi
-    mov dword ptr [ecx+eax*1], edi
+    mov dword ptr [ecx+eax], edi
     jl loc_444080
     movsx eax, word ptr [ebx+0Ch]
     cmp esi, eax
@@ -81256,7 +81256,7 @@ loc_4440B6:
     push 0
     add edi, 8Ch
     push 0
-    mov ecx, dword ptr [ecx+edx*1]
+    mov ecx, dword ptr [ecx+edx]
     push edi
     mov edi, dword ptr [ebp-10h]
     add eax, 38h
@@ -81378,7 +81378,7 @@ loc_4441E7:
     cmp word ptr [eax+14h], 1
     jnz loc_444202
     mov eax, dword ptr [esi+20h]
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     test byte ptr [ecx+5], 2
     jnz loc_4441FF
     mov edx, dword ptr [ecx]
@@ -82293,7 +82293,7 @@ loc_444C69:
     movsx edx, word ptr [ecx+0Ch]
     imul edx, edi
     mov ecx, dword ptr [ebp-104h]
-    lea ecx, [edx+ecx*1-3]
+    lea ecx, [edx+ecx-3]
     lea edx, [ecx+ecx*2]
     mov ecx, dword ptr [ebp-144h]
     mov ecx, dword ptr [ecx+60h]
@@ -82301,7 +82301,7 @@ loc_444C69:
     movsx edx, word ptr [eax+0Ch]
     imul edx, edi
     mov edi, dword ptr [ebp-104h]
-    lea edx, [edx+edi*1-4]
+    lea edx, [edx+edi-4]
     lea edx, [edx+edx*2]
     mov eax, dword ptr [eax+60h]
     lea eax, [eax+edx*4]
@@ -84915,43 +84915,43 @@ loc_446E48:
     push 0
     push offset asc_639238
     mov byte ptr [ebp-4], 0
-    mov dword ptr [edi+ecx*1], eax
+    mov dword ptr [edi+ecx], eax
     mov edx, dword ptr [esi+24h]
-    mov ecx, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [edi+edx]
     call ?Load@AudSound@@QAEHPADH@Z
     mov eax, dword ptr [esi+24h]
     push 1
     push offset asc_639244
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     call ?Load@AudSound@@QAEHPADH@Z
     mov ecx, dword ptr [esi+24h]
     push 2
     push offset asc_639250
-    mov ecx, dword ptr [edi+ecx*1]
+    mov ecx, dword ptr [edi+ecx]
     call ?Load@AudSound@@QAEHPADH@Z
     mov edx, dword ptr [esi+24h]
     push 3
     push offset asc_63925C
-    mov ecx, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [edi+edx]
     call ?Load@AudSound@@QAEHPADH@Z
     mov eax, dword ptr [esi+24h]
     push 4
     push offset asc_639268
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     call ?Load@AudSound@@QAEHPADH@Z
     mov ecx, dword ptr [esi+24h]
     push 5
     push offset asc_639274
-    mov ecx, dword ptr [edi+ecx*1]
+    mov ecx, dword ptr [edi+ecx]
     call ?Load@AudSound@@QAEHPADH@Z
     mov edx, dword ptr [esi+24h]
     push -1
     push 0
-    mov ecx, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [edi+edx]
     call ?SetVolume@AudSound@@QAEXMH@Z
     mov eax, dword ptr [esi+24h]
     push 0Bh
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     jmp loc_446F4B
 
 loc_446ED7:
@@ -84979,23 +84979,23 @@ loc_446F06:
     push 0
     push offset asc_639280
     mov byte ptr [ebp-4], 0
-    mov dword ptr [edi+ecx*1], eax
+    mov dword ptr [edi+ecx], eax
     mov edx, dword ptr [esi+24h]
-    mov ecx, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [edi+edx]
     call ?Load@AudSound@@QAEHPADH@Z
     mov eax, dword ptr [esi+24h]
     push 1
     push offset asc_63928C
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     call ?Load@AudSound@@QAEHPADH@Z
     mov ecx, dword ptr [esi+24h]
     push -1
     push 0
-    mov ecx, dword ptr [edi+ecx*1]
+    mov ecx, dword ptr [edi+ecx]
     call ?SetVolume@AudSound@@QAEXMH@Z
     mov edx, dword ptr [esi+24h]
     push 0Bh
-    mov ecx, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [edi+edx]
 
 loc_446F4B:
     call ?SetPriority@AudSound@@QAEXH@Z
@@ -85051,7 +85051,7 @@ ALIGN 16
 
 loc_446FDE:
     mov ecx, dword ptr [edi+24h]
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     test ecx, ecx
     jz loc_446FEE
     mov edx, dword ptr [ecx]
@@ -85151,7 +85151,7 @@ loc_4470BB:
     mov ax, di
     pop edi
     pop esi
-    mov byte ptr [ecx+ebx*1], 1
+    mov byte ptr [ecx+ebx], 1
     pop ebx
     pop ebp
     retn 4
@@ -85190,7 +85190,7 @@ loc_447109:
 
 loc_447136:
     mov edx, dword ptr [esi+118h]
-    mov byte ptr [edx+edi*1], 0
+    mov byte ptr [edx+edi], 0
     pop edi
     pop esi
     pop ebp
@@ -85240,7 +85240,7 @@ loc_44719A:
     movsx esi, di
     fld dword ptr [edx+38h]
     shl esi, 2
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     fld dword ptr [ecx+38h]
     fcompp
     fnstsw ax
@@ -85249,7 +85249,7 @@ loc_44719A:
     call ?UnAssignSounds@aiPedestrian@@QAEXXZ
     mov eax, dword ptr [ebx+20h]
     mov ecx, dword ptr [ebp+8]
-    mov dword ptr [eax+esi*1], ecx
+    mov dword ptr [eax+esi], ecx
     mov ax, di
     pop edi
     pop esi
@@ -85279,7 +85279,7 @@ ALIGN 16
 
 loc_4471F5:
     movsx esi, ax
-    cmp byte ptr [esi+ecx*1], 0
+    cmp byte ptr [esi+ecx], 0
     jz loc_447215
     inc eax
     cmp ax, dx
@@ -85310,7 +85310,7 @@ ALIGN 16
 
 loc_447236:
     mov eax, dword ptr [edi+20h]
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     test ecx, ecx
     jz loc_447245
     call ?UpdateAudio@aiPedestrian@@QAEXXZ
@@ -85346,8 +85346,8 @@ ALIGN 16
     mov edx, dword ptr [ecx+24h]
     mov ecx, dword ptr [ecx+20h]
     shl eax, 2
-    mov edx, dword ptr [edx+eax*1]
-    mov ecx, dword ptr [ecx+eax*1]
+    mov edx, dword ptr [edx+eax]
+    mov ecx, dword ptr [ecx+eax]
     push edx
     call ?SetVoiceSoundPtr@aiPedestrian@@QAEXPAVAudSound@@@Z
     pop ebp
@@ -86106,9 +86106,9 @@ loc_447969:
     mov edx, dword ptr [esi+10h]
     lea ebx, [ecx*4]
     movsx ecx, word ptr [eax+0Eh]
-    mov dword ptr [ebx+edx*1], ecx
+    mov dword ptr [ebx+edx], ecx
     mov eax, dword ptr [esi]
-    mov edi, dword ptr [eax+ebx*1]
+    mov edi, dword ptr [eax+ebx]
     cmp word ptr [edi+0Ch], 1
     jle loc_447996
     mov eax, dword ptr [edi+68h]
@@ -86136,7 +86136,7 @@ loc_4479B9:
     fxch st(1)
     fstp dword ptr [ebp-18h]
     mov edx, dword ptr [esi]
-    mov edi, dword ptr [edx+ebx*1]
+    mov edi, dword ptr [edx+ebx]
     fstp dword ptr [ebp-10h]
     cmp word ptr [edi+0Ch], 1
     jle loc_4479E8
@@ -86172,7 +86172,7 @@ loc_447A0B:
     fpatan
     inc eax
     mov dword ptr [ebp-4], eax
-    fstp dword ptr [ebx+ecx*1]
+    fstp dword ptr [ebx+ecx]
     movsx edx, word ptr [esi+4]
     cmp eax, edx
     jl loc_447969
@@ -86193,7 +86193,7 @@ loc_447A4F:
     mov edx, dword ptr [ecx+edx*4]
     movsx ecx, word ptr [edx+0Eh]
     mov edx, dword ptr [esi+10h]
-    mov dword ptr [eax+edx*1], ecx
+    mov dword ptr [eax+edx], ecx
     mov edx, dword ptr [esi+8]
     movsx eax, word ptr [esi+4]
     mov ecx, ebx
@@ -86279,7 +86279,7 @@ loc_447B2B:
     inc ebx
     cmp ebx, ecx
     mov ecx, dword ptr [ebp-0Ch]
-    fstp dword ptr [ecx+eax*1]
+    fstp dword ptr [ecx+eax]
     jl loc_447A4F
     mov edi, dword ptr [ebp-8]
 
@@ -86298,19 +86298,19 @@ loc_447B70:
 loc_447B74:
     mov ecx, dword ptr [esi+14h]
     fld dword ptr [ecx+ebx*4]
-    fcomp dword ptr [edx+ecx*1]
+    fcomp dword ptr [edx+ecx]
     fnstsw ax
     test ah, 1
     jz loc_447BA8
     mov eax, dword ptr [ecx+ebx*4]
-    fld dword ptr [edx+ecx*1]
-    mov dword ptr [edx+ecx*1], eax
+    fld dword ptr [edx+ecx]
+    mov dword ptr [edx+ecx], eax
     mov ecx, dword ptr [esi+14h]
     fstp dword ptr [ecx+ebx*4]
     mov eax, dword ptr [esi+10h]
     mov edi, dword ptr [eax+ebx*4]
-    mov ecx, dword ptr [edx+eax*1]
-    mov dword ptr [edx+eax*1], edi
+    mov ecx, dword ptr [edx+eax]
+    mov dword ptr [edx+eax], edi
     mov eax, dword ptr [esi+10h]
     mov edi, dword ptr [ebp-8]
     mov dword ptr [eax+ebx*4], ecx
@@ -86784,7 +86784,7 @@ loc_448202:
     movsx edx, word ptr [ecx+10h]
     imul eax, edx
     movsx edx, word ptr [esi+4]
-    lea edx, [eax+edx*1-1]
+    lea edx, [eax+edx-1]
     inc eax
     push edx
     push eax
@@ -90187,7 +90187,7 @@ ALIGN 16
     imul edi, edx
     movsx edx, word ptr [eax+0Ch]
     mov ebx, dword ptr [eax+60h]
-    lea eax, [edi+edx*1-2]
+    lea eax, [edi+edx-2]
     lea eax, [eax+eax*2]
     fld dword ptr [ebx+eax*4]
     fld dword ptr [ebx+eax*4+4]
@@ -90404,7 +90404,7 @@ loc_44A94C:
     call ?CalcCurve@aiPedestrian@@AAEXHHM@Z
     movsx ecx, word ptr [esi+4]
     mov eax, dword ptr [ebp-8]
-    lea edx, [eax+ecx*1-1]
+    lea edx, [eax+ecx-1]
     inc eax
     push edx
     push eax
@@ -90427,7 +90427,7 @@ loc_44A971:
     movsx ecx, word ptr [esi+10h]
     imul edx, ecx
     movsx ecx, word ptr [esi+0Ch]
-    lea ecx, [edx+ecx*1-2]
+    lea ecx, [edx+ecx-2]
     lea edx, [ecx+ecx*2]
     mov ecx, dword ptr [esi+60h]
     fld dword ptr [ecx+edx*4]
@@ -90468,7 +90468,7 @@ loc_44A9EC:
     imul edx, eax
     movsx eax, word ptr [edi+0Ch]
     mov ecx, dword ptr [esi+0A4h]
-    lea eax, [edx+eax*1-2]
+    lea eax, [edx+eax-2]
     lea edx, [eax+eax*2]
     mov eax, dword ptr [edi+60h]
     movsx edi, word ptr [ecx+10h]
@@ -90505,7 +90505,7 @@ loc_44A9EC:
     imul edx, ecx
     movsx ecx, word ptr [eax+0Ch]
     mov eax, dword ptr [eax+60h]
-    lea ecx, [edx+ecx*1-2]
+    lea ecx, [edx+ecx-2]
     lea edx, [ecx+ecx*2]
     fsub dword ptr [eax+edx*4]
     fld dword ptr [esi+68h]
@@ -90534,7 +90534,7 @@ loc_44A9EC:
 loc_44AACA:
     movsx edx, word ptr [esi+4]
     mov eax, dword ptr [ebp-8]
-    lea ecx, [eax+edx*1-1]
+    lea ecx, [eax+edx-1]
     inc eax
     push ecx
     mov ecx, dword ptr [esi+0A0h]
@@ -90797,7 +90797,7 @@ loc_44AD49:
 
 loc_44AD6B:
     movsx eax, word ptr [esi+4]
-    lea ecx, [edx+eax*1-1]
+    lea ecx, [edx+eax-1]
     inc edx
     push ecx
     push edx
@@ -93126,10 +93126,10 @@ ALIGN 16
 loc_44C69F:
     movsx edi, di
     lea ebx, [edx-1]
-    lea edx, [eax+edx*1-2]
+    lea edx, [eax+edx-2]
     cmp edi, ebx
     jz loc_44C6B1
-    lea edx, [eax+edi*1-1]
+    lea edx, [eax+edi-1]
 
 loc_44C6B1:
     inc eax
@@ -93202,7 +93202,7 @@ loc_44C732:
     add ebx, eax
     push ebx
     mov ebx, dword ptr [ebp+8]
-    lea edx, [ebx+eax*1]
+    lea edx, [ebx+eax]
     push edx
     call ?SubSectionLength@aiPath@@QAEMHH@Z
     fstp dword ptr [ebp+0Ch]
@@ -93319,7 +93319,7 @@ loc_44C86D:
     fmul dword ptr [eax+8]
     movsx eax, word ptr [ecx+0Ch]
     imul eax, edi
-    lea eax, [eax+edx*1-2]
+    lea eax, [eax+edx-2]
     mov edx, dword ptr [ecx+60h]
     lea eax, [eax+eax*2]
     fld dword ptr [edx+eax*4]
@@ -93516,7 +93516,7 @@ loc_44CA9F:
     jz loc_44CC5E
     mov eax, edi
     imul eax, edx
-    lea edx, [ebx+eax*1]
+    lea edx, [ebx+eax]
     push edx
     mov edx, dword ptr [ebp+8]
     add edx, eax
@@ -93693,7 +93693,7 @@ loc_44CC5E:
     movsx edx, word ptr [eax+10h]
     imul ecx, edx
     movsx edx, word ptr [eax+0Ch]
-    lea ecx, [ecx+edx*1-2]
+    lea ecx, [ecx+edx-2]
     mov edx, dword ptr [eax+60h]
     lea ecx, [ecx+ecx*2]
     lea eax, [edx+ecx*4]
@@ -93723,7 +93723,7 @@ loc_44CCBD:
     movsx edx, word ptr [ecx+0Ch]
     movsx eax, word ptr [ecx+0Ch]
     imul edx, edi
-    lea eax, [edx+eax*1-2]
+    lea eax, [edx+eax-2]
     lea edx, [eax+eax*2]
     mov eax, dword ptr [ecx+60h]
     lea ecx, [eax+edx*4]
@@ -95784,7 +95784,7 @@ loc_44F0A0:
     mov eax, dword ptr [edi]
     mov edx, dword ptr [eax+ebx*4]
     mov eax, dword ptr [ebp-1Ch]
-    mov eax, dword ptr [eax+edi*1]
+    mov eax, dword ptr [eax+edi]
 
 loc_44F0AB:
     mov ebx, dword ptr [ebp+0Ch]
@@ -100583,7 +100583,7 @@ ALIGN 16
     mov ecx, dword ptr [?Instance@aiVehicleManager@@2PAV1@A]
     lea eax, [eax+eax*2]
     shl eax, 6
-    lea eax, [eax+ecx*1+20h]
+    lea eax, [eax+ecx+20h]
     retn
 ?GetData@aiVehicleInstance@@QAEPAVaiVehicleData@@XZ ENDP
 
@@ -100630,7 +100630,7 @@ loc_4530A0:
     push edi
     lea eax, [eax+eax*2]
     shl eax, 6
-    lea esi, [eax+ebx*1+20h]
+    lea esi, [eax+ebx+20h]
     mov ecx, esi
     call ?LoadEntry@aiVehicleData@@QAEHPAD@Z
     test eax, eax
@@ -101614,7 +101614,7 @@ ALIGN 16
     jle loc_453EEC
     movsx eax, word ptr [esi+30h]
     imul ebx, eax
-    lea eax, [ebx+edi*1]
+    lea eax, [ebx+edi]
     push eax
     dec eax
     push eax
@@ -101902,7 +101902,7 @@ loc_453FFF:
 
 loc_45405F:
     imul ebx, edx
-    lea eax, [ebx+edi*1]
+    lea eax, [ebx+edi]
     push eax
     dec eax
     push eax
@@ -102058,7 +102058,7 @@ loc_4541E3:
     mov eax, dword ptr [ebp-0Ch]
     imul eax, ecx
     mov ecx, dword ptr [esi+3Ch]
-    lea edx, [edi+eax*1-1]
+    lea edx, [edi+eax-1]
     inc eax
     push edx
     push eax
@@ -102529,7 +102529,7 @@ loc_45465F:
     mov eax, dword ptr [ebp-0Ch]
     imul eax, ecx
     mov ecx, dword ptr [esi+38h]
-    lea edx, [edi+eax*1-1]
+    lea edx, [edi+eax-1]
     inc eax
     push edx
     push eax
@@ -107341,7 +107341,7 @@ loc_4576A7:
 
 loc_4576C9:
     mov edx, dword ptr [ebp-4]
-    lea ebx, [ebx+ebx*1-2]
+    lea ebx, [ebx+ebx-2]
     test ebx, ebx
     fld dword ptr [edx+40h]
     fld dword ptr [eax+8]
@@ -109018,7 +109018,7 @@ ALIGN 16
     jle loc_458A38
     movsx eax, word ptr [esi+30h]
     imul ebx, eax
-    lea eax, [ebx+edi*1]
+    lea eax, [ebx+edi]
     push eax
     dec eax
     push eax
@@ -109302,7 +109302,7 @@ loc_458B49:
 
 loc_458BA7:
     imul ebx, edx
-    lea eax, [ebx+edi*1]
+    lea eax, [ebx+edi]
     push eax
     dec eax
     push eax
@@ -109456,7 +109456,7 @@ loc_458D27:
     mov eax, dword ptr [ebp-0Ch]
     imul eax, ecx
     mov ecx, dword ptr [esi+3Ch]
-    lea edx, [edi+eax*1-1]
+    lea edx, [edi+eax-1]
     inc eax
     push edx
     push eax
@@ -109669,7 +109669,7 @@ loc_458EEA:
     fstp dword ptr [ebp-4]
     movsx edx, word ptr [ebx+0Ch]
     imul edx, eax
-    lea eax, [edx+edi*1-3]
+    lea eax, [edx+edi-3]
     mov edx, dword ptr [ebx+60h]
     add edi, -3
     lea ecx, [eax+eax*2]
@@ -110084,7 +110084,7 @@ loc_459339:
     mov eax, dword ptr [ebp-8]
     imul eax, ecx
     mov ecx, dword ptr [esi+38h]
-    lea edx, [edi+eax*1-1]
+    lea edx, [edi+eax-1]
     inc eax
     push edx
     push eax
@@ -113786,35 +113786,35 @@ loc_45C5FF:
     mov edx, dword ptr [ebp+8]
     push 0
     push edx
-    mov dword ptr [ecx+esi*1], eax
+    mov dword ptr [ecx+esi], eax
     mov eax, dword ptr [edi]
     mov dword ptr [ebp-4], -1
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?Load@AudSound@@QAEHPADH@Z
     mov ecx, dword ptr [edi]
     push -1
     push 0
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetVolume@AudSound@@QAEXMH@Z
     mov edx, dword ptr [edi]
     push 0Dh
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetPriority@AudSound@@QAEXH@Z
     mov eax, dword ptr [edi]
     push 2
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?SetEffect@AudSound@@QAEXH@Z
     mov ecx, dword ptr [edi]
     push 3EB33333h
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov edx, dword ptr [edi]
     push 3F75C28Fh
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
     mov eax, dword ptr [edi]
     push 2
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?DisableEffect@AudSound@@QAEXH@Z
     add esi, 4
     dec ebx
@@ -113848,7 +113848,7 @@ loc_45C6A3:
     mov eax, dword ptr [edi]
     test eax, eax
     jz loc_45C6B6
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_45C6B6
     mov eax, dword ptr [ecx]
@@ -113913,16 +113913,16 @@ ALIGN 16
 loc_45C716:
     mov eax, dword ptr [edi]
     push 2
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?SetEffect@AudSound@@QAEXH@Z
     mov ecx, dword ptr [ebp+8]
     mov edx, dword ptr [edi]
     push ecx
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov eax, dword ptr [edi]
     push 3F75C28Fh
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
     add esi, 4
     dec ebx
@@ -113951,7 +113951,7 @@ ALIGN 16
 loc_45C763:
     mov eax, dword ptr [ebx]
     push 2
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?DisableEffect@AudSound@@QAEXH@Z
     add esi, 4
     dec edi
@@ -113978,7 +113978,7 @@ ALIGN 16
 
 loc_45C793:
     mov eax, dword ptr [ebx]
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     mov edx, dword ptr [ecx]
     call dword ptr [edx+18h]
     add esi, 4
@@ -114164,7 +114164,7 @@ loc_45C9B2:
     movsx edx, word ptr [eax+0Ch]
     imul edx, dword ptr [ebp-4]
     mov eax, dword ptr [eax+60h]
-    lea edx, [edx+ebx*1-2]
+    lea edx, [edx+ebx-2]
     add ebx, -2
     test ebx, ebx
     lea edx, [edx+edx*2]
@@ -115366,12 +115366,12 @@ loc_45D6D5:
 
 loc_45D724:
     lea edi, [eax*4+94h]
-    mov eax, dword ptr [edi+ecx*1]
+    mov eax, dword ptr [edi+ecx]
     test eax, eax
     jz loc_45D741
     cmp word ptr [eax+0C2h], 7
     jnz loc_45D741
-    mov edi, dword ptr [eax+edi*1]
+    mov edi, dword ptr [eax+edi]
     jmp loc_45D743
 
 loc_45D741:
@@ -115590,7 +115590,7 @@ loc_45D9CE:
 
 loc_45D9E3:
     mov ecx, dword ptr [ebp-0Ch]
-    mov edi, dword ptr [ecx+eax*1]
+    mov edi, dword ptr [ecx+eax]
     test edi, edi
     jz loc_45DA26
     cmp dword ptr [edi+48h], 1
@@ -116097,7 +116097,7 @@ loc_45DEB5:
 
 loc_45DEB7:
     mov ecx, dword ptr [ebp-8]
-    mov edx, dword ptr [eax+ecx*1]
+    mov edx, dword ptr [eax+ecx]
     test edx, edx
     jz loc_45DFD8
     cmp word ptr [edx+24h], 0
@@ -116109,7 +116109,7 @@ loc_45DEB7:
     imul ecx, esi
     movsx esi, word ptr [eax+0Ch]
     mov eax, dword ptr [eax+60h]
-    lea esi, [ecx+esi*1-2]
+    lea esi, [ecx+esi-2]
     lea ecx, [esi+esi*2]
     mov esi, dword ptr [edx+4Ch]
     movsx edx, word ptr [edx+42h]
@@ -118081,7 +118081,7 @@ ALIGN 16
 
 loc_45F392:
     mov edx, dword ptr [ebp-48h]
-    lea eax, [ebx+edx*1]
+    lea eax, [ebx+edx]
     push eax
     dec eax
     push eax
@@ -124649,7 +124649,7 @@ loc_4641B8:
     dec eax
     js loc_464392
     lea ebx, [eax*4+0A4h]
-    lea ecx, [eax+eax*1+98h]
+    lea ecx, [eax+eax+98h]
     inc eax
     mov dword ptr [ebp-24h], ecx
     mov dword ptr [ebp-30h], eax
@@ -124659,8 +124659,8 @@ loc_464272:
     mov ecx, dword ptr [ebp-24h]
     mov eax, dword ptr [edx+3Ch]
     mov eax, dword ptr [eax]
-    movsx ecx, word ptr [ecx+eax*1]
-    mov edi, dword ptr [ebx+eax*1-4]
+    movsx ecx, word ptr [ecx+eax]
+    mov edi, dword ptr [ebx+eax-4]
     test ecx, ecx
     jle loc_464379
     mov dword ptr [ebp-2Ch], ecx
@@ -124753,7 +124753,7 @@ loc_46435B:
 
 loc_464369:
     mov eax, dword ptr [ebp-2Ch]
-    mov edi, dword ptr [edi+ebx*1]
+    mov edi, dword ptr [edi+ebx]
     dec eax
     mov dword ptr [ebp-2Ch], eax
     jnz loc_464290
@@ -124779,8 +124779,8 @@ loc_464392:
 
 loc_4643B6:
     mov ecx, dword ptr [ebp-24h]
-    mov edi, dword ptr [ebx+eax*1+1Ch]
-    movsx ecx, word ptr [ecx+eax*1]
+    mov edi, dword ptr [ebx+eax+1Ch]
+    movsx ecx, word ptr [ecx+eax]
     test ecx, ecx
     jle loc_4644B5
     mov dword ptr [ebp-30h], ecx
@@ -124873,7 +124873,7 @@ loc_464497:
 
 loc_4644A5:
     mov eax, dword ptr [ebp-30h]
-    mov edi, dword ptr [edi+ebx*1]
+    mov edi, dword ptr [edi+ebx]
     dec eax
     mov dword ptr [ebp-30h], eax
     jnz loc_4643CC
@@ -124915,7 +124915,7 @@ loc_4644DA:
     dec eax
     js loc_464661
     lea ebx, [eax*4+0A4h]
-    lea ecx, [eax+eax*1+98h]
+    lea ecx, [eax+eax+98h]
     inc eax
     mov dword ptr [ebp-24h], ecx
     mov dword ptr [ebp-2Ch], eax
@@ -124925,8 +124925,8 @@ loc_464538:
     mov ecx, dword ptr [ebp-24h]
     mov eax, dword ptr [edx+38h]
     mov eax, dword ptr [eax]
-    movsx ecx, word ptr [ecx+eax*1]
-    mov edi, dword ptr [ebx+eax*1-4]
+    movsx ecx, word ptr [ecx+eax]
+    mov edi, dword ptr [ebx+eax-4]
     test ecx, ecx
     jle loc_464648
     mov dword ptr [ebp-30h], ecx
@@ -125022,7 +125022,7 @@ loc_46462A:
 
 loc_464638:
     mov eax, dword ptr [ebp-30h]
-    mov edi, dword ptr [edi+ebx*1]
+    mov edi, dword ptr [edi+ebx]
     dec eax
     mov dword ptr [ebp-30h], eax
     jnz loc_464556
@@ -125048,8 +125048,8 @@ loc_464661:
 
 loc_464685:
     mov ecx, dword ptr [ebp-24h]
-    mov edi, dword ptr [ebx+eax*1+1Ch]
-    movsx ecx, word ptr [ecx+eax*1]
+    mov edi, dword ptr [ebx+eax+1Ch]
+    movsx ecx, word ptr [ecx+eax]
     test ecx, ecx
     jle loc_46478D
     mov dword ptr [ebp-30h], ecx
@@ -125145,7 +125145,7 @@ loc_46476F:
 
 loc_46477D:
     mov eax, dword ptr [ebp-30h]
-    mov edi, dword ptr [edi+ebx*1]
+    mov edi, dword ptr [edi+ebx]
     dec eax
     mov dword ptr [ebp-30h], eax
     jnz loc_46469B
@@ -125314,9 +125314,9 @@ loc_4648F0:
 
 loc_464925:
     mov ecx, dword ptr [ebp+8]
-    mov edi, dword ptr [ebx+eax*1+0Ch]
+    mov edi, dword ptr [ebx+eax+0Ch]
     mov dword ptr [ebp-34h], 0
-    movsx ecx, word ptr [ecx+eax*1]
+    movsx ecx, word ptr [ecx+eax]
     test ecx, ecx
     mov dword ptr [ebp-24h], ecx
     jle loc_4649A5
@@ -125348,7 +125348,7 @@ loc_46493E:
     fnstsw ax
     test ah, 1
     jnz loc_464992
-    mov edi, dword ptr [edi+ebx*1]
+    mov edi, dword ptr [edi+ebx]
     mov ecx, dword ptr [ebp-24h]
 
 loc_464985:
@@ -125426,8 +125426,8 @@ loc_464A34:
     mov ecx, dword ptr [ebp-24h]
     mov edx, dword ptr [ebp+8]
     mov dword ptr [ebp-34h], 0
-    movsx ecx, word ptr [ecx+eax*1]
-    mov edi, dword ptr [edx+eax*1+0Ch]
+    movsx ecx, word ptr [ecx+eax]
+    mov edi, dword ptr [edx+eax+0Ch]
     mov dword ptr [ebp-20h], ecx
     test ecx, ecx
     jle loc_464AD4
@@ -125466,7 +125466,7 @@ loc_464A54:
     test ah, 1
     jnz loc_464AC1
     mov edx, dword ptr [ebp+8]
-    mov edi, dword ptr [edi+edx*1]
+    mov edi, dword ptr [edi+edx]
 
 loc_464AB1:
     mov eax, dword ptr [ebp-34h]
@@ -125544,7 +125544,7 @@ loc_464B34:
     dec eax
     js loc_464CBB
     lea ebx, [eax*4+0A4h]
-    lea ecx, [eax+eax*1+98h]
+    lea ecx, [eax+eax+98h]
     inc eax
     mov dword ptr [ebp-24h], ecx
     mov dword ptr [ebp-30h], eax
@@ -125554,8 +125554,8 @@ loc_464B9B:
     mov ecx, dword ptr [ebp-24h]
     mov eax, dword ptr [edx+3Ch]
     mov eax, dword ptr [eax]
-    movsx ecx, word ptr [ecx+eax*1]
-    mov edi, dword ptr [ebx+eax*1-4]
+    movsx ecx, word ptr [ecx+eax]
+    mov edi, dword ptr [ebx+eax-4]
     test ecx, ecx
     jle loc_464CA2
     mov dword ptr [ebp-34h], ecx
@@ -125648,7 +125648,7 @@ loc_464C84:
 
 loc_464C92:
     mov eax, dword ptr [ebp-34h]
-    mov edi, dword ptr [edi+ebx*1]
+    mov edi, dword ptr [edi+ebx]
     dec eax
     mov dword ptr [ebp-34h], eax
     jnz loc_464BB9
@@ -125674,8 +125674,8 @@ loc_464CBB:
 
 loc_464CDF:
     mov ecx, dword ptr [ebp-24h]
-    mov edi, dword ptr [ebx+eax*1+1Ch]
-    movsx ecx, word ptr [ecx+eax*1]
+    mov edi, dword ptr [ebx+eax+1Ch]
+    movsx ecx, word ptr [ecx+eax]
     test ecx, ecx
     jle loc_464DDE
     mov dword ptr [ebp-34h], ecx
@@ -125768,7 +125768,7 @@ loc_464DC0:
 
 loc_464DCE:
     mov eax, dword ptr [ebp-34h]
-    mov edi, dword ptr [edi+ebx*1]
+    mov edi, dword ptr [edi+ebx]
     dec eax
     mov dword ptr [ebp-34h], eax
     jnz loc_464CF5
@@ -126834,7 +126834,7 @@ loc_465B5A:
 
 loc_465B7A:
     movsx eax, word ptr [esi+98h]
-    lea ecx, [eax+eax*1+2]
+    lea ecx, [eax+eax+2]
     push ecx
     call ?arts_operator_new@@YAPAXI@Z
     add esp, 4
@@ -129760,7 +129760,7 @@ loc_468084:
     dec eax
     js loc_46825C
     lea ebx, [eax*4+0A4h]
-    lea ecx, [eax+eax*1+98h]
+    lea ecx, [eax+eax+98h]
     inc eax
     mov dword ptr [ebp-24h], ecx
     mov dword ptr [ebp-30h], eax
@@ -129770,8 +129770,8 @@ loc_46813C:
     mov ecx, dword ptr [ebp-24h]
     mov eax, dword ptr [edx+3Ch]
     mov eax, dword ptr [eax]
-    movsx ecx, word ptr [ecx+eax*1]
-    mov edi, dword ptr [ebx+eax*1-4]
+    movsx ecx, word ptr [ecx+eax]
+    mov edi, dword ptr [ebx+eax-4]
     test ecx, ecx
     jle loc_468243
     mov dword ptr [ebp-2Ch], ecx
@@ -129864,7 +129864,7 @@ loc_468225:
 
 loc_468233:
     mov eax, dword ptr [ebp-2Ch]
-    mov edi, dword ptr [edi+ebx*1]
+    mov edi, dword ptr [edi+ebx]
     dec eax
     mov dword ptr [ebp-2Ch], eax
     jnz loc_46815A
@@ -129890,8 +129890,8 @@ loc_46825C:
 
 loc_468280:
     mov ecx, dword ptr [ebp-24h]
-    mov edi, dword ptr [ebx+eax*1+1Ch]
-    movsx ecx, word ptr [ecx+eax*1]
+    mov edi, dword ptr [ebx+eax+1Ch]
+    movsx ecx, word ptr [ecx+eax]
     test ecx, ecx
     jle loc_46837F
     mov dword ptr [ebp-30h], ecx
@@ -129984,7 +129984,7 @@ loc_468361:
 
 loc_46836F:
     mov eax, dword ptr [ebp-30h]
-    mov edi, dword ptr [edi+ebx*1]
+    mov edi, dword ptr [edi+ebx]
     dec eax
     mov dword ptr [ebp-30h], eax
     jnz loc_468296
@@ -130026,7 +130026,7 @@ loc_4683A4:
     dec eax
     js loc_46852B
     lea ebx, [eax*4+0A4h]
-    lea ecx, [eax+eax*1+98h]
+    lea ecx, [eax+eax+98h]
     inc eax
     mov dword ptr [ebp-24h], ecx
     mov dword ptr [ebp-2Ch], eax
@@ -130036,8 +130036,8 @@ loc_468402:
     mov ecx, dword ptr [ebp-24h]
     mov eax, dword ptr [edx+38h]
     mov eax, dword ptr [eax]
-    movsx ecx, word ptr [ecx+eax*1]
-    mov edi, dword ptr [ebx+eax*1-4]
+    movsx ecx, word ptr [ecx+eax]
+    mov edi, dword ptr [ebx+eax-4]
     test ecx, ecx
     jle loc_468512
     mov dword ptr [ebp-30h], ecx
@@ -130133,7 +130133,7 @@ loc_4684F4:
 
 loc_468502:
     mov eax, dword ptr [ebp-30h]
-    mov edi, dword ptr [edi+ebx*1]
+    mov edi, dword ptr [edi+ebx]
     dec eax
     mov dword ptr [ebp-30h], eax
     jnz loc_468420
@@ -130159,8 +130159,8 @@ loc_46852B:
 
 loc_46854F:
     mov ecx, dword ptr [ebp-24h]
-    mov edi, dword ptr [ebx+eax*1+1Ch]
-    movsx ecx, word ptr [ecx+eax*1]
+    mov edi, dword ptr [ebx+eax+1Ch]
+    movsx ecx, word ptr [ecx+eax]
     test ecx, ecx
     jle loc_468657
     mov dword ptr [ebp-30h], ecx
@@ -130256,7 +130256,7 @@ loc_468639:
 
 loc_468647:
     mov eax, dword ptr [ebp-30h]
-    mov edi, dword ptr [edi+ebx*1]
+    mov edi, dword ptr [edi+ebx]
     dec eax
     mov dword ptr [ebp-30h], eax
     jnz loc_468565
@@ -130428,7 +130428,7 @@ loc_4687C0:
     dec eax
     js loc_4688BD
     lea ecx, [eax*4+94h]
-    lea edx, [eax+eax*1+98h]
+    lea edx, [eax+eax+98h]
     inc eax
     mov dword ptr [ebp+8], ecx
     mov dword ptr [ebp-24h], edx
@@ -130440,8 +130440,8 @@ loc_46880E:
     mov edx, dword ptr [ebp+8]
     mov dword ptr [ebp-34h], 0
     mov eax, dword ptr [eax+3Ch]
-    movsx ebx, word ptr [ecx+eax*1]
-    mov edi, dword ptr [edx+eax*1+0Ch]
+    movsx ebx, word ptr [ecx+eax]
+    mov edi, dword ptr [edx+eax+0Ch]
     test ebx, ebx
     jle loc_46889E
 
@@ -130474,7 +130474,7 @@ loc_46882D:
 
 loc_46886D:
     mov edx, dword ptr [ebp+8]
-    mov edi, dword ptr [edi+edx*1]
+    mov edi, dword ptr [edi+edx]
 
 loc_468873:
     mov eax, dword ptr [ebp-34h]
@@ -130519,9 +130519,9 @@ loc_4688BD:
 
 loc_4688E3:
     mov edx, dword ptr [ebp+8]
-    mov edi, dword ptr [ebx+eax*1+0Ch]
+    mov edi, dword ptr [ebx+eax+0Ch]
     mov dword ptr [ebp-34h], 0
-    movsx edx, word ptr [edx+eax*1]
+    movsx edx, word ptr [edx+eax]
     test edx, edx
     mov dword ptr [ebp-38h], edx
     jle loc_468987
@@ -130560,7 +130560,7 @@ loc_468900:
     jnz loc_468969
 
 loc_468956:
-    mov edi, dword ptr [edi+ebx*1]
+    mov edi, dword ptr [edi+ebx]
     mov edx, dword ptr [ebp-38h]
 
 loc_46895C:
@@ -130627,7 +130627,7 @@ loc_4689E6:
     dec eax
     js loc_468AF0
     lea ecx, [eax*4+94h]
-    lea edx, [eax+eax*1+98h]
+    lea edx, [eax+eax+98h]
     inc eax
     mov dword ptr [ebp+8], ecx
     mov dword ptr [ebp-24h], edx
@@ -130639,11 +130639,11 @@ loc_468A09:
     mov dword ptr [ebp-34h], 0
     mov ecx, dword ptr [eax+38h]
     mov eax, dword ptr [ecx]
-    movsx ecx, word ptr [edx+eax*1]
+    movsx ecx, word ptr [edx+eax]
     mov edx, dword ptr [ebp+8]
     mov dword ptr [ebp-20h], ecx
     test ecx, ecx
-    mov edi, dword ptr [edx+eax*1+0Ch]
+    mov edi, dword ptr [edx+eax+0Ch]
     jle loc_468AD1
 
 loc_468A31:
@@ -130680,7 +130680,7 @@ loc_468A31:
     test ah, 1
     jnz loc_468A9E
     mov edx, dword ptr [ebp+8]
-    mov edi, dword ptr [edi+edx*1]
+    mov edi, dword ptr [edi+edx]
 
 loc_468A8E:
     mov eax, dword ptr [ebp-34h]
@@ -133975,7 +133975,7 @@ loc_46AE52:
     movsx eax, word ptr [ecx+0Ch]
     imul eax, edi
     mov ecx, dword ptr [ecx+60h]
-    lea eax, [eax+edx*1-2]
+    lea eax, [eax+edx-2]
     lea eax, [eax+eax*2]
     lea eax, [ecx+eax*4]
     mov ecx, dword ptr [eax]
@@ -143829,347 +143829,6 @@ loc_473912:
 ?Init@mmCar@@QAEXPADHH@Z ENDP
 
 ALIGN 16
-?Impact@mmCar@@QAEXPAVmmIntersection@@PAVVector3@@MH1@Z PROC PUBLIC
-    push ebp
-    mov ebp, esp
-    sub esp, 8Ch
-    push ebx
-    push esi
-    push edi
-    mov edi, ecx
-    mov dword ptr [?ffval@@3MA], 0
-    mov dword ptr [ebp-18h], edi
-    test byte ptr [edi+4A4h], 1
-    jnz loc_4742C9
-    mov ebx, dword ptr [ebp+8]
-    lea esi, [ebx+80h]
-    add ebx, 8Ch
-    mov eax, esi
-    mov dword ptr [ebp-14h], esi
-    fld dword ptr [ebx+8]
-    mov ecx, dword ptr [eax]
-    mov dword ptr [ebp-10h], ecx
-    mov ecx, dword ptr [ebp+0Ch]
-    mov edx, dword ptr [eax+4]
-    fmul dword ptr [ecx+8]
-    fld dword ptr [ebx+4]
-    fmul dword ptr [ecx+4]
-    mov eax, dword ptr [eax+8]
-    mov dword ptr [ebp-0Ch], edx
-    mov dword ptr [ebp-8], eax
-    faddp st(1), st
-    fld dword ptr [ebx]
-    fmul dword ptr [ecx]
-    faddp st(1), st
-    fchs
-    fstp dword ptr [ebp-4]
-    fld dword ptr [ebx+8]
-    fmul dword ptr [ecx+8]
-    fld dword ptr [ebx+4]
-    fmul dword ptr [ecx+4]
-    faddp st(1), st
-    fld dword ptr [ebx]
-    fmul dword ptr [ecx]
-    faddp st(1), st
-    fabs
-    fstp dword ptr [ebp-28h]
-    call ?Mag@Vector3@@QBEMXZ
-    mov ecx, dword ptr [esi]
-    mov dword ptr [ebp-10h], ecx
-    lea ecx, [ebp-5Ch]
-    mov edx, dword ptr [esi+4]
-    fstp st
-    mov eax, dword ptr [esi+8]
-    mov dword ptr [ebp-0Ch], edx
-    mov dword ptr [ebp-8], eax
-    lea eax, [edi+298h]
-    push eax
-    mov dword ptr [ebp-2Ch], eax
-    call ?FastInverse@Matrix34@@QAEXABV1@@Z
-    mov ecx, 0Ch
-    lea esi, [ebp-5Ch]
-    lea edi, [ebp-8Ch]
-    lea edx, [ebp-10h]
-    rep movsd
-    lea ecx, [ebp-8Ch]
-    push ecx
-    lea ecx, [ebp-10h]
-    call ?Dot@Vector3@@QAIXABV1@ABVMatrix34@@@Z
-    mov esi, dword ptr [ebp-18h]
-    mov cx, word ptr [esi+18AEh]
-    test cx, cx
-    jz loc_473FAC
-    fld dword ptr [ebp-4]
-    fcomp qword ptr [dbl_61C090]
-    fnstsw ax
-    test ah, 41h
-    jnz loc_473FAC
-    fld dword ptr [ebp+10h]
-    fadd dword ptr [esi+18D0h]
-    fstp dword ptr [esi+18D0h]
-
-loc_473FAC:
-    fld dword ptr [ebp+10h]
-    fld dword ptr [esi+18E4h]
-    fmul qword ptr [dbl_61C098]
-    fcompp
-    fnstsw ax
-    test ah, 1
-    jz loc_473FDD
-    test cx, cx
-    jz loc_473FDD
-    lea edx, [ebp-10h]
-    push 3F000000h
-    push edx
-    lea ecx, [esi+1FFCh]
-    call ?ApplyDamage@mmCarModel@@QAEXAAVVector3@@M@Z
-
-loc_473FDD:
-    fld dword ptr [ebp+10h]
-    fcomp dword ptr [flt_61C0A0]
-    fnstsw ax
-    test ah, 41h
-    jnz loc_474000
-    cmp dword ptr [ebp+14h], 9
-    jnz loc_474000
-    push 0
-    lea ecx, [esi+192Ch]
-    call ?Call@Callback@@QAEXPAX@Z
-
-loc_474000:
-    mov eax, dword ptr [esi+1F64h]
-    test eax, eax
-    jz loc_474182
-    mov ecx, dword ptr [?GameInputPtr@@3PAVmmInput@@A]
-    call ?DoingFF@mmInput@@QAEHXZ
-    test eax, eax
-    jz loc_474182
-    fld dword ptr [esi+1884h]
-    fcomp dword ptr [flt_61C0A4]
-    fnstsw ax
-    test ah, 41h
-    jnz loc_474182
-    mov ecx, dword ptr [?ARTSPTR@@3PAVasSimulation@@A]
-    mov eax, dword ptr [?GameInputPtr@@3PAVmmInput@@A]
-    fld dword ptr [ecx+144h]
-    fild dword ptr [?LastDamageFF@@3MA]
-    fsubp st(1), st
-    fcomp dword ptr [eax+170h]
-    fnstsw ax
-    test ah, 41h
-    jnz loc_474182
-    fld dword ptr [ecx+144h]
-    call __ftol
-    mov ecx, dword ptr [ebp+18h]
-    mov dword ptr [?LastDamageFF@@3MA], eax
-    mov edx, dword ptr [ecx]
-    mov dword ptr [ebp-24h], edx
-    mov edx, dword ptr [ebp-2Ch]
-    mov eax, dword ptr [ecx+4]
-    push edx
-    mov dword ptr [ebp-20h], eax
-    mov ecx, dword ptr [ecx+8]
-    mov dword ptr [ebp-1Ch], ecx
-    lea ecx, [ebp-8Ch]
-    call ?FastInverse@Matrix34@@QAEXABV1@@Z
-    mov ecx, 0Ch
-    lea esi, [ebp-8Ch]
-    lea edi, [ebp-5Ch]
-    lea eax, [ebp-5Ch]
-    rep movsd
-    push eax
-    lea edx, [ebp-24h]
-    lea ecx, [ebp-24h]
-    call ?Dot@Vector3@@QAIXABV1@ABVMatrix34@@@Z
-    fld dword ptr [ebp-24h]
-    fld dword ptr [ebp-20h]
-    fpatan
-    fmul dword ptr [flt_61C0A8]
-    fst dword ptr [ebp+18h]
-    fcomp dword ptr [flt_61C078]
-    fnstsw ax
-    test ah, 1
-    jz loc_4740EC
-    fld qword ptr [dbl_61C0B0]
-    fld dword ptr [ebp+18h]
-    fchs
-    fxch st(1)
-    call __CIfmod
-    fsubr qword ptr [dbl_61C0B0]
-    jmp loc_474110
-
-loc_4740EC:
-    fld dword ptr [ebp+18h]
-    fcomp dword ptr [flt_61C0B8]
-    fnstsw ax
-    test ah, 41h
-    jnz loc_474113
-    fld dword ptr [ebp+18h]
-    fsub dword ptr [flt_61C0B8]
-    fld qword ptr [dbl_61C0B0]
-    call __CIfmod
-
-loc_474110:
-    fstp dword ptr [ebp+18h]
-
-loc_474113:
-    fld dword ptr [ebp+10h]
-    fsqrt
-    fmul dword ptr [flt_61C0BC]
-    fcom dword ptr [flt_61C0C0]
-    fnstsw ax
-    test ah, 41h
-    jz loc_474139
-    fstp st
-    mov dword ptr [?ffval@@3MA], 3DCCCCCDh
-    jmp loc_47415A
-
-loc_474139:
-    fcom dword ptr [flt_61C084]
-    fnstsw ax
-    test ah, 1
-    jnz loc_474154
-    fstp st
-    mov dword ptr [?ffval@@3MA], 3F800000h
-    jmp loc_47415A
-
-loc_474154:
-    fstp dword ptr [?ffval@@3MA]
-
-loc_47415A:
-    mov ecx, dword ptr [ebp+18h]
-    mov edx, dword ptr [?ffval@@3MA]
-    push ecx
-    mov ecx, dword ptr [?GameInputPtr@@3PAVmmInput@@A]
-    push edx
-    push 1
-    call ?FFSetValues@mmInput@@QAEHHMM@Z
-    mov ecx, dword ptr [?GameInputPtr@@3PAVmmInput@@A]
-    push 1
-    call ?FFPlay@mmInput@@QAEHH@Z
-    mov esi, dword ptr [ebp-18h]
-
-loc_474182:
-    mov edi, dword ptr [ebp+8]
-    mov ecx, dword ptr [?Instance@mmCullCity@@0PAV1@A]
-    mov eax, dword ptr [edi+0A4h]
-    push eax
-    call ?IsPolyWater@mmCullCity@@QAEHPAVmmPolygon@@@Z
-    test eax, eax
-    jz loc_474207
-    test byte ptr [esi+4A4h], 1
-    jnz loc_474207
-    mov ecx, dword ptr [ebp+0Ch]
-    push ecx
-    push edi
-    push 1Ah
-    lea ecx, [esi+50h]
-    call ?PlayImpactAudio@mmCarSim@@QAEXFPAVmmIntersection@@PAVVector3@@@Z
-    mov edx, dword ptr [edi+84h]
-    lea ecx, [esi+48Ch]
-    push edx
-    call ?Activate@mmSplash@@QAEXM@Z
-    test byte ptr [esi+2018h], 80h
-    jz loc_4741E6
-    mov eax, dword ptr [edi+84h]
-    mov ecx, dword ptr [esi+2308h]
-    push eax
-    add ecx, 0ED4h
-    call ?Activate@mmSplash@@QAEXM@Z
-
-loc_4741E6:
-    mov eax, dword ptr [esi+1F64h]
-    test eax, eax
-    jz loc_4742C9
-    mov dword ptr [?HitWaterTimer@@3MA], 3F800000h
-    pop edi
-    pop esi
-    pop ebx
-    mov esp, ebp
-    pop ebp
-    retn 14h
-
-loc_474207:
-    fld dword ptr [ebp-4]
-    fabs
-    fcomp qword ptr [dbl_61C0C8]
-    fnstsw ax
-    test ah, 41h
-    jnz loc_474259
-    mov eax, dword ptr [ebp+14h]
-    cmp eax, 1
-    jz loc_474226
-    cmp eax, 9
-    jnz loc_474259
-
-loc_474226:
-    mov ecx, dword ptr [?ARTSPTR@@3PAVasSimulation@@A]
-    fld1 ; PATCH: Don't use delta seconds | fld dword ptr [ecx+13Ch]
-    fmul dword ptr [ebp-4]
-    fmul dword ptr [SparkMultiplier]
-    call __ftol
-    mov ecx, dword ptr [esi+18C8h]
-    push ebx
-    mov ebx, dword ptr [ebp-14h]
-    add ecx, 98h
-    push ebx
-    push eax
-    call ?RadialBlast@asLineSparks@@QAEXHAAVVector3@@0@Z
-    jmp loc_47425C
-
-loc_474259:
-    mov ebx, dword ptr [ebp-14h]
-
-loc_47425C:
-    fld dword ptr [ebp+10h]
-    fcomp qword ptr [dbl_61C0D8]
-    fnstsw ax
-    test ah, 41h
-    jnz loc_4742B8
-    fld dword ptr [esi+18E4h]
-    fld dword ptr [esi+18D0h]
-    fcompp
-    fnstsw ax
-    test ah, 41h
-    jnz loc_4742B8
-    mov edx, dword ptr [ebp-28h]
-    mov eax, dword ptr [ebp+10h]
-    push edx
-    mov edx, dword ptr [ebx]
-    push eax
-    mov eax, dword ptr [ebx+4]
-    sub esp, 0Ch
-    mov ecx, esp
-    mov dword ptr [ecx], edx
-    mov edx, dword ptr [ebx+8]
-    mov dword ptr [ecx+4], eax
-    mov dword ptr [ecx+8], edx
-    lea ecx, [esi+22ACh]
-    call ?EmitShards@mmShardManager@@QAEXVVector3@@MM@Z
-    lea eax, [ebp-10h]
-    lea ecx, [esi+1FFCh]
-    push eax
-    call ?Impact@mmCarModel@@QAEXPAVVector3@@@Z
-
-loc_4742B8:
-    mov ecx, dword ptr [ebp+0Ch]
-    mov edx, dword ptr [ebp+14h]
-    push ecx
-    push edi
-    push edx
-    lea ecx, [esi+50h]
-    call ?PlayImpactAudio@mmCarSim@@QAEXFPAVmmIntersection@@PAVVector3@@@Z
-
-loc_4742C9:
-    pop edi
-    pop esi
-    pop ebx
-    mov esp, ebp
-    pop ebp
-    retn 14h
-?Impact@mmCar@@QAEXPAVmmIntersection@@PAVVector3@@MH1@Z ENDP
-
-ALIGN 16
 ?VehNameRemap@mmCar@@QAEPADPADH@Z PROC PUBLIC
     push ebp
     mov ebp, esp
@@ -145511,7 +145170,7 @@ loc_47540B:
     mov eax, dword ptr [edi+28h]
     test eax, eax
     jz loc_47541F
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_47541F
     mov edx, dword ptr [ecx]
@@ -145522,7 +145181,7 @@ loc_47541F:
     mov eax, dword ptr [edi+2Ch]
     test eax, eax
     jz loc_475433
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475433
     mov eax, dword ptr [ecx]
@@ -145533,7 +145192,7 @@ loc_475433:
     mov eax, dword ptr [edi+48h]
     test eax, eax
     jz loc_475447
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475447
     mov edx, dword ptr [ecx]
@@ -145544,7 +145203,7 @@ loc_475447:
     mov eax, dword ptr [edi+4Ch]
     test eax, eax
     jz loc_47545B
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_47545B
     mov eax, dword ptr [ecx]
@@ -145555,7 +145214,7 @@ loc_47545B:
     mov eax, dword ptr [edi+30h]
     test eax, eax
     jz loc_47546F
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_47546F
     mov edx, dword ptr [ecx]
@@ -145566,7 +145225,7 @@ loc_47546F:
     mov eax, dword ptr [edi+34h]
     test eax, eax
     jz loc_475483
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475483
     mov eax, dword ptr [ecx]
@@ -145577,7 +145236,7 @@ loc_475483:
     mov eax, dword ptr [edi+38h]
     test eax, eax
     jz loc_475497
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475497
     mov edx, dword ptr [ecx]
@@ -145588,7 +145247,7 @@ loc_475497:
     mov eax, dword ptr [edi+3Ch]
     test eax, eax
     jz loc_4754AB
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_4754AB
     mov eax, dword ptr [ecx]
@@ -145599,7 +145258,7 @@ loc_4754AB:
     mov eax, dword ptr [edi+40h]
     test eax, eax
     jz loc_4754BF
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_4754BF
     mov edx, dword ptr [ecx]
@@ -145610,7 +145269,7 @@ loc_4754BF:
     mov eax, dword ptr [edi+44h]
     test eax, eax
     jz loc_4754D3
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_4754D3
     mov eax, dword ptr [ecx]
@@ -145621,7 +145280,7 @@ loc_4754D3:
     mov eax, dword ptr [edi+50h]
     test eax, eax
     jz loc_4754E7
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_4754E7
     mov edx, dword ptr [ecx]
@@ -145632,7 +145291,7 @@ loc_4754E7:
     mov eax, dword ptr [edi+54h]
     test eax, eax
     jz loc_4754FB
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_4754FB
     mov eax, dword ptr [ecx]
@@ -145643,7 +145302,7 @@ loc_4754FB:
     mov eax, dword ptr [edi+58h]
     test eax, eax
     jz loc_47550F
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_47550F
     mov edx, dword ptr [ecx]
@@ -145654,7 +145313,7 @@ loc_47550F:
     mov eax, dword ptr [edi+5Ch]
     test eax, eax
     jz loc_475523
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475523
     mov eax, dword ptr [ecx]
@@ -145665,7 +145324,7 @@ loc_475523:
     mov eax, dword ptr [edi+64h]
     test eax, eax
     jz loc_475541
-    mov ebx, dword ptr [esi+eax*1]
+    mov ebx, dword ptr [esi+eax]
     test ebx, ebx
     jz loc_475541
     mov ecx, ebx
@@ -145678,7 +145337,7 @@ loc_475541:
     mov eax, dword ptr [edi+60h]
     test eax, eax
     jz loc_475555
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475555
     mov edx, dword ptr [ecx]
@@ -145930,7 +145589,7 @@ loc_4757CE:
     movsx eax, di
     mov dword ptr [edx+eax*4], ebx
     mov ecx, dword ptr [esi+70h]
-    mov byte ptr [ecx+eax*1], 1
+    mov byte ptr [ecx+eax], 1
     mov ax, di
     pop edi
     pop esi
@@ -145972,7 +145631,7 @@ loc_475829:
 
 loc_475850:
     mov edx, dword ptr [esi+70h]
-    mov byte ptr [edx+edi*1], 0
+    mov byte ptr [edx+edi], 0
     pop edi
     pop esi
     pop ebp
@@ -146026,7 +145685,7 @@ loc_4758B3:
     movsx esi, di
     fld dword ptr [ebx+20h]
     shl esi, 2
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     fld dword ptr [ecx+20h]
     fcompp
     fnstsw ax
@@ -146035,7 +145694,7 @@ loc_4758B3:
     call ?DeactivateAudio@mmNetworkCarAudio@@QAEXXZ
     mov edx, dword ptr [ebp-4]
     mov eax, dword ptr [edx+20h]
-    mov dword ptr [eax+esi*1], ebx
+    mov dword ptr [eax+esi], ebx
     mov ax, di
     pop edi
     pop esi
@@ -146065,7 +145724,7 @@ ALIGN 16
 
 loc_47590F:
     movsx esi, ax
-    cmp byte ptr [esi+ecx*1], 0
+    cmp byte ptr [esi+ecx], 0
     jz loc_47592F
     inc eax
     cmp ax, dx
@@ -146102,7 +145761,7 @@ ALIGN 16
 
 loc_475969:
     mov eax, dword ptr [edi+20h]
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475978
     call ?UpdateAudio@mmNetworkCarAudio@@QAEXXZ
@@ -146117,7 +145776,7 @@ loc_47598A:
     mov eax, dword ptr [edi+5Ch]
     test eax, eax
     jz loc_47599D
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_47599D
     mov edx, dword ptr [ecx]
@@ -146127,7 +145786,7 @@ loc_47599D:
     mov eax, dword ptr [edi+60h]
     test eax, eax
     jz loc_4759B0
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_4759B0
     mov eax, dword ptr [ecx]
@@ -146137,7 +145796,7 @@ loc_4759B0:
     mov eax, dword ptr [edi+50h]
     test eax, eax
     jz loc_4759C3
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_4759C3
     mov edx, dword ptr [ecx]
@@ -146147,7 +145806,7 @@ loc_4759C3:
     mov eax, dword ptr [edi+54h]
     test eax, eax
     jz loc_4759D6
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_4759D6
     mov eax, dword ptr [ecx]
@@ -146157,7 +145816,7 @@ loc_4759D6:
     mov eax, dword ptr [edi+28h]
     test eax, eax
     jz loc_4759E9
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_4759E9
     mov edx, dword ptr [ecx]
@@ -146167,7 +145826,7 @@ loc_4759E9:
     mov eax, dword ptr [edi+2Ch]
     test eax, eax
     jz loc_4759FC
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_4759FC
     mov eax, dword ptr [ecx]
@@ -146177,7 +145836,7 @@ loc_4759FC:
     mov eax, dword ptr [edi+48h]
     test eax, eax
     jz loc_475A0F
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475A0F
     mov edx, dword ptr [ecx]
@@ -146187,7 +145846,7 @@ loc_475A0F:
     mov eax, dword ptr [edi+4Ch]
     test eax, eax
     jz loc_475A22
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475A22
     mov eax, dword ptr [ecx]
@@ -146197,7 +145856,7 @@ loc_475A22:
     mov eax, dword ptr [edi+30h]
     test eax, eax
     jz loc_475A35
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475A35
     mov edx, dword ptr [ecx]
@@ -146207,7 +145866,7 @@ loc_475A35:
     mov eax, dword ptr [edi+40h]
     test eax, eax
     jz loc_475A48
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475A48
     mov eax, dword ptr [ecx]
@@ -146217,7 +145876,7 @@ loc_475A48:
     mov eax, dword ptr [edi+44h]
     test eax, eax
     jz loc_475A5B
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475A5B
     mov edx, dword ptr [ecx]
@@ -146227,7 +145886,7 @@ loc_475A5B:
     mov eax, dword ptr [edi+38h]
     test eax, eax
     jz loc_475A6E
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475A6E
     mov eax, dword ptr [ecx]
@@ -146237,7 +145896,7 @@ loc_475A6E:
     mov eax, dword ptr [edi+3Ch]
     test eax, eax
     jz loc_475A81
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475A81
     mov edx, dword ptr [ecx]
@@ -146247,7 +145906,7 @@ loc_475A81:
     mov eax, dword ptr [edi+34h]
     test eax, eax
     jz loc_475A94
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475A94
     mov eax, dword ptr [ecx]
@@ -146257,7 +145916,7 @@ loc_475A94:
     mov eax, dword ptr [edi+38h]
     test eax, eax
     jz loc_475AA7
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475AA7
     mov edx, dword ptr [ecx]
@@ -146267,7 +145926,7 @@ loc_475AA7:
     mov eax, dword ptr [edi+58h]
     test eax, eax
     jz loc_475ABA
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475ABA
     mov eax, dword ptr [ecx]
@@ -146294,7 +145953,7 @@ loc_475AD3:
 
 loc_475AE1:
     mov ecx, dword ptr [edi+24h]
-    mov ecx, dword ptr [esi+ecx*1]
+    mov ecx, dword ptr [esi+ecx]
     call ?Update@NetAddOnCarAudio@@QAEXXZ
     add esi, 4
     dec ebx
@@ -146327,7 +145986,7 @@ loc_475B1A:
     mov eax, dword ptr [edi+5Ch]
     test eax, eax
     jz loc_475B4E
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475B4E
     push 2
@@ -146335,18 +145994,18 @@ loc_475B1A:
     mov ecx, dword ptr [edi+5Ch]
     mov eax, dword ptr [ebp+8]
     push eax
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov edx, dword ptr [edi+5Ch]
     push 3F75C28Fh
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_475B4E:
     mov eax, dword ptr [edi+60h]
     test eax, eax
     jz loc_475B82
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475B82
     push 2
@@ -146354,245 +146013,245 @@ loc_475B4E:
     mov ecx, dword ptr [edi+60h]
     mov eax, dword ptr [ebp+8]
     push eax
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov edx, dword ptr [edi+60h]
     push 3F75C28Fh
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_475B82:
     mov eax, dword ptr [edi+50h]
     test eax, eax
     jz loc_475BB7
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475BB7
     push 2
     call ?SetEffect@AudSound@@QAEXH@Z
     mov eax, dword ptr [edi+50h]
     push 3EB33333h
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov ecx, dword ptr [edi+50h]
     push 3F75C28Fh
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_475BB7:
     mov eax, dword ptr [edi+54h]
     test eax, eax
     jz loc_475BEC
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475BEC
     push 2
     call ?SetEffect@AudSound@@QAEXH@Z
     mov edx, dword ptr [edi+54h]
     push 3EB33333h
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov eax, dword ptr [edi+54h]
     push 3F75C28Fh
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_475BEC:
     mov eax, dword ptr [edi+58h]
     test eax, eax
     jz loc_475C21
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475C21
     push 2
     call ?SetEffect@AudSound@@QAEXH@Z
     mov ecx, dword ptr [edi+58h]
     push 3EB33333h
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov edx, dword ptr [edi+58h]
     push 3F75C28Fh
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_475C21:
     mov eax, dword ptr [edi+28h]
     test eax, eax
     jz loc_475C56
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475C56
     push 2
     call ?SetEffect@AudSound@@QAEXH@Z
     mov eax, dword ptr [edi+28h]
     push 3EB33333h
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov ecx, dword ptr [edi+28h]
     push 3F75C28Fh
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_475C56:
     mov eax, dword ptr [edi+2Ch]
     test eax, eax
     jz loc_475C8B
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475C8B
     push 2
     call ?SetEffect@AudSound@@QAEXH@Z
     mov edx, dword ptr [edi+2Ch]
     push 3EB33333h
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov eax, dword ptr [edi+2Ch]
     push 3F75C28Fh
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_475C8B:
     mov eax, dword ptr [edi+48h]
     test eax, eax
     jz loc_475CC0
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475CC0
     push 2
     call ?SetEffect@AudSound@@QAEXH@Z
     mov ecx, dword ptr [edi+48h]
     push 3EB33333h
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov edx, dword ptr [edi+48h]
     push 3F75C28Fh
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_475CC0:
     mov eax, dword ptr [edi+4Ch]
     test eax, eax
     jz loc_475CF5
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475CF5
     push 2
     call ?SetEffect@AudSound@@QAEXH@Z
     mov eax, dword ptr [edi+4Ch]
     push 3EB33333h
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov ecx, dword ptr [edi+4Ch]
     push 3F75C28Fh
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_475CF5:
     mov eax, dword ptr [edi+30h]
     test eax, eax
     jz loc_475D2A
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475D2A
     push 2
     call ?SetEffect@AudSound@@QAEXH@Z
     mov edx, dword ptr [edi+30h]
     push 3EB33333h
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov eax, dword ptr [edi+30h]
     push 3F75C28Fh
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_475D2A:
     mov eax, dword ptr [edi+40h]
     test eax, eax
     jz loc_475D5F
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475D5F
     push 2
     call ?SetEffect@AudSound@@QAEXH@Z
     mov ecx, dword ptr [edi+40h]
     push 3EB33333h
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov edx, dword ptr [edi+40h]
     push 3F75C28Fh
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_475D5F:
     mov eax, dword ptr [edi+44h]
     test eax, eax
     jz loc_475D94
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475D94
     push 2
     call ?SetEffect@AudSound@@QAEXH@Z
     mov eax, dword ptr [edi+44h]
     push 3EB33333h
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov ecx, dword ptr [edi+44h]
     push 3F75C28Fh
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_475D94:
     mov eax, dword ptr [edi+34h]
     test eax, eax
     jz loc_475DC9
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475DC9
     push 2
     call ?SetEffect@AudSound@@QAEXH@Z
     mov edx, dword ptr [edi+34h]
     push 3EB33333h
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov eax, dword ptr [edi+34h]
     push 3F75C28Fh
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_475DC9:
     mov eax, dword ptr [edi+38h]
     test eax, eax
     jz loc_475DFE
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475DFE
     push 2
     call ?SetEffect@AudSound@@QAEXH@Z
     mov ecx, dword ptr [edi+38h]
     push 3EB33333h
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov edx, dword ptr [edi+38h]
     push 3F75C28Fh
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_475DFE:
     mov eax, dword ptr [edi+3Ch]
     test eax, eax
     jz loc_475E33
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475E33
     push 2
     call ?SetEffect@AudSound@@QAEXH@Z
     mov eax, dword ptr [edi+3Ch]
     push 3EB33333h
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov ecx, dword ptr [edi+3Ch]
     push 3F75C28Fh
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_475E33:
@@ -146611,7 +146270,7 @@ loc_475E4B:
     mov eax, dword ptr [edi+24h]
     mov edx, dword ptr [ebp+8]
     push edx
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?EchoOn@NetAddOnCarAudio@@QAEXM@Z
     add esi, 4
     dec ebx
@@ -146642,7 +146301,7 @@ loc_475E87:
     mov eax, dword ptr [ebx+5Ch]
     test eax, eax
     jz loc_475E9C
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475E9C
     push 2
@@ -146652,7 +146311,7 @@ loc_475E9C:
     mov eax, dword ptr [ebx+60h]
     test eax, eax
     jz loc_475EB1
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475EB1
     push 2
@@ -146662,7 +146321,7 @@ loc_475EB1:
     mov eax, dword ptr [ebx+50h]
     test eax, eax
     jz loc_475EC6
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475EC6
     push 2
@@ -146672,7 +146331,7 @@ loc_475EC6:
     mov eax, dword ptr [ebx+54h]
     test eax, eax
     jz loc_475EDB
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475EDB
     push 2
@@ -146682,7 +146341,7 @@ loc_475EDB:
     mov eax, dword ptr [ebx+58h]
     test eax, eax
     jz loc_475EF0
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475EF0
     push 2
@@ -146692,7 +146351,7 @@ loc_475EF0:
     mov eax, dword ptr [ebx+28h]
     test eax, eax
     jz loc_475F05
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475F05
     push 2
@@ -146702,7 +146361,7 @@ loc_475F05:
     mov eax, dword ptr [ebx+2Ch]
     test eax, eax
     jz loc_475F1A
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475F1A
     push 2
@@ -146712,7 +146371,7 @@ loc_475F1A:
     mov eax, dword ptr [ebx+48h]
     test eax, eax
     jz loc_475F2F
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475F2F
     push 2
@@ -146722,7 +146381,7 @@ loc_475F2F:
     mov eax, dword ptr [ebx+4Ch]
     test eax, eax
     jz loc_475F44
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475F44
     push 2
@@ -146732,7 +146391,7 @@ loc_475F44:
     mov eax, dword ptr [ebx+30h]
     test eax, eax
     jz loc_475F59
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475F59
     push 2
@@ -146742,7 +146401,7 @@ loc_475F59:
     mov eax, dword ptr [ebx+40h]
     test eax, eax
     jz loc_475F6E
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475F6E
     push 2
@@ -146752,7 +146411,7 @@ loc_475F6E:
     mov eax, dword ptr [ebx+44h]
     test eax, eax
     jz loc_475F83
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475F83
     push 2
@@ -146762,7 +146421,7 @@ loc_475F83:
     mov eax, dword ptr [ebx+34h]
     test eax, eax
     jz loc_475F98
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475F98
     push 2
@@ -146772,7 +146431,7 @@ loc_475F98:
     mov eax, dword ptr [ebx+38h]
     test eax, eax
     jz loc_475FAD
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475FAD
     push 2
@@ -146782,7 +146441,7 @@ loc_475FAD:
     mov eax, dword ptr [ebx+3Ch]
     test eax, eax
     jz loc_475FC2
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_475FC2
     push 2
@@ -146802,7 +146461,7 @@ loc_475FCC:
 
 loc_475FDA:
     mov eax, dword ptr [ebx+24h]
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?EchoOff@NetAddOnCarAudio@@QAEXXZ
     add esi, 4
     dec edi
@@ -146901,19 +146560,19 @@ loc_4760B0:
     push 0
     movsx ebx, ax
     shl ebx, 2
-    mov ecx, dword ptr [edx+ebx*1]
+    mov ecx, dword ptr [edx+ebx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_47613A
     mov eax, dword ptr [edi+28h]
     lea ecx, [esi+70h]
-    mov eax, dword ptr [eax+ebx*1]
+    mov eax, dword ptr [eax+ebx]
     push eax
     call ?SetSoundPtr@EngineAudioOpponent@@QAEXPAVAudSound@@@Z
     mov ecx, dword ptr [edi+5Ch]
     mov eax, dword ptr [esi+68h]
     mov dword ptr [ebp+0Ch], eax
-    mov edx, dword ptr [ecx+ebx*1]
+    mov edx, dword ptr [ecx+ebx]
     mov ecx, dword ptr [eax+18h]
     test ecx, ecx
     mov dword ptr [ebp+8], edx
@@ -146931,10 +146590,10 @@ loc_476102:
     mov ecx, dword ptr [ebp+8]
     mov dword ptr [edx+18h], ecx
     mov eax, dword ptr [edi+64h]
-    mov eax, dword ptr [eax+ebx*1]
+    mov eax, dword ptr [eax+ebx]
     mov dword ptr [esi+6Ch], eax
     mov ecx, dword ptr [edi+50h]
-    mov ecx, dword ptr [ecx+ebx*1]
+    mov ecx, dword ptr [ecx+ebx]
     test ecx, ecx
     jz loc_4767E4
     mov edx, dword ptr [esi+50h]
@@ -146963,17 +146622,17 @@ loc_47614E:
     mov eax, dword ptr [edi+48h]
     push 0
     shl ebx, 2
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_4761D8
     mov ecx, dword ptr [edi+48h]
-    mov eax, dword ptr [ecx+ebx*1]
+    mov eax, dword ptr [ecx+ebx]
     lea ecx, [esi+70h]
     push eax
     call ?SetSoundPtr@EngineAudioOpponent@@QAEXPAVAudSound@@@Z
     mov edx, dword ptr [edi+5Ch]
-    mov eax, dword ptr [edx+ebx*1]
+    mov eax, dword ptr [edx+ebx]
     mov dword ptr [ebp+8], eax
     mov eax, dword ptr [esi+68h]
     mov dword ptr [ebp+0Ch], eax
@@ -146993,10 +146652,10 @@ loc_4761A0:
     mov edx, dword ptr [ebp+8]
     mov dword ptr [eax+18h], edx
     mov ecx, dword ptr [edi+64h]
-    mov eax, dword ptr [ecx+ebx*1]
+    mov eax, dword ptr [ecx+ebx]
     mov dword ptr [esi+6Ch], eax
     mov edx, dword ptr [edi+50h]
-    mov ecx, dword ptr [edx+ebx*1]
+    mov ecx, dword ptr [edx+ebx]
     test ecx, ecx
     jz loc_4767E4
     mov eax, dword ptr [esi+50h]
@@ -147025,17 +146684,17 @@ loc_4761EC:
     push 0
     movsx ebx, ax
     shl ebx, 2
-    mov ecx, dword ptr [ecx+ebx*1]
+    mov ecx, dword ptr [ecx+ebx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_476276
     mov edx, dword ptr [edi+4Ch]
     lea ecx, [esi+70h]
-    mov eax, dword ptr [edx+ebx*1]
+    mov eax, dword ptr [edx+ebx]
     push eax
     call ?SetSoundPtr@EngineAudioOpponent@@QAEXPAVAudSound@@@Z
     mov eax, dword ptr [edi+5Ch]
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     mov eax, dword ptr [esi+68h]
     mov dword ptr [ebp+8], ecx
     mov dword ptr [ebp+0Ch], eax
@@ -147055,10 +146714,10 @@ loc_47623E:
     mov eax, dword ptr [ebp+8]
     mov dword ptr [ecx+18h], eax
     mov edx, dword ptr [edi+64h]
-    mov eax, dword ptr [edx+ebx*1]
+    mov eax, dword ptr [edx+ebx]
     mov dword ptr [esi+6Ch], eax
     mov eax, dword ptr [edi+50h]
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     test ecx, ecx
     jz loc_4767E4
     mov edx, dword ptr [esi+50h]
@@ -147087,12 +146746,12 @@ loc_47628A:
     mov eax, dword ptr [edi+30h]
     push 0
     shl ebx, 2
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_476346
     mov ecx, dword ptr [edi+30h]
-    mov ecx, dword ptr [ecx+ebx*1]
+    mov ecx, dword ptr [ecx+ebx]
     test ecx, ecx
     jnz loc_4762D3
     mov ecx, dword ptr [esi+0C0h]
@@ -147110,7 +146769,7 @@ loc_4762D3:
 
 loc_4762E0:
     mov edx, dword ptr [edi+5Ch]
-    mov eax, dword ptr [edx+ebx*1]
+    mov eax, dword ptr [edx+ebx]
     mov dword ptr [ebp+8], eax
     mov eax, dword ptr [esi+68h]
     mov dword ptr [ebp+0Ch], eax
@@ -147130,10 +146789,10 @@ loc_47630C:
     mov edx, dword ptr [ebp+8]
     mov dword ptr [eax+18h], edx
     mov ecx, dword ptr [edi+64h]
-    mov eax, dword ptr [ecx+ebx*1]
+    mov eax, dword ptr [ecx+ebx]
     mov dword ptr [esi+6Ch], eax
     mov edx, dword ptr [edi+50h]
-    mov ebx, dword ptr [edx+ebx*1]
+    mov ebx, dword ptr [edx+ebx]
     test ebx, ebx
     jz loc_4767E4
     mov eax, dword ptr [esi+50h]
@@ -147163,14 +146822,14 @@ loc_47635A:
     push 0
     movsx ebx, ax
     shl ebx, 2
-    mov ecx, dword ptr [ecx+ebx*1]
+    mov ecx, dword ptr [ecx+ebx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_4764B1
     mov eax, dword ptr [edi+58h]
     test eax, eax
     jz loc_47639E
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     push 0
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
@@ -147186,7 +146845,7 @@ loc_47635A:
 
 loc_47639E:
     mov edx, dword ptr [edi+34h]
-    mov ecx, dword ptr [edx+ebx*1]
+    mov ecx, dword ptr [edx+ebx]
     test ecx, ecx
     jnz loc_4763CC
     mov ecx, dword ptr [esi+0C0h]
@@ -147204,7 +146863,7 @@ loc_4763CC:
 
 loc_4763D9:
     mov eax, dword ptr [edi+5Ch]
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     mov eax, dword ptr [esi+68h]
     mov dword ptr [ebp+8], ecx
     mov dword ptr [ebp+0Ch], eax
@@ -147224,10 +146883,10 @@ loc_476405:
     mov eax, dword ptr [ebp+8]
     mov dword ptr [ecx+18h], eax
     mov edx, dword ptr [edi+64h]
-    mov eax, dword ptr [edx+ebx*1]
+    mov eax, dword ptr [edx+ebx]
     mov dword ptr [esi+6Ch], eax
     mov eax, dword ptr [edi+50h]
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     test ecx, ecx
     jz loc_476434
     mov edx, dword ptr [esi+50h]
@@ -147246,7 +146905,7 @@ loc_476449:
     test byte ptr [esi+63h], 4
     jz loc_47690D
     mov eax, dword ptr [edi+58h]
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     test ecx, ecx
     jz loc_476495
     mov edx, dword ptr [esi+54h]
@@ -147292,12 +146951,12 @@ loc_4764C5:
     mov eax, dword ptr [edi+38h]
     push 0
     shl ebx, 2
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_476581
     mov ecx, dword ptr [edi+38h]
-    mov ecx, dword ptr [ecx+ebx*1]
+    mov ecx, dword ptr [ecx+ebx]
     test ecx, ecx
     jnz loc_47650E
     mov ecx, dword ptr [esi+0C0h]
@@ -147315,7 +146974,7 @@ loc_47650E:
 
 loc_47651B:
     mov edx, dword ptr [edi+5Ch]
-    mov eax, dword ptr [edx+ebx*1]
+    mov eax, dword ptr [edx+ebx]
     mov dword ptr [ebp+8], eax
     mov eax, dword ptr [esi+68h]
     mov dword ptr [ebp+0Ch], eax
@@ -147335,10 +146994,10 @@ loc_476547:
     mov edx, dword ptr [ebp+8]
     mov dword ptr [eax+18h], edx
     mov ecx, dword ptr [edi+64h]
-    mov eax, dword ptr [ecx+ebx*1]
+    mov eax, dword ptr [ecx+ebx]
     mov dword ptr [esi+6Ch], eax
     mov edx, dword ptr [edi+50h]
-    mov ebx, dword ptr [edx+ebx*1]
+    mov ebx, dword ptr [edx+ebx]
     test ebx, ebx
     jz loc_4767E4
     mov eax, dword ptr [esi+50h]
@@ -147368,12 +147027,12 @@ loc_476595:
     push 0
     movsx ebx, ax
     shl ebx, 2
-    mov ecx, dword ptr [ecx+ebx*1]
+    mov ecx, dword ptr [ecx+ebx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_47663C
     mov edx, dword ptr [edi+3Ch]
-    mov ecx, dword ptr [edx+ebx*1]
+    mov ecx, dword ptr [edx+ebx]
     test ecx, ecx
     jnz loc_4765DE
     mov ecx, dword ptr [esi+0C0h]
@@ -147391,7 +147050,7 @@ loc_4765DE:
 
 loc_4765EB:
     mov eax, dword ptr [edi+5Ch]
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     mov eax, dword ptr [esi+68h]
     mov dword ptr [ebp+8], ecx
     mov dword ptr [ebp+0Ch], eax
@@ -147411,10 +147070,10 @@ loc_476617:
     mov eax, dword ptr [ebp+8]
     mov dword ptr [ecx+18h], eax
     mov edx, dword ptr [edi+64h]
-    mov eax, dword ptr [edx+ebx*1]
+    mov eax, dword ptr [edx+ebx]
     mov dword ptr [esi+6Ch], eax
     mov eax, dword ptr [edi+50h]
-    mov ebx, dword ptr [eax+ebx*1]
+    mov ebx, dword ptr [eax+ebx]
     test ebx, ebx
     jz loc_4767E4
     jmp loc_4767CA
@@ -147434,12 +147093,12 @@ loc_476650:
     push 0
     movsx ebx, ax
     shl ebx, 2
-    mov ecx, dword ptr [edx+ebx*1]
+    mov ecx, dword ptr [edx+ebx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_476718
     mov eax, dword ptr [edi+40h]
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     test ecx, ecx
     jnz loc_476699
     mov ecx, dword ptr [esi+0C0h]
@@ -147459,7 +147118,7 @@ loc_4766A6:
     mov ecx, dword ptr [edi+5Ch]
     mov eax, dword ptr [esi+68h]
     mov dword ptr [ebp+0Ch], eax
-    mov edx, dword ptr [ecx+ebx*1]
+    mov edx, dword ptr [ecx+ebx]
     mov ecx, dword ptr [eax+18h]
     test ecx, ecx
     mov dword ptr [ebp+8], edx
@@ -147477,13 +147136,13 @@ loc_4766D2:
     mov ecx, dword ptr [ebp+8]
     mov dword ptr [edx+18h], ecx
     mov eax, dword ptr [edi+60h]
-    mov eax, dword ptr [eax+ebx*1]
+    mov eax, dword ptr [eax+ebx]
     mov dword ptr [esi+0D0h], eax
     mov ecx, dword ptr [edi+64h]
-    mov eax, dword ptr [ecx+ebx*1]
+    mov eax, dword ptr [ecx+ebx]
     mov dword ptr [esi+6Ch], eax
     mov edx, dword ptr [edi+54h]
-    mov ebx, dword ptr [edx+ebx*1]
+    mov ebx, dword ptr [edx+ebx]
     test ebx, ebx
     jz loc_4767E4
     mov eax, dword ptr [esi+50h]
@@ -147513,12 +147172,12 @@ loc_47672C:
     push 0
     movsx ebx, ax
     shl ebx, 2
-    mov ecx, dword ptr [ecx+ebx*1]
+    mov ecx, dword ptr [ecx+ebx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_476800
     mov edx, dword ptr [edi+44h]
-    mov ecx, dword ptr [edx+ebx*1]
+    mov ecx, dword ptr [edx+ebx]
     test ecx, ecx
     jnz loc_476775
     mov ecx, dword ptr [esi+0C0h]
@@ -147536,7 +147195,7 @@ loc_476775:
 
 loc_476782:
     mov eax, dword ptr [edi+5Ch]
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     mov eax, dword ptr [esi+68h]
     mov dword ptr [ebp+8], ecx
     mov dword ptr [ebp+0Ch], eax
@@ -147556,10 +147215,10 @@ loc_4767AE:
     mov eax, dword ptr [ebp+8]
     mov dword ptr [ecx+18h], eax
     mov edx, dword ptr [edi+64h]
-    mov eax, dword ptr [edx+ebx*1]
+    mov eax, dword ptr [edx+ebx]
     mov dword ptr [esi+6Ch], eax
     mov eax, dword ptr [edi+50h]
-    mov ebx, dword ptr [eax+ebx*1]
+    mov ebx, dword ptr [eax+ebx]
     test ebx, ebx
     jz loc_4767E4
 
@@ -147601,12 +147260,12 @@ loc_476814:
     push 0
     movsx ebx, ax
     shl ebx, 2
-    mov ecx, dword ptr [edx+ebx*1]
+    mov ecx, dword ptr [edx+ebx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_476900
     mov eax, dword ptr [edi+34h]
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     test ecx, ecx
     jnz loc_47685D
     mov ecx, dword ptr [esi+0C0h]
@@ -147626,7 +147285,7 @@ loc_47686A:
     mov ecx, dword ptr [edi+5Ch]
     mov eax, dword ptr [esi+68h]
     mov dword ptr [ebp+0Ch], eax
-    mov edx, dword ptr [ecx+ebx*1]
+    mov edx, dword ptr [ecx+ebx]
     mov ecx, dword ptr [eax+18h]
     test ecx, ecx
     mov dword ptr [ebp+8], edx
@@ -147644,10 +147303,10 @@ loc_476896:
     mov ecx, dword ptr [ebp+8]
     mov dword ptr [edx+18h], ecx
     mov eax, dword ptr [edi+64h]
-    mov eax, dword ptr [eax+ebx*1]
+    mov eax, dword ptr [eax+ebx]
     mov dword ptr [esi+6Ch], eax
     mov ecx, dword ptr [edi+50h]
-    mov ecx, dword ptr [ecx+ebx*1]
+    mov ecx, dword ptr [ecx+ebx]
     test ecx, ecx
     jz loc_4768D7
     mov edx, dword ptr [esi+50h]
@@ -147657,7 +147316,7 @@ loc_476896:
     call ?SetVolume@AudSound@@QAEXMH@Z
     mov eax, dword ptr [edi+34h]
     push 12h
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     call ?SetPriority@AudSound@@QAEXH@Z
     pop edi
     pop esi
@@ -147671,7 +147330,7 @@ loc_4768D7:
     mov dword ptr [esi+0C8h], 0
     mov eax, dword ptr [edi+34h]
     push 12h
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     call ?SetPriority@AudSound@@QAEXH@Z
     pop edi
     pop esi
@@ -147731,17 +147390,17 @@ ALIGN 16
     push 0
     movsx ebx, bx
     shl ebx, 2
-    mov ecx, dword ptr [ebx+edx*1]
+    mov ecx, dword ptr [ebx+edx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jnz loc_476A40
     mov eax, dword ptr [edi+28h]
-    mov ecx, dword ptr [ebx+eax*1]
+    mov ecx, dword ptr [ebx+eax]
     push ecx
     lea ecx, [esi+70h]
     call ?SetSoundPtr@EngineAudioOpponent@@QAEXPAVAudSound@@@Z
     mov edx, dword ptr [edi+5Ch]
-    mov eax, dword ptr [edx+ebx*1]
+    mov eax, dword ptr [edx+ebx]
     mov dword ptr [ebp+8], eax
     mov eax, dword ptr [esi+68h]
     mov dword ptr [ebp+0Ch], eax
@@ -147761,10 +147420,10 @@ loc_4769D6:
     mov edx, dword ptr [ebp+8]
     mov dword ptr [eax+18h], edx
     mov ecx, dword ptr [edi+64h]
-    mov edx, dword ptr [ecx+ebx*1]
+    mov edx, dword ptr [ecx+ebx]
     mov dword ptr [esi+6Ch], edx
     mov eax, dword ptr [edi+50h]
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     test ecx, ecx
     jz loc_476A17
     mov edx, dword ptr [esi+50h]
@@ -147774,7 +147433,7 @@ loc_4769D6:
     call ?SetVolume@AudSound@@QAEXMH@Z
     mov eax, dword ptr [edi+28h]
     push 12h
-    mov ecx, dword ptr [ebx+eax*1]
+    mov ecx, dword ptr [ebx+eax]
     call ?SetPriority@AudSound@@QAEXH@Z
     pop edi
     pop esi
@@ -147788,7 +147447,7 @@ loc_476A17:
     mov dword ptr [esi+0C8h], 0
     mov eax, dword ptr [edi+28h]
     push 12h
-    mov ecx, dword ptr [ebx+eax*1]
+    mov ecx, dword ptr [ebx+eax]
     call ?SetPriority@AudSound@@QAEXH@Z
     pop edi
     pop esi
@@ -147813,7 +147472,7 @@ loc_476A54:
     jnz loc_476A7E
     mov ecx, dword ptr [edi+50h]
     shl ebx, 2
-    mov ecx, dword ptr [ecx+ebx*1]
+    mov ecx, dword ptr [ecx+ebx]
     test ecx, ecx
     jz loc_476AAA
     mov edx, dword ptr [esi+50h]
@@ -147826,10 +147485,10 @@ loc_476A54:
 loc_476A7E:
     mov eax, dword ptr [edi+60h]
     shl ebx, 2
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     mov dword ptr [esi+0D0h], ecx
     mov edx, dword ptr [edi+54h]
-    mov ecx, dword ptr [edx+ebx*1]
+    mov ecx, dword ptr [edx+ebx]
     test ecx, ecx
     jz loc_476AAA
     mov eax, dword ptr [esi+50h]
@@ -147848,7 +147507,7 @@ loc_476ABF:
     mov ecx, dword ptr [edi+5Ch]
     mov eax, dword ptr [esi+68h]
     mov dword ptr [ebp+0Ch], eax
-    mov edx, dword ptr [ecx+ebx*1]
+    mov edx, dword ptr [ecx+ebx]
     mov ecx, dword ptr [eax+18h]
     test ecx, ecx
     mov dword ptr [ebp+8], edx
@@ -147866,13 +147525,13 @@ loc_476AEB:
     mov ecx, dword ptr [ebp+8]
     mov dword ptr [edx+18h], ecx
     mov eax, dword ptr [edi+64h]
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     mov al, byte ptr [esi+63h]
     test al, 4
     mov dword ptr [esi+6Ch], ecx
     jz loc_476B59
     mov edx, dword ptr [edi+58h]
-    mov ebx, dword ptr [edx+ebx*1]
+    mov ebx, dword ptr [edx+ebx]
     test ebx, ebx
     jz loc_476B44
     mov eax, dword ptr [esi+54h]
@@ -148440,7 +148099,7 @@ loc_4770A3:
     mov dword ptr [ebp-4], -1
     movsx esi, bx
     shl esi, 2
-    mov dword ptr [ecx+esi*1], eax
+    mov dword ptr [ecx+esi], eax
     jmp loc_4770F8
 
 loc_4770B8:
@@ -148467,33 +148126,33 @@ loc_4770E5:
     mov dword ptr [ebp-4], -1
     movsx esi, bx
     shl esi, 2
-    mov dword ptr [edx+esi*1], eax
+    mov dword ptr [edx+esi], eax
 
 loc_4770F8:
     mov eax, dword ptr [edi+60h]
     push 0
     push offset asc_63BF10
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?Load@AudSound@@QAEHPADH@Z
     mov ecx, dword ptr [edi+60h]
     push 14h
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetPriority@AudSound@@QAEXH@Z
     mov edx, dword ptr [edi+60h]
     push 2
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetEffect@AudSound@@QAEXH@Z
     mov eax, dword ptr [edi+60h]
     push 3EB33333h
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov ecx, dword ptr [edi+60h]
     push 3F75C28Fh
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
     mov edx, dword ptr [edi+60h]
     push 2
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?DisableEffect@AudSound@@QAEXH@Z
     inc ebx
     cmp bx, word ptr [edi+68h]
@@ -148598,29 +148257,29 @@ loc_47723F:
     shl edi, 2
     push offset asc_63BF20
     mov dword ptr [ebp-4], -1
-    mov dword ptr [edi+edx*1], eax
+    mov dword ptr [edi+edx], eax
     mov eax, dword ptr [esi+54h]
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     call ?Load@AudSound@@QAEHPADH@Z
     mov ecx, dword ptr [esi+54h]
     push 14h
-    mov ecx, dword ptr [edi+ecx*1]
+    mov ecx, dword ptr [edi+ecx]
     call ?SetPriority@AudSound@@QAEXH@Z
     mov edx, dword ptr [esi+54h]
     push 2
-    mov ecx, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [edi+edx]
     call ?SetEffect@AudSound@@QAEXH@Z
     mov eax, dword ptr [esi+54h]
     push 3EB33333h
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov ecx, dword ptr [esi+54h]
     push 3F75C28Fh
-    mov ecx, dword ptr [edi+ecx*1]
+    mov ecx, dword ptr [edi+ecx]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
     mov edx, dword ptr [esi+54h]
     push 2
-    mov ecx, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [edi+edx]
     jmp loc_477338
 
 loc_4772AB:
@@ -148647,29 +148306,29 @@ loc_4772D1:
     shl edi, 2
     push offset asc_63BF2C
     mov dword ptr [ebp-4], -1
-    mov dword ptr [edi+ecx*1], eax
+    mov dword ptr [edi+ecx], eax
     mov edx, dword ptr [esi+50h]
-    mov ecx, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [edi+edx]
     call ?Load@AudSound@@QAEHPADH@Z
     mov eax, dword ptr [esi+50h]
     push 14h
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     call ?SetPriority@AudSound@@QAEXH@Z
     mov ecx, dword ptr [esi+50h]
     push 2
-    mov ecx, dword ptr [edi+ecx*1]
+    mov ecx, dword ptr [edi+ecx]
     call ?SetEffect@AudSound@@QAEXH@Z
     mov edx, dword ptr [esi+50h]
     push 3EB33333h
-    mov ecx, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [edi+edx]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov eax, dword ptr [esi+50h]
     push 3F75C28Fh
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
     mov ecx, dword ptr [esi+50h]
     push 2
-    mov ecx, dword ptr [edi+ecx*1]
+    mov ecx, dword ptr [edi+ecx]
 
 loc_477338:
     call ?DisableEffect@AudSound@@QAEXH@Z
@@ -148761,19 +148420,19 @@ loc_47740B:
     shl esi, 2
     push offset asc_63BF38
     mov dword ptr [ebp-4], -1
-    mov dword ptr [esi+ecx*1], eax
+    mov dword ptr [esi+ecx], eax
     mov edx, dword ptr [edi+5Ch]
-    mov ecx, dword ptr [esi+edx*1]
+    mov ecx, dword ptr [esi+edx]
     call ?Load@AudSound@@QAEHPADH@Z
     mov eax, dword ptr [edi+5Ch]
     push 1
     push offset asc_63BF48
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?Load@AudSound@@QAEHPADH@Z
     mov ecx, dword ptr [edi+5Ch]
     push 2
     push offset asc_63BF54
-    mov ecx, dword ptr [esi+ecx*1]
+    mov ecx, dword ptr [esi+ecx]
     call ?Load@AudSound@@QAEHPADH@Z
     push 3
     push offset asc_63BF64
@@ -148806,21 +148465,21 @@ loc_477490:
     shl esi, 2
     push offset asc_63BF6C
     mov dword ptr [ebp-4], -1
-    mov dword ptr [esi+edx*1], eax
+    mov dword ptr [esi+edx], eax
     mov eax, dword ptr [edi+5Ch]
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?Load@AudSound@@QAEHPADH@Z
     mov ecx, dword ptr [edi+5Ch]
     push 1
     push offset asc_63BF78
-    mov ecx, dword ptr [esi+ecx*1]
+    mov ecx, dword ptr [esi+ecx]
     call ?Load@AudSound@@QAEHPADH@Z
     mov edx, dword ptr [edi+5Ch]
     push 0Eh
-    mov eax, dword ptr [esi+edx*1]
+    mov eax, dword ptr [esi+edx]
     mov dword ptr [eax+48h], 0
     mov eax, dword ptr [edi+5Ch]
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     jmp loc_477577
 
 loc_4774E1:
@@ -148847,51 +148506,51 @@ loc_477507:
     shl esi, 2
     push offset asc_63BF84
     mov dword ptr [ebp-4], -1
-    mov dword ptr [esi+ecx*1], eax
+    mov dword ptr [esi+ecx], eax
     mov edx, dword ptr [edi+5Ch]
-    mov ecx, dword ptr [esi+edx*1]
+    mov ecx, dword ptr [esi+edx]
     call ?Load@AudSound@@QAEHPADH@Z
     mov eax, dword ptr [edi+5Ch]
     push 1
     push offset asc_63BF98
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?Load@AudSound@@QAEHPADH@Z
     mov ecx, dword ptr [edi+5Ch]
     push 2
     push offset asc_63BFA4
-    mov ecx, dword ptr [esi+ecx*1]
+    mov ecx, dword ptr [esi+ecx]
     call ?Load@AudSound@@QAEHPADH@Z
     push 3
     push offset asc_63BFB4
 
 loc_477557:
     mov edx, dword ptr [edi+5Ch]
-    mov ecx, dword ptr [esi+edx*1]
+    mov ecx, dword ptr [esi+edx]
     call ?Load@AudSound@@QAEHPADH@Z
     mov eax, dword ptr [edi+5Ch]
     push 0Eh
-    mov eax, dword ptr [esi+eax*1]
+    mov eax, dword ptr [esi+eax]
     mov dword ptr [eax+48h], 3
     mov ecx, dword ptr [edi+5Ch]
-    mov ecx, dword ptr [esi+ecx*1]
+    mov ecx, dword ptr [esi+ecx]
 
 loc_477577:
     call ?SetPriority@AudSound@@QAEXH@Z
     mov edx, dword ptr [edi+5Ch]
     push 2
-    mov ecx, dword ptr [esi+edx*1]
+    mov ecx, dword ptr [esi+edx]
     call ?SetEffect@AudSound@@QAEXH@Z
     mov eax, dword ptr [edi+5Ch]
     push 3EB33333h
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov ecx, dword ptr [edi+5Ch]
     push 3F75C28Fh
-    mov ecx, dword ptr [esi+ecx*1]
+    mov ecx, dword ptr [esi+ecx]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
     mov edx, dword ptr [edi+5Ch]
     push 2
-    mov ecx, dword ptr [esi+edx*1]
+    mov ecx, dword ptr [esi+edx]
     call ?DisableEffect@AudSound@@QAEXH@Z
     inc ebx
     cmp bx, word ptr [edi+68h]
@@ -149035,49 +148694,49 @@ loc_477704:
     shl esi, 2
     push offset asc_63BFC0
     mov dword ptr [ebp-4], -1
-    mov dword ptr [edx+esi*1], eax
+    mov dword ptr [edx+esi], eax
     mov eax, dword ptr [edi+58h]
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?Load@AudSound@@QAEHPADH@Z
     mov ecx, dword ptr [edi+58h]
     push 1
     push offset asc_63BFD4
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?Load@AudSound@@QAEHPADH@Z
     mov edx, dword ptr [edi+58h]
     push 2
     push offset asc_63BFEC
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?Load@AudSound@@QAEHPADH@Z
     mov eax, dword ptr [edi+58h]
     push 3
     push offset asc_63C000
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?Load@AudSound@@QAEHPADH@Z
     mov ecx, dword ptr [edi+58h]
     push -1
     push 0
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetVolume@AudSound@@QAEXMH@Z
     mov edx, dword ptr [edi+58h]
     push 13h
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetPriority@AudSound@@QAEXH@Z
     mov eax, dword ptr [edi+58h]
     push 2
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?SetEffect@AudSound@@QAEXH@Z
     mov ecx, dword ptr [edi+58h]
     push 3EB33333h
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov edx, dword ptr [edi+58h]
     push 3F75C28Fh
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
     mov eax, dword ptr [edi+58h]
     push 2
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?DisableEffect@AudSound@@QAEXH@Z
     inc ebx
     cmp bx, word ptr [edi+68h]
@@ -160264,13 +159923,13 @@ loc_480223:
 loc_48024B:
     lea eax, [ecx*4]
     cmp edx, 14h
-    fld dword ptr [ebp+eax*1-28h]
-    fsub dword ptr [ebp+eax*1-30h]
+    fld dword ptr [ebp+eax-28h]
+    fsub dword ptr [ebp+eax-30h]
     fild dword ptr [ebp-10h]
     fxch st(1)
     faddp st(4), st
     fmul dword ptr [flt_61C804]
-    fstp dword ptr [ebp+eax*1-20h]
+    fstp dword ptr [ebp+eax-20h]
     jle loc_480188
     jmp loc_480278
 
@@ -167453,36 +167112,36 @@ loc_4855C4:
     mov edx, dword ptr [edi]
     push 0
     mov dword ptr [ebp-4], -1
-    mov dword ptr [edx+esi*1], eax
+    mov dword ptr [edx+esi], eax
     mov ecx, dword ptr [edi]
     mov eax, dword ptr [ebp+8]
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     push eax
     call ?Load@AudSound@@QAEHPADH@Z
     mov edx, dword ptr [edi]
     push -1
     push 0
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetVolume@AudSound@@QAEXMH@Z
     mov eax, dword ptr [edi]
     push 0Dh
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?SetPriority@AudSound@@QAEXH@Z
     mov ecx, dword ptr [edi]
     push 2
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?SetEffect@AudSound@@QAEXH@Z
     mov edx, dword ptr [edi]
     push 3EB33333h
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov eax, dword ptr [edi]
     push 3F75C28Fh
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
     mov ecx, dword ptr [edi]
     push 2
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?DisableEffect@AudSound@@QAEXH@Z
     mov eax, dword ptr [ebp+0Ch]
     add esi, 4
@@ -167518,7 +167177,7 @@ loc_485673:
     mov eax, dword ptr [edi]
     test eax, eax
     jz loc_485686
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jz loc_485686
     mov eax, dword ptr [ecx]
@@ -167567,7 +167226,7 @@ ALIGN 16
 loc_4856C3:
     movsx esi, word ptr [ebp+0Ch]
     shl esi, 2
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     test ecx, ecx
     jnz loc_4856D9
     xor eax, eax
@@ -167580,7 +167239,7 @@ loc_4856D9:
     push 12h
     call ?SetPriority@AudSound@@QAEXH@Z
     mov eax, dword ptr [edi]
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     mov esi, dword ptr [ebp+8]
     test ecx, ecx
     jnz loc_485719
@@ -167626,18 +167285,18 @@ ALIGN 16
 
 loc_48575D:
     mov ecx, dword ptr [edi]
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     test ecx, ecx
     jz loc_485787
     push 2
     call ?SetEffect@AudSound@@QAEXH@Z
     mov edx, dword ptr [edi]
     push ebx
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetDelayTime@AudSound@@QAEXM@Z
     mov eax, dword ptr [edi]
     push 3F75C28Fh
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?SetEchoAttenuation@AudSound@@QAEXM@Z
 
 loc_485787:
@@ -167670,7 +167329,7 @@ ALIGN 16
 
 loc_4857B3:
     mov eax, dword ptr [edi]
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     test ecx, ecx
     jz loc_4857C3
     push 2
@@ -167702,7 +167361,7 @@ ALIGN 16
 
 loc_4857E3:
     mov eax, dword ptr [edi]
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     test ecx, ecx
     jz loc_4857F1
     mov edx, dword ptr [ecx]
@@ -175532,7 +175191,7 @@ loc_48B459:
     push ebx
     mov dword ptr [sym_6A8980], eax
     call esi
-    lea ebx, [ebx+eax*1+1]
+    lea ebx, [ebx+eax+1]
     push ebx
     call esi
     test eax, eax
@@ -176903,7 +176562,7 @@ ALIGN 16
     mov ecx, dword ptr [?pass3Count@@3HA]
     mov edx, dword ptr [?pass2Count@@3HA]
     mov esi, dword ptr [?pass1Count@@3HA]
-    lea edi, [eax+ecx*1]
+    lea edi, [eax+ecx]
     add esp, 0Ch
     add edi, edx
     add edi, esi
@@ -176921,7 +176580,7 @@ ALIGN 16
     mov edx, dword ptr [?carTriCount@@3HA]
     mov esi, dword ptr [?facadeTriCount@@3HA]
     mov edi, dword ptr [?bangerTriCount@@3HA]
-    lea ebx, [eax+ecx*1]
+    lea ebx, [eax+ecx]
     add ebx, edx
     add esp, 1Ch
     add ebx, esi
@@ -177061,7 +176720,7 @@ loc_48CF6D:
     jge loc_48CF85
     mov edx, dword ptr [esi+4]
     xor eax, eax
-    mov al, byte ptr [edx+ecx*1]
+    mov al, byte ptr [edx+ecx]
     inc ecx
     mov dword ptr [esi+0Ch], ecx
     jmp loc_48CF8C
@@ -177176,7 +176835,7 @@ loc_48D079:
     jge loc_48D091
     mov edx, dword ptr [esi+4]
     xor eax, eax
-    mov al, byte ptr [edx+ecx*1]
+    mov al, byte ptr [edx+ecx]
     inc ecx
     mov dword ptr [esi+0Ch], ecx
     jmp loc_48D098
@@ -177255,9 +176914,9 @@ loc_48D113:
 
 loc_48D12B:
     mov eax, dword ptr [?TEXSHEET@@3VagiTexSheet@@A]
-    test byte ptr [eax+edi*1+0Ch], 1
+    test byte ptr [eax+edi+0Ch], 1
     jz loc_48D225
-    mov eax, dword ptr [eax+edi*1]
+    mov eax, dword ptr [eax+edi]
     push 0
     push eax
     call ?GetPackedTexture@@YAPAVagiTexDef@@PADH@Z
@@ -177289,7 +176948,7 @@ loc_48D12B:
     xor edx, edx
     div dword ptr [ebx+0Ch]
     mov edx, dword ptr [esi+34B28h]
-    mov byte ptr [ecx+edx*1], al
+    mov byte ptr [ecx+edx], al
     mov eax, dword ptr [esi+34B28h]
     mov ecx, dword ptr [esi+34B18h]
     add eax, ecx
@@ -177309,7 +176968,7 @@ loc_48D1D0:
     xor edx, edx
     div dword ptr [ebx+8]
     mov edx, dword ptr [esi+34B2Ch]
-    mov byte ptr [ecx+edx*1], al
+    mov byte ptr [ecx+edx], al
     mov eax, dword ptr [esi+34B2Ch]
     mov ecx, dword ptr [esi+34B18h]
     add eax, ecx
@@ -177436,8 +177095,8 @@ loc_48D390:
     mov edx, dword ptr [esi+34B24h]
     mov ecx, dword ptr [esi+34B20h]
     shl eax, 2
-    mov ebx, dword ptr [edx+eax*1]
-    mov edi, dword ptr [ecx+eax*1]
+    mov ebx, dword ptr [edx+eax]
+    mov edi, dword ptr [ecx+eax]
     test ebx, ebx
     mov dword ptr [ebp-14h], edi
     mov dword ptr [ebp-0Ch], ebx
@@ -177484,13 +177143,13 @@ loc_48D390:
     lea eax, [edx+edi*2]
     mov dword ptr [ebp-10h], eax
     mov eax, dword ptr [esi+34B1Ch]
-    cmp byte ptr [eax+ecx*1], 0
+    cmp byte ptr [eax+ecx], 0
     jle loc_48D548
 
 loc_48D44F:
     mov edx, dword ptr [esi+34B28h]
     xor ecx, ecx
-    cmp byte ptr [eax+edx*1], 0
+    cmp byte ptr [eax+edx], 0
     jle loc_48D499
 
 loc_48D45D:
@@ -177510,7 +177169,7 @@ loc_48D45D:
     mov word ptr [ebx+edx*2], ax
     mov edx, dword ptr [esi+34B1Ch]
     mov eax, dword ptr [esi+34B28h]
-    movsx edx, byte ptr [edx+eax*1]
+    movsx edx, byte ptr [edx+eax]
     cmp ecx, edx
     jl loc_48D45D
 
@@ -177518,7 +177177,7 @@ loc_48D499:
     mov eax, dword ptr [esi+34B1Ch]
     mov edx, dword ptr [esi+34B2Ch]
     mov ecx, dword ptr [ebp-4]
-    movsx edx, byte ptr [eax+edx*1]
+    movsx edx, byte ptr [eax+edx]
     inc ecx
     cmp ecx, edx
     mov dword ptr [ebp-4], ecx
@@ -177534,13 +177193,13 @@ loc_48D4B9:
     mov dword ptr [ebp-10h], eax
     mov eax, dword ptr [esi+34B1Ch]
     mov dword ptr [ebp-4], 0
-    cmp byte ptr [eax+ecx*1], 0
+    cmp byte ptr [eax+ecx], 0
     jle loc_48D548
 
 loc_48D4E0:
     mov edx, dword ptr [esi+34B28h]
     xor ecx, ecx
-    cmp byte ptr [eax+edx*1], 0
+    cmp byte ptr [eax+edx], 0
     jle loc_48D52A
 
 loc_48D4EE:
@@ -177558,10 +177217,10 @@ loc_48D4EE:
     mov ebx, dword ptr [ebp-2Ch]
     mov al, byte ptr [eax]
     inc ecx
-    mov byte ptr [edx+ebx*1], al
+    mov byte ptr [edx+ebx], al
     mov edx, dword ptr [esi+34B1Ch]
     mov eax, dword ptr [esi+34B28h]
-    movsx edx, byte ptr [edx+eax*1]
+    movsx edx, byte ptr [edx+eax]
     cmp ecx, edx
     jl loc_48D4EE
 
@@ -177569,7 +177228,7 @@ loc_48D52A:
     mov eax, dword ptr [esi+34B1Ch]
     mov edx, dword ptr [esi+34B2Ch]
     mov ecx, dword ptr [ebp-4]
-    movsx edx, byte ptr [eax+edx*1]
+    movsx edx, byte ptr [eax+edx]
     inc ecx
     cmp ecx, edx
     mov dword ptr [ebp-4], ecx
@@ -180907,7 +180566,7 @@ ALIGN 16
     push edx
     mov edx, dword ptr [sym_6A8EC0]
     mov eax, dword ptr [ecx]
-    lea edx, [esi+edx*1-1]
+    lea edx, [esi+edx-1]
     push edx
     mov edx, dword ptr [sym_6A8EC4]
     push edx
@@ -180937,7 +180596,7 @@ ALIGN 16
     push 1
     push edx
     mov edx, dword ptr [sym_6A8EA4]
-    lea edx, [edx+esi*1-1]
+    lea edx, [edx+esi-1]
     push edx
     call dword ptr [eax+48h]
     pop esi
@@ -182204,20 +181863,20 @@ ALIGN 16
     call ?Identity@Matrix34@@QAEXXZ
     mov eax, dword ptr [ebx]
     shl edi, 2
-    mov ecx, dword ptr [eax+edi*1]
+    mov ecx, dword ptr [eax+edi]
     mov edx, dword ptr [ecx+4]
     mov dword ptr [esi+24h], edx
     mov eax, dword ptr [ebx]
-    mov ecx, dword ptr [eax+edi*1]
+    mov ecx, dword ptr [eax+edi]
     mov edx, dword ptr [ecx+8]
     mov dword ptr [esi+28h], edx
     mov eax, dword ptr [ebx]
-    mov ecx, dword ptr [eax+edi*1]
+    mov ecx, dword ptr [eax+edi]
     mov edx, dword ptr [ecx+0Ch]
     mov dword ptr [esi+2Ch], edx
     mov eax, dword ptr [ebx]
     lea edx, [esi+0Ch]
-    mov ecx, dword ptr [eax+edi*1]
+    mov ecx, dword ptr [eax+edi]
     push ecx
     fld dword ptr [ecx+10h]
     fmul dword ptr [flt_61CFB8]
@@ -182229,7 +181888,7 @@ ALIGN 16
     test eax, eax
     jz loc_492162
     mov ecx, dword ptr [ebx]
-    mov edx, dword ptr [ecx+edi*1]
+    mov edx, dword ptr [ecx+edi]
     mov ecx, dword ptr [edx+14h]
     mov dword ptr [eax], ecx
 
@@ -182530,7 +182189,7 @@ loc_49264D:
     fxch st(1)
     faddp st(1), st
     fcom dword ptr [ebp+18h]
-    fstp dword ptr [edx+ebx*1]
+    fstp dword ptr [edx+ebx]
     fnstsw ax
     test ah, 41h
     jz loc_49269B
@@ -182615,16 +182274,16 @@ loc_492731:
     lea eax, [ebx*4]
     mov ebx, dword ptr [ecx]
     add ecx, 4
-    fld dword ptr [edx+eax*1]
-    mov dword ptr [edx+eax*1], ebx
+    fld dword ptr [edx+eax]
+    mov dword ptr [edx+eax], ebx
     mov ebx, dword ptr [ebp-4]
     fstp dword ptr [ecx-4]
-    mov esi, dword ptr [esi+ecx*1-4]
-    mov edx, dword ptr [ebx+eax*1]
-    mov dword ptr [ebx+eax*1], esi
+    mov esi, dword ptr [esi+ecx-4]
+    mov edx, dword ptr [ebx+eax]
+    mov dword ptr [ebx+eax], esi
     mov esi, dword ptr [ebp+10h]
     mov eax, edi
-    mov dword ptr [esi+ecx*1-4], edx
+    mov dword ptr [esi+ecx-4], edx
     mov edx, dword ptr [ebp+8]
     cmp eax, edx
     jl loc_4926FB
@@ -182689,7 +182348,7 @@ loc_4927BD:
     mov dword ptr [ebp+10h], ecx
 
 loc_4927DE:
-    fld dword ptr [esi+edi*1]
+    fld dword ptr [esi+edi]
     fcomp dword ptr [flt_61CFC0]
     fnstsw ax
     test ah, 1
@@ -182698,7 +182357,7 @@ loc_4927DE:
     jmp loc_4927FD
 
 loc_4927F7:
-    fld dword ptr [esi+edi*1]
+    fld dword ptr [esi+edi]
     fstp dword ptr [ebp+8]
 
 loc_4927FD:
@@ -184140,12 +183799,12 @@ loc_4939C0:
     fcomp dword ptr [flt_61D02C]
     add ecx, eax
     mov eax, dword ptr [ecx]
-    mov dword ptr [ebp+ebx*1-3Ch], eax
+    mov dword ptr [ebp+ebx-3Ch], eax
     mov eax, dword ptr [edx+2Ch]
     mov ecx, dword ptr [ecx+4]
-    mov dword ptr [ebp+ebx*1-38h], ecx
+    mov dword ptr [ebp+ebx-38h], ecx
     xor ecx, ecx
-    mov cx, word ptr [esi+eax*1]
+    mov cx, word ptr [esi+eax]
     fnstsw ax
     test ah, 40h
     jnz loc_493A27
@@ -184164,10 +183823,10 @@ loc_4939C0:
     fxch st(1)
     fmul st, st(2)
     fxch st(1)
-    fadd dword ptr [ebp+ebx*1-3Ch]
-    fstp dword ptr [ebp+ebx*1-3Ch]
-    fadd dword ptr [ebp+ebx*1-38h]
-    fstp dword ptr [ebp+ebx*1-38h]
+    fadd dword ptr [ebp+ebx-3Ch]
+    fstp dword ptr [ebp+ebx-3Ch]
+    fadd dword ptr [ebp+ebx-38h]
+    fstp dword ptr [ebp+ebx-38h]
 
 loc_493A27:
     fld dword ptr [ebp+10h]
@@ -184191,13 +183850,13 @@ loc_493A27:
     fxch st(1)
     fmul dword ptr [ebp-8]
     fxch st(1)
-    fadd dword ptr [ebp+ebx*1-3Ch]
-    fstp dword ptr [ebp+ebx*1-3Ch]
-    fadd dword ptr [ebp+ebx*1-38h]
-    fstp dword ptr [ebp+ebx*1-38h]
+    fadd dword ptr [ebp+ebx-3Ch]
+    fstp dword ptr [ebp+ebx-3Ch]
+    fadd dword ptr [ebp+ebx-38h]
+    fstp dword ptr [ebp+ebx-38h]
 
 loc_493A72:
-    fld dword ptr [ebp+ebx*1-3Ch]
+    fld dword ptr [ebp+ebx-3Ch]
     fld dword ptr [flt_705680]
     fcomp st(1)
     fnstsw ax
@@ -184210,12 +183869,12 @@ loc_493A8D:
     fstp st
 
 loc_493A8F:
-    fld dword ptr [ebp+ebx*1-3Ch]
+    fld dword ptr [ebp+ebx-3Ch]
     fcomp dword ptr [flt_61D038]
     fnstsw ax
     test ah, 1
     jz loc_493ABD
-    fld dword ptr [ebp+ebx*1-3Ch]
+    fld dword ptr [ebp+ebx-3Ch]
     fld dword ptr [flt_7055C8]
     fcomp st(1)
     fnstsw ax
@@ -184228,7 +183887,7 @@ loc_493ABB:
     fstp st
 
 loc_493ABD:
-    fld dword ptr [ebp+ebx*1-38h]
+    fld dword ptr [ebp+ebx-38h]
     fld dword ptr [flt_705680]
     fcomp st(1)
     fnstsw ax
@@ -184243,12 +183902,12 @@ loc_493ADE:
     fstp dword ptr [dword_705684]
 
 loc_493AE4:
-    fld dword ptr [ebp+ebx*1-38h]
+    fld dword ptr [ebp+ebx-38h]
     fcomp dword ptr [flt_61D038]
     fnstsw ax
     test ah, 1
     jz loc_493B1E
-    fld dword ptr [ebp+ebx*1-38h]
+    fld dword ptr [ebp+ebx-38h]
     fld dword ptr [flt_7055C8]
     fcomp st(1)
     fnstsw ax
@@ -184263,10 +183922,10 @@ loc_493B18:
     fstp dword ptr [dword_7055CC]
 
 loc_493B1E:
-    fld dword ptr [ebp+ebx*1-3Ch]
+    fld dword ptr [ebp+ebx-3Ch]
     fmul dword ptr [flt_61D03C]
     call __ftol
-    fld dword ptr [ebp+ebx*1-38h]
+    fld dword ptr [ebp+ebx-38h]
     fmul dword ptr [flt_61D03C]
     mov word ptr [edi], ax
     call __ftol
@@ -184314,7 +183973,7 @@ loc_493BA8:
     mov eax, dword ptr [ebp-8]
 
 loc_493BAB:
-    lea eax, [ecx+eax*1-4]
+    lea eax, [ecx+eax-4]
     mov ebx, dword ptr [eax]
     mov dword ptr [ecx-4], ebx
     mov ebx, dword ptr [eax+4]
@@ -187773,8 +187432,8 @@ loc_496E4F:
     lea eax, [ebx*4]
     add edx, 4
     mov ebx, dword ptr [ebp-8]
-    mov ecx, dword ptr [ebp+eax*1-0CCh]
-    mov eax, dword ptr [ebp+eax*1-8Ch]
+    mov ecx, dword ptr [ebp+eax-0CCh]
+    mov eax, dword ptr [ebp+eax-8Ch]
     mov dword ptr [edx-4], ecx
     xor eax, 1
     mov esi, ecx
@@ -189013,7 +188672,7 @@ loc_498262:
     mov esi, dword ptr [eax+98h]
     mov eax, dword ptr [ebp-18h]
     xor ecx, ecx
-    mov cl, byte ptr [edx+edi*1]
+    mov cl, byte ptr [edx+edi]
     add esi, eax
     mov eax, ecx
     dec ecx
@@ -189214,7 +188873,7 @@ loc_49841E:
     fxch st(1)
     fmul st, st(2)
     fxch st(1)
-    mov esi, dword ptr [esi+edx*1]
+    mov esi, dword ptr [esi+edx]
     inc ecx
     fst dword ptr [ebp-10h]
     fadd dword ptr [esi]
@@ -189229,7 +188888,7 @@ loc_49841E:
     fstp dword ptr [ebp-10h]
     mov esi, dword ptr [esi+8]
     fld dword ptr [ebp-10h]
-    mov edx, dword ptr [esi+edx*1]
+    mov edx, dword ptr [esi+edx]
     mov esi, dword ptr [ebp-1Ch]
     fld dword ptr [ebp-10h]
     fxch st(1)
@@ -189244,17 +188903,17 @@ loc_49841E:
     fstp dword ptr [edx]
     mov edx, dword ptr [ebx+0Ch]
     fxch st(2)
-    fadd dword ptr [eax+edx*1+0Ch]
-    lea edx, [eax+edx*1+0Ch]
+    fadd dword ptr [eax+edx+0Ch]
+    lea edx, [eax+edx+0Ch]
     fstp dword ptr [edx]
     mov edx, dword ptr [ebx+0Ch]
     fxch st(1)
-    fadd dword ptr [eax+edx*1+8]
-    lea edx, [eax+edx*1+8]
+    fadd dword ptr [eax+edx+8]
+    lea edx, [eax+edx+8]
     fstp dword ptr [edx]
     mov edx, dword ptr [ebx+0Ch]
-    fadd dword ptr [eax+edx*1+14h]
-    lea edx, [eax+edx*1+14h]
+    fadd dword ptr [eax+edx+14h]
+    lea edx, [eax+edx+14h]
     add eax, 18h
     cmp ecx, esi
     fstp dword ptr [edx]
@@ -189335,7 +188994,7 @@ loc_49855E:
 
 loc_498575:
     mov edx, dword ptr [esi+4]
-    mov eax, dword ptr [edi+edx*1+20h]
+    mov eax, dword ptr [edi+edx+20h]
     test eax, eax
     jz loc_4985B1
     push eax
@@ -189344,13 +189003,13 @@ loc_498575:
     cmp eax, -1
     jz loc_498596
     mov ecx, dword ptr [esi+4]
-    mov dword ptr [edi+ecx*1+24h], eax
+    mov dword ptr [edi+ecx+24h], eax
     jmp loc_4985B1
 
 loc_498596:
     mov edx, dword ptr [esi+4]
-    mov ecx, dword ptr [edi+edx*1]
-    lea eax, [edi+edx*1]
+    mov ecx, dword ptr [edi+edx]
+    lea eax, [edi+edx]
     push ecx
     mov edx, dword ptr [eax+20h]
     push edx
@@ -190181,7 +189840,7 @@ loc_498DE0:
 loc_498E30:
     mov eax, dword ptr [ebx+34h]
     xor ecx, ecx
-    mov cl, byte ptr [edx+eax*1]
+    mov cl, byte ptr [edx+eax]
     cmp ecx, edi
     jnz loc_498E8A
     mov eax, dword ptr [ebx+30h]
@@ -190236,7 +189895,7 @@ loc_498E92:
     mov ecx, dword ptr [ebp+14h]
 
 loc_498EA6:
-    cmp byte ptr [esi+eax*1], 0
+    cmp byte ptr [esi+eax], 0
     jz loc_498EB2
     mov dword ptr [ecx], eax
     inc ebx
@@ -190311,7 +189970,7 @@ loc_498F5D:
     mov eax, dword ptr [ebp+18h]
     add esi, 4
     cmp edi, eax
-    mov byte ptr [edi+ecx*1+1], dl
+    mov byte ptr [edi+ecx+1], dl
     mov ebx, dword ptr [esi-4]
     jl loc_498F0F
 
@@ -192347,7 +192006,7 @@ loc_49AC21:
     test ecx, ecx
     jz loc_49AC3F
     mov eax, dword ptr [ebx+0DCh]
-    mov dword ptr [edi+eax*1+30h], -0DFDFE0h
+    mov dword ptr [edi+eax+30h], -0DFDFE0h
 
 loc_49AC3F:
     mov ecx, dword ptr [?VehicleListPtr@@3PAVmmVehList@@A]
@@ -192562,7 +192221,7 @@ loc_49AEA0:
     add ecx, edx
     call ?SetShape@mmVehicleForm@@QAEXPAD00PAVVector3@@@Z
     mov ecx, dword ptr [ebx+0DCh]
-    mov eax, dword ptr [esi+ecx*1+20h]
+    mov eax, dword ptr [esi+ecx+20h]
     test eax, eax
     jz loc_49AF0B
     fld dword ptr [eax+38h]
@@ -192577,7 +192236,7 @@ loc_49AF0B:
     lea eax, [ecx+edx*4]
     mov ecx, dword ptr [ebx+0DCh]
     mov edx, esi
-    mov dword ptr [esi+ecx*1+2Ch], eax
+    mov dword ptr [esi+ecx+2Ch], eax
     mov eax, dword ptr [ebx+0DCh]
     add edx, eax
     mov eax, dword ptr [ebx+0CCh]
@@ -192587,19 +192246,19 @@ loc_49AF0B:
     call ?AddChild@asNode@@QAEHPAV1@@Z
     mov eax, dword ptr [ebx+0CCh]
     xor ecx, ecx
-    mov dword ptr [edi+eax*1+90h], ecx
-    mov dword ptr [edi+eax*1+94h], 3F800000h
-    lea eax, [edi+eax*1+90h]
+    mov dword ptr [edi+eax+90h], ecx
+    mov dword ptr [edi+eax+94h], 3F800000h
+    lea eax, [edi+eax+90h]
     push 78h
     push 3F490FDBh
     mov dword ptr [eax+8], ecx
     mov edx, dword ptr [ebx+0CCh]
-    mov dword ptr [edi+edx*1+9Ch], ecx
-    mov dword ptr [edi+edx*1+0A0h], 41400000h
-    lea eax, [edi+edx*1+9Ch]
+    mov dword ptr [edi+edx+9Ch], ecx
+    mov dword ptr [edi+edx+0A0h], 41400000h
+    lea eax, [edi+edx+9Ch]
     mov dword ptr [eax+8], 41C00000h
     mov eax, dword ptr [ebx+0CCh]
-    mov dword ptr [edi+eax*1+0D0h], ecx
+    mov dword ptr [edi+eax+0D0h], ecx
     mov dword ptr [ebp-44h], ecx
     mov dword ptr [ebp-3Ch], ecx
     lea ecx, [ebp-44h]
@@ -192614,7 +192273,7 @@ loc_49AF0B:
     mov edx, dword ptr [ebx+0CCh]
     mov eax, edi
     add esi, 54h
-    mov dword ptr [edi+edx*1+0D0h], 3F800000h
+    mov dword ptr [edi+edx+0D0h], 3F800000h
     mov ecx, dword ptr [ebx+0CCh]
     add eax, ecx
     add edi, 0F8h
@@ -193162,7 +192821,7 @@ loc_49B42C:
 loc_49B65B:
     mov edx, dword ptr [ebx+128h]
     push 0
-    mov ecx, dword ptr [esi+edx*1]
+    mov ecx, dword ptr [esi+edx]
     call ?SetReadWrite@UISlider@@QAEXH@Z
     add esi, 4
     cmp esi, 10h
@@ -207218,7 +206877,7 @@ ALIGN 16
     mov edx, dword ptr [esi+0A4h]
     mov eax, dword ptr [esi+0A8h]
     mov edi, dword ptr [esi+0A0h]
-    lea ecx, [eax+edx*1]
+    lea ecx, [eax+edx]
     cmp ecx, edi
     jle loc_4A6185
     push ebx
@@ -210798,7 +210457,7 @@ loc_4A926A:
     mov edx, dword ptr [ebx+0C0h]
     lea ecx, [ebp-34h]
     push ecx
-    mov ecx, dword ptr [edx+esi*1]
+    mov ecx, dword ptr [edx+esi]
     call ?SetString@UIButton@@QAEXPAULocString@@@Z
     mov dword ptr [edi], 0
     add esi, 4
@@ -210825,7 +210484,7 @@ ALIGN 16
 loc_4A92AD:
     mov eax, dword ptr [ebx+0C0h]
     push edi
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     call ?SetString@UIButton@@QAEXPAULocString@@@Z
     add esi, 4
     add edi, 28h
@@ -214200,11 +213859,11 @@ loc_4AC5CD:
     lea edx, [eax+eax*2]
     shl edx, 3
     mov ecx, dword ptr [edi]
-    mov eax, dword ptr [ebx+edx*1+14h]
+    mov eax, dword ptr [ebx+edx+14h]
     mov dword ptr [ebp+0Ch], ecx
     fld dword ptr [ebp+0Ch]
     fcomp dword ptr [flt_61E2C0]
-    lea esi, [ebx+edx*1+14h]
+    lea esi, [ebx+edx+14h]
     mov ecx, dword ptr [ebp+14h]
     mov dword ptr [ebp+8], eax
     fnstsw ax
@@ -214225,7 +213884,7 @@ loc_4AC5CD:
 
 loc_4AC622:
     mov eax, dword ptr [ecx]
-    fld dword ptr [ebx+edx*1+8]
+    fld dword ptr [ebx+edx+8]
     mov dword ptr [ebp+0Ch], eax
     fld dword ptr [ebp+0Ch]
     fcomp dword ptr [flt_61E2C0]
@@ -214248,7 +213907,7 @@ loc_4AC622:
 
 loc_4AC667:
     mov eax, dword ptr [ebp+18h]
-    fld dword ptr [ebx+edx*1+0Ch]
+    fld dword ptr [ebx+edx+0Ch]
     mov eax, dword ptr [eax]
     mov dword ptr [ebp+0Ch], eax
     fld dword ptr [ebp+0Ch]
@@ -214272,7 +213931,7 @@ loc_4AC667:
 
 loc_4AC6AB:
     mov eax, dword ptr [ebp+1Ch]
-    fld dword ptr [ebx+edx*1+10h]
+    fld dword ptr [ebx+edx+10h]
     mov eax, dword ptr [eax]
     mov dword ptr [ebp+0Ch], eax
     fld dword ptr [ebp+0Ch]
@@ -214316,7 +213975,7 @@ loc_4AC713:
     mov esi, dword ptr [ebp-4]
     fcomp dword ptr [flt_61E2C0]
     mov eax, dword ptr [esi]
-    fld dword ptr [eax+edx*1+8]
+    fld dword ptr [eax+edx+8]
     fnstsw ax
     test ah, 40h
     jnz loc_4AC73C
@@ -214335,7 +213994,7 @@ loc_4AC73E:
     mov eax, dword ptr [esi]
     fld dword ptr [ecx]
     fcomp dword ptr [flt_61E2C0]
-    fld dword ptr [eax+edx*1+0Ch]
+    fld dword ptr [eax+edx+0Ch]
     fnstsw ax
     test ah, 40h
     jnz loc_4AC767
@@ -214354,7 +214013,7 @@ loc_4AC769:
     mov eax, dword ptr [esi]
     fld dword ptr [ecx]
     fcomp dword ptr [flt_61E2C0]
-    fld dword ptr [eax+edx*1+10h]
+    fld dword ptr [eax+edx+10h]
     fnstsw ax
     test ah, 40h
     jnz loc_4AC79E
@@ -217654,7 +217313,7 @@ loc_4AE9F5:
     mov eax, dword ptr [ebx+3Ch]
     mov ecx, dword ptr [ebp+8]
     lea edx, [esi*4]
-    mov eax, dword ptr [eax+edx*1]
+    mov eax, dword ptr [eax+edx]
     mov dword ptr [eax+40h], ecx
     mov ecx, dword ptr [ebp+0Ch]
     mov dword ptr [eax+34h], ecx
@@ -217662,7 +217321,7 @@ loc_4AE9F5:
     mov dword ptr [eax+38h], ecx
     mov dword ptr [eax+3Ch], 1
     mov eax, dword ptr [ebx+3Ch]
-    mov eax, dword ptr [eax+edx*1]
+    mov eax, dword ptr [eax+edx]
     pop edi
     pop esi
     pop ebx
@@ -220309,19 +219968,19 @@ ALIGN 16
     mov ecx, dword ptr [esi+0E8h]
     push edi
     lea edi, [eax*4]
-    mov ecx, dword ptr [ecx+edi*1]
+    mov ecx, dword ptr [ecx+edi]
     call ?Enable@UIMenu@@QAEXXZ
     mov edx, dword ptr [esi+0E8h]
-    mov ecx, dword ptr [edx+edi*1]
+    mov ecx, dword ptr [edx+edi]
     call ?ClearWidgets@UIMenu@@QAEXXZ
     mov eax, dword ptr [esi+0E8h]
-    mov ecx, dword ptr [eax+edi*1]
+    mov ecx, dword ptr [eax+edi]
     push ecx
     mov ecx, esi
     call ?AdjustPopupCard@MenuManager@@QAEXPAVUIMenu@@@Z
     mov edx, dword ptr [esi+0E8h]
     mov ecx, esi
-    mov eax, dword ptr [edx+edi*1]
+    mov eax, dword ptr [edx+edi]
     push eax
     call ?CheckBG@MenuManager@@QAEXPAVUIMenu@@@Z
     mov eax, dword ptr [esi+0F0h]
@@ -229683,7 +229342,7 @@ ALIGN 16
     mov ecx, dword ptr [?CurrentPipe@agiPipeline@@2PAV1@A]
     push edx
     push edi
-    lea edi, [edx+edx*1]
+    lea edi, [edx+edx]
     mov esi, dword ptr [ecx]
     push edi
     jmp loc_4B77E3
@@ -230567,7 +230226,7 @@ loc_4B8148:
 loc_4B814B:
     mov edx, dword ptr [?GameInputPtr@@3PAVmmInput@@A]
     mov eax, dword ptr [edx+24h]
-    mov edx, dword ptr [eax+ecx*1+14h]
+    mov edx, dword ptr [eax+ecx+14h]
     add eax, ecx
     test edx, edx
     jz loc_4B816B
@@ -230609,8 +230268,8 @@ loc_4B816B:
     add ecx, edx
     call ?SetPosition@UIControlWidget@@QAEXMMMM@Z
     mov eax, dword ptr [esi+98h]
-    mov edx, dword ptr [edi+eax*1]
-    lea ecx, [edi+eax*1]
+    mov edx, dword ptr [edi+eax]
+    lea ecx, [edi+eax]
     call dword ptr [edx+44h]
     mov ecx, dword ptr [esi+7Ch]
     mov eax, dword ptr [ebp-4]
@@ -230626,7 +230285,7 @@ loc_4B81FB:
     mov edx, dword ptr [esi+98h]
     mov eax, dword ptr [ebp-0Ch]
     inc eax
-    lea ecx, [edx+edi*1]
+    lea ecx, [edx+edi]
     mov dword ptr [ebp-0Ch], eax
     mov eax, dword ptr [ecx]
     call dword ptr [eax+48h]
@@ -232173,7 +231832,7 @@ loc_4B93BC:
 loc_4B93BF:
     mov eax, dword ptr [esi+0C8h]
     mov ecx, dword ptr [ebp-10h]
-    mov eax, dword ptr [eax+ecx*1]
+    mov eax, dword ptr [eax+ecx]
     test eax, eax
     jz loc_4B93D8
     push eax
@@ -232198,7 +231857,7 @@ loc_4B93D8:
     mov edx, dword ptr [ebp-10h]
     add esp, 4
     mov byte ptr [ebp-4], 0
-    mov dword ptr [ecx+edx*1], eax
+    mov dword ptr [ecx+edx], eax
     mov eax, dword ptr [ebp-1Ch]
     push eax
     call ?arts_operator_delete@@YAXPAX@Z
@@ -232218,7 +231877,7 @@ loc_4B93D8:
     mov esi, edi
     mov edi, dword ptr [ebp-10h]
     mov eax, ecx
-    mov edi, dword ptr [edx+edi*1]
+    mov edi, dword ptr [edx+edi]
     shr ecx, 2
     rep movsd
     mov ecx, eax
@@ -232277,7 +231936,7 @@ ALIGN 16
     jge loc_4B951F
     push esi
     lea esi, [eax*4]
-    mov eax, dword ptr [esi+edx*1]
+    mov eax, dword ptr [esi+edx]
     test eax, eax
     jz loc_4B94E5
     push eax
@@ -232295,11 +231954,11 @@ loc_4B94E5:
     mov ecx, dword ptr [ebx+0C8h]
     mov edx, dword ptr [ebp+8]
     add esp, 4
-    mov dword ptr [ecx+esi*1], eax
+    mov dword ptr [ecx+esi], eax
     mov eax, dword ptr [ebx+0C8h]
     push edx
     push offset asc_641D94
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     push ecx
     call _sprintf
     add esp, 0Ch
@@ -234333,7 +233992,7 @@ loc_4BAB14:
     test byte ptr [esi+0E4h], 2
     jz loc_4BAB4D
     mov ecx, dword ptr [ebp-4]
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     jmp loc_4BAB50
 
 loc_4BAB4D:
@@ -235668,7 +235327,7 @@ loc_4BB996:
 
 loc_4BB9CB:
     test byte ptr [esi+100h], 1
-    lea eax, [edi+edi*1]
+    lea eax, [edi+edi]
     jnz loc_4BB9D9
     mov eax, edi
 
@@ -235689,7 +235348,7 @@ loc_4BB9D9:
     push eax
     call dword ptr [edx+40h]
     test byte ptr [esi+100h], 2
-    lea eax, [edi+edi*1]
+    lea eax, [edi+edi]
     jnz loc_4BBA18
     mov eax, edi
 
@@ -238300,7 +237959,7 @@ loc_4BD610:
     jz loc_4BD656
     mov eax, dword ptr [esi+0F0h]
     test eax, eax
-    lea eax, [edx+edx*1]
+    lea eax, [edx+edx]
     jnz loc_4BD629
     mov eax, edx
 
@@ -238385,7 +238044,7 @@ loc_4BD6E1:
     jz loc_4BD71B
     mov eax, dword ptr [esi+0F4h]
     test eax, eax
-    lea eax, [edx+edx*1]
+    lea eax, [edx+edx]
     jnz loc_4BD6FA
     mov eax, edx
 
@@ -241500,7 +241159,7 @@ loc_4BF795:
     mov eax, ecx
 
 loc_4BF79B:
-    lea ecx, [eax+edx*1]
+    lea ecx, [eax+edx]
     mov edx, dword ptr [esi+74h]
     mov dword ptr [esi+70h], ecx
     mov dword ptr [esi+6Ch], eax
@@ -241977,7 +241636,7 @@ loc_4BFC07:
     jz loc_4BFC52
     mov eax, dword ptr [esi+98h]
     test eax, eax
-    lea eax, [edx+edx*1]
+    lea eax, [edx+edx]
     jnz loc_4BFC1D
     mov eax, edx
 
@@ -242067,7 +241726,7 @@ loc_4BFCD4:
     jz loc_4BFD1B
     mov eax, dword ptr [esi+9Ch]
     test eax, eax
-    lea eax, [edx+edx*1]
+    lea eax, [edx+edx]
     jnz loc_4BFCF2
     mov eax, edx
 
@@ -244027,8 +243686,8 @@ ALIGN 16
 
 loc_4C13D3:
     mov eax, dword ptr [esi+34h]
-    lea ecx, [eax+edi*1]
-    mov eax, dword ptr [eax+edi*1+28h]
+    lea ecx, [eax+edi]
+    mov eax, dword ptr [eax+edi+28h]
     test eax, eax
     jz loc_4C13E6
     call ?AirlinerSwap@mmAnimSpline@@QAEXXZ
@@ -244061,8 +243720,8 @@ ALIGN 16
 
 loc_4C1413:
     mov eax, dword ptr [esi+34h]
-    lea ecx, [eax+edi*1]
-    mov eax, dword ptr [eax+edi*1+20h]
+    lea ecx, [eax+edi]
+    mov eax, dword ptr [eax+edi+20h]
     test eax, eax
     jz loc_4C1426
     call ?UFOSwap@mmAnimSpline@@QAEXXZ
@@ -246898,7 +246557,7 @@ loc_4C364C:
     repne scasb
     not ecx
     dec ecx
-    lea eax, [edx+ecx*1+0Ah]
+    lea eax, [edx+ecx+0Ah]
     push eax
     call ?arts_operator_new@@YAPAXI@Z
     mov ecx, dword ptr [ebx+4]
@@ -247650,18 +247309,18 @@ loc_4C3DF3:
     push 0
     push offset asc_6425A4
     mov byte ptr [ebp-4], 0
-    mov dword ptr [edi+ecx*1], eax
+    mov dword ptr [edi+ecx], eax
     mov edx, dword ptr [esi+24h]
-    mov ecx, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [edi+edx]
     call ?Load@AudSound@@QAEHPADH@Z
     mov eax, dword ptr [esi+24h]
     push -1
     push 0
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     call ?SetVolume@AudSound@@QAEXMH@Z
     mov ecx, dword ptr [esi+24h]
     push 11h
-    mov ecx, dword ptr [edi+ecx*1]
+    mov ecx, dword ptr [edi+ecx]
     call ?SetPriority@AudSound@@QAEXH@Z
     push 0B8h
     call ?arts_operator_new@@YAPAXI@Z
@@ -247687,18 +247346,18 @@ loc_4C3E5A:
     push 0
     push offset asc_6425B0
     mov byte ptr [ebp-4], 0
-    mov dword ptr [edi+edx*1], eax
+    mov dword ptr [edi+edx], eax
     mov eax, dword ptr [esi+28h]
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     call ?Load@AudSound@@QAEHPADH@Z
     mov ecx, dword ptr [esi+28h]
     push -1
     push 0
-    mov ecx, dword ptr [edi+ecx*1]
+    mov ecx, dword ptr [edi+ecx]
     call ?SetVolume@AudSound@@QAEXMH@Z
     mov edx, dword ptr [esi+28h]
     push 11h
-    mov ecx, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [edi+edx]
     call ?SetPriority@AudSound@@QAEXH@Z
     mov eax, dword ptr [ebp-10h]
     add edi, 4
@@ -247750,7 +247409,7 @@ ALIGN 16
 
 loc_4C3F15:
     mov ecx, dword ptr [edi+24h]
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     test ecx, ecx
     jz loc_4C3F25
     mov edx, dword ptr [ecx]
@@ -247759,7 +247418,7 @@ loc_4C3F15:
 
 loc_4C3F25:
     mov eax, dword ptr [edi+28h]
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     test ecx, ecx
     jz loc_4C3F35
     mov edx, dword ptr [ecx]
@@ -247863,7 +247522,7 @@ loc_4C3FF6:
     mov ax, di
     pop edi
     pop esi
-    mov byte ptr [ecx+ebx*1], 1
+    mov byte ptr [ecx+ebx], 1
     pop ebx
     pop ebp
     retn 4
@@ -247902,7 +247561,7 @@ loc_4C4039:
 
 loc_4C4060:
     mov edx, dword ptr [esi+34h]
-    mov byte ptr [edx+edi*1], 0
+    mov byte ptr [edx+edi], 0
     pop edi
     pop esi
     pop ebp
@@ -247952,7 +247611,7 @@ loc_4C40BD:
     movsx esi, di
     fld dword ptr [edx+418h]
     shl esi, 2
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     fld dword ptr [ecx+418h]
     fcompp
     fnstsw ax
@@ -247961,7 +247620,7 @@ loc_4C40BD:
     call ?UnAssignSounds@mmBridgeSet@@QAEXXZ
     mov eax, dword ptr [ebx+20h]
     mov ecx, dword ptr [ebp+8]
-    mov dword ptr [eax+esi*1], ecx
+    mov dword ptr [eax+esi], ecx
     mov ax, di
     pop edi
     pop esi
@@ -247991,7 +247650,7 @@ ALIGN 16
 
 loc_4C411F:
     movsx esi, ax
-    cmp byte ptr [esi+ecx*1], 0
+    cmp byte ptr [esi+ecx], 0
     jz loc_4C413F
     inc eax
     cmp ax, dx
@@ -248022,7 +247681,7 @@ ALIGN 16
 
 loc_4C4163:
     mov eax, dword ptr [edi+20h]
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     test ecx, ecx
     jz loc_4C4172
     call ?UpdateAudio@mmBridgeSet@@QAEXXZ
@@ -248046,12 +247705,12 @@ ALIGN 16
     movsx eax, word ptr [ebp+8]
     mov edx, dword ptr [ecx+28h]
     shl eax, 2
-    mov edx, dword ptr [edx+eax*1]
+    mov edx, dword ptr [edx+eax]
     push edx
     mov edx, dword ptr [ecx+24h]
     mov ecx, dword ptr [ecx+20h]
-    mov edx, dword ptr [edx+eax*1]
-    mov ecx, dword ptr [ecx+eax*1]
+    mov edx, dword ptr [edx+eax]
+    mov ecx, dword ptr [ecx+eax]
     push edx
     call ?SetSoundPtrs@mmBridgeSet@@QAEXPAVAudSound@@0@Z
     pop ebp
@@ -248256,7 +247915,7 @@ ALIGN 16
     mov ebx, 2648h
 
 loc_4C43E0:
-    mov ecx, dword ptr [eax+ebx*1]
+    mov ecx, dword ptr [eax+ebx]
     mov esi, dword ptr [edi+4]
     mov eax, dword ptr [ecx]
     call dword ptr [eax+1Ch]
@@ -249455,12 +249114,12 @@ loc_4C51FF:
     mov ecx, dword ptr [esi+0D0h]
     lea eax, [edi*4]
     mov dword ptr [ebp+18h], eax
-    fld dword ptr [ebx+ecx*1+10h]
-    fld dword ptr [ebx+ecx*1+14h]
-    fsub dword ptr [ecx+ebx*1+8]
+    fld dword ptr [ebx+ecx+10h]
+    fld dword ptr [ebx+ecx+14h]
+    fsub dword ptr [ecx+ebx+8]
     fxch st(1)
-    fsub dword ptr [ecx+ebx*1+4]
-    lea eax, [ebx+ecx*1+0Ch]
+    fsub dword ptr [ecx+ebx+4]
+    lea eax, [ebx+ecx+0Ch]
     add ecx, ebx
     fld dword ptr [eax]
     fsub dword ptr [ecx]
@@ -249480,11 +249139,11 @@ loc_4C51FF:
     mov eax, dword ptr [ebp+18h]
     inc edi
     add ebx, 0Ch
-    fstp dword ptr [eax+edx*1]
+    fstp dword ptr [eax+edx]
     mov ecx, dword ptr [esi+4Ch]
     mov edx, dword ptr [esi+0ACh]
     dec edx
-    fld dword ptr [eax+ecx*1]
+    fld dword ptr [eax+ecx]
     fadd dword ptr [esi+50h]
     cmp edi, edx
     fstp dword ptr [esi+50h]
@@ -250891,12 +250550,12 @@ loc_4C61ED:
     shl esi, 2
     lea edx, [edx+edx*2]
     fld dword ptr [ecx+edx*4+8]
-    fsub dword ptr [edi+ecx*1+8]
+    fsub dword ptr [edi+ecx+8]
     fld dword ptr [ecx+edx*4+4]
     lea eax, [ecx+edx*4]
-    fsub dword ptr [edi+ecx*1+4]
+    fsub dword ptr [edi+ecx+4]
     fld dword ptr [eax]
-    fsub dword ptr [edi+ecx*1]
+    fsub dword ptr [edi+ecx]
     lea ecx, [ebp-18h]
     fstp dword ptr [ebp-18h]
     fstp dword ptr [ebp-14h]
@@ -250904,10 +250563,10 @@ loc_4C61ED:
     call ?Mag@Vector3@@QBEMXZ
     mov eax, dword ptr [ebx+38h]
     add edi, 0Ch
-    fstp dword ptr [esi+eax*1]
+    fstp dword ptr [esi+eax]
     mov ecx, dword ptr [ebx+38h]
     mov eax, dword ptr [ebp+14h]
-    fld dword ptr [esi+ecx*1]
+    fld dword ptr [esi+ecx]
     fadd dword ptr [ebx+3Ch]
     mov esi, dword ptr [ebp+18h]
     cmp esi, eax
@@ -250967,7 +250626,7 @@ loc_4C62D5:
     mov ecx, dword ptr [ebp+0Ch]
     push edx
     push ecx
-    lea ecx, [esi+eax*1]
+    lea ecx, [esi+eax]
     call ?Init@mmAnimTrainCar@@QAEXPAD0@Z
     mov ecx, dword ptr [ebp+14h]
     lea edx, [ebp+8]
@@ -250989,7 +250648,7 @@ loc_4C62D5:
     mov eax, dword ptr [ebx+0F8h]
     mov ecx, dword ptr [ebx+0A0h]
     inc edi
-    fld dword ptr [esi+eax*1+44h]
+    fld dword ptr [esi+eax+44h]
     fsub dword ptr [flt_61F5DC]
     add esi, 58h
     cmp edi, ecx
@@ -251038,8 +250697,8 @@ loc_4C6363:
 
 loc_4C6396:
     mov eax, dword ptr [esi+0F8h]
-    mov edx, dword ptr [eax+ebx*1]
-    lea ecx, [eax+ebx*1]
+    mov edx, dword ptr [eax+ebx]
+    lea ecx, [eax+ebx]
     call dword ptr [edx+48h]
     mov eax, dword ptr [esi+0A0h]
     inc edi
@@ -251584,7 +251243,7 @@ loc_4C68C0:
     mov edx, dword ptr [edi+38h]
     shl esi, 2
     fld st(1)
-    fld dword ptr [esi+edx*1]
+    fld dword ptr [esi+edx]
     fxch st(2)
     fmul dword ptr [ebp-10h]
     fxch st(2)
@@ -251637,7 +251296,7 @@ loc_4C68C0:
     mov ecx, dword ptr [edi+38h]
     fld st
     fld st(1)
-    fld dword ptr [esi+ecx*1]
+    fld dword ptr [esi+ecx]
     fxch st(2)
     fmul dword ptr [ebp-10h]
     fxch st(2)
@@ -254533,7 +254192,7 @@ loc_4C8F72:
     dec ecx
     lea edi, [ebp-34h]
     xor esi, esi
-    lea edx, [ebp+ecx*1-35h]
+    lea edx, [ebp+ecx-35h]
     or ecx, -1
     repne scasb
     not ecx
@@ -254635,7 +254294,7 @@ loc_4C9093:
     movsx ecx, ax
     shl ecx, 5
     inc eax
-    lea edx, [ebp+ecx*1-434h]
+    lea edx, [ebp+ecx-434h]
     mov word ptr [ebx+126h], ax
     or ecx, -1
     xor eax, eax
@@ -256208,19 +255867,19 @@ ALIGN 16
 loc_4CA168:
     mov edx, dword ptr [edi+9054h]
     shl ebx, 2
-    mov ecx, dword ptr [ebx+edx*1]
+    mov ecx, dword ptr [ebx+edx]
     test ecx, ecx
     jz loc_4CA19A
     call ?LockIfResident@mmBoundTemplate@@QAEHXZ
     test eax, eax
     jz loc_4CA18C
     mov eax, dword ptr [edi+9054h]
-    mov ebx, dword ptr [ebx+eax*1]
+    mov ebx, dword ptr [ebx+eax]
     jmp loc_4CA19C
 
 loc_4CA18C:
     mov ecx, dword ptr [edi+9054h]
-    mov ecx, dword ptr [ebx+ecx*1]
+    mov ecx, dword ptr [ebx+ecx]
     call ?PageIn@mmBoundTemplate@@QAEXXZ
 
 loc_4CA19A:
@@ -260296,11 +259955,11 @@ ALIGN 16
     push esi
     mov esi, dword ptr [ebp+0Ch]
     shl eax, 2
-    mov dword ptr [edx+eax*1], esi
+    mov dword ptr [edx+eax], esi
     mov ecx, dword ptr [ecx+90h]
     mov edx, dword ptr [ebp+10h]
     pop esi
-    mov dword ptr [ecx+eax*1], edx
+    mov dword ptr [ecx+eax], edx
     pop ebp
     retn 0Ch
 ?SetPlayer@mmPlayerDirectory@@QAEXHPAD0@Z ENDP
@@ -260474,7 +260133,7 @@ loc_4CF188:
     lea ecx, [edi+eax*4]
     mov ebx, dword ptr [ebx+eax*4]
     inc eax
-    mov dword ptr [edx+ecx*1], ebx
+    mov dword ptr [edx+ecx], ebx
     mov ebx, dword ptr [esi+90h]
     mov ebx, dword ptr [ebx+eax*4-4]
     mov dword ptr [ecx], ebx
@@ -260487,8 +260146,8 @@ loc_4CF1B1:
     mov edx, dword ptr [ebp-4]
     mov ecx, dword ptr [ebp-8]
     shl eax, 2
-    mov dword ptr [ebx+eax*1], edx
-    mov dword ptr [edi+eax*1], ecx
+    mov dword ptr [ebx+eax], edx
+    mov dword ptr [edi+eax], ecx
     mov ecx, dword ptr [esi+88h]
     mov edx, dword ptr [esi+8Ch]
     inc ecx
@@ -260841,7 +260500,7 @@ loc_4CF622:
     mov ebx, dword ptr [esi+8Ch]
     add eax, 4
     mov ebx, dword ptr [ebx+ecx*4]
-    mov dword ptr [edx+eax*1-4], ebx
+    mov dword ptr [edx+eax-4], ebx
     mov ebx, dword ptr [esi+90h]
     mov ebx, dword ptr [ebx+ecx*4]
     mov dword ptr [eax-4], ebx
@@ -268712,19 +268371,19 @@ ALIGN 16
 loc_4D5E3E:
     mov edx, dword ptr [esi+9054h]
     shl edi, 2
-    mov ecx, dword ptr [edx+edi*1]
+    mov ecx, dword ptr [edx+edi]
     test ecx, ecx
     jz loc_4D5E70
     call ?LockIfResident@mmBoundTemplate@@QAEHXZ
     test eax, eax
     jz loc_4D5E62
     mov eax, dword ptr [esi+9054h]
-    mov eax, dword ptr [eax+edi*1]
+    mov eax, dword ptr [eax+edi]
     jmp loc_4D5E72
 
 loc_4D5E62:
     mov ecx, dword ptr [esi+9054h]
-    mov ecx, dword ptr [ecx+edi*1]
+    mov ecx, dword ptr [ecx+edi]
     call ?PageIn@mmBoundTemplate@@QAEXXZ
 
 loc_4D5E70:
@@ -268881,19 +268540,19 @@ loc_4D5FCB:
 loc_4D5FFD:
     mov eax, dword ptr [esi+9054h]
     shl edi, 2
-    mov ecx, dword ptr [eax+edi*1]
+    mov ecx, dword ptr [eax+edi]
     test ecx, ecx
     jz loc_4D602F
     call ?LockIfResident@mmBoundTemplate@@QAEHXZ
     test eax, eax
     jz loc_4D6021
     mov ecx, dword ptr [esi+9054h]
-    mov eax, dword ptr [ecx+edi*1]
+    mov eax, dword ptr [ecx+edi]
     jmp loc_4D6031
 
 loc_4D6021:
     mov edx, dword ptr [esi+9054h]
-    mov ecx, dword ptr [edx+edi*1]
+    mov ecx, dword ptr [edx+edi]
     call ?PageIn@mmBoundTemplate@@QAEXXZ
 
 loc_4D602F:
@@ -268973,19 +268632,19 @@ loc_4D60D5:
 loc_4D610E:
     mov ecx, dword ptr [esi+9054h]
     shl edi, 2
-    mov ecx, dword ptr [ecx+edi*1]
+    mov ecx, dword ptr [ecx+edi]
     test ecx, ecx
     jz loc_4D6140
     call ?LockIfResident@mmBoundTemplate@@QAEHXZ
     test eax, eax
     jz loc_4D6132
     mov edx, dword ptr [esi+9054h]
-    mov eax, dword ptr [edx+edi*1]
+    mov eax, dword ptr [edx+edi]
     jmp loc_4D6142
 
 loc_4D6132:
     mov eax, dword ptr [esi+9054h]
-    mov ecx, dword ptr [eax+edi*1]
+    mov ecx, dword ptr [eax+edi]
     call ?PageIn@mmBoundTemplate@@QAEXXZ
 
 loc_4D6140:
@@ -269217,19 +268876,19 @@ loc_4D64B7:
 loc_4D64FB:
     mov eax, dword ptr [esi+9054h]
     shl edi, 2
-    mov ecx, dword ptr [eax+edi*1]
+    mov ecx, dword ptr [eax+edi]
     test ecx, ecx
     jz loc_4D652D
     call ?LockIfResident@mmBoundTemplate@@QAEHXZ
     test eax, eax
     jz loc_4D651F
     mov ecx, dword ptr [esi+9054h]
-    mov esi, dword ptr [ecx+edi*1]
+    mov esi, dword ptr [ecx+edi]
     jmp loc_4D652F
 
 loc_4D651F:
     mov edx, dword ptr [esi+9054h]
-    mov ecx, dword ptr [edx+edi*1]
+    mov ecx, dword ptr [edx+edi]
     call ?PageIn@mmBoundTemplate@@QAEXXZ
 
 loc_4D652D:
@@ -269332,19 +268991,19 @@ loc_4D65CE:
 loc_4D6600:
     mov edx, dword ptr [esi+9054h]
     shl edi, 2
-    mov ecx, dword ptr [edx+edi*1]
+    mov ecx, dword ptr [edx+edi]
     test ecx, ecx
     jz loc_4D6632
     call ?LockIfResident@mmBoundTemplate@@QAEHXZ
     test eax, eax
     jz loc_4D6624
     mov eax, dword ptr [esi+9054h]
-    mov esi, dword ptr [eax+edi*1]
+    mov esi, dword ptr [eax+edi]
     jmp loc_4D6634
 
 loc_4D6624:
     mov ecx, dword ptr [esi+9054h]
-    mov ecx, dword ptr [ecx+edi*1]
+    mov ecx, dword ptr [ecx+edi]
     call ?PageIn@mmBoundTemplate@@QAEXXZ
 
 loc_4D6632:
@@ -269378,19 +269037,19 @@ loc_4D664D:
 loc_4D6680:
     mov eax, dword ptr [esi+9054h]
     shl edi, 2
-    mov ecx, dword ptr [eax+edi*1]
+    mov ecx, dword ptr [eax+edi]
     test ecx, ecx
     jz loc_4D66B2
     call ?LockIfResident@mmBoundTemplate@@QAEHXZ
     test eax, eax
     jz loc_4D66A4
     mov ecx, dword ptr [esi+9054h]
-    mov esi, dword ptr [ecx+edi*1]
+    mov esi, dword ptr [ecx+edi]
     jmp loc_4D66B4
 
 loc_4D66A4:
     mov edx, dword ptr [esi+9054h]
-    mov ecx, dword ptr [edx+edi*1]
+    mov ecx, dword ptr [edx+edi]
     call ?PageIn@mmBoundTemplate@@QAEXXZ
 
 loc_4D66B2:
@@ -282897,9 +282556,9 @@ loc_4E1CAD:
     mov edx, dword ptr [esi+24h]
     add eax, 1Ch
     cmp eax, 39Ch
-    mov dword ptr [eax+edx*1-8], edi
+    mov dword ptr [eax+edx-8], edi
     mov edx, dword ptr [esi+24h]
-    mov dword ptr [eax+edx*1-4], ebx
+    mov dword ptr [eax+edx-4], ebx
     jl loc_4E1CAD
     lea eax, [ecx-1]
     mov dword ptr [?InputConfiguration@@3HA], ecx
@@ -282967,7 +282626,7 @@ loc_4E1DB3:
     mov ecx, dword ptr [esi+24h]
     add eax, 1Ch
     cmp eax, 39Ch
-    mov dword ptr [eax+ecx*1-10h], edi
+    mov dword ptr [eax+ecx-10h], edi
     jl loc_4E1DB3
     mov dword ptr [esi+168h], ebx
     mov eax, dword ptr [?InputConfiguration@@3HA]
@@ -283323,7 +282982,7 @@ loc_4E2123:
     lea edi, [eax+eax*2]
     mov eax, dword ptr [?IODev@@3PAVmmIODev@@A]
     shl edi, 3
-    cmp dword ptr [eax+edi*1+98h], ecx
+    cmp dword ptr [eax+edi+98h], ecx
     jnz loc_4E21B6
     mov eax, dword ptr [ebp-4]
     mov edx, dword ptr [ebp+10h]
@@ -283340,16 +282999,16 @@ loc_4E2123:
     mov dword ptr [ecx+158h], esi
     jz loc_4E21A4
     mov eax, dword ptr [?IODev@@3PAVmmIODev@@A]
-    mov dword ptr [eax+edi*1+98h], edx
+    mov dword ptr [eax+edi+98h], edx
     add eax, edi
     mov dword ptr [eax+9Ch], edx
     mov ecx, dword ptr [ecx+24h]
-    mov dword ptr [ecx+ebx*1+0Ch], 1
+    mov dword ptr [ecx+ebx+0Ch], 1
     jmp loc_4E21B6
 
 loc_4E21A4:
     mov eax, dword ptr [ecx+24h]
-    mov ecx, dword ptr [eax+ebx*1+18h]
+    mov ecx, dword ptr [eax+ebx+18h]
     add eax, ebx
     cmp ecx, edx
     jnz loc_4E21E2
@@ -283531,7 +283190,7 @@ ALIGN 16
     xor ecx, ecx
 
 loc_4E242B:
-    mov bl, byte ptr [ecx+edx*1+4Ch]
+    mov bl, byte ptr [ecx+edx+4Ch]
     test bl, bl
     jz loc_4E2439
     test eax, eax
@@ -283561,7 +283220,7 @@ loc_4E24B5:
     mov esi, dword ptr [ecx+24h]
     add eax, 1Ch
     cmp eax, 39Ch
-    mov dword ptr [esi+eax*1-0Ch], edx
+    mov dword ptr [esi+eax-0Ch], edx
     jl loc_4E24B5
     pop esi
     retn
@@ -283586,8 +283245,8 @@ ALIGN 16
 
 loc_4E2621:
     mov eax, dword ptr [edi+24h]
-    lea ecx, [eax+ebx*1]
-    mov eax, dword ptr [eax+ebx*1+14h]
+    lea ecx, [eax+ebx]
+    mov eax, dword ptr [eax+ebx+14h]
     test eax, eax
     jz loc_4E26B4
     mov eax, dword ptr [?InputConfiguration@@3HA]
@@ -283715,7 +283374,7 @@ loc_4E2788:
     sub ecx, esi
     lea ecx, [ecx+ecx*2]
     mov ecx, dword ptr [edx+ecx*8+9Ch]
-    mov bl, byte ptr [ecx+edi*1+4Ch]
+    mov bl, byte ptr [ecx+edi+4Ch]
     test bl, bl
 
 loc_4E27A1:
@@ -283823,10 +283482,10 @@ loc_4E28EA:
     mov edx, dword ptr [ebp-4]
     mov ecx, ebx
     mov edi, 0A4h
-    mov eax, dword ptr [edx+eax*1+4]
+    mov eax, dword ptr [edx+eax+4]
     shl ecx, 5
     add ecx, ebx
-    lea edx, [eax+ecx*1]
+    lea edx, [eax+ecx]
     cmp edx, 0A4h
     jg loc_4E290D
     mov edi, edx
@@ -283901,7 +283560,7 @@ loc_4E29BB:
     mov eax, dword ptr [ebp-4]
     mov edx, ebx
     shl edx, 5
-    mov ecx, dword ptr [eax+ecx*1+4]
+    mov ecx, dword ptr [eax+ecx+4]
     add edx, ebx
     add ecx, edx
     mov edx, 0A4h
@@ -283944,7 +283603,7 @@ loc_4E2A8A:
     shl ecx, 5
     add ecx, eax
     mov eax, dword ptr [ebp-4]
-    mov eax, dword ptr [eax+edx*1+4]
+    mov eax, dword ptr [eax+edx+4]
     add eax, ecx
     mov ecx, 0A4h
     cmp eax, 0A4h
@@ -283971,7 +283630,7 @@ loc_4E2AD8:
     jnz loc_4E2D47
     mov edx, dword ptr [esi+24h]
     mov edi, dword ptr [ebp-4]
-    mov eax, dword ptr [edi+edx*1+4]
+    mov eax, dword ptr [edi+edx+4]
     add eax, ecx
     mov ecx, 0A4h
     cmp eax, 0A4h
@@ -283998,7 +283657,7 @@ loc_4E2B1A:
     mov eax, dword ptr [esi+24h]
     mov ecx, ebx
     shl ecx, 5
-    mov eax, dword ptr [edi+eax*1+4]
+    mov eax, dword ptr [edi+eax+4]
     add ecx, ebx
     add eax, ecx
     cmp eax, 0A4h
@@ -284023,7 +283682,7 @@ loc_4E2B99:
     mov eax, dword ptr [esi+24h]
     mov ecx, ebx
     shl ecx, 5
-    mov eax, dword ptr [edi+eax*1+4]
+    mov eax, dword ptr [edi+eax+4]
     add ecx, ebx
     add eax, ecx
     cmp eax, 0A4h
@@ -284056,7 +283715,7 @@ loc_4E2BF7:
     jnz loc_4E2D47
     mov eax, dword ptr [esi+24h]
     mov edi, dword ptr [ebp-4]
-    mov eax, dword ptr [edi+eax*1+4]
+    mov eax, dword ptr [edi+eax+4]
     add eax, ecx
     mov ecx, 0A4h
     cmp eax, 0A4h
@@ -284083,7 +283742,7 @@ loc_4E2C3A:
     mov eax, dword ptr [esi+24h]
     mov ecx, ebx
     shl ecx, 5
-    mov eax, dword ptr [edi+eax*1+4]
+    mov eax, dword ptr [edi+eax+4]
     add ecx, ebx
     add eax, ecx
     cmp eax, 0A4h
@@ -284108,7 +283767,7 @@ loc_4E2CB5:
     mov eax, dword ptr [esi+24h]
     mov ecx, ebx
     shl ecx, 5
-    mov eax, dword ptr [edi+eax*1+4]
+    mov eax, dword ptr [edi+eax+4]
     add ecx, ebx
     add eax, ecx
     cmp eax, 0A4h
@@ -285390,7 +285049,7 @@ loc_4E3D2B:
     mov edx, dword ptr [esi+24h]
     mov esi, dword ptr [ebp-4]
     mov ebx, 5
-    mov dword ptr [edx+edi*1+0Ch], 1
+    mov dword ptr [edx+edi+0Ch], 1
 
 loc_4E3D4E:
     mov eax, dword ptr [?IODev@@3PAVmmIODev@@A]
@@ -286626,7 +286285,7 @@ loc_4E4E4C:
     mov edx, dword ptr [ebx]
     not ecx
     dec ecx
-    mov byte ptr [ecx+edx*1], al
+    mov byte ptr [ecx+edx], al
     mov eax, 1
     pop edi
     pop esi
@@ -286678,7 +286337,7 @@ loc_4E4FBA:
     mov ecx, edx
     mov eax, dword ptr [eax+4]
     shl ecx, 5
-    lea esi, [edi+eax*1]
+    lea esi, [edi+eax]
     add eax, ecx
     add edx, eax
     cmp edx, 0A4h
@@ -286697,19 +286356,19 @@ loc_4E4FDF:
     mov esi, dword ptr [?IODev@@3PAVmmIODev@@A]
     shl edx, 3
     lea eax, [eax+eax*2]
-    lea ecx, [esi+edx*1+90h]
+    lea ecx, [esi+edx+90h]
     shl eax, 3
     mov ebx, dword ptr [ecx]
-    mov dword ptr [esi+eax*1+90h], ebx
+    mov dword ptr [esi+eax+90h], ebx
     mov esi, dword ptr [?IODev@@3PAVmmIODev@@A]
     mov ecx, dword ptr [ecx+4]
-    mov dword ptr [esi+eax*1+94h], ecx
+    mov dword ptr [esi+eax+94h], ecx
     mov esi, dword ptr [?IODev@@3PAVmmIODev@@A]
-    mov ecx, dword ptr [esi+edx*1+98h]
-    mov dword ptr [esi+eax*1+98h], ecx
+    mov ecx, dword ptr [esi+edx+98h]
+    mov dword ptr [esi+eax+98h], ecx
     mov esi, dword ptr [?IODev@@3PAVmmIODev@@A]
-    mov edx, dword ptr [esi+edx*1+9Ch]
-    mov dword ptr [esi+eax*1+9Ch], edx
+    mov edx, dword ptr [esi+edx+9Ch]
+    mov dword ptr [esi+eax+9Ch], edx
     mov eax, dword ptr [ebp+8]
     dec eax
     mov dword ptr [ebp+8], eax
@@ -287665,7 +287324,7 @@ loc_4E5DF3:
 
 loc_4E5E19:
     mov eax, dword ptr [edi+40h]
-    mov dword ptr [eax+ebx*1+3A0h], 0
+    mov dword ptr [eax+ebx+3A0h], 0
 
 loc_4E5E27:
     mov eax, dword ptr [ebp-4]
@@ -287993,155 +287652,6 @@ ALIGN 16
     mov dword ptr [ecx+14h], 3E000000h
     retn
 ?ResetCapture@mmJaxis@@QAEXXZ ENDP
-
-ALIGN 16
-??0mmJoystick@@QAE@XZ PROC PUBLIC
-    push ebp
-    mov ebp, esp
-    push -1
-    push offset ??0mmJoystick@@QAE@XZ_SEH
-    mov eax, dword ptr fs:[0]
-    push eax
-    mov dword ptr fs:[0], esp
-    push ecx
-    push esi
-    mov esi, ecx
-    push edi
-    mov dword ptr [ebp-10h], esi
-    lea ecx, [esi+2D8h]
-    call ??0mmJaxis@@QAE@XZ
-    xor edi, edi
-    lea ecx, [esi+2F4h]
-    mov dword ptr [ebp-4], edi
-    call ??0mmJaxis@@QAE@XZ
-    lea ecx, [esi+310h]
-    mov byte ptr [ebp-4], 1
-    call ??0mmJaxis@@QAE@XZ
-    lea ecx, [esi+32Ch]
-    mov byte ptr [ebp-4], 2
-    call ??0mmJaxis@@QAE@XZ
-    lea ecx, [esi+348h]
-    mov byte ptr [ebp-4], 3
-    call ??0mmJaxis@@QAE@XZ
-    lea ecx, [esi+364h]
-    mov byte ptr [ebp-4], 4
-    call ??0mmJaxis@@QAE@XZ
-    lea ecx, [esi+380h]
-    mov byte ptr [ebp-4], 5
-    call ??0mmJaxis@@QAE@XZ
-    mov ecx, dword ptr [ebp-0Ch]
-    mov dword ptr [esi], edi
-    mov dword ptr [esi+2C8h], edi
-    mov dword ptr [esi+2CCh], edi
-    mov dword ptr [esi+2D0h], edi
-    mov dword ptr [esi+2D4h], edi
-    mov dword ptr [esi+3A0h], edi
-    mov dword ptr [esi+39Ch], edi
-    mov eax, esi
-    pop edi
-    mov dword ptr fs:[0], ecx
-    pop esi
-    mov esp, ebp
-    pop ebp
-    retn
-??0mmJoystick@@QAE@XZ ENDP
-
-ALIGN 16
-??1mmJoystick@@QAE@XZ PROC PUBLIC
-    push ebp
-    mov ebp, esp
-    push -1
-    push offset ??1mmJoystick@@QAE@XZ_SEH
-    mov eax, dword ptr fs:[0]
-    push eax
-    mov dword ptr fs:[0], esp
-    push ecx
-    push esi
-    mov esi, ecx
-    push edi
-    mov dword ptr [ebp-10h], esi
-    mov edi, dword ptr [esi+2C8h]
-    mov dword ptr [ebp-4], 6
-    test edi, edi
-    jz loc_4E6281
-    mov ecx, edi
-    call ??1mmEffectFF@@QAE@XZ
-    push edi
-    call ?arts_operator_delete@@YAXPAX@Z
-    add esp, 4
-
-loc_4E6281:
-    mov edi, dword ptr [esi+2CCh]
-    test edi, edi
-    jz loc_4E629B
-    mov ecx, edi
-    call ??1mmEffectFF@@QAE@XZ
-    push edi
-    call ?arts_operator_delete@@YAXPAX@Z
-    add esp, 4
-
-loc_4E629B:
-    mov edi, dword ptr [esi+2D0h]
-    test edi, edi
-    jz loc_4E62B5
-    mov ecx, edi
-    call ??1mmEffectFF@@QAE@XZ
-    push edi
-    call ?arts_operator_delete@@YAXPAX@Z
-    add esp, 4
-
-loc_4E62B5:
-    mov edi, dword ptr [esi+2D4h]
-    test edi, edi
-    jz loc_4E62CF
-    mov ecx, edi
-    call ??1mmEffectFF@@QAE@XZ
-    push edi
-    call ?arts_operator_delete@@YAXPAX@Z
-    add esp, 4
-
-loc_4E62CF:
-    mov eax, dword ptr [esi]
-    test eax, eax
-    jz loc_4E62E3
-    mov ecx, dword ptr [eax]
-    push eax
-    call dword ptr [ecx+20h]
-    mov eax, dword ptr [esi]
-    push eax
-    mov edx, dword ptr [eax]
-    call dword ptr [edx+8]
-
-loc_4E62E3:
-    lea ecx, [esi+380h]
-    mov byte ptr [ebp-4], 5
-    call ??1mmJaxis@@QAE@XZ
-    lea ecx, [esi+364h]
-    mov byte ptr [ebp-4], 4
-    call ??1mmJaxis@@QAE@XZ
-    lea ecx, [esi+348h]
-    mov byte ptr [ebp-4], 3
-    call ??1mmJaxis@@QAE@XZ
-    lea ecx, [esi+32Ch]
-    mov byte ptr [ebp-4], 2
-    call ??1mmJaxis@@QAE@XZ
-    lea ecx, [esi+310h]
-    mov byte ptr [ebp-4], 1
-    call ??1mmJaxis@@QAE@XZ
-    lea ecx, [esi+2F4h]
-    mov byte ptr [ebp-4], 0
-    call ??1mmJaxis@@QAE@XZ
-    lea ecx, [esi+2D8h]
-    mov dword ptr [ebp-4], -1
-    call ??1mmJaxis@@QAE@XZ
-    mov ecx, dword ptr [ebp-0Ch]
-    pop edi
-    mov dword ptr fs:[0], ecx
-    pop esi
-    mov esp, ebp
-    pop ebp
-    retn
-??1mmJoystick@@QAE@XZ ENDP
 
 ALIGN 16
 ?Init@mmJoystick@@QAEHPAUIDirectInputDevice2A@@PAUHWND__@@@Z PROC PUBLIC
@@ -288559,151 +288069,6 @@ ALIGN 16
     pop ebp
     retn
 ?ResetAxisCapture@mmJoystick@@QAEXXZ ENDP
-
-ALIGN 16
-?InputCreateEffect@mmJoystick@@QAEXXZ PROC PUBLIC
-    push ebp
-    mov ebp, esp
-    push -1
-    push offset ?InputCreateEffect@mmJoystick@@QAEXXZ_SEH
-    mov eax, dword ptr fs:[0]
-    push eax
-    mov dword ptr fs:[0], esp
-    push ecx
-    push esi
-    push edi
-    mov edi, ecx
-    push 94h
-    call ?arts_operator_new@@YAPAXI@Z
-    mov esi, eax
-    add esp, 4
-    mov dword ptr [ebp-10h], esi
-    test esi, esi
-    mov dword ptr [ebp-4], 0
-    jz loc_4E6AD9
-    mov ecx, esi
-    call ??0mmEffectFF@@QAE@XZ
-    mov dword ptr [esi], offset ??_7mmRoadFF@@6B@
-    jmp loc_4E6ADB
-
-loc_4E6AD9:
-    xor esi, esi
-
-loc_4E6ADB:
-    push 9Ch
-    mov dword ptr [ebp-4], -1
-    mov dword ptr [edi+2D0h], esi
-    call ?arts_operator_new@@YAPAXI@Z
-    mov esi, eax
-    add esp, 4
-    mov dword ptr [ebp-10h], esi
-    test esi, esi
-    mov dword ptr [ebp-4], 1
-    jz loc_4E6B14
-    mov ecx, esi
-    call ??0mmEffectFF@@QAE@XZ
-    mov dword ptr [esi], offset ??_7mmSpringFF@@6B@
-    jmp loc_4E6B16
-
-loc_4E6B14:
-    xor esi, esi
-
-loc_4E6B16:
-    push 98h
-    mov dword ptr [ebp-4], -1
-    mov dword ptr [edi+2C8h], esi
-    call ?arts_operator_new@@YAPAXI@Z
-    mov esi, eax
-    add esp, 4
-    mov dword ptr [ebp-10h], esi
-    test esi, esi
-    mov dword ptr [ebp-4], 2
-    jz loc_4E6B4F
-    mov ecx, esi
-    call ??0mmEffectFF@@QAE@XZ
-    mov dword ptr [esi], offset ??_7mmCollideFF@@6B@
-    jmp loc_4E6B51
-
-loc_4E6B4F:
-    xor esi, esi
-
-loc_4E6B51:
-    push 9Ch
-    mov dword ptr [ebp-4], -1
-    mov dword ptr [edi+2D4h], esi
-    call ?arts_operator_new@@YAPAXI@Z
-    mov esi, eax
-    add esp, 4
-    mov dword ptr [ebp-10h], esi
-    test esi, esi
-    mov dword ptr [ebp-4], 3
-    jz loc_4E6B8A
-    mov ecx, esi
-    call ??0mmEffectFF@@QAE@XZ
-    mov dword ptr [esi], offset ??_7mmFrictionFF@@6B@
-    jmp loc_4E6B8C
-
-loc_4E6B8A:
-    xor esi, esi
-
-loc_4E6B8C:
-    mov ecx, dword ptr [ebp-0Ch]
-    mov dword ptr [edi+2CCh], esi
-    pop edi
-    mov dword ptr fs:[0], ecx
-    pop esi
-    mov esp, ebp
-    pop ebp
-    retn
-?InputCreateEffect@mmJoystick@@QAEXXZ ENDP
-
-ALIGN 16
-?InputInitEffect@mmJoystick@@QAEXXZ PROC PUBLIC
-    push esi
-    mov esi, ecx
-    mov ecx, dword ptr [esi+2D0h]
-    mov edx, dword ptr [esi]
-    push edx
-    mov eax, dword ptr [ecx]
-    call dword ptr [eax]
-    mov ecx, dword ptr [esi+2C8h]
-    mov edx, dword ptr [esi]
-    push edx
-    mov eax, dword ptr [ecx]
-    call dword ptr [eax]
-    mov ecx, dword ptr [esi+2D4h]
-    mov edx, dword ptr [esi]
-    push edx
-    mov eax, dword ptr [ecx]
-    call dword ptr [eax]
-    mov ecx, dword ptr [esi+2CCh]
-    mov edx, dword ptr [esi]
-    push edx
-    mov eax, dword ptr [ecx]
-    call dword ptr [eax]
-    pop esi
-    retn
-?InputInitEffect@mmJoystick@@QAEXXZ ENDP
-
-ALIGN 16
-?InputStopEffect@mmJoystick@@QAEXXZ PROC PUBLIC
-    push esi
-    mov esi, ecx
-    mov ecx, dword ptr [esi+2D0h]
-    mov eax, dword ptr [ecx]
-    call dword ptr [eax+8]
-    mov ecx, dword ptr [esi+2C8h]
-    mov edx, dword ptr [ecx]
-    call dword ptr [edx+8]
-    mov ecx, dword ptr [esi+2D4h]
-    mov eax, dword ptr [ecx]
-    call dword ptr [eax+8]
-    mov ecx, dword ptr [esi+2CCh]
-    mov edx, dword ptr [ecx]
-    call dword ptr [edx+8]
-    pop esi
-    retn
-?InputStopEffect@mmJoystick@@QAEXXZ ENDP
 
 ALIGN 16
 ?GetFFEffect@mmJoystick@@QAEPAVmmEffectFF@@H@Z PROC PUBLIC
@@ -289273,729 +288638,6 @@ loc_4E732C:
     pop ebp
     retn
 ?AngelReadKeyString@@YAPAULocString@@I@Z ENDP
-
-ALIGN 16
-?inputEnumEffectTypeProc@@YGHPBUDIEFFECTINFOA@@PAX@Z PROC PUBLIC
-    push ebp
-    mov ebp, esp
-    mov ecx, dword ptr [ebp+0Ch]
-    test ecx, ecx
-    jz loc_4E73A2
-    mov eax, dword ptr [ebp+8]
-    push esi
-    add eax, 4
-    sub esp, 10h
-    mov edx, eax
-    mov esi, dword ptr [edx]
-    mov dword ptr [ecx], esi
-    mov esi, dword ptr [edx+4]
-    mov dword ptr [ecx+4], esi
-    mov esi, dword ptr [edx+8]
-    mov dword ptr [ecx+8], esi
-    mov edx, dword ptr [edx+0Ch]
-    mov dword ptr [ecx+0Ch], edx
-    mov edx, dword ptr [eax]
-    mov ecx, esp
-    push offset asc_6464F8
-    mov dword ptr [ecx], edx
-    mov edx, dword ptr [eax+4]
-    mov dword ptr [ecx+4], edx
-    mov edx, dword ptr [eax+8]
-    mov eax, dword ptr [eax+0Ch]
-    mov dword ptr [ecx+8], edx
-    mov dword ptr [ecx+0Ch], eax
-    call ?Displayf@@YAXPBDZZ
-    add esp, 14h
-    pop esi
-
-loc_4E73A2:
-    xor eax, eax
-    pop ebp
-    retn 8
-?inputEnumEffectTypeProc@@YGHPBUDIEFFECTINFOA@@PAX@Z ENDP
-
-ALIGN 16
-??0mmEffectFF@@QAE@XZ PROC PUBLIC
-    mov edx, ecx
-    push ebx
-    push esi
-    xor ebx, ebx
-    lea eax, [edx+4]
-    mov dword ptr [edx], offset ??_7mmEffectFF@@6B@
-    lea esi, [edx+10h]
-    push edi
-    mov dword ptr [eax], ebx
-    mov ecx, 0Dh
-    xor eax, eax
-    mov edi, esi
-    rep stosd
-    lea eax, [edx+44h]
-    xor ecx, ecx
-    pop edi
-    mov dword ptr [eax], ecx
-    mov dword ptr [eax+4], ecx
-    mov dword ptr [eax+8], ecx
-    mov dword ptr [eax+0Ch], ecx
-    mov dword ptr [eax+10h], ecx
-    lea eax, [edx+60h]
-    mov dword ptr [esi], 34h
-    lea ecx, [edx+58h]
-    mov dword ptr [edx+1Ch], ebx
-    mov dword ptr [edx+28h], ebx
-    mov dword ptr [edx+34h], eax
-    mov dword ptr [edx+7Ch], ebx
-    mov dword ptr [edx+78h], ebx
-    pop esi
-    mov dword ptr [edx+24h], -1
-    mov dword ptr [edx+30h], ecx
-    mov dword ptr [edx+20h], 2710h
-    mov eax, edx
-    pop ebx
-    retn
-??0mmEffectFF@@QAE@XZ ENDP
-
-ALIGN 16
-??1mmEffectFF@@QAE@XZ PROC PUBLIC
-    mov dword ptr [ecx], offset ??_7mmEffectFF@@6B@
-    mov ecx, dword ptr [ecx+78h]
-    test ecx, ecx
-    jz locret_4E7433
-    mov eax, dword ptr [ecx]
-    push ecx
-    call dword ptr [eax+8]
-
-locret_4E7433:
-    retn
-??1mmEffectFF@@QAE@XZ ENDP
-
-ALIGN 16
-?SetValues@mmEffectFF@@UAEHMM@Z PROC PUBLIC
-    push ebp
-    mov ebp, esp
-    mov eax, 1
-    pop ebp
-    retn 8
-?SetValues@mmEffectFF@@UAEHMM@Z ENDP
-
-ALIGN 16
-?Init@mmCollideFF@@UAEHPAUIDirectInputDevice2A@@@Z PROC PUBLIC
-    push ebp
-    mov ebp, esp
-    push ebx
-    push esi
-    mov esi, ecx
-    push edi
-    mov ecx, dword ptr [ebp+8]
-    push 3
-    lea eax, [esi+68h]
-    mov edx, dword ptr [ecx]
-    push eax
-    push offset ?inputEnumEffectTypeProc@@YGHPBUDIEFFECTINFOA@@PAX@Z
-    push ecx
-    call dword ptr [edx+4Ch]
-    xor ebx, ebx
-    cmp eax, ebx
-    jge loc_4E74A8
-    push offset asc_646510
-    call ?Errorf@@YAXPBDZZ
-    add esp, 4
-    xor eax, eax
-    pop edi
-    pop esi
-    pop ebx
-    pop ebp
-    retn 4
-
-loc_4E74A8:
-    mov eax, dword ptr [esi+78h]
-    cmp eax, ebx
-    jz loc_4E74B8
-    mov ecx, dword ptr [eax]
-    push eax
-    call dword ptr [ecx+8]
-    mov dword ptr [esi+78h], ebx
-
-loc_4E74B8:
-    lea edi, [esi+84h]
-    xor edx, edx
-    mov eax, edi
-    mov dword ptr [esi+44h], 14h
-    mov dword ptr [esi+48h], 2710h
-    mov dword ptr [esi+50h], ebx
-    mov dword ptr [esi+4Ch], ebx
-    mov dword ptr [esi+54h], ebx
-    mov dword ptr [eax], edx
-    fld dword ptr [flt_61FD20]
-    mov dword ptr [eax+4], edx
-    mov dword ptr [eax+8], edx
-    mov dword ptr [eax+0Ch], edx
-    mov dword ptr [edi], 2710h
-    mov dword ptr [esi+88h], ebx
-    mov dword ptr [esi+8Ch], ebx
-    mov ecx, dword ptr [?GameInputPtr@@3PAVmmInput@@A]
-    fdiv dword ptr [ecx+170h]
-    call __ftol
-    mov dword ptr [esi+90h], eax
-    mov dword ptr [esi+58h], ebx
-    mov dword ptr [esi+5Ch], 4
-    mov dword ptr [esi+60h], 2328h
-    mov dword ptr [esi+64h], ebx
-    mov dword ptr [esi+10h], 34h
-    mov dword ptr [esi+14h], 22h
-    mov edx, dword ptr [?GameInputPtr@@3PAVmmInput@@A]
-    fld dword ptr [edx+174h]
-    fmul dword ptr [flt_61FD20]
-    call __ftol
-    mov dword ptr [esi+18h], eax
-    lea eax, [esi+58h]
-    mov dword ptr [esi+30h], eax
-    lea eax, [esi+60h]
-    mov dword ptr [esi+34h], eax
-    lea eax, [esi+44h]
-    mov ecx, dword ptr [ebp+8]
-    mov dword ptr [esi+38h], eax
-    lea eax, [esi+78h]
-    push ebx
-    push eax
-    lea eax, [esi+10h]
-    push eax
-    lea eax, [esi+68h]
-    mov dword ptr [esi+1Ch], ebx
-    mov dword ptr [esi+20h], 2710h
-    mov dword ptr [esi+2Ch], 2
-    mov dword ptr [esi+3Ch], 10h
-    mov dword ptr [esi+40h], edi
-    mov edx, dword ptr [ecx]
-    push eax
-    push ecx
-    call dword ptr [edx+48h]
-    cmp eax, ebx
-    jge loc_4E760C
-    cmp eax, -7FFBFDFFh
-    jg loc_4E75D2
-    jz loc_4E75BC
-    cmp eax, -7FFBFEACh
-    jnz loc_4E7603
-    push offset asc_646534
-    call ?Displayf@@YAXPBDZZ
-    add esp, 4
-    xor eax, eax
-    pop edi
-    pop esi
-    pop ebx
-    pop ebp
-    retn 4
-
-loc_4E75BC:
-    push offset asc_646578
-    call ?Displayf@@YAXPBDZZ
-    add esp, 4
-    xor eax, eax
-    pop edi
-    pop esi
-    pop ebx
-    pop ebp
-    retn 4
-
-loc_4E75D2:
-    cmp eax, -7FF8FFEBh
-    jz loc_4E75F6
-    cmp eax, -7FF8FFA9h
-    jnz loc_4E7603
-    push offset asc_64658C
-    call ?Displayf@@YAXPBDZZ
-    add esp, 4
-    xor eax, eax
-    pop edi
-    pop esi
-    pop ebx
-    pop ebp
-    retn 4
-
-loc_4E75F6:
-    push offset asc_6465C8
-    call ?Displayf@@YAXPBDZZ
-    add esp, 4
-
-loc_4E7603:
-    xor eax, eax
-    pop edi
-    pop esi
-    pop ebx
-    pop ebp
-    retn 4
-
-loc_4E760C:
-    mov eax, 1
-    mov dword ptr [esi+80h], ebx
-    mov dword ptr [esi+7Ch], eax
-    pop edi
-    pop esi
-    pop ebx
-    pop ebp
-    retn 4
-?Init@mmCollideFF@@UAEHPAUIDirectInputDevice2A@@@Z ENDP
-
-ALIGN 16
-?SetValues@mmCollideFF@@UAEHMM@Z PROC PUBLIC
-    push ebp
-    mov ebp, esp
-    fld dword ptr [ebp+0Ch]
-    push esi
-    mov esi, ecx
-    call __ftol
-    fld dword ptr [ebp+8]
-    fmul dword ptr [flt_61FD24]
-    push eax
-    call __ftol
-    push eax
-    mov ecx, esi
-    call ?Assign@mmCollideFF@@QAEHJJ@Z
-    pop esi
-    pop ebp
-    retn 8
-?SetValues@mmCollideFF@@UAEHMM@Z ENDP
-
-ALIGN 16
-?Assign@mmCollideFF@@QAEHJJ@Z PROC PUBLIC
-    push ebp
-    mov ebp, esp
-    push ecx
-    push ebx
-    push esi
-    mov esi, ecx
-    xor ebx, ebx
-    push edi
-    cmp dword ptr [esi+7Ch], ebx
-    jz loc_4E7755
-    mov eax, dword ptr [?GameInputPtr@@3PAVmmInput@@A]
-    fld dword ptr [eax+1B4h]
-    fcomp dword ptr [flt_61FD28]
-    fnstsw ax
-    test ah, 40h
-    jnz loc_4E7755
-    lea edx, [esi+10h]
-    mov ecx, 0Dh
-    xor eax, eax
-    mov edi, edx
-    rep stosd
-    mov eax, dword ptr [ebp+0Ch]
-    mov dword ptr [ebp-4], edx
-    cmp eax, ebx
-    mov dword ptr [edx], 34h
-    jg loc_4E76B2
-    xor eax, eax
-    jmp loc_4E76BE
-
-loc_4E76B2:
-    cmp eax, 168h
-    jl loc_4E76BE
-    mov eax, 168h
-
-loc_4E76BE:
-    lea eax, [eax+eax*4]
-    lea edi, [esi+60h]
-    mov dword ptr [esi+64h], ebx
-    mov dword ptr [esi+1Ch], ebx
-    lea ecx, [eax+eax*4]
-    shl ecx, 2
-    mov dword ptr [edi], ecx
-    mov edx, dword ptr [?GameInputPtr@@3PAVmmInput@@A]
-    fld dword ptr [edx+1B4h]
-    fimul dword ptr [ebp+8]
-    call __ftol
-    mov edx, dword ptr [ebp-4]
-    mov dword ptr [esi+20h], eax
-    lea eax, [esi+58h]
-    mov dword ptr [esi+18h], 7A120h
-    mov dword ptr [esi+40h], ebx
-    mov dword ptr [esi+3Ch], ebx
-    mov dword ptr [esi+38h], ebx
-    mov dword ptr [esi+34h], edi
-    mov dword ptr [esi+2Ch], 2
-    mov dword ptr [esi+30h], eax
-    mov dword ptr [esi+14h], 22h
-    mov esi, dword ptr [esi+78h]
-    push 44h
-    push edx
-    mov ecx, dword ptr [esi]
-    push esi
-    call dword ptr [ecx+18h]
-    mov esi, eax
-    cmp esi, ebx
-    jge loc_4E7747
-    push esi
-    push offset asc_6465F0
-    call ?Errorf@@YAXPBDZZ
-    add esp, 8
-    push esi
-    call ?DecodeDIErrorMFlag@@YAXJ@Z
-    add esp, 4
-    xor eax, eax
-    pop edi
-    pop esi
-    pop ebx
-    mov esp, ebp
-    pop ebp
-    retn 8
-
-loc_4E7747:
-    mov eax, 1
-    pop edi
-    pop esi
-    pop ebx
-    mov esp, ebp
-    pop ebp
-    retn 8
-
-loc_4E7755:
-    pop edi
-    pop esi
-    xor eax, eax
-    pop ebx
-    mov esp, ebp
-    pop ebp
-    retn 8
-?Assign@mmCollideFF@@QAEHJJ@Z ENDP
-
-ALIGN 16
-?Play@mmCollideFF@@UAEHXZ PROC PUBLIC
-    mov eax, dword ptr [ecx+7Ch]
-    test eax, eax
-    jz loc_4E77A6
-    mov eax, dword ptr [?GameInputPtr@@3PAVmmInput@@A]
-    fld dword ptr [eax+1B4h]
-    fcomp dword ptr [flt_61FD28]
-    fnstsw ax
-    test ah, 40h
-    jnz loc_4E77A6
-    mov eax, dword ptr [ecx+78h]
-    push 0
-    push 1
-    push eax
-    mov ecx, dword ptr [eax]
-    call dword ptr [ecx+1Ch]
-    test eax, eax
-    jge loc_4E77A0
-    push offset asc_646614
-    call ?Errorf@@YAXPBDZZ
-    add esp, 4
-    xor eax, eax
-    retn
-
-loc_4E77A0:
-    mov eax, 1
-    retn
-
-loc_4E77A6:
-    xor eax, eax
-    retn
-?Play@mmCollideFF@@UAEHXZ ENDP
-
-ALIGN 16
-?Stop@mmCollideFF@@UAEHXZ PROC PUBLIC
-    mov edx, dword ptr [ecx+7Ch]
-    xor eax, eax
-    test edx, edx
-    setnz al
-    retn
-?Stop@mmCollideFF@@UAEHXZ ENDP
-
-ALIGN 16
-?Init@mmRoadFF@@UAEHPAUIDirectInputDevice2A@@@Z PROC PUBLIC
-    push ebp
-    mov ebp, esp
-    push ebx
-    mov ebx, dword ptr [ebp+8]
-    push esi
-    mov esi, ecx
-    mov ecx, dword ptr [ebx]
-    push edi
-    lea eax, [esi+68h]
-    push 3
-    push eax
-    push offset ?inputEnumEffectTypeProc@@YGHPBUDIEFFECTINFOA@@PAX@Z
-    push ebx
-    call dword ptr [ecx+4Ch]
-    xor edi, edi
-    cmp eax, edi
-    jge loc_4E77F8
-    push offset asc_646654
-    call ?Errorf@@YAXPBDZZ
-    add esp, 4
-    xor eax, eax
-    pop edi
-    pop esi
-    pop ebx
-    pop ebp
-    retn 4
-
-loc_4E77F8:
-    mov eax, dword ptr [esi+78h]
-    cmp eax, edi
-    jz loc_4E7808
-    mov edx, dword ptr [eax]
-    push eax
-    call dword ptr [edx+8]
-    mov dword ptr [esi+78h], edi
-
-loc_4E7808:
-    mov eax, 0F4240h
-    xor ecx, ecx
-    mov dword ptr [esi+4Ch], eax
-    mov dword ptr [esi+54h], eax
-    lea eax, [esi+84h]
-    mov dword ptr [esi+44h], 14h
-    mov edx, eax
-    mov dword ptr [esi+48h], edi
-    mov dword ptr [esi+50h], edi
-    push edi
-    mov dword ptr [edx], ecx
-    mov dword ptr [edx+4], ecx
-    mov dword ptr [edx+8], ecx
-    mov dword ptr [edx+0Ch], ecx
-    mov dword ptr [eax], 7D0h
-    mov dword ptr [esi+40h], eax
-    lea eax, [esi+78h]
-    push eax
-    lea edx, [esi+10h]
-    lea eax, [esi+68h]
-    mov dword ptr [esi+88h], edi
-    mov dword ptr [esi+8Ch], edi
-    mov dword ptr [esi+90h], 4C4B40h
-    mov dword ptr [esi+58h], edi
-    mov dword ptr [esi+60h], edi
-    mov dword ptr [esi+14h], 12h
-    mov dword ptr [esi+18h], -1
-    mov dword ptr [esi+2Ch], 1
-    mov dword ptr [esi+38h], edi
-    mov dword ptr [esi+3Ch], 10h
-    mov ecx, dword ptr [ebx]
-    push edx
-    push eax
-    push ebx
-    call dword ptr [ecx+48h]
-    cmp eax, edi
-    jge loc_4E78A7
-    push eax
-    push offset asc_646678
-    call ?Errorf@@YAXPBDZZ
-    add esp, 8
-    xor eax, eax
-    pop edi
-    pop esi
-    pop ebx
-    pop ebp
-    retn 4
-
-loc_4E78A7:
-    mov eax, 1
-    mov dword ptr [esi+80h], edi
-    mov dword ptr [esi+7Ch], eax
-    pop edi
-    pop esi
-    pop ebx
-    pop ebp
-    retn 4
-?Init@mmRoadFF@@UAEHPAUIDirectInputDevice2A@@@Z ENDP
-
-ALIGN 16
-?SetValues@mmRoadFF@@UAEHMM@Z PROC PUBLIC
-    push ebp
-    mov ebp, esp
-    fld dword ptr [ebp+0Ch]
-    fmul dword ptr [flt_61FD2C]
-    push esi
-    mov esi, ecx
-    call __ftol
-    fld dword ptr [ebp+8]
-    fmul dword ptr [flt_61FD30]
-    push eax
-    call __ftol
-    push eax
-    mov ecx, esi
-    call ?Assign@mmRoadFF@@QAEHJJ@Z
-    pop esi
-    pop ebp
-    retn 8
-?SetValues@mmRoadFF@@UAEHMM@Z ENDP
-
-ALIGN 16
-?Assign@mmRoadFF@@QAEHJJ@Z PROC PUBLIC
-    push ebp
-    mov ebp, esp
-    push ecx
-    push ebx
-    push esi
-    mov esi, ecx
-    push edi
-    mov eax, dword ptr [esi+7Ch]
-    test eax, eax
-    jz loc_4E79CA
-    mov eax, dword ptr [?GameInputPtr@@3PAVmmInput@@A]
-    fld dword ptr [eax+1B8h]
-    fcomp dword ptr [flt_61FD34]
-    fnstsw ax
-    test ah, 40h
-    jnz loc_4E79CA
-    lea ebx, [esi+84h]
-    xor ecx, ecx
-    mov edx, ebx
-    xor eax, eax
-    mov dword ptr [edx], ecx
-    mov dword ptr [edx+4], ecx
-    mov dword ptr [edx+8], ecx
-    mov dword ptr [edx+0Ch], ecx
-    lea edx, [esi+10h]
-    mov ecx, 0Dh
-    mov edi, edx
-    rep stosd
-    mov dword ptr [edx], 34h
-    mov eax, dword ptr [?GameInputPtr@@3PAVmmInput@@A]
-    mov dword ptr [ebp-4], edx
-    fld dword ptr [eax+1B8h]
-    fimul dword ptr [ebp+0Ch]
-    call __ftol
-    mov ecx, dword ptr [ebp+8]
-    xor edi, edi
-    mov dword ptr [esi+88h], edi
-    mov dword ptr [esi+8Ch], edi
-    mov dword ptr [esi+90h], ecx
-    mov dword ptr [esi+3Ch], 10h
-    mov dword ptr [esi+40h], ebx
-    mov esi, dword ptr [esi+78h]
-    mov dword ptr [ebx], eax
-    mov eax, dword ptr [ebp-4]
-    mov edx, dword ptr [esi]
-    push 100h
-    push eax
-    push esi
-    call dword ptr [edx+18h]
-    mov esi, eax
-    cmp esi, edi
-    jge loc_4E79BC
-    push esi
-    push offset asc_6466A0
-    call ?Errorf@@YAXPBDZZ
-    add esp, 8
-    push esi
-    call ?DecodeDIErrorMFlag@@YAXJ@Z
-    add esp, 4
-    xor eax, eax
-    pop edi
-    pop esi
-    pop ebx
-    mov esp, ebp
-    pop ebp
-    retn 8
-
-loc_4E79BC:
-    mov eax, 1
-    pop edi
-    pop esi
-    pop ebx
-    mov esp, ebp
-    pop ebp
-    retn 8
-
-loc_4E79CA:
-    pop edi
-    pop esi
-    xor eax, eax
-    pop ebx
-    mov esp, ebp
-    pop ebp
-    retn 8
-?Assign@mmRoadFF@@QAEHJJ@Z ENDP
-
-ALIGN 16
-?Play@mmRoadFF@@UAEHXZ PROC PUBLIC
-    push esi
-    push edi
-    mov edi, ecx
-    mov eax, dword ptr [edi+7Ch]
-    test eax, eax
-    jz loc_4E7A43
-    mov eax, dword ptr [?GameInputPtr@@3PAVmmInput@@A]
-    fld dword ptr [eax+1B8h]
-    fcomp dword ptr [flt_61FD34]
-    fnstsw ax
-    test ah, 40h
-    jnz loc_4E7A43
-    mov eax, dword ptr [edi+78h]
-    push 0
-    push 1
-    push eax
-    mov ecx, dword ptr [eax]
-    call dword ptr [ecx+1Ch]
-    mov esi, eax
-    test esi, esi
-    jge loc_4E7A31
-    push offset asc_6466C4
-    call ?Errorf@@YAXPBDZZ
-    add esp, 4
-    push esi
-    call ?DecodeDIErrorMFlag@@YAXJ@Z
-    add esp, 4
-    xor eax, eax
-    pop edi
-    pop esi
-    retn
-
-loc_4E7A31:
-    mov dword ptr [edi+80h], 1
-    mov eax, 1
-    pop edi
-    pop esi
-    retn
-
-loc_4E7A43:
-    pop edi
-    xor eax, eax
-    pop esi
-    retn
-?Play@mmRoadFF@@UAEHXZ ENDP
-
-ALIGN 16
-?Stop@mmRoadFF@@UAEHXZ PROC PUBLIC
-    push esi
-    push edi
-    mov edi, ecx
-    mov eax, dword ptr [edi+7Ch]
-    test eax, eax
-    jnz loc_4E7A60
-    xor eax, eax
-    pop edi
-    pop esi
-    retn
-
-loc_4E7A60:
-    mov eax, dword ptr [edi+78h]
-    push eax
-    mov ecx, dword ptr [eax]
-    call dword ptr [ecx+20h]
-    mov esi, eax
-    test esi, esi
-    jge loc_4E7A8B
-    push esi
-    push offset asc_6466DC
-    call ?Errorf@@YAXPBDZZ
-    add esp, 8
-    push esi
-    call ?DecodeDIErrorMFlag@@YAXJ@Z
-    add esp, 4
-    xor eax, eax
-    pop edi
-    pop esi
-    retn
-
-loc_4E7A8B:
-    mov dword ptr [edi+80h], 0
-    pop edi
-    mov eax, 1
-    pop esi
-    retn
-?Stop@mmRoadFF@@UAEHXZ ENDP
 
 ALIGN 16
 ?Init@mmFrictionFF@@UAEHPAUIDirectInputDevice2A@@@Z PROC PUBLIC
@@ -290997,14 +289639,14 @@ loc_4E84B8:
 loc_4E84CF:
     mov eax, dword ptr [esi+7Ch]
     lea edi, [ebx*4]
-    mov ecx, dword ptr [edi+eax*1]
+    mov ecx, dword ptr [edi+eax]
     test ecx, ecx
     jz loc_4E85C1
     call ?GetEffect@AudSound@@QAEHXZ
     test al, 4
     jz loc_4E8502
     mov ecx, dword ptr [esi+7Ch]
-    mov ecx, dword ptr [edi+ecx*1]
+    mov ecx, dword ptr [edi+ecx]
     call ?AllOneShotLayersPlaying@AudSound@@QAEHXZ
     test eax, eax
     jz loc_4E85E1
@@ -291013,7 +289655,7 @@ loc_4E84CF:
 loc_4E8502:
     mov edx, dword ptr [esi+7Ch]
     push 0
-    mov ecx, dword ptr [edi+edx*1]
+    mov ecx, dword ptr [edi+edx]
     call ?IsPlaying@AudSound@@QAEHH@Z
     test eax, eax
     jz loc_4E8601
@@ -291021,8 +289663,8 @@ loc_4E8502:
 loc_4E8517:
     mov eax, dword ptr [esi+7Ch]
     mov ebx, dword ptr [ebp-0Ch]
-    mov ecx, dword ptr [edi+eax*1]
-    mov eax, dword ptr [ebx+eax*1]
+    mov ecx, dword ptr [edi+eax]
+    mov eax, dword ptr [ebx+eax]
     mov edx, dword ptr [ecx+24h]
     mov ebx, dword ptr [eax+24h]
     cmp edx, ebx
@@ -291059,7 +289701,7 @@ loc_4E856B:
     mov ecx, dword ptr [esi+7Ch]
     mov edx, dword ptr [ebp+10h]
     lea ebx, [eax*4]
-    mov ecx, dword ptr [ebx+ecx*1]
+    mov ecx, dword ptr [ebx+ecx]
     cmp dword ptr [ecx+24h], edx
     jge loc_4E85B6
     push 1
@@ -291067,12 +289709,12 @@ loc_4E856B:
     test eax, eax
     jz loc_4E85B6
     mov eax, dword ptr [esi+7Ch]
-    mov ecx, dword ptr [ebx+eax*1]
+    mov ecx, dword ptr [ebx+eax]
     call ?Stop@AudSound@@QAEXXZ
     mov ecx, dword ptr [esi+80h]
     mov edx, dword ptr [esi+7Ch]
     mov eax, dword ptr [ecx+edi*4]
-    mov dword ptr [ebx+edx*1], eax
+    mov dword ptr [ebx+edx], eax
 
 loc_4E85A8:
     mov eax, 1
@@ -291195,7 +289837,7 @@ loc_4E868D:
     mov edi, dword ptr [ecx+80h]
     mov ebx, dword ptr [eax+edx*4]
     lea eax, [eax+edx*4]
-    cmp ebx, dword ptr [edi+esi*1]
+    cmp ebx, dword ptr [edi+esi]
     jnz loc_4E86A7
     mov dword ptr [eax], 0
 
@@ -294071,29 +292713,29 @@ loc_4EA932:
     mov esi, edi
     mov edi, dword ptr [ebp-10h]
     mov eax, ecx
-    mov edi, dword ptr [edx+edi*1]
+    mov edi, dword ptr [edx+edi]
     shr ecx, 2
     rep movsd
     mov ecx, eax
     and ecx, 3
     rep movsb
     mov ecx, dword ptr [ebx+0B0h]
-    mov edx, dword ptr [edx+ecx*1]
+    mov edx, dword ptr [edx+ecx]
     mov ecx, ebx
     push edx
     call ?SetName@asNode@@QAEXPBD@Z
     mov eax, dword ptr [ebx+44h]
     mov esi, dword ptr [ebp-14h]
     mov ecx, dword ptr [ebp+0Ch]
-    mov dword ptr [eax+esi*1], -1
+    mov dword ptr [eax+esi], -1
     mov edx, dword ptr [ebx+0B4h]
     mov dword ptr [ebx+48h], ecx
-    cmp dword ptr [esi+edx*1], 0
+    cmp dword ptr [esi+edx], 0
     jz loc_4EA9D0
     mov ecx, ebx
     call ?Stop@AudSound@@QAEXXZ
     mov eax, dword ptr [ebx+0B4h]
-    mov edi, dword ptr [esi+eax*1]
+    mov edi, dword ptr [esi+eax]
     test edi, edi
     jz loc_4EA9C3
     mov ecx, edi
@@ -294104,7 +292746,7 @@ loc_4EA932:
 
 loc_4EA9C3:
     mov ecx, dword ptr [ebx+0B4h]
-    mov dword ptr [esi+ecx*1], 0
+    mov dword ptr [esi+ecx], 0
 
 loc_4EA9D0:
     push 88h
@@ -294124,7 +292766,7 @@ loc_4EA9F4:
 loc_4EA9F6:
     mov edx, dword ptr [ebx+0B4h]
     mov dword ptr [ebp-4], -1
-    mov dword ptr [esi+edx*1], eax
+    mov dword ptr [esi+edx], eax
     mov ax, word ptr [ebx+3Ch]
     mov ecx, dword ptr [ebx+34h]
     mov edx, dword ptr [ebp+8]
@@ -294132,13 +292774,13 @@ loc_4EA9F6:
     mov eax, dword ptr [ebx+0B4h]
     push ecx
     push edx
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?Init@SoundObj@@QAEHPBDKF@Z
     mov edi, eax
     test edi, edi
     jnz loc_4EAA56
     mov ecx, dword ptr [ebx+0B4h]
-    mov edi, dword ptr [esi+ecx*1]
+    mov edi, dword ptr [esi+ecx]
     test edi, edi
     jz loc_4EAA44
     mov ecx, edi
@@ -294149,13 +292791,13 @@ loc_4EA9F6:
 
 loc_4EAA44:
     mov edx, dword ptr [ebx+0B4h]
-    mov dword ptr [esi+edx*1], 0
+    mov dword ptr [esi+edx], 0
     jmp loc_4EAAFD
 
 loc_4EAA56:
     mov eax, dword ptr [ebx+0B4h]
     mov dx, word ptr [ebx+2Ch]
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     mov word ptr [ecx+6Ah], dx
     call ?GetDSound3DMask@AudManager@@SA?BIXZ
     test dword ptr [ebx+38h], eax
@@ -294165,7 +292807,7 @@ loc_4EAA56:
     mov edx, dword ptr [ebx+0B4h]
     push eax
     push ecx
-    mov ecx, dword ptr [esi+edx*1]
+    mov ecx, dword ptr [esi+edx]
     call ?SetRamp@SoundObj@@QAEXMM@Z
     mov ecx, ebx
     call ?Update3DSettings@AudSound@@QAEXXZ
@@ -294173,7 +292815,7 @@ loc_4EAA56:
     test dword ptr [ebx+38h], eax
     jz loc_4EAABA
     mov eax, dword ptr [ebx+0B4h]
-    mov ecx, dword ptr [esi+eax*1]
+    mov ecx, dword ptr [esi+eax]
     call ?CreateSecondaryEAXObj@SoundObj@@QAEGXZ
     test ax, ax
     jnz loc_4EAABA
@@ -294288,15 +292930,15 @@ loc_4EABA6:
     mov ecx, dword ptr [esi+44h]
     mov edx, dword ptr [ebp+8]
     lea edi, [eax*4]
-    mov dword ptr [ecx+edi*1], edx
+    mov dword ptr [ecx+edi], edx
     mov dword ptr [esi+48h], eax
     mov eax, dword ptr [esi+0B4h]
-    cmp dword ptr [eax+edi*1], 0
+    cmp dword ptr [eax+edi], 0
     jz loc_4EABF6
     mov ecx, esi
     call ?Stop@AudSound@@QAEXXZ
     mov ecx, dword ptr [esi+0B4h]
-    mov ebx, dword ptr [ecx+edi*1]
+    mov ebx, dword ptr [ecx+edi]
     test ebx, ebx
     jz loc_4EABE9
     mov ecx, ebx
@@ -294307,7 +292949,7 @@ loc_4EABA6:
 
 loc_4EABE9:
     mov edx, dword ptr [esi+0B4h]
-    mov dword ptr [edx+edi*1], 0
+    mov dword ptr [edx+edi], 0
 
 loc_4EABF6:
     push 88h
@@ -294327,7 +292969,7 @@ loc_4EAC1A:
 loc_4EAC1C:
     mov ecx, dword ptr [esi+0B4h]
     mov dword ptr [ebp-4], -1
-    mov dword ptr [ecx+edi*1], eax
+    mov dword ptr [ecx+edi], eax
     mov dx, word ptr [esi+3Ch]
     mov eax, dword ptr [esi+34h]
     mov ecx, dword ptr [ebp+8]
@@ -294335,13 +292977,13 @@ loc_4EAC1C:
     mov edx, dword ptr [esi+0B4h]
     push eax
     push ecx
-    mov ecx, dword ptr [edx+edi*1]
+    mov ecx, dword ptr [edx+edi]
     call ?Init@SoundObj@@QAEHGKF@Z
     mov ebx, eax
     test ebx, ebx
     jnz loc_4EAC8C
     mov eax, dword ptr [esi+0B4h]
-    mov ebx, dword ptr [eax+edi*1]
+    mov ebx, dword ptr [eax+edi]
     test ebx, ebx
     jz loc_4EAC6A
     mov ecx, ebx
@@ -294353,7 +292995,7 @@ loc_4EAC1C:
 loc_4EAC6A:
     mov ecx, dword ptr [esi+0B4h]
     xor eax, eax
-    mov dword ptr [ecx+edi*1], 0
+    mov dword ptr [ecx+edi], 0
     mov ecx, dword ptr [ebp-0Ch]
     mov dword ptr fs:[0], ecx
     pop edi
@@ -294366,7 +293008,7 @@ loc_4EAC6A:
 loc_4EAC8C:
     mov edx, dword ptr [esi+0B4h]
     mov cx, word ptr [esi+2Ch]
-    mov eax, dword ptr [edx+edi*1]
+    mov eax, dword ptr [edx+edi]
     mov word ptr [eax+6Ah], cx
     call ?GetDSound3DMask@AudManager@@SA?BIXZ
     test dword ptr [esi+38h], eax
@@ -294375,7 +293017,7 @@ loc_4EAC8C:
     mov ecx, dword ptr [esi+0B4h]
     mov eax, dword ptr [esi+70h]
     push edx
-    mov ecx, dword ptr [ecx+edi*1]
+    mov ecx, dword ptr [ecx+edi]
     push eax
     call ?SetRamp@SoundObj@@QAEXMM@Z
     mov ecx, esi
@@ -294386,7 +293028,7 @@ loc_4EACC4:
     test dword ptr [esi+38h], eax
     jz loc_4EACF0
     mov edx, dword ptr [esi+0B4h]
-    mov ecx, dword ptr [edx+edi*1]
+    mov ecx, dword ptr [edx+edi]
     call ?CreateSecondaryEAXObj@SoundObj@@QAEGXZ
     test ax, ax
     jnz loc_4EACF0
@@ -294770,11 +293412,11 @@ loc_4EB071:
     mov eax, dword ptr [esi+48h]
     mov ecx, dword ptr [esi+0B0h]
     shl eax, 2
-    mov edx, dword ptr [ecx+eax*1]
+    mov edx, dword ptr [ecx+eax]
     mov ecx, dword ptr [esi+0B4h]
     push edx
     push 0
-    mov ecx, dword ptr [ecx+eax*1]
+    mov ecx, dword ptr [ecx+eax]
     call ?Play@SoundObj@@QAEHKPAD@Z
     test eax, eax
     jz loc_4EB0BD
@@ -294846,11 +293488,11 @@ loc_4EB151:
     mov eax, dword ptr [esi+48h]
     mov ecx, dword ptr [esi+0B0h]
     shl eax, 2
-    mov edx, dword ptr [ecx+eax*1]
+    mov edx, dword ptr [ecx+eax]
     mov ecx, dword ptr [esi+0B4h]
     push edx
     push 1
-    mov ecx, dword ptr [ecx+eax*1]
+    mov ecx, dword ptr [ecx+eax]
     call ?Play@SoundObj@@QAEHKPAD@Z
     test eax, eax
     jz loc_4EB19E
@@ -294919,7 +293561,7 @@ loc_4EB21E:
     test eax, eax
     jz loc_4EB27F
     shl edx, 2
-    cmp dword ptr [edx+eax*1], 0
+    cmp dword ptr [edx+eax], 0
     jz loc_4EB27F
     fld dword ptr [ebp+8]
     fcomp dword ptr [flt_61FDB0]
@@ -294943,11 +293585,11 @@ loc_4EB261:
 
 loc_4EB264:
     mov eax, dword ptr [ecx+7Ch]
-    fstp dword ptr [eax+edx*1]
+    fstp dword ptr [eax+edx]
     mov eax, dword ptr [ecx+7Ch]
     mov ecx, dword ptr [ecx+0B4h]
-    mov eax, dword ptr [eax+edx*1]
-    mov ecx, dword ptr [ecx+edx*1]
+    mov eax, dword ptr [eax+edx]
+    mov ecx, dword ptr [ecx+edx]
     push eax
     call ?SetFrequency@SoundObj@@QAEXM@Z
 
@@ -294970,7 +293612,7 @@ loc_4EB2DE:
     test eax, eax
     jz loc_4EB33F
     shl edx, 2
-    cmp dword ptr [edx+eax*1], 0
+    cmp dword ptr [edx+eax], 0
     jz loc_4EB33F
     fld dword ptr [ebp+8]
     fcomp dword ptr [flt_61FDB0]
@@ -294994,11 +293636,11 @@ loc_4EB321:
 
 loc_4EB324:
     mov eax, dword ptr [ecx+78h]
-    fstp dword ptr [eax+edx*1]
+    fstp dword ptr [eax+edx]
     mov eax, dword ptr [ecx+78h]
     mov ecx, dword ptr [ecx+0B4h]
-    mov eax, dword ptr [eax+edx*1]
-    mov ecx, dword ptr [ecx+edx*1]
+    mov eax, dword ptr [eax+edx]
+    mov ecx, dword ptr [ecx+edx]
     push eax
     call ?SetVolume@SoundObj@@QAEXM@Z
 
@@ -295024,7 +293666,7 @@ loc_4EB362:
     test ecx, ecx
     jz loc_4EB3A2
     lea edi, [eax*4]
-    cmp dword ptr [edi+ecx*1], 0
+    cmp dword ptr [edi+ecx], 0
     jz loc_4EB3A2
     push eax
     mov ecx, esi
@@ -295033,9 +293675,9 @@ loc_4EB362:
     jz loc_4EB3A2
     mov ecx, dword ptr [esi+84h]
     fld dword ptr [ebp+8]
-    fstp dword ptr [ecx+edi*1]
+    fstp dword ptr [ecx+edi]
     mov edx, dword ptr [esi+84h]
-    mov ecx, dword ptr [edx+edi*1]
+    mov ecx, dword ptr [edx+edi]
     push ecx
     mov ecx, eax
     call ?SetReverbMix@CReverbBuffer@@QAEXM@Z
@@ -295064,7 +293706,7 @@ loc_4EB422:
     test eax, eax
     jz loc_4EB49C
     lea esi, [ecx*4]
-    cmp dword ptr [esi+eax*1], 0
+    cmp dword ptr [esi+eax], 0
     jz loc_4EB49C
     mov ecx, dword ptr [?AUDMGRPTR@@3PAVAudManager@@A]
     call ?IsStereo@AudManager@@QAEHXZ
@@ -295092,11 +293734,11 @@ loc_4EB478:
 
 loc_4EB47B:
     mov eax, dword ptr [edi+80h]
-    fstp dword ptr [eax+esi*1]
+    fstp dword ptr [eax+esi]
     mov ecx, dword ptr [edi+80h]
     mov eax, dword ptr [edi+0B4h]
-    mov edx, dword ptr [ecx+esi*1]
-    mov ecx, dword ptr [eax+esi*1]
+    mov edx, dword ptr [ecx+esi]
+    mov ecx, dword ptr [eax+esi]
     push edx
     call ?SetPan@SoundObj@@QAEXM@Z
 
@@ -295229,7 +293871,7 @@ loc_4EB61F:
 
 loc_4EB62D:
     mov ecx, dword ptr [esi+0B4h]
-    mov ecx, dword ptr [ecx+edi*1]
+    mov ecx, dword ptr [ecx+edi]
     test ecx, ecx
     jz loc_4EB647
     mov edx, dword ptr [esi+74h]
@@ -300827,7 +299469,7 @@ ALIGN 16
 
 loc_4EF2F1:
     mov eax, dword ptr [edi+0B0h]
-    mov eax, dword ptr [eax+esi*1+18h]
+    mov eax, dword ptr [eax+esi+18h]
     cmp eax, ebx
     jz loc_4EF308
     push eax
@@ -300838,7 +299480,7 @@ loc_4EF308:
     mov ecx, dword ptr [edi+0B0h]
     add esi, 1Ch
     cmp esi, 2D8h
-    mov dword ptr [ecx+esi*1-4], ebx
+    mov dword ptr [ecx+esi-4], ebx
     jl loc_4EF2F1
     mov edx, dword ptr [edi+0B0h]
     push edx
@@ -300888,7 +299530,7 @@ ALIGN 16
     shl esi, 3
     sub esi, eax
     shl esi, 2
-    mov eax, dword ptr [esi+ecx*1+18h]
+    mov eax, dword ptr [esi+ecx+18h]
     test eax, eax
     jz loc_4EF3A9
     push eax
@@ -300897,7 +299539,7 @@ ALIGN 16
 
 loc_4EF3A9:
     mov eax, dword ptr [edi+0B0h]
-    mov dword ptr [eax+esi*1+18h], 0
+    mov dword ptr [eax+esi+18h], 0
     pop edi
     pop esi
     pop ebp
@@ -300912,7 +299554,7 @@ loc_4EF3BD:
     shl esi, 3
     sub esi, eax
     shl esi, 2
-    mov eax, dword ptr [ecx+esi*1+18h]
+    mov eax, dword ptr [ecx+esi+18h]
     test eax, eax
     jz loc_4EF3E5
     push eax
@@ -300921,7 +299563,7 @@ loc_4EF3BD:
 
 loc_4EF3E5:
     mov ecx, dword ptr [edi+0B4h]
-    mov dword ptr [ecx+esi*1+18h], 0
+    mov dword ptr [ecx+esi+18h], 0
 
 loc_4EF3F3:
     pop edi
@@ -301342,10 +299984,10 @@ ALIGN 16
     jle loc_4EF83C
 
 loc_4EF81B:
-    movsx eax, byte ptr [esi+ebx*1]
+    movsx eax, byte ptr [esi+ebx]
     push eax
     call _toupper
-    mov byte ptr [esi+ebx*1], al
+    mov byte ptr [esi+ebx], al
     add esp, 4
     mov edi, ebx
     or ecx, -1
@@ -301451,7 +300093,7 @@ ALIGN 16
     mov edx, esi
 
 loc_4EF8F3:
-    mov edi, dword ptr [ecx+eax*1]
+    mov edi, dword ptr [ecx+eax]
     mov dword ptr [eax], edi
     add eax, 4
     dec edx
@@ -301478,7 +300120,7 @@ loc_4EF911:
     sub ecx, eax
 
 loc_4EF928:
-    mov edx, dword ptr [ecx+eax*1]
+    mov edx, dword ptr [ecx+eax]
     mov dword ptr [eax], edx
     add eax, 4
     dec esi
@@ -301502,7 +300144,7 @@ loc_4EF933:
     jnz loc_4EF97E
     mov eax, dword ptr [ebp+14h]
     mov ecx, dword ptr [ebp-4]
-    mov dword ptr [eax+ecx*1-4], esi
+    mov dword ptr [eax+ecx-4], esi
     mov dword ptr [ebx+0ACh], eax
     mov eax, 1
     pop edi
@@ -301557,7 +300199,7 @@ loc_4EF9CD:
     mov dword ptr [esi+10h], eax
     mov eax, dword ptr [ebp+14h]
     push esi
-    mov dword ptr [eax+ecx*1-4], esi
+    mov dword ptr [eax+ecx-4], esi
     mov ecx, ebx
     mov dword ptr [ebx+0ACh], eax
     call ?SetDeviceRating@DSGlobal@@QAEXPAUtag_dsdevdesc@@@Z
@@ -301581,7 +300223,7 @@ loc_4EFA11:
     call ?SetDeviceRating@DSGlobal@@QAEXPAUtag_dsdevdesc@@@Z
     mov eax, dword ptr [ebp+14h]
     mov ecx, dword ptr [ebp-4]
-    mov dword ptr [eax+ecx*1-4], esi
+    mov dword ptr [eax+ecx-4], esi
     mov dword ptr [ebx+0ACh], eax
 
 loc_4EFA3A:
@@ -302112,17 +300754,17 @@ loc_4EFEA2:
     jz loc_4EFF65
     mov ecx, dword ptr [edi+0B0h]
     push 12h
-    lea edx, [ecx+esi*1+4]
+    lea edx, [ecx+esi+4]
     mov ecx, ebx
     push edx
     call ?Read@Stream@@QAEHPAXH@Z
     mov eax, dword ptr [edi+0B0h]
-    mov ecx, dword ptr [eax+esi*1]
+    mov ecx, dword ptr [eax+esi]
     push ecx
     call ?arts_operator_new@@YAPAXI@Z
     mov edx, dword ptr [edi+0B0h]
     add esp, 4
-    mov dword ptr [edx+esi*1+18h], eax
+    mov dword ptr [edx+esi+18h], eax
     mov eax, dword ptr [edi+0B0h]
     add eax, esi
     mov ecx, dword ptr [eax+18h]
@@ -302134,7 +300776,7 @@ loc_4EFEA2:
     mov ecx, ebx
     call ?Read@Stream@@QAEHPAXH@Z
     mov ecx, dword ptr [edi+0B0h]
-    cmp eax, dword ptr [ecx+esi*1]
+    cmp eax, dword ptr [ecx+esi]
     jnz loc_4EFF41
     mov ecx, dword ptr [ebp+8]
     inc ecx
@@ -302311,26 +300953,26 @@ loc_4F0077:
     mov edx, dword ptr [ebx+0B4h]
     push 12h
     mov ecx, edi
-    lea eax, [esi+edx*1+4]
+    lea eax, [esi+edx+4]
     push eax
     call ?Read@Stream@@QAEHPAXH@Z
     mov ecx, dword ptr [ebx+0B4h]
-    mov edx, dword ptr [esi+ecx*1]
+    mov edx, dword ptr [esi+ecx]
     push edx
     call ?arts_operator_new@@YAPAXI@Z
     mov ecx, dword ptr [ebx+0B4h]
     add esp, 4
-    mov dword ptr [esi+ecx*1+18h], eax
+    mov dword ptr [esi+ecx+18h], eax
     mov edx, dword ptr [ebx+0B4h]
-    lea eax, [esi+edx*1]
-    mov eax, dword ptr [esi+edx*1+18h]
+    lea eax, [esi+edx]
+    mov eax, dword ptr [esi+edx+18h]
     test eax, eax
     jz loc_4F0129
     mov ecx, edx
-    mov edx, dword ptr [esi+ecx*1]
+    mov edx, dword ptr [esi+ecx]
     push edx
     push eax
-    lea edi, [esi+ecx*1]
+    lea edi, [esi+ecx]
     mov ecx, dword ptr [ebp-4]
     call ?Read@Stream@@QAEHPAXH@Z
     cmp eax, dword ptr [edi]
@@ -302648,7 +301290,7 @@ ALIGN 16
     mov word ptr [eax+10h], 1
     mov edx, dword ptr [esi+0B4h]
     push edi
-    mov word ptr [ebx+edx*1+12h], cx
+    mov word ptr [ebx+edx+12h], cx
     mov eax, dword ptr [esi+0B4h]
     add eax, ebx
     xor ecx, ecx
@@ -302656,14 +301298,14 @@ ALIGN 16
     imul ecx, dword ptr [eax+8]
     mov dword ptr [eax+0Ch], ecx
     mov edx, dword ptr [esi+0B4h]
-    mov eax, dword ptr [ebx+edx*1]
+    mov eax, dword ptr [ebx+edx]
     push eax
     call ?arts_operator_new@@YAPAXI@Z
     mov ecx, dword ptr [esi+0B4h]
-    mov esi, dword ptr [ebx+ecx*1+18h]
+    mov esi, dword ptr [ebx+ecx+18h]
     mov edi, eax
     mov dword ptr [ebp-8], eax
-    lea edx, [ebx+ecx*1]
+    lea edx, [ebx+ecx]
     add esp, 4
     mov ecx, dword ptr [edx]
     mov edx, ecx
@@ -302679,19 +301321,19 @@ ALIGN 16
     shr ecx, 1
     mov dword ptr [eax], ecx
     mov ecx, dword ptr [esi+0B4h]
-    mov edx, dword ptr [ebx+ecx*1+18h]
+    mov edx, dword ptr [ebx+ecx+18h]
     push edx
     call ?arts_operator_delete@@YAXPAX@Z
     mov eax, dword ptr [esi+0B4h]
     add esp, 4
-    mov ecx, dword ptr [ebx+eax*1]
+    mov ecx, dword ptr [ebx+eax]
     push ecx
     call ?arts_operator_new@@YAPAXI@Z
     mov edx, dword ptr [esi+0B4h]
     add esp, 4
-    mov dword ptr [ebx+edx*1+18h], eax
+    mov dword ptr [ebx+edx+18h], eax
     mov eax, dword ptr [esi+0B4h]
-    mov ecx, dword ptr [ebx+eax*1]
+    mov ecx, dword ptr [ebx+eax]
     shl ecx, 1
     push ecx
     call ?arts_operator_new@@YAPAXI@Z
@@ -302699,7 +301341,7 @@ ALIGN 16
     mov esi, dword ptr [ebp-8]
     mov edi, eax
     add esp, 4
-    mov ecx, dword ptr [ebx+edx*1]
+    mov ecx, dword ptr [ebx+edx]
     mov dword ptr [ebp-0Ch], eax
     shl ecx, 1
     mov edx, ecx
@@ -302711,8 +301353,8 @@ ALIGN 16
     rep movsb
     mov ecx, dword ptr [edx+0B4h]
     xor esi, esi
-    lea edi, [ebx+ecx*1]
-    mov ecx, dword ptr [ebx+ecx*1]
+    lea edi, [ebx+ecx]
+    mov ecx, dword ptr [ebx+ecx]
     test ecx, ecx
     jbe loc_4F04A4
     mov dword ptr [ebp+8], eax
@@ -302725,24 +301367,24 @@ loc_4F0459:
     xor ecx, ecx
     mov cl, ah
     mov eax, dword ptr [edi+18h]
-    mov byte ptr [eax+esi*1], cl
+    mov byte ptr [eax+esi], cl
     jmp loc_4F0477
 
 loc_4F0470:
     mov ecx, dword ptr [edi+18h]
-    mov byte ptr [ecx+esi*1], 0
+    mov byte ptr [ecx+esi], 0
 
 loc_4F0477:
     mov eax, dword ptr [edx+0B4h]
-    mov ecx, dword ptr [ebx+eax*1+18h]
-    mov al, byte ptr [ecx+esi*1]
+    mov ecx, dword ptr [ebx+eax+18h]
+    mov al, byte ptr [ecx+esi]
     add ecx, esi
     add al, 80h
     inc esi
     mov byte ptr [ecx], al
     mov eax, dword ptr [edx+0B4h]
     mov ecx, dword ptr [ebp+8]
-    lea edi, [ebx+eax*1]
+    lea edi, [ebx+eax]
     add ecx, 2
     mov dword ptr [ebp+8], ecx
     cmp esi, dword ptr [edi]
@@ -303590,9 +302232,9 @@ loc_4F0ECE:
     shl esi, 2
     call ?DSLoadSoundBuffer@SoundObj@@QAEPAUIDirectSoundBuffer@@PBDK@Z
     mov ecx, dword ptr [edi+1Ch]
-    mov dword ptr [ecx+esi*1], eax
+    mov dword ptr [ecx+esi], eax
     mov edx, dword ptr [edi+1Ch]
-    cmp dword ptr [edx+esi*1], 0
+    cmp dword ptr [edx+esi], 0
     jz loc_4F0F04
     inc ebx
     cmp bx, word ptr [ebp+8]
@@ -303644,20 +302286,20 @@ ALIGN 16
 loc_4F0F3F:
     lea esi, [eax*4]
     mov eax, dword ptr [edi+1Ch]
-    mov eax, dword ptr [eax+esi*1]
+    mov eax, dword ptr [eax+esi]
     test eax, eax
     jz loc_4F0F6F
     mov ecx, dword ptr [eax]
     push eax
     call dword ptr [ecx+48h]
     mov edx, dword ptr [edi+1Ch]
-    mov eax, dword ptr [edx+esi*1]
+    mov eax, dword ptr [edx+esi]
     push eax
     mov ecx, dword ptr [eax]
     call dword ptr [ecx+8]
     mov edx, dword ptr [edi+1Ch]
     mov ecx, dword ptr [ebp-4]
-    mov dword ptr [edx+esi*1], 0
+    mov dword ptr [edx+esi], 0
 
 loc_4F0F6F:
     inc ebx
@@ -304423,12 +303065,12 @@ loc_4F16F4:
     xor edx, edx
     mov dl, ch
     mov ecx, dword ptr [ebx]
-    mov byte ptr [esi+ecx*1], dl
+    mov byte ptr [esi+ecx], dl
     jmp loc_4F170D
 
 loc_4F1707:
     mov edx, dword ptr [ebx]
-    mov byte ptr [esi+edx*1], 0
+    mov byte ptr [esi+edx], 0
 
 loc_4F170D:
     mov ecx, dword ptr [ebx]
@@ -304493,7 +303135,7 @@ loc_4F1785:
     add ecx, -2
     mov edi, offset asc_6487B8
     xor eax, eax
-    lea edx, [ecx+ebx*1-3]
+    lea edx, [ecx+ebx-3]
     mov ecx, 5
     mov esi, edx
     mov dword ptr [ebp+0Ch], edx
@@ -305783,7 +304425,7 @@ loc_4F22BD:
     jnz loc_4F237D
     cmp esi, 45564157h
     jnz loc_4F237D
-    lea esi, [edx+eax*1-4]
+    lea esi, [edx+eax-4]
     cmp eax, esi
     jnb loc_4F237D
 
@@ -308236,14 +306878,14 @@ loc_4F3972:
     mov esi, edi
     mov edi, dword ptr [ebp-10h]
     mov eax, ecx
-    mov edi, dword ptr [edi+edx*1]
+    mov edi, dword ptr [edi+edx]
     shr ecx, 2
     rep movsd
     mov ecx, eax
     and ecx, 3
     rep movsb
     mov ecx, dword ptr [ebx+4Ch]
-    mov edx, dword ptr [ecx+edx*1]
+    mov edx, dword ptr [ecx+edx]
     mov ecx, ebx
     push edx
     call ?SetName@asNode@@QAEXPBD@Z
@@ -308251,12 +306893,12 @@ loc_4F3972:
     mov ecx, dword ptr [ebx+50h]
     mov esi, dword ptr [ebp-14h]
     mov dword ptr [ebx+38h], eax
-    cmp dword ptr [ecx+esi*1], 0
+    cmp dword ptr [ecx+esi], 0
     jz loc_4F39F7
     mov ecx, ebx
     call ?Stop@AudStream@@QAEXXZ
     mov edx, dword ptr [ebx+50h]
-    mov edi, dword ptr [edx+esi*1]
+    mov edi, dword ptr [edx+esi]
     test edi, edi
     jz loc_4F39ED
     mov ecx, edi
@@ -308267,7 +306909,7 @@ loc_4F3972:
 
 loc_4F39ED:
     mov eax, dword ptr [ebx+50h]
-    mov dword ptr [eax+esi*1], 0
+    mov dword ptr [eax+esi], 0
 
 loc_4F39F7:
     push 138h
@@ -308287,18 +306929,18 @@ loc_4F3A1B:
 loc_4F3A1D:
     mov ecx, dword ptr [ebx+50h]
     mov dword ptr [ebp-4], -1
-    mov dword ptr [ecx+esi*1], eax
+    mov dword ptr [ecx+esi], eax
     mov edx, dword ptr [ebx+34h]
     mov ecx, dword ptr [ebx+50h]
     mov eax, dword ptr [ebp+8]
     push edx
     push eax
-    mov ecx, dword ptr [ecx+esi*1]
+    mov ecx, dword ptr [ecx+esi]
     call ?Init@StreamObj@@QAEHPBDK@Z
     test eax, eax
     jnz loc_4F3A94
     mov edx, dword ptr [ebx+50h]
-    mov edi, dword ptr [edx+esi*1]
+    mov edi, dword ptr [edx+esi]
     test edi, edi
     jz loc_4F3A5B
     mov ecx, edi
@@ -308309,7 +306951,7 @@ loc_4F3A1D:
 
 loc_4F3A5B:
     mov eax, dword ptr [ebx+50h]
-    mov dword ptr [eax+esi*1], 0
+    mov dword ptr [eax+esi], 0
     jmp loc_4F3A92
 
 loc_4F3A67:
@@ -308414,7 +307056,7 @@ ALIGN 16
     movsx eax, ax
     shl eax, 2
     mov dword ptr [ebp-4], eax
-    cmp dword ptr [eax+ecx*1], 0
+    cmp dword ptr [eax+ecx], 0
     jz loc_4F3D12
     mov eax, dword ptr [?AUDMGRPTR@@3PAVAudManager@@A]
     mov ecx, dword ptr [eax+48h]
@@ -308442,14 +307084,14 @@ ALIGN 16
     mov esi, edi
     mov edi, dword ptr [ebp-8]
     mov edx, ecx
-    mov edi, dword ptr [edi+eax*1]
+    mov edi, dword ptr [edi+eax]
     shr ecx, 2
     rep movsd
     mov ecx, edx
     and ecx, 3
     rep movsb
     mov ecx, dword ptr [ebx+4Ch]
-    mov edx, dword ptr [ecx+eax*1]
+    mov edx, dword ptr [ecx+eax]
     mov ecx, ebx
     push edx
     call ?SetName@asNode@@QAEXPBD@Z
@@ -308457,7 +307099,7 @@ ALIGN 16
     fcomp dword ptr [flt_61FF2C]
     mov eax, dword ptr [ebx+50h]
     mov ecx, dword ptr [ebp-4]
-    mov edx, dword ptr [eax+ecx*1]
+    mov edx, dword ptr [eax+ecx]
     fnstsw ax
     mov dword ptr [edx+3Ch], 0
     test ah, 1
@@ -308530,7 +307172,7 @@ loc_4F3F3E:
     test eax, eax
     jz loc_4F3F99
     shl edx, 2
-    cmp dword ptr [edx+eax*1], 0
+    cmp dword ptr [edx+eax], 0
     jz loc_4F3F99
     fld dword ptr [ebp+8]
     fcomp dword ptr [flt_61FF2C]
@@ -308554,11 +307196,11 @@ loc_4F3F7E:
 
 loc_4F3F81:
     mov eax, dword ptr [ecx+44h]
-    fstp dword ptr [eax+edx*1]
+    fstp dword ptr [eax+edx]
     mov eax, dword ptr [ecx+44h]
     mov ecx, dword ptr [ecx+50h]
-    mov eax, dword ptr [eax+edx*1]
-    mov ecx, dword ptr [ecx+edx*1]
+    mov eax, dword ptr [eax+edx]
+    mov ecx, dword ptr [ecx+edx]
     push eax
     call ?SetFrequencyEvent@StreamObj@@QAEXM@Z
 
@@ -308581,7 +307223,7 @@ loc_4F3FEE:
     test eax, eax
     jz loc_4F4049
     shl edx, 2
-    cmp dword ptr [edx+eax*1], 0
+    cmp dword ptr [edx+eax], 0
     jz loc_4F4049
     fld dword ptr [ebp+8]
     fcomp dword ptr [flt_61FF2C]
@@ -308605,11 +307247,11 @@ loc_4F402E:
 
 loc_4F4031:
     mov eax, dword ptr [ecx+40h]
-    fstp dword ptr [eax+edx*1]
+    fstp dword ptr [eax+edx]
     mov eax, dword ptr [ecx+40h]
     mov ecx, dword ptr [ecx+50h]
-    mov eax, dword ptr [eax+edx*1]
-    mov ecx, dword ptr [ecx+edx*1]
+    mov eax, dword ptr [eax+edx]
+    mov ecx, dword ptr [ecx+edx]
     push eax
     call ?SetVolumeEvent@StreamObj@@QAEXM@Z
 
@@ -308635,7 +307277,7 @@ loc_4F4062:
     test eax, eax
     jz loc_4F40D0
     lea esi, [ecx*4]
-    cmp dword ptr [esi+eax*1], 0
+    cmp dword ptr [esi+eax], 0
     jz loc_4F40D0
     mov ecx, dword ptr [?AUDMGRPTR@@3PAVAudManager@@A]
     call ?IsStereo@AudManager@@QAEHXZ
@@ -308663,11 +307305,11 @@ loc_4F40B5:
 
 loc_4F40B8:
     mov eax, dword ptr [edi+48h]
-    fstp dword ptr [eax+esi*1]
+    fstp dword ptr [eax+esi]
     mov ecx, dword ptr [edi+48h]
     mov eax, dword ptr [edi+50h]
-    mov edx, dword ptr [ecx+esi*1]
-    mov ecx, dword ptr [eax+esi*1]
+    mov edx, dword ptr [ecx+esi]
+    mov ecx, dword ptr [eax+esi]
     push edx
     call ?SetPanEvent@StreamObj@@QAEXM@Z
 
@@ -309573,7 +308215,7 @@ loc_4F4ED5:
     add ecx, -2
     mov edi, offset asc_648E4C
     xor eax, eax
-    lea ebx, [ecx+edx*1-3]
+    lea ebx, [ecx+edx-3]
     mov ecx, 5
     mov esi, ebx
     repe cmpsb
@@ -310391,7 +309033,7 @@ loc_4F565C:
     mov edx, dword ptr [ebp-8]
     setnz al
     dec eax
-    lea edi, [ebx+edx*1]
+    lea edi, [ebx+edx]
     and eax, 80h
     mov edx, ecx
     and eax, 0FFh
@@ -310465,7 +309107,7 @@ loc_4F56FC:
     mov ecx, dword ptr [ebp-4]
     mov edx, dword ptr [ebp-8]
     sub ecx, edi
-    lea eax, [edi+edx*1]
+    lea eax, [edi+edx]
     push ecx
     mov ecx, dword ptr [esi+20h]
     push eax
@@ -310832,11 +309474,11 @@ loc_4F5A32:
 loc_4F5A71:
     mov edx, dword ptr [esi+1Ch]
     shl eax, 3
-    mov dword ptr [eax+edx*1], -1
+    mov dword ptr [eax+edx], -1
     mov ecx, dword ptr [esi+54h]
     mov edx, dword ptr [esi+1Ch]
     mov ecx, dword ptr [ecx+4]
-    mov dword ptr [eax+edx*1+4], ecx
+    mov dword ptr [eax+edx+4], ecx
     lea edx, [ebp-8]
     push edx
     push 0
@@ -310867,7 +309509,7 @@ loc_4F5AC0:
     mov ecx, dword ptr [eax]
     push edx
     movsx edx, word ptr [esi+4Ch]
-    lea edx, [edx+edi*1+1]
+    lea edx, [edx+edi+1]
     push edx
     push eax
     call dword ptr [ecx+0Ch]
@@ -311081,7 +309723,7 @@ loc_4F5CE2:
     mov ecx, dword ptr [ebp+8]
     mov edx, dword ptr [ebp-4]
     sub ecx, ebx
-    lea eax, [ebx+edx*1]
+    lea eax, [ebx+edx]
     push ecx
     mov ecx, dword ptr [ebp-8]
     push eax
@@ -311523,15 +310165,15 @@ loc_4F6115:
     sub edi, eax
     mov eax, dword ptr [esi+5Ch]
     shl edi, 2
-    mov dword ptr [eax+edi*1], edx
+    mov dword ptr [eax+edi], edx
     mov ecx, dword ptr [esi+5Ch]
-    mov dword ptr [ecx+edi*1+4], ebx
+    mov dword ptr [ecx+edi+4], ebx
     mov eax, dword ptr [esi+18h]
     mov ecx, dword ptr [eax+8]
     cmp ebx, ecx
     jnb loc_4F6145
     mov ecx, dword ptr [esi+5Ch]
-    mov dword ptr [ecx+edi*1+8], ebx
+    mov dword ptr [ecx+edi+8], ebx
     jmp loc_4F6154
 
 loc_4F6145:
@@ -311540,7 +310182,7 @@ loc_4F6145:
     xor edx, edx
     div ecx
     mov eax, dword ptr [esi+5Ch]
-    mov dword ptr [eax+edi*1+8], edx
+    mov dword ptr [eax+edi+8], edx
 
 loc_4F6154:
     mov ecx, dword ptr [esi+18h]
@@ -311560,14 +310202,14 @@ loc_4F6154:
     fmulp st(1), st
     call __ftol
     mov ecx, dword ptr [esi+5Ch]
-    mov dword ptr [ecx+edi*1+0Ch], eax
+    mov dword ptr [ecx+edi+0Ch], eax
     mov edx, dword ptr [esi+5Ch]
     mov eax, dword ptr [ebp+10h]
-    mov dword ptr [edx+edi*1+10h], eax
+    mov dword ptr [edx+edi+10h], eax
     mov ecx, dword ptr [esi+5Ch]
     mov dx, word ptr [ebp+14h]
     mov ax, word ptr [ebp+18h]
-    mov word ptr [ecx+edi*1+18h], dx
+    mov word ptr [ecx+edi+18h], dx
     mov word ptr [esi+50h], ax
     pop edi
     pop esi
@@ -321013,7 +319655,7 @@ loc_4FD5F9:
     mov eax, dword ptr [ecx+28h]
     mov edi, dword ptr [ecx+2Ch]
     lea edx, [ebx*4]
-    lea esi, [eax+edx*1]
+    lea esi, [eax+edx]
     add edi, edx
     fabs
     mov eax, dword ptr [esi]
@@ -321030,7 +319672,7 @@ loc_4FD5F9:
 loc_4FD632:
     mov eax, dword ptr [ecx+24h]
     fld dword ptr [esi]
-    fsub dword ptr [edx+eax*1]
+    fsub dword ptr [edx+eax]
     fld dword ptr [ecx+5Ch]
     fsub dword ptr [ecx+58h]
     fxch st(1)
@@ -321051,7 +319693,7 @@ loc_4FD664:
     mov eax, dword ptr [ecx+30h]
     mov esi, dword ptr [ecx+34h]
     fld dword ptr [ebp-1Ch]
-    fld dword ptr [edx+eax*1]
+    fld dword ptr [edx+eax]
     fsub dword ptr [edi]
     fxch st(1)
     fsub dword ptr [ebp-10h]
@@ -321068,11 +319710,11 @@ loc_4FD664:
     fxch st(2)
     fst dword ptr [ebp-14h]
     fld dword ptr [ebp-10h]
-    fstp dword ptr [edx+esi*1]
+    fstp dword ptr [edx+esi]
     fld dword ptr [ebp-14h]
     mov eax, dword ptr [ecx+38h]
     fld dword ptr [ebp-8]
-    fstp dword ptr [edx+eax*1]
+    fstp dword ptr [edx+eax]
     fxch st(4)
     fdivp st(2), st
     fxch st(2)
@@ -321097,12 +319739,12 @@ loc_4FD664:
     fdivp st(3), st
     fxch st(2)
     fsubp st(2), st
-    fstp dword ptr [edx+eax*1]
+    fstp dword ptr [edx+eax]
     mov eax, dword ptr [ecx+40h]
     fstp dword ptr [ebp-18h]
     fstp st
     fld dword ptr [ebp-18h]
-    fstp dword ptr [edx+eax*1]
+    fstp dword ptr [edx+eax]
     cmp ebx, dword ptr [ecx+20h]
     jl loc_4FD5F9
 
@@ -322739,10 +321381,10 @@ ALIGN 16
     shl esi, 4
     call __ftol
     mov ecx, dword ptr [edi+38h]
-    mov dword ptr [ecx+esi*1], eax
+    mov dword ptr [ecx+esi], eax
     mov edx, dword ptr [edi+38h]
     mov eax, dword ptr [ebp+10h]
-    mov dword ptr [edx+esi*1+4], eax
+    mov dword ptr [edx+esi+4], eax
     mov dword ptr [edi+40h], 1
     pop edi
     pop esi
@@ -322786,14 +321428,14 @@ loc_4FF95E:
     add edx, ecx
     mov ecx, dword ptr [esi+38h]
     shl edx, 4
-    mov dword ptr [edx+ecx*1], eax
+    mov dword ptr [edx+ecx], eax
     mov eax, dword ptr [esi+28h]
     mov edx, eax
     shl edx, 4
     add edx, eax
     mov eax, dword ptr [esi+38h]
     shl edx, 4
-    mov dword ptr [edx+eax*1+4], ebx
+    mov dword ptr [edx+eax+4], ebx
     mov eax, dword ptr [esi+28h]
     mov edx, dword ptr [esi+38h]
     mov ecx, eax
@@ -322801,7 +321443,7 @@ loc_4FF95E:
     add ecx, eax
     mov eax, dword ptr [ebp+8]
     shl ecx, 4
-    mov dword ptr [ecx+edx*1+0Ch], eax
+    mov dword ptr [ecx+edx+0Ch], eax
     mov eax, dword ptr [esi+28h]
     mov edx, dword ptr [esi+38h]
     mov ecx, eax
@@ -322809,7 +321451,7 @@ loc_4FF95E:
     add ecx, eax
     mov eax, dword ptr [ebp+10h]
     shl ecx, 4
-    mov dword ptr [ecx+edx*1+8], eax
+    mov dword ptr [ecx+edx+8], eax
     mov eax, dword ptr [ebp+0Ch]
     test eax, eax
     jz loc_4FFA12
@@ -322821,7 +321463,7 @@ loc_4FF95E:
     shl ecx, 4
     add ecx, eax
     shl ecx, 4
-    lea eax, [ecx+edx*1+10h]
+    lea eax, [ecx+edx+10h]
     push eax
     call _strncpy
     mov eax, dword ptr [esi+28h]
@@ -322842,7 +321484,7 @@ loc_4FFA12:
     shl ecx, 4
     add ecx, eax
     shl ecx, 4
-    mov byte ptr [ecx+edx*1+10h], 0
+    mov byte ptr [ecx+edx+10h], 0
     mov eax, dword ptr [esi+28h]
     lea ecx, [eax+1]
     mov dword ptr [esi+28h], ecx
@@ -324725,13 +323367,13 @@ loc_501DC0:
     mov ecx, dword ptr [esi+20h]
     and al, dl
     mov edx, dword ptr [esi+30h]
-    mov byte ptr [ecx+edx*1], al
+    mov byte ptr [ecx+edx], al
     call ?irand@@YAHXZ
     mov ecx, dword ptr [esi+24h]
     mov edx, dword ptr [esi+30h]
     and al, 3Fh
     sub al, 40h
-    mov byte ptr [ecx+edx*1], al
+    mov byte ptr [ecx+edx], al
     mov eax, dword ptr [esi+30h]
     inc eax
     mov dword ptr [esi+30h], eax
@@ -324807,7 +323449,7 @@ loc_50228F:
     jb loc_5023E3
 
 loc_5022A3:
-    mov byte ptr [ebx+edi*1+8], bl
+    mov byte ptr [ebx+edi+8], bl
     mov eax, dword ptr [esi+5Ch]
     mov ecx, dword ptr [eax]
     mov eax, dword ptr [ecx+ebx*4]
@@ -324839,16 +323481,16 @@ loc_5022A3:
     mov eax, dword ptr [ebp-4]
     lea edi, [ebp-28h]
     lea edx, [ebp-28h]
-    mov cl, byte ptr [ebx+eax*1+8]
+    mov cl, byte ptr [ebx+eax+8]
     or cl, 80h
-    mov byte ptr [ebx+eax*1+8], cl
+    mov byte ptr [ebx+eax+8], cl
     or ecx, -1
     xor eax, eax
     repne scasb
     not ecx
     dec ecx
     sub edx, 4
-    mov byte ptr [ecx+edx*1], al
+    mov byte ptr [ecx+edx], al
     jmp loc_502333
 
 loc_502318:
@@ -324927,10 +323569,10 @@ loc_5023A1:
 loc_5023BA:
     mov eax, dword ptr [ebp-4]
     mov dl, byte ptr [ebp-8]
-    mov cl, byte ptr [ebx+eax*1+8]
+    mov cl, byte ptr [ebx+eax+8]
     and cl, 80h
     or cl, dl
-    mov byte ptr [ebx+eax*1+8], cl
+    mov byte ptr [ebx+eax+8], cl
 
 loc_5023CD:
     mov eax, dword ptr [ebp+8]
@@ -324986,10 +323628,10 @@ loc_502434:
     test ebx, ebx
     jnz loc_50244C
     mov eax, dword ptr [ecx+4]
-    lea edx, [eax+esi*1]
+    lea edx, [eax+esi]
     xor eax, eax
     mov al, byte ptr [edx]
-    mov al, byte ptr [ecx+eax*1+8]
+    mov al, byte ptr [ecx+eax+8]
     test al, 80h
     jz loc_502461
     jmp loc_50245D
@@ -324999,7 +323641,7 @@ loc_50244C:
     xor eax, eax
     add edx, esi
     mov al, byte ptr [edx]
-    mov al, byte ptr [ecx+eax*1+8]
+    mov al, byte ptr [ecx+eax+8]
     test al, 80h
     jnz loc_502461
 
@@ -325051,7 +323693,7 @@ loc_50249D:
     test al, al
     jz loc_502687
     and eax, 0FFh
-    mov al, byte ptr [edi+eax*1+8]
+    mov al, byte ptr [edi+eax+8]
     test al, 80h
     mov byte ptr [ebp+0Bh], al
     jnz loc_502687
@@ -325059,7 +323701,7 @@ loc_50249D:
     mov edx, dword ptr [ebp-4]
     mov ecx, dword ptr [ebx+2Ch]
     xor eax, eax
-    mov ax, word ptr [edx+edi*1-6]
+    mov ax, word ptr [edx+edi-6]
     mov edx, dword ptr [ebx]
     mov ebx, eax
     xor eax, eax
@@ -325095,7 +323737,7 @@ loc_50249D:
     jnz loc_502647
     mov ebx, dword ptr [ebp-4]
     xor eax, eax
-    mov ax, word ptr [ebx+edi*1-4]
+    mov ax, word ptr [ebx+edi-4]
     mov ebx, eax
     xor eax, eax
     mov ax, word ptr [ecx+ebx*2]
@@ -325130,7 +323772,7 @@ loc_50249D:
     jnz loc_502647
     mov ebx, dword ptr [ebp-4]
     xor eax, eax
-    mov ax, word ptr [ebx+edi*1-2]
+    mov ax, word ptr [ebx+edi-2]
     mov ebx, eax
     xor eax, eax
     mov ax, word ptr [ecx+ebx*2]
@@ -325164,7 +323806,7 @@ loc_50249D:
     fstp st
     jnz loc_502647
     mov eax, dword ptr [ebp-4]
-    mov di, word ptr [eax+edi*1]
+    mov di, word ptr [eax+edi]
     test di, di
     jz loc_502656
     and edi, 0FFFFh
@@ -325215,7 +323857,7 @@ loc_502659:
     mov edi, dword ptr [ebp-18h]
     mov ecx, dword ptr [ebp-1Ch]
     mov eax, dword ptr [edi+4]
-    mov al, byte ptr [ecx+eax*1]
+    mov al, byte ptr [ecx+eax]
     test al, al
     jbe loc_50266E
     cmp al, byte ptr [ebx+54h]
@@ -327090,19 +325732,19 @@ loc_507E7F:
     shl eax, 5
     mov dword ptr [ebp-4], edx
     mov dword ptr [ebp-0Ch], edx
-    lea eax, [ebp+eax*1-10224h]
+    lea eax, [ebp+eax-10224h]
 
 loc_507EB8:
     mov edx, dword ptr [ebp-1Ch]
     xor edi, edi
     mov di, word ptr [ecx]
     shl edi, 1
-    cmp word ptr [edx+edi*1], -1
+    cmp word ptr [edx+edi], -1
     jnz loc_507F53
     mov edx, dword ptr [ebp-14h]
     xor esi, esi
     mov edx, dword ptr [edx+2Ch]
-    mov si, word ptr [edi+edx*1]
+    mov si, word ptr [edi+edx]
     lea edi, [eax-14h]
     shl esi, 4
     add esi, offset ?out@agiMeshSet@@1PAVVector4@@A
@@ -327163,19 +325805,19 @@ loc_507F69:
     mov cx, word ptr [edi]
     movsx edx, word ptr [eax+ecx*2]
     shl edx, 5
-    lea ecx, [ebp+edx*1-10238h]
+    lea ecx, [ebp+edx-10238h]
     xor edx, edx
     mov dx, word ptr [edi+2]
     push ecx
     movsx ecx, word ptr [eax+edx*2]
     shl ecx, 5
-    lea edx, [ebp+ecx*1-10238h]
+    lea edx, [ebp+ecx-10238h]
     xor ecx, ecx
     mov cx, word ptr [edi+4]
     push edx
     movsx edx, word ptr [eax+ecx*2]
     shl edx, 5
-    lea eax, [ebp+edx*1-10238h]
+    lea eax, [ebp+edx-10238h]
     push eax
     call ?swTri@@YAXPAUagiScreenVtx@@00@Z
     add esp, 0Ch
@@ -327186,25 +325828,25 @@ loc_507FB9:
     mov cx, word ptr [edi]
     movsx edx, word ptr [eax+ecx*2]
     shl edx, 5
-    lea ecx, [ebp+edx*1-10238h]
+    lea ecx, [ebp+edx-10238h]
     xor edx, edx
     mov dx, word ptr [edi+2]
     push ecx
     movsx ecx, word ptr [eax+edx*2]
     shl ecx, 5
-    lea edx, [ebp+ecx*1-10238h]
+    lea edx, [ebp+ecx-10238h]
     xor ecx, ecx
     mov cx, word ptr [edi+4]
     push edx
     movsx edx, word ptr [eax+ecx*2]
     shl edx, 5
-    lea ecx, [ebp+edx*1-10238h]
+    lea ecx, [ebp+edx-10238h]
     xor edx, edx
     mov dx, word ptr [edi+6]
     push ecx
     movsx eax, word ptr [eax+edx*2]
     shl eax, 5
-    lea ecx, [ebp+eax*1-10238h]
+    lea ecx, [ebp+eax-10238h]
     push ecx
     call ?swQuad@@YAXPAUagiScreenVtx@@000@Z
     add esp, 10h
@@ -327236,7 +325878,7 @@ loc_508050:
     sub eax, edx
     dec eax
     shl eax, 5
-    lea ecx, [ebp+eax*1-238h]
+    lea ecx, [ebp+eax-238h]
     mov eax, dword ptr [esi]
     add eax, edx
     mov dword ptr [ebp-30h], ecx
@@ -327599,19 +326241,19 @@ loc_50845C:
     shl eax, 5
     mov dword ptr [ebp-4], edx
     mov dword ptr [ebp-0Ch], edx
-    lea eax, [ebp+eax*1-10224h]
+    lea eax, [ebp+eax-10224h]
 
 loc_508495:
     mov edx, dword ptr [ebp-24h]
     xor edi, edi
     mov di, word ptr [ecx]
     shl edi, 1
-    cmp word ptr [edx+edi*1], -1
+    cmp word ptr [edx+edi], -1
     jnz loc_508530
     mov edx, dword ptr [ebp-18h]
     xor esi, esi
     mov edx, dword ptr [edx+2Ch]
-    mov si, word ptr [edi+edx*1]
+    mov si, word ptr [edi+edx]
     lea edi, [eax-14h]
     shl esi, 4
     add esi, offset ?out@agiMeshSet@@1PAVVector4@@A
@@ -327673,19 +326315,19 @@ loc_508546:
     mov eax, dword ptr [ebp-24h]
     movsx edx, word ptr [eax+ecx*2]
     shl edx, 5
-    lea ecx, [ebp+edx*1-10238h]
+    lea ecx, [ebp+edx-10238h]
     xor edx, edx
     mov dx, word ptr [edi+2]
     push ecx
     movsx ecx, word ptr [eax+edx*2]
     shl ecx, 5
-    lea edx, [ebp+ecx*1-10238h]
+    lea edx, [ebp+ecx-10238h]
     xor ecx, ecx
     mov cx, word ptr [edi+4]
     push edx
     movsx edx, word ptr [eax+ecx*2]
     shl edx, 5
-    lea eax, [ebp+edx*1-10238h]
+    lea eax, [ebp+edx-10238h]
     push eax
     call ?swTri@@YAXPAUagiScreenVtx@@00@Z
     add esp, 0Ch
@@ -327697,25 +326339,25 @@ loc_508598:
     mov cx, word ptr [edi]
     movsx edx, word ptr [eax+ecx*2]
     shl edx, 5
-    lea ecx, [ebp+edx*1-10238h]
+    lea ecx, [ebp+edx-10238h]
     xor edx, edx
     mov dx, word ptr [edi+2]
     push ecx
     movsx ecx, word ptr [eax+edx*2]
     shl ecx, 5
-    lea edx, [ebp+ecx*1-10238h]
+    lea edx, [ebp+ecx-10238h]
     xor ecx, ecx
     mov cx, word ptr [edi+4]
     push edx
     movsx edx, word ptr [eax+ecx*2]
     shl edx, 5
-    lea ecx, [ebp+edx*1-10238h]
+    lea ecx, [ebp+edx-10238h]
     xor edx, edx
     mov dx, word ptr [edi+6]
     push ecx
     movsx eax, word ptr [eax+edx*2]
     shl eax, 5
-    lea ecx, [ebp+eax*1-10238h]
+    lea ecx, [ebp+eax-10238h]
     push ecx
     call ?swQuad@@YAXPAUagiScreenVtx@@000@Z
     add esp, 10h
@@ -327745,7 +326387,7 @@ loc_508632:
     sub eax, edx
     dec eax
     shl eax, 5
-    lea ecx, [ebp+eax*1-238h]
+    lea ecx, [ebp+eax-238h]
     mov eax, edx
     mov edx, dword ptr [esi]
     mov dword ptr [ebp-30h], ecx
@@ -328119,20 +326761,20 @@ loc_508A5F:
     shl eax, 5
     mov dword ptr [ebp-4], edx
     mov dword ptr [ebp-14h], edx
-    lea eax, [ebp+eax*1-10210h]
+    lea eax, [ebp+eax-10210h]
 
 loc_508A98:
     mov edx, dword ptr [ebp-8]
     xor edi, edi
     mov di, word ptr [ecx]
     shl edi, 1
-    cmp word ptr [edx+edi*1], -1
+    cmp word ptr [edx+edi], -1
     jnz loc_508B28
     mov edx, dword ptr [ebp-10h]
     xor esi, esi
     mov edx, dword ptr [edx+2Ch]
     mov dword ptr [ebp-20h], edx
-    mov si, word ptr [edi+edx*1]
+    mov si, word ptr [edi+edx]
     lea edx, [eax-14h]
     shl esi, 4
     add esi, offset ?out@agiMeshSet@@1PAVVector4@@A
@@ -328189,19 +326831,19 @@ loc_508B41:
     mov cx, word ptr [edi]
     movsx edx, word ptr [eax+ecx*2]
     shl edx, 5
-    lea ecx, [ebp+edx*1-10224h]
+    lea ecx, [ebp+edx-10224h]
     xor edx, edx
     mov dx, word ptr [edi+2]
     push ecx
     movsx ecx, word ptr [eax+edx*2]
     shl ecx, 5
-    lea edx, [ebp+ecx*1-10224h]
+    lea edx, [ebp+ecx-10224h]
     xor ecx, ecx
     mov cx, word ptr [edi+4]
     push edx
     movsx edx, word ptr [eax+ecx*2]
     shl edx, 5
-    lea eax, [ebp+edx*1-10224h]
+    lea eax, [ebp+edx-10224h]
     push eax
     call ?swTri@@YAXPAUagiScreenVtx@@00@Z
     add esp, 0Ch
@@ -328212,25 +326854,25 @@ loc_508B8E:
     mov cx, word ptr [edi]
     movsx edx, word ptr [eax+ecx*2]
     shl edx, 5
-    lea ecx, [ebp+edx*1-10224h]
+    lea ecx, [ebp+edx-10224h]
     xor edx, edx
     mov dx, word ptr [edi+2]
     push ecx
     movsx ecx, word ptr [eax+edx*2]
     shl ecx, 5
-    lea edx, [ebp+ecx*1-10224h]
+    lea edx, [ebp+ecx-10224h]
     xor ecx, ecx
     mov cx, word ptr [edi+4]
     push edx
     movsx edx, word ptr [eax+ecx*2]
     shl edx, 5
-    lea ecx, [ebp+edx*1-10224h]
+    lea ecx, [ebp+edx-10224h]
     xor edx, edx
     mov dx, word ptr [edi+6]
     push ecx
     movsx eax, word ptr [eax+edx*2]
     shl eax, 5
-    lea ecx, [ebp+eax*1-10224h]
+    lea ecx, [ebp+eax-10224h]
     push ecx
     call ?swQuad@@YAXPAUagiScreenVtx@@000@Z
     add esp, 10h
@@ -328261,7 +326903,7 @@ loc_508C1F:
     mov edx, dword ptr [esi]
     dec eax
     shl eax, 5
-    lea ecx, [ebp+eax*1-224h]
+    lea ecx, [ebp+eax-224h]
     mov eax, edi
     add eax, edx
     shl eax, 5
@@ -328485,20 +327127,20 @@ loc_508E5C:
     shl edx, 5
     mov dword ptr [ebp-4], esi
     mov dword ptr [ebp-14h], esi
-    lea eax, [ebp+edx*1-10210h]
+    lea eax, [ebp+edx-10210h]
 
 loc_508E98:
     mov edx, dword ptr [ebp-0Ch]
     xor esi, esi
     mov si, word ptr [ecx]
     shl esi, 1
-    cmp word ptr [edx+esi*1], -1
+    cmp word ptr [edx+esi], -1
     jnz loc_508F28
     mov edx, dword ptr [ebp-8]
     xor edi, edi
     mov edx, dword ptr [edx+2Ch]
     mov dword ptr [ebp-20h], edx
-    mov di, word ptr [esi+edx*1]
+    mov di, word ptr [esi+edx]
     lea edx, [eax-14h]
     shl edi, 4
     add edi, offset ?out@agiMeshSet@@1PAVVector4@@A
@@ -328556,19 +327198,19 @@ loc_508F3E:
     mov eax, dword ptr [ebp-0Ch]
     movsx ecx, word ptr [eax+ecx*2]
     shl ecx, 5
-    lea ecx, [ebp+ecx*1-10224h]
+    lea ecx, [ebp+ecx-10224h]
     push ecx
     xor ecx, ecx
     mov cx, word ptr [edx+2]
     movsx ecx, word ptr [eax+ecx*2]
     shl ecx, 5
-    lea ecx, [ebp+ecx*1-10224h]
+    lea ecx, [ebp+ecx-10224h]
     push ecx
     xor ecx, ecx
     mov cx, word ptr [edx+4]
     movsx edx, word ptr [eax+ecx*2]
     shl edx, 5
-    lea eax, [ebp+edx*1-10224h]
+    lea eax, [ebp+edx-10224h]
     push eax
     call ?swTri@@YAXPAUagiScreenVtx@@00@Z
     add esp, 0Ch
@@ -328580,25 +327222,25 @@ loc_508F90:
     mov cx, word ptr [edx]
     movsx ecx, word ptr [eax+ecx*2]
     shl ecx, 5
-    lea ecx, [ebp+ecx*1-10224h]
+    lea ecx, [ebp+ecx-10224h]
     push ecx
     xor ecx, ecx
     mov cx, word ptr [edx+2]
     movsx ecx, word ptr [eax+ecx*2]
     shl ecx, 5
-    lea ecx, [ebp+ecx*1-10224h]
+    lea ecx, [ebp+ecx-10224h]
     push ecx
     xor ecx, ecx
     mov cx, word ptr [edx+4]
     movsx ecx, word ptr [eax+ecx*2]
     shl ecx, 5
-    lea ecx, [ebp+ecx*1-10224h]
+    lea ecx, [ebp+ecx-10224h]
     push ecx
     xor ecx, ecx
     mov cx, word ptr [edx+6]
     movsx edx, word ptr [eax+ecx*2]
     shl edx, 5
-    lea eax, [ebp+edx*1-10224h]
+    lea eax, [ebp+edx-10224h]
     push eax
     call ?swQuad@@YAXPAUagiScreenVtx@@000@Z
     add esp, 10h
@@ -328627,7 +327269,7 @@ loc_509024:
     mov edx, dword ptr [esi]
     dec eax
     shl eax, 5
-    lea ecx, [ebp+eax*1-224h]
+    lea ecx, [ebp+eax-224h]
     mov eax, edi
     add eax, edx
     shl eax, 5
@@ -328799,19 +327441,19 @@ loc_5091D4:
     shl eax, 5
     mov dword ptr [ebp-4], edx
     mov dword ptr [ebp-10h], edx
-    lea eax, [ebp+eax*1-10214h]
+    lea eax, [ebp+eax-10214h]
 
 loc_50920D:
     mov edx, dword ptr [ebp-0Ch]
     xor edi, edi
     mov di, word ptr [ecx]
     shl edi, 1
-    cmp word ptr [edx+edi*1], -1
+    cmp word ptr [edx+edi], -1
     jnz loc_50928E
     mov edx, dword ptr [ebp-14h]
     xor esi, esi
     mov edx, dword ptr [edx+2Ch]
-    mov si, word ptr [edi+edx*1]
+    mov si, word ptr [edi+edx]
     lea edi, [eax-14h]
     shl esi, 4
     add esi, offset ?out@agiMeshSet@@1PAVVector4@@A
@@ -328864,19 +327506,19 @@ loc_5092A4:
     mov cx, word ptr [edi]
     movsx edx, word ptr [eax+ecx*2]
     shl edx, 5
-    lea ecx, [ebp+edx*1-10228h]
+    lea ecx, [ebp+edx-10228h]
     xor edx, edx
     mov dx, word ptr [edi+2]
     push ecx
     movsx ecx, word ptr [eax+edx*2]
     shl ecx, 5
-    lea edx, [ebp+ecx*1-10228h]
+    lea edx, [ebp+ecx-10228h]
     xor ecx, ecx
     mov cx, word ptr [edi+4]
     push edx
     movsx edx, word ptr [eax+ecx*2]
     shl edx, 5
-    lea eax, [ebp+edx*1-10228h]
+    lea eax, [ebp+edx-10228h]
     push eax
     call ?swTri@@YAXPAUagiScreenVtx@@00@Z
     add esp, 0Ch
@@ -328887,25 +327529,25 @@ loc_5092F4:
     mov cx, word ptr [edi]
     movsx edx, word ptr [eax+ecx*2]
     shl edx, 5
-    lea ecx, [ebp+edx*1-10228h]
+    lea ecx, [ebp+edx-10228h]
     xor edx, edx
     mov dx, word ptr [edi+2]
     push ecx
     movsx ecx, word ptr [eax+edx*2]
     shl ecx, 5
-    lea edx, [ebp+ecx*1-10228h]
+    lea edx, [ebp+ecx-10228h]
     xor ecx, ecx
     mov cx, word ptr [edi+4]
     push edx
     movsx edx, word ptr [eax+ecx*2]
     shl edx, 5
-    lea ecx, [ebp+edx*1-10228h]
+    lea ecx, [ebp+edx-10228h]
     xor edx, edx
     mov dx, word ptr [edi+6]
     push ecx
     movsx eax, word ptr [eax+edx*2]
     shl eax, 5
-    lea ecx, [ebp+eax*1-10228h]
+    lea ecx, [ebp+eax-10228h]
     push ecx
     call ?swQuad@@YAXPAUagiScreenVtx@@000@Z
     add esp, 10h
@@ -328935,7 +327577,7 @@ loc_509387:
     mov edx, dword ptr [esi]
     dec eax
     shl eax, 5
-    lea ecx, [ebp+eax*1-228h]
+    lea ecx, [ebp+eax-228h]
     mov eax, edi
     add eax, edx
     mov dword ptr [ebp-24h], ecx
@@ -329194,19 +327836,19 @@ loc_50966D:
     shl edx, 5
     mov dword ptr [ebp-1Ch], esi
     mov dword ptr [ebp-8], esi
-    lea eax, [ebp+edx*1-10214h]
+    lea eax, [ebp+edx-10214h]
 
 loc_5096A6:
     mov edx, dword ptr [ebp-0Ch]
     xor esi, esi
     mov si, word ptr [ecx]
     shl esi, 1
-    cmp word ptr [edx+esi*1], -1
+    cmp word ptr [edx+esi], -1
     jnz loc_509727
     mov edx, dword ptr [ebp-14h]
     xor edi, edi
     mov edx, dword ptr [edx+2Ch]
-    mov di, word ptr [esi+edx*1]
+    mov di, word ptr [esi+edx]
     lea esi, [eax-14h]
     shl edi, 4
     add edi, offset ?out@agiMeshSet@@1PAVVector4@@A
@@ -329260,19 +327902,19 @@ loc_50973D:
     mov eax, dword ptr [ebp-0Ch]
     movsx ecx, word ptr [eax+ecx*2]
     shl ecx, 5
-    lea ecx, [ebp+ecx*1-10228h]
+    lea ecx, [ebp+ecx-10228h]
     push ecx
     xor ecx, ecx
     mov cx, word ptr [edx+2]
     movsx ecx, word ptr [eax+ecx*2]
     shl ecx, 5
-    lea ecx, [ebp+ecx*1-10228h]
+    lea ecx, [ebp+ecx-10228h]
     push ecx
     xor ecx, ecx
     mov cx, word ptr [edx+4]
     movsx edx, word ptr [eax+ecx*2]
     shl edx, 5
-    lea eax, [ebp+edx*1-10228h]
+    lea eax, [ebp+edx-10228h]
     push eax
     call ?swTri@@YAXPAUagiScreenVtx@@00@Z
     add esp, 0Ch
@@ -329284,25 +327926,25 @@ loc_50978F:
     mov cx, word ptr [edx]
     movsx ecx, word ptr [eax+ecx*2]
     shl ecx, 5
-    lea ecx, [ebp+ecx*1-10228h]
+    lea ecx, [ebp+ecx-10228h]
     push ecx
     xor ecx, ecx
     mov cx, word ptr [edx+2]
     movsx ecx, word ptr [eax+ecx*2]
     shl ecx, 5
-    lea ecx, [ebp+ecx*1-10228h]
+    lea ecx, [ebp+ecx-10228h]
     push ecx
     xor ecx, ecx
     mov cx, word ptr [edx+4]
     movsx ecx, word ptr [eax+ecx*2]
     shl ecx, 5
-    lea ecx, [ebp+ecx*1-10228h]
+    lea ecx, [ebp+ecx-10228h]
     push ecx
     xor ecx, ecx
     mov cx, word ptr [edx+6]
     movsx edx, word ptr [eax+ecx*2]
     shl edx, 5
-    lea eax, [ebp+edx*1-10228h]
+    lea eax, [ebp+edx-10228h]
     push eax
     call ?swQuad@@YAXPAUagiScreenVtx@@000@Z
     add esp, 10h
@@ -329332,7 +327974,7 @@ loc_509825:
     mov edx, dword ptr [esi]
     dec eax
     shl eax, 5
-    lea ecx, [ebp+eax*1-228h]
+    lea ecx, [ebp+eax-228h]
     mov eax, edi
     add eax, edx
     mov dword ptr [ebp-20h], ecx
@@ -329598,18 +328240,18 @@ loc_509B15:
     shl eax, 5
     mov dword ptr [ebp-10h], edi
     mov dword ptr [ebp-8], edi
-    lea eax, [ebp+eax*1-10208h]
+    lea eax, [ebp+eax-10208h]
 
 loc_509B54:
     xor edi, edi
     mov di, word ptr [edx]
     shl edi, 1
-    cmp word ptr [ebx+edi*1], -1
+    cmp word ptr [ebx+edi], -1
     jnz loc_509BCD
     mov ecx, dword ptr [ebp-0Ch]
     xor esi, esi
     mov ecx, dword ptr [ecx+2Ch]
-    mov si, word ptr [edi+ecx*1]
+    mov si, word ptr [edi+ecx]
     lea edi, [eax-14h]
     shl esi, 4
     add esi, offset ?out@agiMeshSet@@1PAVVector4@@A
@@ -329658,19 +328300,19 @@ loc_509BE0:
     mov dx, word ptr [ecx]
     movsx eax, word ptr [ebx+edx*2]
     shl eax, 5
-    lea edx, [ebp+eax*1-1021Ch]
+    lea edx, [ebp+eax-1021Ch]
     xor eax, eax
     mov ax, word ptr [ecx+2]
     push edx
     movsx edx, word ptr [ebx+eax*2]
     shl edx, 5
-    lea eax, [ebp+edx*1-1021Ch]
+    lea eax, [ebp+edx-1021Ch]
     xor edx, edx
     mov dx, word ptr [ecx+4]
     push eax
     movsx eax, word ptr [ebx+edx*2]
     shl eax, 5
-    lea ecx, [ebp+eax*1-1021Ch]
+    lea ecx, [ebp+eax-1021Ch]
     push ecx
     call ?swTri@@YAXPAUagiScreenVtx@@00@Z
     add esp, 0Ch
@@ -329681,25 +328323,25 @@ loc_509C2D:
     mov dx, word ptr [ecx]
     movsx eax, word ptr [ebx+edx*2]
     shl eax, 5
-    lea edx, [ebp+eax*1-1021Ch]
+    lea edx, [ebp+eax-1021Ch]
     xor eax, eax
     mov ax, word ptr [ecx+2]
     push edx
     movsx edx, word ptr [ebx+eax*2]
     shl edx, 5
-    lea eax, [ebp+edx*1-1021Ch]
+    lea eax, [ebp+edx-1021Ch]
     xor edx, edx
     mov dx, word ptr [ecx+4]
     push eax
     movsx eax, word ptr [ebx+edx*2]
     shl eax, 5
-    lea edx, [ebp+eax*1-1021Ch]
+    lea edx, [ebp+eax-1021Ch]
     xor eax, eax
     mov ax, word ptr [ecx+6]
     push edx
     movsx ecx, word ptr [ebx+eax*2]
     shl ecx, 5
-    lea edx, [ebp+ecx*1-1021Ch]
+    lea edx, [ebp+ecx-1021Ch]
     push edx
     call ?swQuad@@YAXPAUagiScreenVtx@@000@Z
     add esp, 10h
@@ -329733,7 +328375,7 @@ loc_509CB8:
     sub eax, esi
     dec eax
     shl eax, 5
-    lea ecx, [ebp+eax*1-21Ch]
+    lea ecx, [ebp+eax-21Ch]
     mov eax, dword ptr [edi]
     add eax, esi
     shl eax, 5
@@ -329853,18 +328495,18 @@ loc_509DBF:
     shl eax, 5
     mov dword ptr [ebp-0Ch], edi
     mov dword ptr [ebp-4], edi
-    lea eax, [ebp+eax*1-10208h]
+    lea eax, [ebp+eax-10208h]
 
 loc_509DFB:
     xor edi, edi
     mov di, word ptr [edx]
     shl edi, 1
-    cmp word ptr [ebx+edi*1], -1
+    cmp word ptr [ebx+edi], -1
     jnz loc_509E74
     mov ecx, dword ptr [ebp-14h]
     xor esi, esi
     mov ecx, dword ptr [ecx+2Ch]
-    mov si, word ptr [edi+ecx*1]
+    mov si, word ptr [edi+ecx]
     lea edi, [eax-14h]
     shl esi, 4
     add esi, offset ?out@agiMeshSet@@1PAVVector4@@A
@@ -329913,19 +328555,19 @@ loc_509E87:
     mov dx, word ptr [ecx]
     movsx eax, word ptr [ebx+edx*2]
     shl eax, 5
-    lea edx, [ebp+eax*1-1021Ch]
+    lea edx, [ebp+eax-1021Ch]
     xor eax, eax
     mov ax, word ptr [ecx+2]
     push edx
     movsx edx, word ptr [ebx+eax*2]
     shl edx, 5
-    lea eax, [ebp+edx*1-1021Ch]
+    lea eax, [ebp+edx-1021Ch]
     xor edx, edx
     mov dx, word ptr [ecx+4]
     push eax
     movsx eax, word ptr [ebx+edx*2]
     shl eax, 5
-    lea ecx, [ebp+eax*1-1021Ch]
+    lea ecx, [ebp+eax-1021Ch]
     push ecx
     call ?swTri@@YAXPAUagiScreenVtx@@00@Z
     add esp, 0Ch
@@ -329936,25 +328578,25 @@ loc_509ED4:
     mov dx, word ptr [ecx]
     movsx eax, word ptr [ebx+edx*2]
     shl eax, 5
-    lea edx, [ebp+eax*1-1021Ch]
+    lea edx, [ebp+eax-1021Ch]
     xor eax, eax
     mov ax, word ptr [ecx+2]
     push edx
     movsx edx, word ptr [ebx+eax*2]
     shl edx, 5
-    lea eax, [ebp+edx*1-1021Ch]
+    lea eax, [ebp+edx-1021Ch]
     xor edx, edx
     mov dx, word ptr [ecx+4]
     push eax
     movsx eax, word ptr [ebx+edx*2]
     shl eax, 5
-    lea edx, [ebp+eax*1-1021Ch]
+    lea edx, [ebp+eax-1021Ch]
     xor eax, eax
     mov ax, word ptr [ecx+6]
     push edx
     movsx ecx, word ptr [ebx+eax*2]
     shl ecx, 5
-    lea edx, [ebp+ecx*1-1021Ch]
+    lea edx, [ebp+ecx-1021Ch]
     push edx
     call ?swQuad@@YAXPAUagiScreenVtx@@000@Z
     add esp, 10h
@@ -329986,7 +328628,7 @@ loc_509F5F:
     sub eax, esi
     dec eax
     shl eax, 5
-    lea ecx, [ebp+eax*1-21Ch]
+    lea ecx, [ebp+eax-21Ch]
     mov eax, dword ptr [edi]
     add eax, esi
     shl eax, 5
@@ -330396,7 +329038,7 @@ loc_50A3CF:
     mov ecx, dword ptr [eax+5Ch]
     mov eax, dword ptr [?CurrentMeshSetVariant@@3HA]
     mov ecx, dword ptr [ecx+eax*4]
-    mov edx, dword ptr [ecx+edx*1]
+    mov edx, dword ptr [ecx+edx]
     push edx
     call ?BeginVerts@agiTexSorter@@SAPAVagiPolySet@@PAVagiTexDef@@HH@Z
     mov esi, eax
@@ -331074,7 +329716,7 @@ loc_50AB60:
     push eax
     mov eax, dword ptr [esi+5Ch]
     mov eax, dword ptr [eax+ecx*4]
-    mov ecx, dword ptr [eax+edx*1]
+    mov ecx, dword ptr [eax+edx]
     push ecx
     call ?BeginVerts@agiTexSorter@@SAPAVagiPolySet@@PAVagiTexDef@@HH@Z
     mov esi, eax
@@ -334873,7 +333515,7 @@ loc_50D60A:
     mov edx, dword ptr [?CurrentMeshSetVariant@@3HA]
     mov ecx, dword ptr [eax+5Ch]
     mov eax, dword ptr [ecx+edx*4]
-    mov ecx, dword ptr [eax+edi*1]
+    mov ecx, dword ptr [eax+edi]
     push ecx
     call ?BeginVerts2@agiTexSorter@@SAPAVagiPolySet@@PAVagiTexDef@@0HH@Z
     mov edi, eax
@@ -336101,7 +334743,7 @@ loc_50E358:
     lea ecx, [ecx+ecx*2]
     lea edx, [edx+ecx*4]
     xor ecx, ecx
-    mov cl, byte ptr [esi+eax*1]
+    mov cl, byte ptr [esi+eax]
     mov eax, ecx
     lea eax, [eax+eax*2]
     lea ecx, ?UnpackNormal@@3PAVVector3@@A[eax*4]
@@ -336491,12 +335133,12 @@ loc_50E6DD:
     fxch st(1)
     fstp dword ptr [ebp-0F4h]
     fstp dword ptr [ebp-0F0h]
-    mov dl, byte ptr [ecx+edi*1]
+    mov dl, byte ptr [ecx+edi]
     mov ecx, dword ptr [ebp-0Ch]
     fstp st
     mov ecx, dword ptr [ecx+0Ch]
     fld dword ptr [eax+18h]
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, edx
     fld dword ptr [eax+14h]
     lea ecx, [ecx+ecx*2]
@@ -336531,7 +335173,7 @@ loc_50E6DD:
     fld dword ptr [edx+8]
     fld dword ptr [edx+4]
     xor edx, edx
-    mov dl, byte ptr [ecx+edi*1]
+    mov dl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?Active@agiViewport@@1PAV1@A]
     fmul st, st(2)
     fxch st(1)
@@ -337124,7 +335766,7 @@ loc_5107BA:
     mov ecx, dword ptr [ebx+2Ch]
     xor edx, edx
     mov dx, word ptr [ecx+esi*2]
-    test byte ptr [edx+eax*1], 40h
+    test byte ptr [edx+eax], 40h
     jz loc_5108C2
 
 loc_5107D4:
@@ -337134,7 +335776,7 @@ loc_5107D4:
     mov edx, eax
     mov eax, dword ptr [ebx+4]
     xor ebx, ebx
-    mov bl, byte ptr [eax+esi*1]
+    mov bl, byte ptr [eax+esi]
     fld dword ptr [ebp-1Ch]
     mov eax, ebx
     shr ecx, 2
@@ -337471,7 +336113,7 @@ loc_511315:
     mov edi, dword ptr [esi+2Ch]
     xor ebx, ebx
     mov bx, word ptr [edi+edx*2]
-    test byte ptr [ebx+eax*1], 40h
+    test byte ptr [ebx+eax], 40h
     jz loc_511678
 
 loc_51132F:
@@ -337635,7 +336277,7 @@ loc_511454:
     mov eax, dword ptr [ebp+14h]
     xor ebx, ebx
     mov eax, dword ptr [eax+4]
-    mov bl, byte ptr [eax+edx*1]
+    mov bl, byte ptr [eax+edx]
     mov eax, ebx
     lea eax, [eax+eax*2]
     fld dword ptr ?UnpackNormal@@3PAVVector3@@A[eax*4]
@@ -338210,7 +336852,7 @@ loc_511C71:
     mov ecx, dword ptr [ebp-8]
     add esp, 0Ch
     mov dword ptr [ebp-10h], edi
-    lea edx, [ecx+edi*1]
+    lea edx, [ecx+edi]
     cmp edi, edx
     jge loc_511FEC
     shl edi, 5
@@ -338231,9 +336873,9 @@ loc_511CA2:
     call ?arts_strdup@@YAPADPBD@Z
     mov edx, dword ptr [ebx]
     add esp, 4
-    mov dword ptr [edx+edi*1], eax
+    mov dword ptr [edx+edi], eax
     mov eax, dword ptr [ebx]
-    mov ecx, dword ptr [eax+edi*1]
+    mov ecx, dword ptr [eax+edi]
     push ecx
     call _strupr
     add esp, 4
@@ -338244,7 +336886,7 @@ loc_511CA2:
     mov edx, dword ptr [ebx]
     add esp, 8
     push eax
-    lea eax, [edx+edi*1+4]
+    lea eax, [edx+edi+4]
     push eax
     call _strncpy
     add esp, 0Ch
@@ -338258,7 +336900,7 @@ loc_511CA2:
     add esp, 4
     push offset sym_64ABEC
     push 0
-    mov byte ptr [ecx+edi*1+8], al
+    mov byte ptr [ecx+edi+8], al
     call ?mystrtok@@YAPADPADPBD@Z
     add esp, 8
     push eax
@@ -338267,7 +336909,7 @@ loc_511CA2:
     add esp, 4
     push offset sym_64ABEC
     push 0
-    mov byte ptr [edx+edi*1+9], al
+    mov byte ptr [edx+edi+9], al
     call ?mystrtok@@YAPADPADPBD@Z
     add esp, 8
     push eax
@@ -338276,14 +336918,14 @@ loc_511CA2:
     add esp, 4
     push offset sym_64ABEC
     push 0
-    mov byte ptr [ecx+edi*1+0Ah], al
+    mov byte ptr [ecx+edi+0Ah], al
     call ?mystrtok@@YAPADPADPBD@Z
     mov edx, dword ptr [ebx]
     mov ecx, eax
     add esp, 8
     mov dword ptr [ebp-4], ecx
     test ecx, ecx
-    mov dword ptr [edx+edi*1+0Ch], 0
+    mov dword ptr [edx+edi+0Ch], 0
     jz loc_511FCD
 
 loc_511D88:
@@ -338300,112 +336942,112 @@ loc_511D88:
 
 loc_511DB0:
     mov eax, dword ptr [ebx]
-    mov edx, dword ptr [eax+edi*1+0Ch]
-    lea eax, [eax+edi*1+0Ch]
+    mov edx, dword ptr [eax+edi+0Ch]
+    lea eax, [eax+edi+0Ch]
     or edx, 4
     mov dword ptr [eax], edx
     jmp loc_511ED7
 
 loc_511DC4:
     mov edx, dword ptr [ebx]
-    lea eax, [edx+edi*1+0Ch]
-    mov edx, dword ptr [edx+edi*1+0Ch]
+    lea eax, [edx+edi+0Ch]
+    mov edx, dword ptr [edx+edi+0Ch]
     or edx, 8
     mov dword ptr [eax], edx
     jmp loc_511ED7
 
 loc_511DD8:
     mov eax, dword ptr [ebx]
-    mov edx, dword ptr [eax+edi*1+0Ch]
-    lea eax, [eax+edi*1+0Ch]
+    mov edx, dword ptr [eax+edi+0Ch]
+    lea eax, [eax+edi+0Ch]
     or edx, 2
     mov dword ptr [eax], edx
     jmp loc_511ED7
 
 loc_511DEC:
     mov edx, dword ptr [ebx]
-    lea eax, [edx+edi*1+0Ch]
-    mov edx, dword ptr [edx+edi*1+0Ch]
+    lea eax, [edx+edi+0Ch]
+    mov edx, dword ptr [edx+edi+0Ch]
     or edx, 1
     mov dword ptr [eax], edx
     jmp loc_511ED7
 
 loc_511E00:
     mov eax, dword ptr [ebx]
-    mov edx, dword ptr [eax+edi*1+0Ch]
-    lea eax, [eax+edi*1+0Ch]
+    mov edx, dword ptr [eax+edi+0Ch]
+    lea eax, [eax+edi+0Ch]
     or edx, 10h
     mov dword ptr [eax], edx
     jmp loc_511ED7
 
 loc_511E14:
     mov edx, dword ptr [ebx]
-    lea eax, [edx+edi*1+0Ch]
-    mov edx, dword ptr [edx+edi*1+0Ch]
+    lea eax, [edx+edi+0Ch]
+    mov edx, dword ptr [edx+edi+0Ch]
     or edx, 20h
     mov dword ptr [eax], edx
     jmp loc_511ED7
 
 loc_511E28:
     mov eax, dword ptr [ebx]
-    mov edx, dword ptr [eax+edi*1+0Ch]
-    lea eax, [eax+edi*1+0Ch]
+    mov edx, dword ptr [eax+edi+0Ch]
+    lea eax, [eax+edi+0Ch]
     or edx, 40h
     mov dword ptr [eax], edx
     jmp loc_511ED7
 
 loc_511E3C:
     mov edx, dword ptr [ebx]
-    lea eax, [edx+edi*1+0Ch]
-    mov edx, dword ptr [edx+edi*1+0Ch]
+    lea eax, [edx+edi+0Ch]
+    mov edx, dword ptr [edx+edi+0Ch]
     or dl, 80h
     mov dword ptr [eax], edx
     jmp loc_511ED7
 
 loc_511E50:
     mov eax, dword ptr [ebx]
-    mov edx, dword ptr [eax+edi*1+0Ch]
-    lea eax, [eax+edi*1+0Ch]
+    mov edx, dword ptr [eax+edi+0Ch]
+    lea eax, [eax+edi+0Ch]
     or dh, 20h
     mov dword ptr [eax], edx
     jmp loc_511ED7
 
 loc_511E61:
     mov edx, dword ptr [ebx]
-    lea eax, [edx+edi*1+0Ch]
-    mov edx, dword ptr [edx+edi*1+0Ch]
+    lea eax, [edx+edi+0Ch]
+    mov edx, dword ptr [edx+edi+0Ch]
     or dh, 1
     mov dword ptr [eax], edx
     jmp loc_511ED7
 
 loc_511E72:
     mov eax, dword ptr [ebx]
-    mov edx, dword ptr [eax+edi*1+0Ch]
-    lea eax, [eax+edi*1+0Ch]
+    mov edx, dword ptr [eax+edi+0Ch]
+    lea eax, [eax+edi+0Ch]
     or dh, 2
     mov dword ptr [eax], edx
     jmp loc_511ED7
 
 loc_511E83:
     mov edx, dword ptr [ebx]
-    lea eax, [edx+edi*1+0Ch]
-    mov edx, dword ptr [edx+edi*1+0Ch]
+    lea eax, [edx+edi+0Ch]
+    mov edx, dword ptr [edx+edi+0Ch]
     or dh, 4
     mov dword ptr [eax], edx
     jmp loc_511ED7
 
 loc_511E94:
     mov eax, dword ptr [ebx]
-    mov edx, dword ptr [eax+edi*1+0Ch]
-    lea eax, [eax+edi*1+0Ch]
+    mov edx, dword ptr [eax+edi+0Ch]
+    lea eax, [eax+edi+0Ch]
     or dh, 8
     mov dword ptr [eax], edx
     jmp loc_511ED7
 
 loc_511EA5:
     mov edx, dword ptr [ebx]
-    lea eax, [edx+edi*1+0Ch]
-    mov edx, dword ptr [edx+edi*1+0Ch]
+    lea eax, [edx+edi+0Ch]
+    mov edx, dword ptr [edx+edi+0Ch]
     or dh, 10h
     mov dword ptr [eax], edx
     jmp loc_511ED7
@@ -338444,9 +337086,9 @@ loc_511EE1:
     call ?arts_strdup@@YAPADPBD@Z
     mov edx, dword ptr [ebx]
     add esp, 4
-    mov dword ptr [edx+edi*1+10h], eax
+    mov dword ptr [edx+edi+10h], eax
     mov eax, dword ptr [ebx]
-    mov eax, dword ptr [eax+edi*1+10h]
+    mov eax, dword ptr [eax+edi+10h]
     test eax, eax
     jz loc_511F27
     push eax
@@ -338466,9 +337108,9 @@ loc_511F27:
     call ?arts_strdup@@YAPADPBD@Z
     mov ecx, dword ptr [ebx]
     add esp, 4
-    mov dword ptr [ecx+edi*1+14h], eax
+    mov dword ptr [ecx+edi+14h], eax
     mov edx, dword ptr [ebx]
-    mov eax, dword ptr [edx+edi*1+14h]
+    mov eax, dword ptr [edx+edi+14h]
     push eax
     call _strupr
     add esp, 4
@@ -338486,7 +337128,7 @@ loc_511F61:
     add esp, 4
     push offset sym_64ABEC
     push 0
-    mov word ptr [ecx+edi*1+18h], ax
+    mov word ptr [ecx+edi+18h], ax
     call ?mystrtok@@YAPADPADPBD@Z
     add esp, 8
     test eax, eax
@@ -338497,7 +337139,7 @@ loc_511F61:
     add esp, 4
     push offset sym_64ABEC
     push 0
-    mov word ptr [edx+edi*1+1Ah], ax
+    mov word ptr [edx+edi+1Ah], ax
     call ?mystrtok@@YAPADPADPBD@Z
     add esp, 8
     test eax, eax
@@ -338508,7 +337150,7 @@ loc_511F61:
     call _strtol
     mov ecx, dword ptr [ebx]
     add esp, 0Ch
-    mov dword ptr [ecx+edi*1+1Ch], eax
+    mov dword ptr [ecx+edi+1Ch], eax
 
 loc_511FCD:
     mov ecx, dword ptr [ebp-8]
@@ -339324,7 +337966,7 @@ loc_512E60:
 
 loc_512E6D:
     mov ecx, dword ptr [eax+10h]
-    mov ecx, dword ptr [edx+ecx*1]
+    mov ecx, dword ptr [edx+ecx]
     cmp dword ptr [esi+ecx*4], -1
     lea ecx, [esi+ecx*4]
     jnz loc_512E7F
@@ -339508,8 +338150,8 @@ loc_51305D:
     cmp eax, -1
     jz loc_51325C
     mov ecx, dword ptr [ecx+2Ch]
-    lea esi, [edx+edx*1]
-    cmp word ptr [ecx+esi*1], 0
+    lea esi, [edx+edx]
+    cmp word ptr [ecx+esi], 0
     jz loc_51325C
     test eax, eax
     jle loc_513095
@@ -339530,7 +338172,7 @@ loc_513095:
 loc_5130B1:
     mov edx, dword ptr [sym_73E6DC]
     mov eax, dword ptr [edx+2Ch]
-    movsx ecx, word ptr [eax+esi*1]
+    movsx ecx, word ptr [eax+esi]
     mov ebx, dword ptr ?agiTexLib@@3V?$agiLib@VagiTexParameters@@VagiTexDef@@@@A[ecx*4-4]
     push ebx
     call ?FixTexFlags@@YAXAAVagiTexParameters@@@Z
@@ -339870,13 +338512,13 @@ loc_51346E:
     shl esi, 7
     add esi, eax
     shl esi, 2
-    mov eax, dword ptr [ebx+esi*1]
+    mov eax, dword ptr [ebx+esi]
     fstp dword ptr [ebp-80h]
     test eax, eax
     fstp dword ptr [ebp-7Ch]
     jle loc_5135C5
     mov eax, dword ptr [ebp+14h]
-    lea edx, [ebx+esi*1+24h]
+    lea edx, [ebx+esi+24h]
     and eax, 1
     mov dword ptr [ebp-10h], eax
 
@@ -339942,7 +338584,7 @@ loc_513522:
     jnz loc_513575
 
 loc_513562:
-    mov eax, dword ptr [ebx+esi*1]
+    mov eax, dword ptr [ebx+esi]
     inc ecx
     add edx, 30h
     cmp ecx, eax
@@ -339956,7 +338598,7 @@ loc_513575:
     shl ecx, 4
     mov edx, dword ptr [ebp-48h]
     add ecx, ebx
-    lea eax, [ecx+esi*1]
+    lea eax, [ecx+esi]
     mov dword ptr [ebp-20h], eax
     cmp dword ptr [eax+4], edx
     jz loc_5135AD
@@ -339981,7 +338623,7 @@ loc_5135C2:
     mov dword ptr [ebp-10h], ecx
 
 loc_5135C5:
-    mov eax, dword ptr [ebx+esi*1]
+    mov eax, dword ptr [ebx+esi]
     cmp ecx, eax
     jnz loc_513689
     cmp eax, 20h
@@ -340001,7 +338643,7 @@ loc_5135F4:
     add edx, ebx
     mov ebx, dword ptr [ebp-44h]
     inc ecx
-    lea eax, [edx+esi*1]
+    lea eax, [edx+esi]
     mov edx, dword ptr [edi-18h]
     lea ecx, [ecx+ecx*2]
     mov dword ptr [eax+8], edx
@@ -340011,7 +338653,7 @@ loc_5135F4:
     shl ecx, 4
     movsx edx, word ptr [edx+0Ah]
     add ecx, ebx
-    mov dword ptr [ecx+esi*1], edx
+    mov dword ptr [ecx+esi], edx
     mov ecx, dword ptr [edi]
     lea edx, [eax+20h]
     mov dword ptr [eax+20h], ecx
@@ -340041,11 +338683,11 @@ loc_5135F4:
     mov eax, dword ptr [eax]
     mov dword ptr [ebp-6Ch], edx
     mov word ptr [eax+edi*2], cx
-    mov eax, dword ptr [ebx+esi*1]
+    mov eax, dword ptr [ebx+esi]
     inc ecx
     inc eax
     mov dword ptr [ebp-30h], ecx
-    mov dword ptr [ebx+esi*1], eax
+    mov dword ptr [ebx+esi], eax
 
 loc_513689:
     mov edx, dword ptr [ebp-4Ch]
@@ -340071,7 +338713,7 @@ loc_5136AD:
     movsx ecx, cx
     movsx eax, ax
     dec eax
-    lea edx, [ecx+ecx*1-2]
+    lea edx, [ecx+ecx-2]
     imul eax, edx
     add dword ptr [ebp-14h], eax
     jmp loc_5136E1
@@ -340079,7 +338721,7 @@ loc_5136AD:
 loc_5136D3:
     movsx eax, word ptr [esi+0Ch]
     mov ecx, dword ptr [ebp-14h]
-    lea edx, [ecx+eax*1-2]
+    lea edx, [ecx+eax-2]
     mov dword ptr [ebp-14h], edx
 
 loc_5136E1:
@@ -340210,7 +338852,7 @@ loc_513834:
     mov edx, dword ptr [sym_73E6D8]
     add esp, 4
     mov ecx, dword ptr [edx+4]
-    mov byte ptr [ecx+edi*1], al
+    mov byte ptr [ecx+edi], al
 
 loc_513858:
     mov edx, dword ptr [sym_73E6D8]
@@ -340747,7 +339389,7 @@ loc_513E17:
     pop edi
     mov al, byte ptr [esi+eax*4]
     pop esi
-    mov byte ptr [edx+ecx*1], al
+    mov byte ptr [edx+ecx], al
     mov eax, dword ptr [sym_73E6D8]
     pop ebx
     mov edx, dword ptr [eax+4Ch]
@@ -341173,7 +339815,7 @@ loc_514231:
     mov edx, dword ptr [edi+70h]
     mov esi, dword ptr [edi+98h]
     xor eax, eax
-    mov al, byte ptr [ecx+edx*1]
+    mov al, byte ptr [ecx+edx]
     mov edx, dword ptr [ebp+10h]
     add esi, edx
     mov edx, eax
@@ -341355,8 +339997,8 @@ loc_5143D9:
     mov eax, dword ptr [esi+98h]
     fld dword ptr [ebx+ecx*4]
     mov ebx, dword ptr [ebp+0Ch]
-    fadd dword ptr [ebx+eax*1+28h]
-    lea eax, [ebx+eax*1+28h]
+    fadd dword ptr [ebx+eax+28h]
+    lea eax, [ebx+eax+28h]
     fstp dword ptr [eax]
     mov eax, dword ptr [esi+7Ch]
     fld dword ptr [eax+ecx*8]
@@ -341370,7 +340012,7 @@ loc_5143D9:
     mov dword ptr [edi+4], eax
     mov eax, dword ptr [esi+98h]
     mov edi, dword ptr [ebp-1Ch]
-    lea eax, [ebx+eax*1+24h]
+    lea eax, [ebx+eax+24h]
     add edi, edx
     mov ebx, dword ptr [eax]
     mov dword ptr [edi], ebx
@@ -341381,12 +340023,12 @@ loc_5143D9:
     mov dword ptr [edi+8], eax
     mov eax, dword ptr [esi+84h]
     mov edi, dword ptr [esi+98h]
-    mov bl, byte ptr [eax+ecx*1]
+    mov bl, byte ptr [eax+ecx]
     mov eax, ebx
     xor ebx, ebx
     lea eax, [eax+eax*2]
     shl eax, 4
-    lea eax, [eax+edi*1+24h]
+    lea eax, [eax+edi+24h]
     mov edi, dword ptr [eax]
     mov dword ptr [edx], edi
     mov edi, dword ptr [eax+4]
@@ -341397,7 +340039,7 @@ loc_5143D9:
     mov eax, dword ptr [esi+0A4h]
     mov edi, dword ptr [esi+88h]
     shr edx, 4
-    mov bl, byte ptr [edi+ecx*1]
+    mov bl, byte ptr [edi+ecx]
     mov edi, dword ptr [ebp+10h]
     mov edx, dword ptr [eax+edx*4]
     mov eax, dword ptr [ebp-0Ch]
@@ -341656,9 +340298,9 @@ loc_5146B2:
     mov edx, dword ptr [ebp+0Ch]
     shl eax, 2
     lea edi, [esi+7Ch]
-    mov dword ptr [eax+ecx*1], ebx
+    mov dword ptr [eax+ecx], ebx
     mov ecx, dword ptr [edx+8]
-    mov edx, dword ptr [eax+ecx*1]
+    mov edx, dword ptr [eax+ecx]
     mov ecx, edi
     push edx
     call ?Pose@bnSkeleton@@QAEXPBVVector3@@@Z
@@ -341680,7 +340322,7 @@ loc_5146B2:
 loc_5146F4:
     mov edx, dword ptr [esi+74h]
     xor eax, eax
-    mov al, byte ptr [ecx+edx*1]
+    mov al, byte ptr [ecx+edx]
     mov edx, dword ptr [esi+98h]
     add ebx, edx
     mov edx, eax
@@ -341744,10 +340386,10 @@ loc_514780:
 loc_514789:
     mov edi, dword ptr [esi+78h]
     xor ecx, ecx
-    mov cl, byte ptr [eax+edi*1]
+    mov cl, byte ptr [eax+edi]
     inc eax
-    mov cl, byte ptr [ecx+edx*1]
-    mov byte ptr [eax+ebx*1-1], cl
+    mov cl, byte ptr [ecx+edx]
+    mov byte ptr [eax+ebx-1], cl
     mov ecx, dword ptr [esi+48h]
     cmp eax, ecx
     jl loc_514789
@@ -341930,7 +340572,7 @@ loc_514DD0:
     add eax, ecx
     mov ecx, dword ptr [ebx+18h]
     add edi, 30h
-    mov dword ptr [esi+ecx*1+30h], eax
+    mov dword ptr [esi+ecx+30h], eax
     mov eax, dword ptr [ebp-10h]
     mov ecx, dword ptr [ebx+14h]
     inc eax
@@ -342053,10 +340695,10 @@ loc_514F00:
     mov edx, dword ptr [ebx+8]
     mov al, byte ptr [ebp+8]
     add esp, 1Ch
-    mov byte ptr [edi+edx*1], al
+    mov byte ptr [edi+edx], al
     mov ecx, dword ptr [ebx+0Ch]
     mov dl, byte ptr [ebp-14h]
-    mov byte ptr [edi+ecx*1], dl
+    mov byte ptr [edi+ecx], dl
     mov eax, dword ptr [ebx+14h]
     inc edi
     cmp edi, eax
@@ -342079,7 +340721,7 @@ loc_514F4B:
 loc_514F56:
     mov eax, dword ptr [ebx+18h]
     add esi, 8Ch
-    mov ecx, dword ptr [esi+eax*1-50h]
+    mov ecx, dword ptr [esi+eax-50h]
     sub ecx, eax
     mov eax, -15F15F15h
     imul ecx
@@ -342089,7 +340731,7 @@ loc_514F56:
     mov ecx, edx
     shr ecx, 1Fh
     add edx, ecx
-    mov byte ptr [edi+eax*1], dl
+    mov byte ptr [edi+eax], dl
     mov eax, dword ptr [ebx+14h]
     inc edi
     cmp edi, eax
@@ -342799,16 +341441,16 @@ loc_51584F:
     call ?GetFloat@Tokenizer@@QAEMXZ
     mov edx, dword ptr [ebx]
     lea ecx, [ebp-1Ch]
-    fstp dword ptr [edx+esi*1]
+    fstp dword ptr [edx+esi]
     call ?GetFloat@Tokenizer@@QAEMXZ
     mov eax, dword ptr [ebx]
     lea ecx, [ebp-1Ch]
-    fstp dword ptr [eax+esi*1+4]
+    fstp dword ptr [eax+esi+4]
     call ?GetFloat@Tokenizer@@QAEMXZ
     mov ecx, dword ptr [ebx]
     add esi, 0Ch
     dec edi
-    fstp dword ptr [ecx+esi*1-4]
+    fstp dword ptr [ecx+esi-4]
     jnz loc_51584F
     mov esi, dword ptr [ebp+0Ch]
 
@@ -343207,13 +341849,13 @@ loc_515D20:
     mov dword ptr [ebp-30h], ecx
     mov ecx, dword ptr [ebp+0Ch]
     mov dword ptr [ebp-20h], eax
-    mov byte ptr [edx+ecx*1], al
+    mov byte ptr [edx+ecx], al
     jmp loc_515D47
 
 loc_515D3D:
     mov edx, dword ptr [ebp-3Ch]
     mov eax, dword ptr [ebp+0Ch]
-    mov byte ptr [edx+eax*1], 0
+    mov byte ptr [edx+eax], 0
 
 loc_515D47:
     push offset asc_64B588
@@ -343357,7 +341999,7 @@ loc_515EE7:
     mov ecx, dword ptr [ebp+0Ch]
     inc edi
     cmp edi, esi
-    mov byte ptr [ecx+edi*1-1], al
+    mov byte ptr [ecx+edi-1], al
     jl loc_515EE7
 
 loc_515EFB:
@@ -343379,7 +342021,7 @@ loc_515F1D:
     mov edx, dword ptr [ebp+0Ch]
     inc edi
     cmp edi, esi
-    mov byte ptr [edx+edi*1-1], al
+    mov byte ptr [edx+edi-1], al
     jl loc_515F1D
 
 loc_515F31:
@@ -343389,7 +342031,7 @@ loc_515F31:
     call dword ptr [eax]
     mov edi, dword ptr [ebp-50h]
     mov dword ptr [ebx+48h], edi
-    lea ecx, [edi+edi*1]
+    lea ecx, [edi+edi]
     push ecx
     call ?arts_operator_new@@YAPAXI@Z
     add esp, 4
@@ -343435,7 +342077,7 @@ loc_515FAE:
     mov word ptr [eax+esi*2], cx
     mov edx, dword ptr [ebx+78h]
     mov al, byte ptr [edi-4]
-    mov byte ptr [esi+edx*1], al
+    mov byte ptr [esi+edx], al
     mov eax, dword ptr [edi-4]
     mov edx, dword ptr [ebp-54h]
     lea ecx, [eax+eax*2]
@@ -343444,7 +342086,7 @@ loc_515FAE:
     call ?PackNormal@@YAEAAVVector3@@@Z
     mov ecx, dword ptr [ebx+4]
     add esp, 4
-    mov byte ptr [esi+ecx*1], al
+    mov byte ptr [esi+ecx], al
     mov edx, dword ptr [edi+4]
     mov ecx, dword ptr [ebp-38h]
     mov eax, dword ptr [ebx+0Ch]
@@ -343540,7 +342182,7 @@ loc_5160E7:
     call ?arts_operator_new@@YAPAXI@Z
     mov ecx, dword ptr [ebx+0A0h]
     add esp, 4
-    mov dword ptr [ecx+esi*1], eax
+    mov dword ptr [ecx+esi], eax
     xor eax, eax
     test edi, edi
     jle loc_516148
@@ -343554,8 +342196,8 @@ loc_516119:
     mov edi, dword ptr [ebx+0A0h]
     inc eax
     mov edx, dword ptr [edx]
-    mov ecx, dword ptr [ecx+esi*1]
-    mov edi, dword ptr [edi+esi*1]
+    mov ecx, dword ptr [ecx+esi]
+    mov edi, dword ptr [edi+esi]
     mov edx, dword ptr [ecx+edx*4]
     mov dword ptr [edi+eax*4-4], edx
     mov edx, dword ptr [ebp-34h]
@@ -343606,9 +342248,9 @@ loc_516194:
     add eax, 0Ch
     mov ecx, dword ptr [edx+ecx*8+14h]
     mov edx, dword ptr [ebx+34h]
-    mov cl, byte ptr [ecx+edi*1]
+    mov cl, byte ptr [ecx+edi]
     mov edi, dword ptr [ebp+0Ch]
-    mov byte ptr [edi+edx*1], cl
+    mov byte ptr [edi+edx], cl
     mov edx, dword ptr [ebx+30h]
     mov cx, word ptr [eax-0Ch]
     inc edi
@@ -343653,14 +342295,14 @@ loc_516237:
     mov edx, dword ptr [ebp-48h]
     mov ecx, dword ptr [?CurrentPipe@agiPipeline@@2PAV1@A]
     push 0
-    mov eax, dword ptr [edx+esi*1-4]
+    mov eax, dword ptr [edx+esi-4]
     push eax
     call ?GetTexture@agiPipeline@@QAEPAVagiTexDef@@HH@Z
     mov ecx, dword ptr [ebx+5Ch]
     add esi, 4
     dec edi
     mov edx, dword ptr [ecx]
-    mov dword ptr [esi+edx*1-4], eax
+    mov dword ptr [esi+edx-4], eax
     jnz loc_516237
     mov eax, dword ptr [ebp-20h]
 
@@ -345576,13 +344218,13 @@ loc_517F6C:
 
 loc_517FAD:
     mov eax, dword ptr [?NumIndexs@mmBoundTemplate@@2HA]
-    lea ecx, [eax+eax*1]
+    lea ecx, [eax+eax]
     push ecx
     call ?arts_operator_new@@YAPAXI@Z
     mov dword ptr [ebx+94h], eax
     mov edx, dword ptr [?NumIndexs@mmBoundTemplate@@2HA]
     add esp, 4
-    lea ecx, [edx+edx*1]
+    lea ecx, [edx+edx]
     push ecx
     push eax
     mov ecx, edi
@@ -345632,7 +344274,7 @@ loc_51804F:
     mov ecx, edi
     call dword ptr [edx]
     mov eax, dword ptr [ebx+4Ch]
-    lea ecx, [eax+eax*1+2]
+    lea ecx, [eax+eax+2]
     push ecx
     call ?arts_operator_new@@YAPAXI@Z
     mov edx, dword ptr [ebx+4Ch]
@@ -345734,7 +344376,7 @@ loc_518130:
     jle loc_518165
     movsx ecx, cx
     movsx edx, dx
-    lea ecx, [ecx+ecx*1-2]
+    lea ecx, [ecx+ecx-2]
     dec edx
     imul ecx, edx
     add dword ptr [ebp-10h], ecx
@@ -345749,7 +344391,7 @@ loc_518165:
     jz loc_518186
     movsx ecx, word ptr [eax+0Ch]
     mov edx, dword ptr [ebp-10h]
-    lea ecx, [edx+ecx*1-2]
+    lea ecx, [edx+ecx-2]
     mov dword ptr [ebp-10h], ecx
 
 loc_518186:
@@ -345961,7 +344603,7 @@ loc_518320:
 loc_518379:
     mov eax, dword ptr [ebp-10h]
     lea esi, [eax+1]
-    lea ecx, [esi+esi*1]
+    lea ecx, [esi+esi]
     push ecx
     call ?arts_operator_new@@YAPAXI@Z
     add esp, 4
@@ -346103,10 +344745,10 @@ loc_5184F4:
     push ecx
     mov ecx, dword ptr [ebp+24h]
     push edx
-    mov edx, dword ptr [edi+eax*1-28h]
+    mov edx, dword ptr [edi+eax-28h]
     mov edx, dword ptr [ecx+edx*4]
     push edx
-    mov edx, dword ptr [edi+eax*1-50h]
+    mov edx, dword ptr [edi+eax-50h]
     mov eax, dword ptr [eax]
     mov edx, dword ptr [ecx+edx*4]
     mov ecx, dword ptr [ecx+eax*4]
@@ -346250,7 +344892,7 @@ loc_518655:
 loc_518665:
     mov edi, dword ptr [eax+10h]
     inc ecx
-    mov edi, dword ptr [edx+edi*1-28h]
+    mov edi, dword ptr [edx+edi-28h]
     add edx, 28h
     mov dword ptr [esi+edi*4], 1
     movsx edi, word ptr [eax+0Ch]
@@ -346446,20 +345088,20 @@ loc_51882D:
     mov esi, dword ptr [eax+10h]
     mov edi, dword ptr [ebp-10h]
     mov edx, dword ptr [ebp+10h]
-    mov esi, dword ptr [ecx+esi*1-50h]
+    mov esi, dword ptr [ecx+esi-50h]
     add ecx, 28h
     shl edx, 2
     mov esi, dword ptr [edi+esi*4]
     mov edi, dword ptr [ebx+68h]
     dec esi
-    mov dword ptr [edx+edi*1], esi
+    mov dword ptr [edx+edi], esi
     mov esi, dword ptr [eax+10h]
     mov edi, dword ptr [ebp-10h]
-    mov esi, dword ptr [ecx+esi*1-50h]
+    mov esi, dword ptr [ecx+esi-50h]
     mov esi, dword ptr [edi+esi*4]
     mov edi, dword ptr [ebx+6Ch]
     dec esi
-    mov dword ptr [edx+edi*1], esi
+    mov dword ptr [edx+edi], esi
     mov edx, dword ptr [ebp+10h]
     movsx esi, word ptr [eax+0Ch]
     inc edx
@@ -346718,7 +345360,7 @@ loc_5189D9:
     call ?Write@Stream@@QAEHPBXH@Z
     mov ecx, dword ptr [ebx+4Ch]
     lea edx, [ecx+ecx*8]
-    lea eax, [ecx+ecx*1+9]
+    lea eax, [ecx+ecx+9]
     and al, 0F8h
     lea edx, [ecx+edx*2]
     add ecx, 8
@@ -346760,8 +345402,8 @@ loc_5189D9:
     imul edx, ecx
     mov ecx, dword ptr [?NumIndexs@mmBoundTemplate@@2HA]
     mov dword ptr [ebp+10h], edx
-    lea edx, [edx+edx*1+7]
-    lea ecx, [ecx+ecx*1+7]
+    lea edx, [edx+edx+7]
+    lea ecx, [ecx+ecx+7]
     and edx, -8
     and ecx, -8
     add ecx, edx
@@ -346864,7 +345506,7 @@ loc_518BF4:
     call ?Write@Stream@@QAEHPBXH@Z
     mov ecx, dword ptr [?NumIndexs@mmBoundTemplate@@2HA]
     mov eax, dword ptr [ebx+94h]
-    lea edx, [ecx+ecx*1]
+    lea edx, [ecx+ecx]
     mov ecx, edi
     push edx
     push eax
@@ -347113,7 +345755,7 @@ ALIGN 16
     mov eax, dword ptr [esi+0Ch]
     mov ecx, dword ptr [?BoundBytesPaged@@3HA]
     add ebx, 4
-    lea edx, [ecx+eax*1-10h]
+    lea edx, [ecx+eax-10h]
     mov dword ptr [?BoundBytesPaged@@3HA], edx
     mov eax, dword ptr [ebx-0Ch]
     mov dword ptr [esi+80h], eax
@@ -347409,7 +346051,7 @@ loc_518FDE:
     mov ecx, dword ptr [ebp-4]
     mov esi, edx
     add ebx, esi
-    lea esi, [eax+eax*1]
+    lea esi, [eax+eax]
     mov edx, dword ptr [ecx]
     push esi
     push edx
@@ -347441,7 +346083,7 @@ loc_518FDE:
     mov dword ptr [ecx+98h], eax
     mov ecx, esi
     mov eax, ecx
-    lea esi, [edx+ebx*1]
+    lea esi, [edx+ebx]
     shr ecx, 2
     rep movsd
     mov ecx, eax
@@ -347460,7 +346102,7 @@ loc_5192A0:
     mov ecx, dword ptr [esi+4Ch]
     mov edi, dword ptr [ebp-4]
     mov eax, dword ptr [edi]
-    lea edx, [ecx+ecx*1+2]
+    lea edx, [ecx+ecx+2]
     push edx
     push eax
     mov ecx, offset ?CACHE@@3VDataCache@@A
@@ -347783,9 +346425,9 @@ loc_519597:
     fstp dword ptr [eax+8]
     mov edx, dword ptr [esi+78h]
     mov eax, dword ptr [ebp-10h]
-    fld dword ptr [eax+edx*1]
-    lea ecx, [eax+edx*1]
-    mov eax, dword ptr [eax+edx*1+8]
+    fld dword ptr [eax+edx]
+    lea ecx, [eax+edx]
+    mov eax, dword ptr [eax+edx+8]
     mov edx, dword ptr [ecx+4]
     mov dword ptr [ebp-48h], eax
     mov dword ptr [ebp-40h], edx
@@ -347855,9 +346497,9 @@ loc_519597:
     mov dword ptr [eax+8], ecx
     mov edx, dword ptr [esi+78h]
     mov eax, dword ptr [ebp-10h]
-    fld dword ptr [eax+edx*1]
-    lea ecx, [eax+edx*1]
-    mov eax, dword ptr [eax+edx*1+8]
+    fld dword ptr [eax+edx]
+    lea ecx, [eax+edx]
+    mov eax, dword ptr [eax+edx+8]
     mov edx, dword ptr [ecx+4]
     mov dword ptr [ebp-44h], eax
     mov dword ptr [ebp-34h], edx
@@ -347922,9 +346564,9 @@ loc_5196E1:
     fxch st(1)
     fld st(3)
     fxch st(4)
-    fmul dword ptr [ecx+ebx*1]
+    fmul dword ptr [ecx+ebx]
     fxch st(4)
-    fmul dword ptr [ecx+ebx*1+4]
+    fmul dword ptr [ecx+ebx+4]
     add ecx, ebx
     fld dword ptr [ebp-74h]
     fxch st(2)
@@ -348105,7 +346747,7 @@ loc_519945:
     jle loc_51999D
     mov edx, dword ptr [esi+80h]
     mov ebx, dword ptr [dword_77EEDC]
-    lea ecx, [eax+eax*1]
+    lea ecx, [eax+eax]
     mov dword ptr [ebp+0Ch], edx
     mov dword ptr [ebp-4], ecx
     mov dword ptr [ebp+10h], eax
@@ -348208,7 +346850,7 @@ ALIGN 16
     imul eax, dword ptr [esi+80h]
     lea eax, [eax+eax*4]
     shl eax, 4
-    lea ebx, [eax+eax*1]
+    lea ebx, [eax+eax]
     push ebx
     call ?arts_operator_new@@YAPAXI@Z
     mov ecx, ebx
@@ -348290,7 +346932,7 @@ loc_519B1D:
     mov dword ptr [esi+90h], eax
     mov edx, dword ptr [?NumIndexs@mmBoundTemplate@@2HA]
     add esp, 4
-    lea eax, [edx+edx*1]
+    lea eax, [edx+edx]
     push eax
     call ?arts_operator_new@@YAPAXI@Z
     mov ecx, dword ptr [esi+88h]
@@ -348336,7 +346978,7 @@ loc_519BF0:
     mov dword ptr [ebp-10h], 0
     imul edx, eax
     mov eax, dword ptr [ebp-4]
-    lea edi, [edx+eax*1]
+    lea edi, [edx+eax]
     mov edx, dword ptr [?ConstructionTable@mmBoundTemplate@@2PAGA]
     mov dword ptr [ebp-8], edi
     mov ax, bx
@@ -348558,10 +347200,10 @@ loc_519E9E:
     call __ftol
     mov edx, dword ptr [esi+98h]
     xor ecx, ecx
-    mov byte ptr [edi+edx*1], al
+    mov byte ptr [edi+edx], al
     mov eax, dword ptr [esi+98h]
     mov edx, dword ptr [sym_77EE40]
-    mov cl, byte ptr [edi+eax*1]
+    mov cl, byte ptr [edi+eax]
     mov dword ptr [ebp+8], ecx
     fild dword ptr [ebp+8]
     fmul dword ptr [esi+9Ch]
@@ -348579,7 +347221,7 @@ loc_519E9E:
 
 loc_519F10:
     mov eax, dword ptr [esi+98h]
-    mov byte ptr [edi+eax*1], 0
+    mov byte ptr [edi+eax], 0
 
 loc_519F1A:
     inc edi
@@ -355526,8 +354168,8 @@ loc_51EDF3:
     mov ecx, dword ptr [ebp-14h]
     mov word ptr [ebx], dx
     push edi
-    lea eax, [esi+ecx*1]
-    mov cl, byte ptr [esi+ecx*1]
+    lea eax, [esi+ecx]
+    mov cl, byte ptr [esi+ecx]
     and cl, 0FEh
     mov byte ptr [eax], cl
     mov ecx, dword ptr [ebp+8]
@@ -355573,7 +354215,7 @@ loc_51EE5B:
     mov word ptr [ebx], dx
     mov edx, dword ptr [ebp-14h]
     push edi
-    lea eax, [esi+edx*1]
+    lea eax, [esi+edx]
     mov dword ptr [edi+0ACh], eax
     call ?FullSphere@mmPolygon@@AAEHPAVmmIntersection@@@Z
     mov dx, word ptr [?IsectCount@mmBoundTemplate@@2GA]
@@ -355699,7 +354341,7 @@ loc_51EFB0:
 loc_51EFC3:
     mov edx, dword ptr [edi+98h]
     xor eax, eax
-    mov al, byte ptr [ecx+edx*1]
+    mov al, byte ptr [ecx+edx]
     inc eax
     mov dword ptr [ebp-18h], eax
     fild dword ptr [ebp-18h]
@@ -355715,7 +354357,7 @@ loc_51EFC3:
     mov ecx, dword ptr [edi+8Ch]
     mov edx, dword ptr [ebp-8]
     and eax, 0FFFFh
-    mov ecx, dword ptr [ecx+edx*1]
+    mov ecx, dword ptr [ecx+edx]
     mov edx, dword ptr [edi+94h]
     add ecx, eax
     mov eax, dword ptr [esi]
@@ -355770,7 +354412,7 @@ loc_51F091:
     mov word ptr [ebx+eax*2], cx
     mov ecx, dword ptr [ebp-2Ch]
     push esi
-    lea edx, [eax+ecx*1]
+    lea edx, [eax+ecx]
     lea ecx, [eax+eax*8]
     mov dword ptr [esi+0ACh], edx
     lea edx, [eax+ecx*2]
@@ -355856,7 +354498,7 @@ loc_51F178:
     mov edx, dword ptr [ebp+0Ch]
     test edx, edx
     jz loc_51F189
-    test byte ptr [esi+ecx*1], 1
+    test byte ptr [esi+ecx], 1
     jnz loc_51F189
     xor eax, eax
     jmp loc_51F1AD
@@ -355870,7 +354512,7 @@ loc_51F189:
 loc_51F192:
     mov word ptr [edi], ax
     mov eax, dword ptr [ebp+8]
-    lea edx, [esi+ecx*1]
+    lea edx, [esi+ecx]
     mov ecx, dword ptr [ebp-4]
     push eax
     mov dword ptr [eax+0F0h], edx
@@ -355962,7 +354604,7 @@ ALIGN 16
     xor edx, edx
     mov ecx, eax
     mov eax, dword ptr [esi+98h]
-    mov dl, byte ptr [eax+ecx*1]
+    mov dl, byte ptr [eax+ecx]
     inc edx
     mov dword ptr [ebp+8], edx
     fild dword ptr [ebp+8]
@@ -356015,7 +354657,7 @@ loc_51F312:
     test ecx, ecx
     jz loc_51F32E
     mov ecx, dword ptr [ebp-20h]
-    test byte ptr [eax+ecx*1], 1
+    test byte ptr [eax+ecx], 1
     jnz loc_51F32E
     xor eax, eax
     jmp loc_51F364
@@ -356032,7 +354674,7 @@ loc_51F342:
     mov word ptr [edx+eax*2], cx
     mov edx, dword ptr [ebp-20h]
     push edi
-    lea ecx, [eax+edx*1]
+    lea ecx, [eax+edx]
     lea edx, [eax+eax*8]
     mov dword ptr [edi+0F0h], ecx
     mov ecx, dword ptr [ebp-24h]
@@ -356297,7 +354939,7 @@ loc_51F54D:
 loc_51F57E:
     mov ecx, dword ptr [esi+98h]
     xor eax, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     inc eax
     mov dword ptr [ebp+10h], eax
     fild dword ptr [ebp+10h]
@@ -356336,7 +354978,7 @@ loc_51F5E8:
     test edx, edx
     jz loc_51F604
     mov edx, dword ptr [ebp-10h]
-    test byte ptr [eax+edx*1], 1
+    test byte ptr [eax+edx], 1
     jnz loc_51F604
     xor eax, eax
     jmp loc_51F63A
@@ -356352,7 +354994,7 @@ loc_51F611:
     mov word ptr [edx+eax*2], cx
     mov ecx, dword ptr [ebp-10h]
     push edi
-    lea edx, [eax+ecx*1]
+    lea edx, [eax+ecx]
     lea ecx, [eax+eax*8]
     mov dword ptr [edi+0F0h], edx
     lea edx, [eax+ecx*2]
@@ -356487,7 +355129,7 @@ loc_51F758:
     mov word ptr [edi], cx
     mov ecx, dword ptr [ebp-18h]
     push edx
-    lea eax, [esi+ecx*1]
+    lea eax, [esi+ecx]
     mov ecx, ebx
     mov dword ptr [edx+0ACh], eax
     call ?FullSegment@mmPolygon@@AAEHPAVmmIntersection@@@Z
@@ -356578,7 +355220,7 @@ ALIGN 16
     add ecx, eax
     mov eax, dword ptr [esi+98h]
     xor edx, edx
-    mov dl, byte ptr [eax+ecx*1]
+    mov dl, byte ptr [eax+ecx]
     inc edx
     mov dword ptr [ebp-10h], edx
     fild dword ptr [ebp-10h]
@@ -356685,7 +355327,7 @@ loc_51F96A:
     mov word ptr [ecx+eax*2], bx
     mov ecx, dword ptr [ebp-20h]
     push edi
-    lea edx, [eax+ecx*1]
+    lea edx, [eax+ecx]
     lea ecx, [eax+eax*8]
     mov dword ptr [edi+0ACh], edx
     lea edx, [eax+ecx*2]
@@ -356939,7 +355581,7 @@ loc_51FBA1:
 loc_51FBA4:
     mov eax, dword ptr [ecx+98h]
     xor ecx, ecx
-    mov cl, byte ptr [esi+eax*1]
+    mov cl, byte ptr [esi+eax]
     inc ecx
     mov dword ptr [ebp+8], ecx
     mov ecx, dword ptr [ebp-4]
@@ -357024,7 +355666,7 @@ loc_51FC80:
     mov ecx, dword ptr [ebp-10h]
     mov word ptr [ebx+eax*2], dx
     push edi
-    lea edx, [eax+ecx*1]
+    lea edx, [eax+ecx]
     lea ecx, [eax+eax*8]
     mov dword ptr [edi+0ACh], edx
     lea edx, [eax+ecx*2]
@@ -365207,7 +363849,7 @@ loc_535395:
     jle loc_535420
     mov edx, edi
     shl edx, 4
-    lea edx, [edx+ebx*1+6Ch]
+    lea edx, [edx+ebx+6Ch]
     mov dword ptr [ebp+0Ch], edx
 
 loc_5353FF:
@@ -365278,7 +363920,7 @@ ALIGN 16
     sub ecx, esi
     mov dword ptr [edx+14h], 1
     mov dword ptr [edx+18h], ecx
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     sub eax, esi
     sub ecx, esi
     mov dword ptr [edx+10h], eax
@@ -365297,7 +363939,7 @@ loc_5354A1:
     add ecx, esi
     mov dword ptr [edx+14h], -1
     mov dword ptr [edx+18h], ecx
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     sub eax, esi
     sub ecx, esi
     mov dword ptr [edx+10h], eax
@@ -365307,7 +363949,7 @@ loc_5354A1:
     retn
 
 loc_5354BD:
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [edx+18h], ecx
     sub eax, esi
     sub ecx, esi
@@ -365333,7 +363975,7 @@ loc_5354E0:
     imul eax, esi
     sub ecx, eax
     mov dword ptr [edx+18h], ecx
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     sub eax, esi
     sub ecx, esi
     mov dword ptr [edx+10h], eax
@@ -365593,7 +364235,7 @@ loc_535936:
     mov dword ptr [ebp-4], eax
 
 loc_535946:
-    lea eax, [ecx+esi*1]
+    lea eax, [ecx+esi]
     add ebx, 4
     mov edi, eax
     sub edx, 2
@@ -365602,7 +364244,7 @@ loc_535946:
     shl edi, 5
     or esi, edi
     mov dword ptr [ebx-4], esi
-    lea esi, [eax+ecx*1]
+    lea esi, [eax+ecx]
     mov eax, dword ptr [ebp-4]
     dec eax
     mov dword ptr [ebp-4], eax
@@ -366975,7 +365617,7 @@ loc_536815:
     mov edi, dword ptr [?swStippleTest@@3PAEA]
     mov esi, eax
     and esi, 7
-    cmp byte ptr [esi+edi*1], 0
+    cmp byte ptr [esi+edi], 0
     jz loc_536829
     mov word ptr [eax], dx
 
@@ -367786,8 +366428,8 @@ loc_53710C:
     shl eax, 5
     xor esi, esi
     mov dword ptr [ebp-0Ch], edi
-    fld dword ptr [ebp+eax*1-224h]
-    lea eax, [ebp+eax*1-20Ch]
+    fld dword ptr [ebp+eax-224h]
+    lea eax, [ebp+eax-20Ch]
     mov ebx, edi
     fld dword ptr [eax-18h]
     fsub dword ptr [ebp-204h]
@@ -367876,18 +366518,18 @@ loc_5371EF:
     mov ecx, 8
     shl esi, 5
     sub esp, 20h
-    lea esi, [ebp+esi*1-20Ch]
+    lea esi, [ebp+esi-20Ch]
     mov edi, esp
     shl edx, 5
     rep movsd
     sub esp, 20h
-    lea esi, [ebp+edx*1-20Ch]
+    lea esi, [ebp+edx-20Ch]
     mov ecx, 8
     mov edi, esp
     shl ebx, 5
     rep movsd
     sub esp, 20h
-    lea esi, [ebp+ebx*1-20Ch]
+    lea esi, [ebp+ebx-20Ch]
     mov ecx, 8
     mov edi, esp
     rep movsd
@@ -367991,11 +366633,11 @@ loc_5372E0:
 loc_5372E4:
     cmp esi, edx
     jle loc_537300
-    lea eax, [edx+edx*1]
+    lea eax, [edx+edx]
     mov ecx, edx
     mov dword ptr [ebp+0Ch], eax
     sub ecx, esi
-    lea eax, [edx+edx*1]
+    lea eax, [edx+edx]
     shl ecx, 1
     sub eax, esi
     add edi, ebx
@@ -368003,12 +366645,12 @@ loc_5372E4:
     jmp loc_53731B
 
 loc_537300:
-    lea eax, [esi+esi*1]
+    lea eax, [esi+esi]
     mov ecx, esi
     mov dword ptr [ebp+0Ch], eax
-    lea eax, [esi+esi*1]
+    lea eax, [esi+esi]
     sub ecx, edx
-    lea esi, [edi+ebx*1]
+    lea esi, [edi+ebx]
     shl ecx, 1
     mov dword ptr [ebp+14h], esi
     sub eax, edx
@@ -368696,7 +367338,7 @@ loc_537E21:
     xor ebx, ebx
     sar ecx, 0Fh
     add esi, 2
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [ecx+ebx*2]
     mov ebx, dword ptr [?swr_du@@3HA]
@@ -368751,7 +367393,7 @@ loc_537EB1:
     xor ebx, ebx
     sar ecx, 0Eh
     add esi, 2
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [ecx+ebx*2]
     mov ebx, dword ptr [?swr_du@@3HA]
@@ -368806,7 +367448,7 @@ loc_537F41:
     xor ebx, ebx
     sar ecx, 0Dh
     add esi, 2
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [ecx+ebx*2]
     mov ebx, dword ptr [?swr_du@@3HA]
@@ -368861,7 +367503,7 @@ loc_537FD1:
     xor ebx, ebx
     sar ecx, 0Ch
     add esi, 2
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [ecx+ebx*2]
     mov ebx, dword ptr [?swr_du@@3HA]
@@ -368915,7 +367557,7 @@ loc_53806A:
     xor ebx, ebx
     sar ecx, 0Bh
     add esi, 2
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     add esi, 2
     mov cx, word ptr [ecx+ebx*2]
@@ -368933,7 +367575,7 @@ loc_53806A:
     xor ebx, ebx
     sar ecx, 0Bh
     add esi, 2
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     add esi, 2
     mov cx, word ptr [ecx+ebx*2]
@@ -368950,7 +367592,7 @@ loc_53806A:
     or ecx, ebx
     xor ebx, ebx
     sar ecx, 0Bh
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [ecx+ebx*2]
     mov ebx, dword ptr [?swr_dv@@3HA]
@@ -368966,7 +367608,7 @@ loc_53806A:
     or ecx, ebx
     xor ebx, ebx
     sar ecx, 0Bh
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [ecx+ebx*2]
     mov ebx, dword ptr [?swr_dv@@3HA]
@@ -368997,7 +367639,7 @@ loc_538178:
     or ecx, ebx
     xor ebx, ebx
     sar ecx, 0Bh
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [ecx+ebx*2]
     mov ebx, dword ptr [?swr_dv@@3HA]
@@ -369016,7 +367658,7 @@ loc_5381C6:
     or ecx, ebx
     xor ebx, ebx
     sar ecx, 0Bh
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [ecx+ebx*2]
     mov ebx, dword ptr [?swr_dv@@3HA]
@@ -369035,7 +367677,7 @@ loc_538203:
     or ecx, ebx
     xor ebx, ebx
     sar ecx, 0Bh
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [ecx+ebx*2]
     mov word ptr [esi], cx
@@ -369085,7 +367727,7 @@ loc_53828A:
     xor ebx, ebx
     sar ecx, 0Ah
     add esi, 2
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     add esi, 2
     mov cx, word ptr [ecx+ebx*2]
@@ -369103,7 +367745,7 @@ loc_53828A:
     xor ebx, ebx
     sar ecx, 0Ah
     add esi, 2
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     add esi, 2
     mov cx, word ptr [ecx+ebx*2]
@@ -369120,7 +367762,7 @@ loc_53828A:
     or ecx, ebx
     xor ebx, ebx
     sar ecx, 0Ah
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [ecx+ebx*2]
     mov ebx, dword ptr [?swr_dv@@3HA]
@@ -369136,7 +367778,7 @@ loc_53828A:
     or ecx, ebx
     xor ebx, ebx
     sar ecx, 0Ah
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [ecx+ebx*2]
     mov ebx, dword ptr [?swr_dv@@3HA]
@@ -369167,7 +367809,7 @@ loc_538398:
     or ecx, ebx
     xor ebx, ebx
     sar ecx, 0Ah
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [ecx+ebx*2]
     mov ebx, dword ptr [?swr_dv@@3HA]
@@ -369186,7 +367828,7 @@ loc_5383E6:
     or ecx, ebx
     xor ebx, ebx
     sar ecx, 0Ah
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [ecx+ebx*2]
     mov ebx, dword ptr [?swr_dv@@3HA]
@@ -369205,7 +367847,7 @@ loc_538423:
     or ecx, ebx
     xor ebx, ebx
     sar ecx, 0Ah
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [ecx+ebx*2]
     mov word ptr [esi], cx
@@ -369255,7 +367897,7 @@ loc_5384AA:
     xor ebx, ebx
     sar ecx, 9
     add esi, 2
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     add esi, 2
     mov cx, word ptr [ecx+ebx*2]
@@ -369273,7 +367915,7 @@ loc_5384AA:
     xor ebx, ebx
     sar ecx, 9
     add esi, 2
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     add esi, 2
     mov cx, word ptr [ecx+ebx*2]
@@ -369290,7 +367932,7 @@ loc_5384AA:
     or ecx, ebx
     xor ebx, ebx
     sar ecx, 9
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [ecx+ebx*2]
     mov ebx, dword ptr [?swr_dv@@3HA]
@@ -369306,7 +367948,7 @@ loc_5384AA:
     or ecx, ebx
     xor ebx, ebx
     sar ecx, 9
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [ecx+ebx*2]
     mov ebx, dword ptr [?swr_dv@@3HA]
@@ -369337,7 +367979,7 @@ loc_5385B8:
     or ecx, ebx
     xor ebx, ebx
     sar ecx, 9
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [ecx+ebx*2]
     mov ebx, dword ptr [?swr_dv@@3HA]
@@ -369356,7 +367998,7 @@ loc_538606:
     or ecx, ebx
     xor ebx, ebx
     sar ecx, 9
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [ecx+ebx*2]
     mov ebx, dword ptr [?swr_dv@@3HA]
@@ -369375,7 +368017,7 @@ loc_538643:
     or ecx, ebx
     xor ebx, ebx
     sar ecx, 9
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [ecx+ebx*2]
     mov word ptr [esi], cx
@@ -369426,7 +368068,7 @@ loc_5386CF:
     xor ebx, ebx
     sar edx, 8
     add esi, 2
-    mov bl, byte ptr [edx+ecx*1]
+    mov bl, byte ptr [edx+ecx]
     mov edx, dword ptr [?swCurrentLut@@3PAGA]
     add esi, 2
     mov dx, word ptr [edx+ebx*2]
@@ -369445,7 +368087,7 @@ loc_5386CF:
     xor ebx, ebx
     sar edx, 8
     add esi, 2
-    mov bl, byte ptr [edx+ecx*1]
+    mov bl, byte ptr [edx+ecx]
     mov edx, dword ptr [?swCurrentLut@@3PAGA]
     mov dx, word ptr [edx+ebx*2]
     mov ebx, dword ptr [?swr_dv@@3HA]
@@ -369461,7 +368103,7 @@ loc_5386CF:
     or edx, ebx
     xor ebx, ebx
     sar edx, 8
-    mov bl, byte ptr [edx+ecx*1]
+    mov bl, byte ptr [edx+ecx]
     mov edx, dword ptr [?swCurrentLut@@3PAGA]
     mov dx, word ptr [edx+ebx*2]
     mov ebx, dword ptr [?swr_dv@@3HA]
@@ -369477,7 +368119,7 @@ loc_5386CF:
     or edx, ebx
     xor ebx, ebx
     sar edx, 8
-    mov bl, byte ptr [edx+ecx*1]
+    mov bl, byte ptr [edx+ecx]
     mov edx, dword ptr [?swCurrentLut@@3PAGA]
     mov dx, word ptr [edx+ebx*2]
     mov ebx, dword ptr [?swr_dv@@3HA]
@@ -369508,7 +368150,7 @@ loc_5387D1:
     or edx, ebx
     xor ebx, ebx
     sar edx, 8
-    mov bl, byte ptr [edx+ecx*1]
+    mov bl, byte ptr [edx+ecx]
     mov edx, dword ptr [?swCurrentLut@@3PAGA]
     mov dx, word ptr [edx+ebx*2]
     mov ebx, dword ptr [?swr_dv@@3HA]
@@ -369527,7 +368169,7 @@ loc_538818:
     or edx, ebx
     xor ebx, ebx
     sar edx, 8
-    mov bl, byte ptr [edx+ecx*1]
+    mov bl, byte ptr [edx+ecx]
     mov edx, dword ptr [?swCurrentLut@@3PAGA]
     mov dx, word ptr [edx+ebx*2]
     mov ebx, dword ptr [?swr_dv@@3HA]
@@ -369546,7 +368188,7 @@ loc_538852:
     or edx, ebx
     xor ebx, ebx
     sar edx, 8
-    mov bl, byte ptr [edx+ecx*1]
+    mov bl, byte ptr [edx+ecx]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov dx, word ptr [ecx+ebx*2]
     mov ecx, dword ptr [?swr_dv@@3HA]
@@ -369579,7 +368221,7 @@ ALIGN 16
     mov dword ptr [ebp-8], ebx
     mov ebx, dword ptr [?swr_zb@@3PAGA]
     push edi
-    lea edi, [ecx+ecx*1]
+    lea edi, [ecx+ecx]
     mov esi, eax
     mov dword ptr [ebp-4], ebx
     add eax, edi
@@ -369614,7 +368256,7 @@ loc_5388EA:
     mov edi, dword ptr [?swr_src@@3PAXA]
     or ebx, ecx
     xor ecx, ecx
-    mov cl, byte ptr [ebx+edi*1]
+    mov cl, byte ptr [ebx+edi]
     mov edi, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [edi+ecx*2]
     mov word ptr [esi], cx
@@ -369658,7 +368300,7 @@ ALIGN 16
     push esi
     mov ebx, dword ptr [?swr_zb@@3PAGA]
     push edi
-    lea edi, [ecx+ecx*1]
+    lea edi, [ecx+ecx]
     mov dword ptr [ebp-8], eax
     add eax, edi
     mov dword ptr [?swr_dest@@3PAXA], eax
@@ -369694,7 +368336,7 @@ loc_5389CD:
     mov edi, dword ptr [?swr_src@@3PAXA]
     sar ecx, 0Fh
     xor ebx, ebx
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov edi, dword ptr [ebp-8]
     mov cx, word ptr [ecx+ebx*2]
@@ -369739,7 +368381,7 @@ ALIGN 16
     push esi
     mov ebx, dword ptr [?swr_zb@@3PAGA]
     push edi
-    lea edi, [ecx+ecx*1]
+    lea edi, [ecx+ecx]
     mov dword ptr [ebp-8], eax
     add eax, edi
     mov dword ptr [?swr_dest@@3PAXA], eax
@@ -369775,7 +368417,7 @@ loc_538AAD:
     mov edi, dword ptr [?swr_src@@3PAXA]
     sar ecx, 0Eh
     xor ebx, ebx
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov edi, dword ptr [ebp-8]
     mov cx, word ptr [ecx+ebx*2]
@@ -369820,7 +368462,7 @@ ALIGN 16
     push esi
     mov ebx, dword ptr [?swr_zb@@3PAGA]
     push edi
-    lea edi, [ecx+ecx*1]
+    lea edi, [ecx+ecx]
     mov dword ptr [ebp-8], eax
     add eax, edi
     mov dword ptr [?swr_dest@@3PAXA], eax
@@ -369856,7 +368498,7 @@ loc_538B8D:
     mov edi, dword ptr [?swr_src@@3PAXA]
     sar ecx, 0Dh
     xor ebx, ebx
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov edi, dword ptr [ebp-8]
     mov cx, word ptr [ecx+ebx*2]
@@ -369901,7 +368543,7 @@ ALIGN 16
     push esi
     mov ebx, dword ptr [?swr_zb@@3PAGA]
     push edi
-    lea edi, [ecx+ecx*1]
+    lea edi, [ecx+ecx]
     mov dword ptr [ebp-8], eax
     add eax, edi
     mov dword ptr [?swr_dest@@3PAXA], eax
@@ -369937,7 +368579,7 @@ loc_538C6D:
     mov edi, dword ptr [?swr_src@@3PAXA]
     sar ecx, 0Ch
     xor ebx, ebx
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov edi, dword ptr [ebp-8]
     mov cx, word ptr [ecx+ebx*2]
@@ -369983,7 +368625,7 @@ ALIGN 16
     push esi
     mov ebx, dword ptr [?swr_zb@@3PAGA]
     push edi
-    lea edi, [edx+edx*1]
+    lea edi, [edx+edx]
     mov ecx, eax
     add eax, edi
     mov esi, dword ptr [?swr_v@@3HA]
@@ -370019,7 +368661,7 @@ loc_538D58:
     mov edi, dword ptr [?swr_src@@3PAXA]
     sar ecx, 0Bh
     xor ebx, ebx
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov di, word ptr [ecx+ebx*2]
     mov ecx, dword ptr [ebp-8]
@@ -370052,7 +368694,7 @@ loc_538D9D:
     mov edi, dword ptr [?swr_src@@3PAXA]
     sar ecx, 0Bh
     xor ebx, ebx
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov di, word ptr [ecx+ebx*2]
     mov ecx, dword ptr [ebp-8]
@@ -370085,7 +368727,7 @@ loc_538E06:
     mov edi, dword ptr [?swr_src@@3PAXA]
     sar ecx, 0Bh
     xor ebx, ebx
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov di, word ptr [ecx+ebx*2]
     mov ecx, dword ptr [ebp-8]
@@ -370118,7 +368760,7 @@ loc_538E6F:
     mov edi, dword ptr [?swr_src@@3PAXA]
     sar ecx, 0Bh
     xor ebx, ebx
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov di, word ptr [ecx+ebx*2]
     mov ecx, dword ptr [ebp-8]
@@ -370168,7 +368810,7 @@ loc_538F15:
     mov edi, dword ptr [?swr_src@@3PAXA]
     sar ecx, 0Bh
     xor ebx, ebx
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov di, word ptr [ecx+ebx*2]
     mov ecx, dword ptr [ebp-8]
@@ -370204,7 +368846,7 @@ loc_538F95:
     mov edi, dword ptr [?swr_src@@3PAXA]
     sar ecx, 0Bh
     xor ebx, ebx
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov di, word ptr [ecx+ebx*2]
     mov ecx, dword ptr [ebp-8]
@@ -370241,7 +368883,7 @@ loc_539000:
     mov edi, dword ptr [?swr_src@@3PAXA]
     sar eax, 0Bh
     xor ebx, ebx
-    mov bl, byte ptr [eax+edi*1]
+    mov bl, byte ptr [eax+edi]
     mov eax, dword ptr [?swCurrentLut@@3PAGA]
     mov ax, word ptr [eax+ebx*2]
     mov word ptr [ecx], ax
@@ -370274,7 +368916,7 @@ ALIGN 16
     push esi
     mov ebx, dword ptr [?swr_zb@@3PAGA]
     push edi
-    lea edi, [edx+edx*1]
+    lea edi, [edx+edx]
     mov ecx, eax
     add eax, edi
     mov esi, dword ptr [?swr_v@@3HA]
@@ -370310,7 +368952,7 @@ loc_5390B8:
     mov edi, dword ptr [?swr_src@@3PAXA]
     sar ecx, 0Ah
     xor ebx, ebx
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov di, word ptr [ecx+ebx*2]
     mov ecx, dword ptr [ebp-8]
@@ -370343,7 +368985,7 @@ loc_5390FD:
     mov edi, dword ptr [?swr_src@@3PAXA]
     sar ecx, 0Ah
     xor ebx, ebx
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov di, word ptr [ecx+ebx*2]
     mov ecx, dword ptr [ebp-8]
@@ -370376,7 +369018,7 @@ loc_539166:
     mov edi, dword ptr [?swr_src@@3PAXA]
     sar ecx, 0Ah
     xor ebx, ebx
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov di, word ptr [ecx+ebx*2]
     mov ecx, dword ptr [ebp-8]
@@ -370409,7 +369051,7 @@ loc_5391CF:
     mov edi, dword ptr [?swr_src@@3PAXA]
     sar ecx, 0Ah
     xor ebx, ebx
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov di, word ptr [ecx+ebx*2]
     mov ecx, dword ptr [ebp-8]
@@ -370459,7 +369101,7 @@ loc_539275:
     mov edi, dword ptr [?swr_src@@3PAXA]
     sar ecx, 0Ah
     xor ebx, ebx
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov di, word ptr [ecx+ebx*2]
     mov ecx, dword ptr [ebp-8]
@@ -370495,7 +369137,7 @@ loc_5392F5:
     mov edi, dword ptr [?swr_src@@3PAXA]
     sar ecx, 0Ah
     xor ebx, ebx
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov di, word ptr [ecx+ebx*2]
     mov ecx, dword ptr [ebp-8]
@@ -370532,7 +369174,7 @@ loc_539360:
     mov edi, dword ptr [?swr_src@@3PAXA]
     sar eax, 0Ah
     xor ebx, ebx
-    mov bl, byte ptr [eax+edi*1]
+    mov bl, byte ptr [eax+edi]
     mov eax, dword ptr [?swCurrentLut@@3PAGA]
     mov ax, word ptr [eax+ebx*2]
     mov word ptr [ecx], ax
@@ -370565,7 +369207,7 @@ ALIGN 16
     push esi
     mov ebx, dword ptr [?swr_zb@@3PAGA]
     push edi
-    lea edi, [edx+edx*1]
+    lea edi, [edx+edx]
     mov ecx, eax
     add eax, edi
     mov esi, dword ptr [?swr_v@@3HA]
@@ -370601,7 +369243,7 @@ loc_539418:
     mov edi, dword ptr [?swr_src@@3PAXA]
     sar ecx, 9
     xor ebx, ebx
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov di, word ptr [ecx+ebx*2]
     mov ecx, dword ptr [ebp-8]
@@ -370634,7 +369276,7 @@ loc_53945D:
     mov edi, dword ptr [?swr_src@@3PAXA]
     sar ecx, 9
     xor ebx, ebx
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov di, word ptr [ecx+ebx*2]
     mov ecx, dword ptr [ebp-8]
@@ -370667,7 +369309,7 @@ loc_5394C6:
     mov edi, dword ptr [?swr_src@@3PAXA]
     sar ecx, 9
     xor ebx, ebx
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov di, word ptr [ecx+ebx*2]
     mov ecx, dword ptr [ebp-8]
@@ -370700,7 +369342,7 @@ loc_53952F:
     mov edi, dword ptr [?swr_src@@3PAXA]
     sar ecx, 9
     xor ebx, ebx
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov di, word ptr [ecx+ebx*2]
     mov ecx, dword ptr [ebp-8]
@@ -370750,7 +369392,7 @@ loc_5395D5:
     mov edi, dword ptr [?swr_src@@3PAXA]
     sar ecx, 9
     xor ebx, ebx
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov di, word ptr [ecx+ebx*2]
     mov ecx, dword ptr [ebp-8]
@@ -370786,7 +369428,7 @@ loc_539655:
     mov edi, dword ptr [?swr_src@@3PAXA]
     sar ecx, 9
     xor ebx, ebx
-    mov bl, byte ptr [ecx+edi*1]
+    mov bl, byte ptr [ecx+edi]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov di, word ptr [ecx+ebx*2]
     mov ecx, dword ptr [ebp-8]
@@ -370823,7 +369465,7 @@ loc_5396C0:
     mov edi, dword ptr [?swr_src@@3PAXA]
     sar eax, 9
     xor ebx, ebx
-    mov bl, byte ptr [eax+edi*1]
+    mov bl, byte ptr [eax+edi]
     mov eax, dword ptr [?swCurrentLut@@3PAGA]
     mov ax, word ptr [eax+ebx*2]
     mov word ptr [ecx], ax
@@ -370855,7 +369497,7 @@ ALIGN 16
     mov ebx, dword ptr [?swr_zb@@3PAGA]
     push esi
     push edi
-    lea edx, [ecx+ecx*1]
+    lea edx, [ecx+ecx]
     mov edi, eax
     add eax, edx
     mov dword ptr [?swr_dest@@3PAXA], eax
@@ -370890,7 +369532,7 @@ loc_539776:
     mov ecx, dword ptr [?swr_src@@3PAXA]
     sar edx, 8
     xor ebx, ebx
-    mov bl, byte ptr [edx+ecx*1]
+    mov bl, byte ptr [edx+ecx]
     mov edx, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [edx+ebx*2]
     mov word ptr [edi], cx
@@ -370923,7 +369565,7 @@ loc_5397B4:
     mov ecx, dword ptr [?swr_src@@3PAXA]
     sar edx, 8
     xor ebx, ebx
-    mov bl, byte ptr [edx+ecx*1]
+    mov bl, byte ptr [edx+ecx]
     mov edx, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [edx+ebx*2]
     mov word ptr [edi], cx
@@ -370956,7 +369598,7 @@ loc_539819:
     mov ecx, dword ptr [?swr_src@@3PAXA]
     sar edx, 8
     xor ebx, ebx
-    mov bl, byte ptr [edx+ecx*1]
+    mov bl, byte ptr [edx+ecx]
     mov edx, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [edx+ebx*2]
     mov word ptr [edi], cx
@@ -370989,7 +369631,7 @@ loc_53987E:
     mov ecx, dword ptr [?swr_src@@3PAXA]
     sar edx, 8
     xor ebx, ebx
-    mov bl, byte ptr [edx+ecx*1]
+    mov bl, byte ptr [edx+ecx]
     mov edx, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [edx+ebx*2]
     mov word ptr [edi], cx
@@ -371038,7 +369680,7 @@ loc_539920:
     mov ecx, dword ptr [?swr_src@@3PAXA]
     sar edx, 8
     xor ebx, ebx
-    mov bl, byte ptr [edx+ecx*1]
+    mov bl, byte ptr [edx+ecx]
     mov edx, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [edx+ebx*2]
     mov word ptr [edi], cx
@@ -371073,7 +369715,7 @@ loc_539999:
     mov ecx, dword ptr [?swr_src@@3PAXA]
     sar edx, 8
     xor ebx, ebx
-    mov bl, byte ptr [edx+ecx*1]
+    mov bl, byte ptr [edx+ecx]
     mov edx, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [edx+ebx*2]
     mov word ptr [edi], cx
@@ -371110,7 +369752,7 @@ loc_539A00:
     mov eax, dword ptr [?swr_src@@3PAXA]
     sar ecx, 8
     xor ebx, ebx
-    mov bl, byte ptr [ecx+eax*1]
+    mov bl, byte ptr [ecx+eax]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov ax, word ptr [ecx+ebx*2]
     mov word ptr [edi], ax
@@ -371166,7 +369808,7 @@ loc_539AA2:
     mov ebx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, eax
     and ecx, 7
-    cmp byte ptr [ecx+ebx*1], 0
+    cmp byte ptr [ecx+ebx], 0
     jz loc_539AE9
     mov ecx, dword ptr [?swr_texshift@@3HA]
     mov ebx, esi
@@ -371179,7 +369821,7 @@ loc_539AA2:
     mov edi, dword ptr [?swr_src@@3PAXA]
     or ebx, ecx
     xor ecx, ecx
-    mov cl, byte ptr [ebx+edi*1]
+    mov cl, byte ptr [ebx+edi]
     mov edi, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [edi+ecx*2]
     mov edi, dword ptr [?swr_texmask@@3HA]
@@ -371220,7 +369862,7 @@ ALIGN 16
     mov dword ptr [ebp-8], ebx
     mov ebx, dword ptr [?swr_zb@@3PAGA]
     push edi
-    lea edi, [ecx+ecx*1]
+    lea edi, [ecx+ecx]
     mov eax, edx
     mov dword ptr [ebp-4], ebx
     add edx, edi
@@ -371239,7 +369881,7 @@ loc_539B71:
     mov edi, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, eax
     and ecx, 7
-    cmp byte ptr [ecx+edi*1], 0
+    cmp byte ptr [ecx+edi], 0
     jz loc_539BCA
     mov ebx, dword ptr [ebp-4]
     mov ecx, dword ptr [ebp-8]
@@ -371260,7 +369902,7 @@ loc_539B71:
     mov edi, dword ptr [?swr_src@@3PAXA]
     or ebx, ecx
     xor ecx, ecx
-    mov cl, byte ptr [ebx+edi*1]
+    mov cl, byte ptr [ebx+edi]
     mov edi, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [edi+ecx*2]
     mov word ptr [eax], cx
@@ -371329,7 +369971,7 @@ loc_539C78:
     mov ebx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, eax
     and ecx, 7
-    cmp byte ptr [ecx+ebx*1], 0
+    cmp byte ptr [ecx+ebx], 0
     jz loc_539CD4
     mov ecx, dword ptr [ebp-4]
     xor ebx, ebx
@@ -371350,7 +369992,7 @@ loc_539C78:
     mov edi, dword ptr [?swr_src@@3PAXA]
     or ebx, ecx
     xor ecx, ecx
-    mov cl, byte ptr [ebx+edi*1]
+    mov cl, byte ptr [ebx+edi]
     mov edi, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [edi+ecx*2]
     mov edi, dword ptr [ebp-8]
@@ -371416,7 +370058,7 @@ loc_539D53:
     and ecx, esi
     or ebx, ecx
     mov ecx, dword ptr [?swr_src@@3PAXA]
-    mov bl, byte ptr [ebx+ecx*1]
+    mov bl, byte ptr [ebx+ecx]
     test bl, bl
     mov byte ptr [ebp-8], bl
     jz loc_539D91
@@ -371461,7 +370103,7 @@ ALIGN 16
     mov dword ptr [ebp-8], ebx
     mov ebx, dword ptr [?swr_zb@@3PAGA]
     push edi
-    lea edi, [ecx+ecx*1]
+    lea edi, [ecx+ecx]
     mov esi, eax
     mov dword ptr [ebp-4], ebx
     add eax, edi
@@ -371495,7 +370137,7 @@ loc_539E0E:
     and ecx, edi
     or ebx, ecx
     mov ecx, dword ptr [?swr_src@@3PAXA]
-    mov bl, byte ptr [ebx+ecx*1]
+    mov bl, byte ptr [ebx+ecx]
     test bl, bl
     mov byte ptr [ebp-10h], bl
     jz loc_539E64
@@ -371544,7 +370186,7 @@ ALIGN 16
     push esi
     mov ebx, dword ptr [?swr_zb@@3PAGA]
     push edi
-    lea edi, [ecx+ecx*1]
+    lea edi, [ecx+ecx]
     mov dword ptr [ebp-0Ch], eax
     add eax, edi
     mov dword ptr [?swr_dest@@3PAXA], eax
@@ -371575,7 +370217,7 @@ loc_539F01:
     and ecx, dword ptr [?swr_texmask@@3HA]
     or edi, ecx
     mov ecx, dword ptr [?swr_src@@3PAXA]
-    mov cl, byte ptr [edi+ecx*1]
+    mov cl, byte ptr [edi+ecx]
     test cl, cl
     mov byte ptr [ebp-0Ch], cl
     jz loc_539F5B
@@ -371644,7 +370286,7 @@ loc_539FD4:
     mov eax, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+eax*1], 0
+    cmp byte ptr [ecx+eax], 0
     jz loc_53A025
     mov ecx, dword ptr [?swr_texmask@@3HA]
     mov eax, esi
@@ -371656,7 +370298,7 @@ loc_539FD4:
     sar ecx, 10h
     and ecx, dword ptr [?swr_texmask@@3HA]
     or eax, ecx
-    mov al, byte ptr [eax+ebx*1]
+    mov al, byte ptr [eax+ebx]
     test al, al
     mov byte ptr [ebp-8], al
     jz loc_53A025
@@ -371701,7 +370343,7 @@ ALIGN 16
     mov dword ptr [ebp-8], ebx
     mov ebx, dword ptr [?swr_zb@@3PAGA]
     push edi
-    lea edi, [ecx+ecx*1]
+    lea edi, [ecx+ecx]
     mov esi, eax
     mov dword ptr [ebp-4], ebx
     add eax, edi
@@ -371720,7 +370362,7 @@ loc_53A0AE:
     mov edi, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edi*1], 0
+    cmp byte ptr [ecx+edi], 0
     jz loc_53A115
     mov ebx, dword ptr [ebp-4]
     mov ecx, dword ptr [ebp-8]
@@ -371740,7 +370382,7 @@ loc_53A0AE:
     and ecx, edi
     or ebx, ecx
     mov ecx, dword ptr [?swr_src@@3PAXA]
-    mov cl, byte ptr [ebx+ecx*1]
+    mov cl, byte ptr [ebx+ecx]
     test cl, cl
     mov byte ptr [ebp-10h], cl
     jz loc_53A115
@@ -371787,7 +370429,7 @@ ALIGN 16
     mov edx, dword ptr [?swr_dest@@3PAXA]
     push ebx
     push esi
-    lea esi, [ecx+ecx*1]
+    lea esi, [ecx+ecx]
     mov eax, edx
     mov ebx, dword ptr [?swr_zb@@3PAGA]
     add edx, esi
@@ -371813,7 +370455,7 @@ loc_53A1B9:
     mov ebx, dword ptr [?swStippleTest@@3PAEA]
     mov esi, eax
     and esi, 7
-    cmp byte ptr [esi+ebx*1], 0
+    cmp byte ptr [esi+ebx], 0
     jz loc_53A21F
     mov ebx, dword ptr [ebp-4]
     mov esi, dword ptr [?swr_texmask@@3HA]
@@ -371825,7 +370467,7 @@ loc_53A1B9:
     and esi, dword ptr [?swr_texmask@@3HA]
     or ebx, esi
     mov esi, dword ptr [?swr_src@@3PAXA]
-    mov bl, byte ptr [ebx+esi*1]
+    mov bl, byte ptr [ebx+esi]
     test bl, bl
     mov byte ptr [ebp-10h], bl
     jz loc_53A21F
@@ -371910,7 +370552,7 @@ loc_53A2BE:
     and ecx, edx
     or eax, ecx
     mov ecx, dword ptr [ebp-8]
-    mov al, byte ptr [eax+ecx*1]
+    mov al, byte ptr [eax+ecx]
     test al, al
     mov byte ptr [ebp-0Ch], al
     jz loc_53A30E
@@ -371957,7 +370599,7 @@ ALIGN 16
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-10h], eax
     push ebx
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov ebx, edx
     add edx, eax
     push esi
@@ -372003,7 +370645,7 @@ loc_53A3B4:
     and ecx, eax
     mov eax, dword ptr [ebp-10h]
     or edx, ecx
-    mov al, byte ptr [edx+eax*1]
+    mov al, byte ptr [edx+eax]
     test al, al
     mov byte ptr [ebp-14h], al
     jz loc_53A412
@@ -372054,7 +370696,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-10h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-4], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -372101,7 +370743,7 @@ loc_53A4DA:
     and ecx, edx
     or eax, ecx
     mov ecx, dword ptr [ebp-10h]
-    mov al, byte ptr [eax+ecx*1]
+    mov al, byte ptr [eax+ecx]
     test al, al
     mov byte ptr [ebp-14h], al
     jz loc_53A542
@@ -372179,7 +370821,7 @@ loc_53A5E2:
     mov eax, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+eax*1], 0
+    cmp byte ptr [ecx+eax], 0
     jz loc_53A642
     mov ecx, dword ptr [?swr_texshift@@3HA]
     mov eax, ebx
@@ -372191,7 +370833,7 @@ loc_53A5E2:
     and ecx, edx
     or eax, ecx
     mov ecx, dword ptr [ebp-8]
-    mov al, byte ptr [eax+ecx*1]
+    mov al, byte ptr [eax+ecx]
     test al, al
     mov byte ptr [ebp-0Ch], al
     jz loc_53A642
@@ -372239,7 +370881,7 @@ ALIGN 16
     push ebx
     mov dword ptr [ebp-10h], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -372269,7 +370911,7 @@ loc_53A6E4:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_53A753
     mov edx, dword ptr [ebp-4]
     mov eax, dword ptr [ebp-8]
@@ -372289,7 +370931,7 @@ loc_53A6E4:
     and ecx, eax
     mov eax, dword ptr [ebp-10h]
     or edx, ecx
-    mov al, byte ptr [edx+eax*1]
+    mov al, byte ptr [edx+eax]
     test al, al
     mov byte ptr [ebp-14h], al
     jz loc_53A753
@@ -372342,7 +370984,7 @@ ALIGN 16
     push ebx
     mov dword ptr [ebp-10h], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -372374,7 +371016,7 @@ loc_53A81C:
     mov eax, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+eax*1], 0
+    cmp byte ptr [ecx+eax], 0
     jz loc_53A88F
     mov eax, dword ptr [ebp-8]
     xor ecx, ecx
@@ -372393,7 +371035,7 @@ loc_53A81C:
     and ecx, edx
     or eax, ecx
     mov ecx, dword ptr [ebp-10h]
-    mov al, byte ptr [eax+ecx*1]
+    mov al, byte ptr [eax+ecx]
     test al, al
     mov byte ptr [ebp-14h], al
     jz loc_53A88F
@@ -372473,7 +371115,7 @@ loc_53A90B:
     mov edi, dword ptr [?swr_src@@3PAXA]
     or ebx, ecx
     xor ecx, ecx
-    mov cl, byte ptr [ebx+edi*1]
+    mov cl, byte ptr [ebx+edi]
     mov edi, dword ptr [?swCurrentLut@@3PAGA]
     mov ebx, dword ptr [?swr_dv@@3HA]
     mov cx, word ptr [edi+ecx*2]
@@ -372512,7 +371154,7 @@ ALIGN 16
     mov dword ptr [ebp-8], ebx
     mov ebx, dword ptr [?swr_zb@@3PAGA]
     push edi
-    lea edi, [ecx+ecx*1]
+    lea edi, [ecx+ecx]
     mov esi, eax
     mov dword ptr [ebp-4], ebx
     add eax, edi
@@ -372547,7 +371189,7 @@ loc_53A9CE:
     mov edi, dword ptr [?swr_src@@3PAXA]
     or ebx, ecx
     xor ecx, ecx
-    mov cl, byte ptr [ebx+edi*1]
+    mov cl, byte ptr [ebx+edi]
     mov edi, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [edi+ecx*2]
     mov edi, dword ptr [?swr_color@@3HA]
@@ -372593,7 +371235,7 @@ ALIGN 16
     push esi
     mov ebx, dword ptr [?swr_zb@@3PAGA]
     push edi
-    lea edi, [ecx+ecx*1]
+    lea edi, [ecx+ecx]
     mov dword ptr [ebp-8], eax
     add eax, edi
     mov dword ptr [?swr_dest@@3PAXA], eax
@@ -372631,7 +371273,7 @@ loc_53AAC4:
     mov edi, dword ptr [?swr_src@@3PAXA]
     or ebx, ecx
     xor ecx, ecx
-    mov cl, byte ptr [ebx+edi*1]
+    mov cl, byte ptr [ebx+edi]
     mov edi, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [edi+ecx*2]
     mov edi, dword ptr [?swr_color@@3HA]
@@ -372694,7 +371336,7 @@ loc_53ABA2:
     mov ebx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, eax
     and ecx, 7
-    cmp byte ptr [ecx+ebx*1], 0
+    cmp byte ptr [ecx+ebx], 0
     jz loc_53ABF1
     mov ecx, dword ptr [?swr_texshift@@3HA]
     mov ebx, esi
@@ -372707,7 +371349,7 @@ loc_53ABA2:
     mov edi, dword ptr [?swr_src@@3PAXA]
     or ebx, ecx
     xor ecx, ecx
-    mov cl, byte ptr [ebx+edi*1]
+    mov cl, byte ptr [ebx+edi]
     mov edi, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [edi+ecx*2]
     mov edi, dword ptr [?swr_color@@3HA]
@@ -372750,7 +371392,7 @@ ALIGN 16
     mov dword ptr [ebp-8], ebx
     mov ebx, dword ptr [?swr_zb@@3PAGA]
     push edi
-    lea edi, [ecx+ecx*1]
+    lea edi, [ecx+ecx]
     mov eax, edx
     mov dword ptr [ebp-4], ebx
     add edx, edi
@@ -372769,7 +371411,7 @@ loc_53AC71:
     mov edi, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, eax
     and ecx, 7
-    cmp byte ptr [ecx+edi*1], 0
+    cmp byte ptr [ecx+edi], 0
     jz loc_53ACD2
     mov ebx, dword ptr [ebp-4]
     mov ecx, dword ptr [ebp-8]
@@ -372790,7 +371432,7 @@ loc_53AC71:
     mov edi, dword ptr [?swr_src@@3PAXA]
     or ebx, ecx
     xor ecx, ecx
-    mov cl, byte ptr [ebx+edi*1]
+    mov cl, byte ptr [ebx+edi]
     mov edi, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [edi+ecx*2]
     mov edi, dword ptr [?swr_color@@3HA]
@@ -372861,7 +371503,7 @@ loc_53AD78:
     mov ebx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, eax
     and ecx, 7
-    cmp byte ptr [ecx+ebx*1], 0
+    cmp byte ptr [ecx+ebx], 0
     jz loc_53ADDC
     mov ecx, dword ptr [ebp-4]
     xor ebx, ebx
@@ -372882,7 +371524,7 @@ loc_53AD78:
     mov edi, dword ptr [?swr_src@@3PAXA]
     or ebx, ecx
     xor ecx, ecx
-    mov cl, byte ptr [ebx+edi*1]
+    mov cl, byte ptr [ebx+edi]
     mov edi, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [edi+ecx*2]
     mov edi, dword ptr [?swr_color@@3HA]
@@ -372950,7 +371592,7 @@ loc_53AE64:
     sar ecx, 10h
     and ecx, dword ptr [?swr_texmask@@3HA]
     or eax, ecx
-    mov al, byte ptr [eax+ebx*1]
+    mov al, byte ptr [eax+ebx]
     test al, al
     mov byte ptr [ebp-8], al
     jz loc_53AEAD
@@ -372997,7 +371639,7 @@ ALIGN 16
     mov dword ptr [ebp-8], ebx
     mov ebx, dword ptr [?swr_zb@@3PAGA]
     push edi
-    lea edi, [ecx+ecx*1]
+    lea edi, [ecx+ecx]
     mov esi, eax
     mov dword ptr [ebp-4], ebx
     add eax, edi
@@ -373031,7 +371673,7 @@ loc_53AF2E:
     and ecx, edi
     or ebx, ecx
     mov ecx, dword ptr [?swr_src@@3PAXA]
-    mov bl, byte ptr [ebx+ecx*1]
+    mov bl, byte ptr [ebx+ecx]
     test bl, bl
     mov byte ptr [ebp-10h], bl
     jz loc_53AF8C
@@ -373082,7 +371724,7 @@ ALIGN 16
     push esi
     mov ebx, dword ptr [?swr_zb@@3PAGA]
     push edi
-    lea edi, [ecx+ecx*1]
+    lea edi, [ecx+ecx]
     mov dword ptr [ebp-0Ch], eax
     add eax, edi
     mov dword ptr [?swr_dest@@3PAXA], eax
@@ -373113,7 +371755,7 @@ loc_53B031:
     and ecx, dword ptr [?swr_texmask@@3HA]
     or edi, ecx
     mov ecx, dword ptr [?swr_src@@3PAXA]
-    mov cl, byte ptr [edi+ecx*1]
+    mov cl, byte ptr [edi+ecx]
     test cl, cl
     mov byte ptr [ebp-0Ch], cl
     jz loc_53B093
@@ -373184,7 +371826,7 @@ loc_53B114:
     mov eax, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edx
     and ecx, 7
-    cmp byte ptr [ecx+eax*1], 0
+    cmp byte ptr [ecx+eax], 0
     jz loc_53B16D
     mov ecx, dword ptr [?swr_texmask@@3HA]
     mov eax, edi
@@ -373196,7 +371838,7 @@ loc_53B114:
     sar ecx, 10h
     and ecx, dword ptr [?swr_texmask@@3HA]
     or eax, ecx
-    mov al, byte ptr [eax+ebx*1]
+    mov al, byte ptr [eax+ebx]
     test al, al
     mov byte ptr [ebp-8], al
     jz loc_53B16D
@@ -373243,7 +371885,7 @@ ALIGN 16
     mov dword ptr [ebp-8], ebx
     mov ebx, dword ptr [?swr_zb@@3PAGA]
     push edi
-    lea edi, [ecx+ecx*1]
+    lea edi, [ecx+ecx]
     mov eax, edx
     mov dword ptr [ebp-4], ebx
     add edx, edi
@@ -373262,7 +371904,7 @@ loc_53B1F1:
     mov edi, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, eax
     and ecx, 7
-    cmp byte ptr [ecx+edi*1], 0
+    cmp byte ptr [ecx+edi], 0
     jz loc_53B260
     mov ebx, dword ptr [ebp-4]
     mov ecx, dword ptr [ebp-8]
@@ -373282,7 +371924,7 @@ loc_53B1F1:
     and ecx, edi
     or ebx, ecx
     mov ecx, dword ptr [?swr_src@@3PAXA]
-    mov cl, byte ptr [ebx+ecx*1]
+    mov cl, byte ptr [ebx+ecx]
     test cl, cl
     mov byte ptr [ebp-10h], cl
     jz loc_53B260
@@ -373331,7 +371973,7 @@ ALIGN 16
     mov edx, dword ptr [?swr_dest@@3PAXA]
     push ebx
     push esi
-    lea esi, [ecx+ecx*1]
+    lea esi, [ecx+ecx]
     mov eax, edx
     mov ebx, dword ptr [?swr_zb@@3PAGA]
     add edx, esi
@@ -373356,7 +371998,7 @@ loc_53B303:
     mov esi, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, eax
     and ecx, 7
-    cmp byte ptr [ecx+esi*1], 0
+    cmp byte ptr [ecx+esi], 0
     jz loc_53B373
     mov ebx, dword ptr [ebp-4]
     mov esi, dword ptr [?swr_texmask@@3HA]
@@ -373369,7 +372011,7 @@ loc_53B303:
     and ecx, esi
     or ebx, ecx
     mov ecx, dword ptr [?swr_src@@3PAXA]
-    mov bl, byte ptr [ebx+ecx*1]
+    mov bl, byte ptr [ebx+ecx]
     test bl, bl
     mov byte ptr [ebp-10h], bl
     jz loc_53B373
@@ -373456,7 +372098,7 @@ loc_53B40E:
     and ecx, edx
     or eax, ecx
     mov ecx, dword ptr [ebp-8]
-    mov al, byte ptr [eax+ecx*1]
+    mov al, byte ptr [eax+ecx]
     test al, al
     mov byte ptr [ebp-0Ch], al
     jz loc_53B45E
@@ -373503,7 +372145,7 @@ ALIGN 16
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-10h], eax
     push ebx
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov ebx, edx
     add edx, eax
     push esi
@@ -373549,7 +372191,7 @@ loc_53B504:
     and ecx, eax
     mov eax, dword ptr [ebp-10h]
     or edx, ecx
-    mov al, byte ptr [edx+eax*1]
+    mov al, byte ptr [edx+eax]
     test al, al
     mov byte ptr [ebp-14h], al
     jz loc_53B562
@@ -373600,7 +372242,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-10h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-4], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -373647,7 +372289,7 @@ loc_53B62A:
     and ecx, edx
     or eax, ecx
     mov ecx, dword ptr [ebp-10h]
-    mov al, byte ptr [eax+ecx*1]
+    mov al, byte ptr [eax+ecx]
     test al, al
     mov byte ptr [ebp-14h], al
     jz loc_53B692
@@ -373725,7 +372367,7 @@ loc_53B732:
     mov eax, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+eax*1], 0
+    cmp byte ptr [ecx+eax], 0
     jz loc_53B792
     mov ecx, dword ptr [?swr_texshift@@3HA]
     mov eax, ebx
@@ -373737,7 +372379,7 @@ loc_53B732:
     and ecx, edx
     or eax, ecx
     mov ecx, dword ptr [ebp-8]
-    mov al, byte ptr [eax+ecx*1]
+    mov al, byte ptr [eax+ecx]
     test al, al
     mov byte ptr [ebp-0Ch], al
     jz loc_53B792
@@ -373785,7 +372427,7 @@ ALIGN 16
     push ebx
     mov dword ptr [ebp-10h], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -373815,7 +372457,7 @@ loc_53B834:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_53B8A3
     mov edx, dword ptr [ebp-4]
     mov eax, dword ptr [ebp-8]
@@ -373835,7 +372477,7 @@ loc_53B834:
     and ecx, eax
     mov eax, dword ptr [ebp-10h]
     or edx, ecx
-    mov al, byte ptr [edx+eax*1]
+    mov al, byte ptr [edx+eax]
     test al, al
     mov byte ptr [ebp-14h], al
     jz loc_53B8A3
@@ -373888,7 +372530,7 @@ ALIGN 16
     push ebx
     mov dword ptr [ebp-10h], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -373920,7 +372562,7 @@ loc_53B96C:
     mov eax, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+eax*1], 0
+    cmp byte ptr [ecx+eax], 0
     jz loc_53B9DF
     mov eax, dword ptr [ebp-8]
     xor ecx, ecx
@@ -373939,7 +372581,7 @@ loc_53B96C:
     and ecx, edx
     or eax, ecx
     mov ecx, dword ptr [ebp-10h]
-    mov al, byte ptr [eax+ecx*1]
+    mov al, byte ptr [eax+ecx]
     test al, al
     mov byte ptr [ebp-14h], al
     jz loc_53B9DF
@@ -374023,7 +372665,7 @@ loc_53BA6E:
     mov edi, dword ptr [?swr_src@@3PAXA]
     or ebx, ecx
     xor ecx, ecx
-    mov cl, byte ptr [ebx+edi*1]
+    mov cl, byte ptr [ebx+edi]
     mov edi, dword ptr [?swCurrentLut@@3PAGA]
     mov ebx, dword ptr [?swr_ddu@@3HA]
     mov cx, word ptr [edi+ecx*2]
@@ -374063,7 +372705,7 @@ ALIGN 16
     mov ebx, dword ptr [?swr_z@@3HA]
     push esi
     push edi
-    lea edi, [ecx+ecx*1]
+    lea edi, [ecx+ecx]
     mov esi, dword ptr [?swr_u@@3HA]
     mov edx, dword ptr [?swr_dv@@3HA]
     mov dword ptr [ebp-0Ch], ebx
@@ -374104,7 +372746,7 @@ loc_53BB4D:
     mov edi, dword ptr [?swr_src@@3PAXA]
     or ebx, ecx
     xor ecx, ecx
-    mov cl, byte ptr [ebx+edi*1]
+    mov cl, byte ptr [ebx+edi]
     mov edi, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [edi+ecx*2]
     mov edi, dword ptr [ebp-10h]
@@ -374156,7 +372798,7 @@ ALIGN 16
     push ebx
     push esi
     push edi
-    lea edi, [ecx+ecx*1]
+    lea edi, [ecx+ecx]
     mov dword ptr [ebp-8], eax
     add eax, edi
     mov ebx, dword ptr [?swr_zb@@3PAGA]
@@ -374199,7 +372841,7 @@ loc_53BC64:
     mov edi, dword ptr [?swr_src@@3PAXA]
     or ebx, ecx
     xor ecx, ecx
-    mov cl, byte ptr [ebx+edi*1]
+    mov cl, byte ptr [ebx+edi]
     mov edi, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [edi+ecx*2]
     mov edi, dword ptr [ebp-8]
@@ -374269,7 +372911,7 @@ loc_53BD56:
     mov ebx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, eax
     and ecx, 7
-    cmp byte ptr [ecx+ebx*1], 0
+    cmp byte ptr [ecx+ebx], 0
     jz loc_53BD9D
     mov ecx, dword ptr [?swr_texshift@@3HA]
     mov ebx, esi
@@ -374282,7 +372924,7 @@ loc_53BD56:
     mov edi, dword ptr [?swr_src@@3PAXA]
     or ebx, ecx
     xor ecx, ecx
-    mov cl, byte ptr [ebx+edi*1]
+    mov cl, byte ptr [ebx+edi]
     mov edi, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [edi+ecx*2]
     mov edi, dword ptr [?swr_texmask@@3HA]
@@ -374325,7 +372967,7 @@ ALIGN 16
     mov ebx, dword ptr [?swr_z@@3HA]
     push esi
     push edi
-    lea edi, [ecx+ecx*1]
+    lea edi, [ecx+ecx]
     mov eax, edx
     add edx, edi
     mov esi, dword ptr [?swr_dv@@3HA]
@@ -374351,7 +372993,7 @@ loc_53BE43:
     mov edi, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, eax
     and ecx, 7
-    cmp byte ptr [ecx+edi*1], 0
+    cmp byte ptr [ecx+edi], 0
     jz loc_53BE9E
     mov ebx, dword ptr [ebp-0Ch]
     mov ecx, dword ptr [ebp-10h]
@@ -374372,7 +373014,7 @@ loc_53BE43:
     mov edi, dword ptr [?swr_src@@3PAXA]
     or ebx, ecx
     xor ecx, ecx
-    mov cl, byte ptr [ebx+edi*1]
+    mov cl, byte ptr [ebx+edi]
     mov edi, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [edi+ecx*2]
     mov word ptr [eax], cx
@@ -374453,7 +373095,7 @@ loc_53BF6A:
     mov ebx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, eax
     and ecx, 7
-    cmp byte ptr [ecx+ebx*1], 0
+    cmp byte ptr [ecx+ebx], 0
     jz loc_53BFC6
     mov ecx, dword ptr [ebp-4]
     xor ebx, ebx
@@ -374474,7 +373116,7 @@ loc_53BF6A:
     mov edi, dword ptr [?swr_src@@3PAXA]
     or ebx, ecx
     xor ecx, ecx
-    mov cl, byte ptr [ebx+edi*1]
+    mov cl, byte ptr [ebx+edi]
     mov edi, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [edi+ecx*2]
     mov edi, dword ptr [ebp-8]
@@ -374548,7 +373190,7 @@ loc_53C05B:
     and ecx, dword ptr [?swr_texmask@@3HA]
     or ebx, ecx
     mov ecx, dword ptr [?swr_src@@3PAXA]
-    mov cl, byte ptr [ebx+ecx*1]
+    mov cl, byte ptr [ebx+ecx]
     test cl, cl
     mov byte ptr [ebp-0Ch], cl
     jz loc_53C0A6
@@ -374595,7 +373237,7 @@ ALIGN 16
     mov ebx, dword ptr [?swr_z@@3HA]
     push esi
     push edi
-    lea edi, [ecx+ecx*1]
+    lea edi, [ecx+ecx]
     mov esi, dword ptr [?swr_u@@3HA]
     mov edx, dword ptr [?swr_dv@@3HA]
     mov dword ptr [ebp-0Ch], ebx
@@ -374635,7 +373277,7 @@ loc_53C13D:
     and ecx, edi
     or ebx, ecx
     mov ecx, dword ptr [?swr_src@@3PAXA]
-    mov cl, byte ptr [ebx+ecx*1]
+    mov cl, byte ptr [ebx+ecx]
     test cl, cl
     mov byte ptr [ebp-18h], cl
     jz loc_53C197
@@ -374728,7 +373370,7 @@ loc_53C261:
     and ecx, dword ptr [?swr_texmask@@3HA]
     or ebx, ecx
     mov ecx, dword ptr [?swr_src@@3PAXA]
-    mov cl, byte ptr [ebx+ecx*1]
+    mov cl, byte ptr [ebx+ecx]
     test cl, cl
     mov byte ptr [ebp-14h], cl
     jz loc_53C2BF
@@ -374807,7 +373449,7 @@ loc_53C360:
     mov ebx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+ebx*1], 0
+    cmp byte ptr [ecx+ebx], 0
     jz loc_53C3B9
     mov ecx, dword ptr [?swr_texmask@@3HA]
     mov ebx, edx
@@ -374820,7 +373462,7 @@ loc_53C360:
     and ecx, dword ptr [?swr_texmask@@3HA]
     or ebx, ecx
     mov ecx, dword ptr [?swr_src@@3PAXA]
-    mov bl, byte ptr [ebx+ecx*1]
+    mov bl, byte ptr [ebx+ecx]
     test bl, bl
     mov byte ptr [ebp-0Ch], bl
     jz loc_53C3B9
@@ -374866,7 +373508,7 @@ ALIGN 16
     mov ebx, dword ptr [?swr_z@@3HA]
     push esi
     push edi
-    lea edi, [ecx+ecx*1]
+    lea edi, [ecx+ecx]
     mov esi, dword ptr [?swr_u@@3HA]
     mov edx, dword ptr [?swr_dv@@3HA]
     mov dword ptr [ebp-10h], ebx
@@ -374891,7 +373533,7 @@ loc_53C45D:
     mov ecx, dword ptr [ebp-4]
     mov edi, dword ptr [?swStippleTest@@3PAEA]
     and ecx, 7
-    cmp byte ptr [ecx+edi*1], 0
+    cmp byte ptr [ecx+edi], 0
     jz loc_53C4C9
     mov ebx, dword ptr [ebp-0Ch]
     mov ecx, dword ptr [ebp-10h]
@@ -374911,7 +373553,7 @@ loc_53C45D:
     and ecx, edi
     or ebx, ecx
     mov ecx, dword ptr [?swr_src@@3PAXA]
-    mov cl, byte ptr [ebx+ecx*1]
+    mov cl, byte ptr [ebx+ecx]
     test cl, cl
     mov byte ptr [ebp-18h], cl
     jz loc_53C4C9
@@ -374997,7 +373639,7 @@ loc_53C597:
     mov ebx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, eax
     and ecx, 7
-    cmp byte ptr [ecx+ebx*1], 0
+    cmp byte ptr [ecx+ebx], 0
     jz loc_53C604
     mov ebx, dword ptr [ebp-8]
     mov ecx, dword ptr [?swr_texmask@@3HA]
@@ -375010,7 +373652,7 @@ loc_53C597:
     and ecx, dword ptr [?swr_texmask@@3HA]
     or ebx, ecx
     mov ecx, dword ptr [?swr_src@@3PAXA]
-    mov cl, byte ptr [ebx+ecx*1]
+    mov cl, byte ptr [ebx+ecx]
     test cl, cl
     mov byte ptr [ebp-14h], cl
     jz loc_53C604
@@ -375104,7 +373746,7 @@ loc_53C6BF:
     and ecx, edx
     or eax, ecx
     mov ecx, dword ptr [ebp-10h]
-    mov al, byte ptr [eax+ecx*1]
+    mov al, byte ptr [eax+ecx]
     test al, al
     mov byte ptr [ebp-14h], al
     jz loc_53C70F
@@ -375155,7 +373797,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-18h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-4], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -375205,7 +373847,7 @@ loc_53C7D4:
     and ecx, eax
     mov eax, dword ptr [ebp-18h]
     or edx, ecx
-    mov al, byte ptr [edx+eax*1]
+    mov al, byte ptr [edx+eax]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_53C839
@@ -375266,7 +373908,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-18h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-4], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -375317,7 +373959,7 @@ loc_53C91C:
     and ecx, edx
     or eax, ecx
     mov ecx, dword ptr [ebp-18h]
-    mov al, byte ptr [eax+ecx*1]
+    mov al, byte ptr [eax+ecx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_53C984
@@ -375404,7 +374046,7 @@ loc_53CA43:
     mov eax, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+eax*1], 0
+    cmp byte ptr [ecx+eax], 0
     jz loc_53CAA3
     mov ecx, dword ptr [?swr_texshift@@3HA]
     mov eax, ebx
@@ -375416,7 +374058,7 @@ loc_53CA43:
     and ecx, edx
     or eax, ecx
     mov ecx, dword ptr [ebp-10h]
-    mov al, byte ptr [eax+ecx*1]
+    mov al, byte ptr [eax+ecx]
     test al, al
     mov byte ptr [ebp-14h], al
     jz loc_53CAA3
@@ -375471,7 +374113,7 @@ ALIGN 16
     push ebx
     mov dword ptr [ebp-18h], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -375505,7 +374147,7 @@ loc_53CB76:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_53CBE7
     mov edx, dword ptr [ebp-0Ch]
     mov eax, dword ptr [ebp-10h]
@@ -375525,7 +374167,7 @@ loc_53CB76:
     and ecx, eax
     mov eax, dword ptr [ebp-18h]
     or edx, ecx
-    mov al, byte ptr [edx+eax*1]
+    mov al, byte ptr [edx+eax]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_53CBE7
@@ -375586,7 +374228,7 @@ ALIGN 16
     push ebx
     mov dword ptr [ebp-18h], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -375622,7 +374264,7 @@ loc_53CCCE:
     mov eax, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+eax*1], 0
+    cmp byte ptr [ecx+eax], 0
     jz loc_53CD41
     mov eax, dword ptr [ebp-8]
     xor ecx, ecx
@@ -375641,7 +374283,7 @@ loc_53CCCE:
     and ecx, edx
     or eax, ecx
     mov ecx, dword ptr [ebp-18h]
-    mov al, byte ptr [eax+ecx*1]
+    mov al, byte ptr [eax+ecx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_53CD41
@@ -375730,7 +374372,7 @@ loc_53CDDE:
     mov edi, dword ptr [?swr_src@@3PAXA]
     or ebx, ecx
     xor ecx, ecx
-    mov cl, byte ptr [ebx+edi*1]
+    mov cl, byte ptr [ebx+edi]
     mov edi, dword ptr [?swCurrentLut@@3PAGA]
     mov ebx, dword ptr [?swr_ddu@@3HA]
     mov cx, word ptr [edi+ecx*2]
@@ -375778,7 +374420,7 @@ ALIGN 16
     mov dword ptr [ebp-8], ebx
     mov ebx, dword ptr [?swr_zb@@3PAGA]
     push edi
-    lea edi, [ecx+ecx*1]
+    lea edi, [ecx+ecx]
     mov dword ptr [ebp-0Ch], eax
     mov dword ptr [ebp-4], ebx
     add eax, edi
@@ -375813,7 +374455,7 @@ loc_53CEBE:
     mov edi, dword ptr [?swr_src@@3PAXA]
     or ebx, ecx
     xor ecx, ecx
-    mov cl, byte ptr [ebx+edi*1]
+    mov cl, byte ptr [ebx+edi]
     mov edi, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [edi+ecx*2]
     mov edi, dword ptr [?swr_color@@3HA]
@@ -375866,7 +374508,7 @@ ALIGN 16
     push ebx
     push esi
     push edi
-    lea edi, [ecx+ecx*1]
+    lea edi, [ecx+ecx]
     mov dword ptr [ebp-8], eax
     add eax, edi
     mov ebx, dword ptr [?swr_zb@@3PAGA]
@@ -375909,7 +374551,7 @@ loc_53CFD4:
     mov edi, dword ptr [?swr_src@@3PAXA]
     or ebx, ecx
     xor ecx, ecx
-    mov cl, byte ptr [ebx+edi*1]
+    mov cl, byte ptr [ebx+edi]
     mov edi, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [edi+ecx*2]
     mov edi, dword ptr [?swr_color@@3HA]
@@ -375981,7 +374623,7 @@ loc_53D0CA:
     mov ebx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, eax
     and ecx, 7
-    cmp byte ptr [ecx+ebx*1], 0
+    cmp byte ptr [ecx+ebx], 0
     jz loc_53D119
     mov ecx, dword ptr [?swr_texshift@@3HA]
     mov ebx, esi
@@ -375994,7 +374636,7 @@ loc_53D0CA:
     mov edi, dword ptr [?swr_src@@3PAXA]
     or ebx, ecx
     xor ecx, ecx
-    mov cl, byte ptr [ebx+edi*1]
+    mov cl, byte ptr [ebx+edi]
     mov edi, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [edi+ecx*2]
     mov edi, dword ptr [?swr_color@@3HA]
@@ -376046,7 +374688,7 @@ ALIGN 16
     mov dword ptr [ebp-8], ebx
     mov ebx, dword ptr [?swr_zb@@3PAGA]
     push edi
-    lea edi, [ecx+ecx*1]
+    lea edi, [ecx+ecx]
     mov eax, edx
     mov dword ptr [ebp-4], ebx
     add edx, edi
@@ -376065,7 +374707,7 @@ loc_53D1C3:
     mov edi, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, eax
     and ecx, 7
-    cmp byte ptr [ecx+edi*1], 0
+    cmp byte ptr [ecx+edi], 0
     jz loc_53D224
     mov ebx, dword ptr [ebp-4]
     mov ecx, dword ptr [ebp-8]
@@ -376086,7 +374728,7 @@ loc_53D1C3:
     mov edi, dword ptr [?swr_src@@3PAXA]
     or ebx, ecx
     xor ecx, ecx
-    mov cl, byte ptr [ebx+edi*1]
+    mov cl, byte ptr [ebx+edi]
     mov edi, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [edi+ecx*2]
     mov edi, dword ptr [?swr_color@@3HA]
@@ -376167,7 +374809,7 @@ loc_53D2EA:
     mov ebx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, eax
     and ecx, 7
-    cmp byte ptr [ecx+ebx*1], 0
+    cmp byte ptr [ecx+ebx], 0
     jz loc_53D34E
     mov ecx, dword ptr [ebp-4]
     xor ebx, ebx
@@ -376188,7 +374830,7 @@ loc_53D2EA:
     mov edi, dword ptr [?swr_src@@3PAXA]
     or ebx, ecx
     xor ecx, ecx
-    mov cl, byte ptr [ebx+edi*1]
+    mov cl, byte ptr [ebx+edi]
     mov edi, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [edi+ecx*2]
     mov edi, dword ptr [?swr_color@@3HA]
@@ -376264,7 +374906,7 @@ loc_53D3EB:
     and ecx, dword ptr [?swr_texmask@@3HA]
     or ebx, ecx
     mov ecx, dword ptr [?swr_src@@3PAXA]
-    mov cl, byte ptr [ebx+ecx*1]
+    mov cl, byte ptr [ebx+ecx]
     test cl, cl
     mov byte ptr [ebp-0Ch], cl
     jz loc_53D43E
@@ -376313,7 +374955,7 @@ ALIGN 16
     mov ebx, dword ptr [?swr_z@@3HA]
     push esi
     push edi
-    lea edi, [ecx+ecx*1]
+    lea edi, [ecx+ecx]
     mov esi, dword ptr [?swr_u@@3HA]
     mov edx, dword ptr [?swr_dv@@3HA]
     mov dword ptr [ebp-0Ch], ebx
@@ -376353,7 +374995,7 @@ loc_53D4DD:
     and ecx, edi
     or ebx, ecx
     mov ecx, dword ptr [?swr_src@@3PAXA]
-    mov cl, byte ptr [ebx+ecx*1]
+    mov cl, byte ptr [ebx+ecx]
     test cl, cl
     mov byte ptr [ebp-18h], cl
     jz loc_53D53F
@@ -376448,7 +375090,7 @@ loc_53D601:
     and ecx, dword ptr [?swr_texmask@@3HA]
     or ebx, ecx
     mov ecx, dword ptr [?swr_src@@3PAXA]
-    mov cl, byte ptr [ebx+ecx*1]
+    mov cl, byte ptr [ebx+ecx]
     test cl, cl
     mov byte ptr [ebp-14h], cl
     jz loc_53D667
@@ -376529,7 +375171,7 @@ loc_53D701:
     mov ebx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, eax
     and ecx, 7
-    cmp byte ptr [ecx+ebx*1], 0
+    cmp byte ptr [ecx+ebx], 0
     jz loc_53D762
     mov ecx, dword ptr [?swr_texmask@@3HA]
     mov ebx, esi
@@ -376542,7 +375184,7 @@ loc_53D701:
     and ecx, dword ptr [?swr_texmask@@3HA]
     or ebx, ecx
     mov ecx, dword ptr [?swr_src@@3PAXA]
-    mov bl, byte ptr [ebx+ecx*1]
+    mov bl, byte ptr [ebx+ecx]
     test bl, bl
     mov byte ptr [ebp-0Ch], bl
     jz loc_53D762
@@ -376591,7 +375233,7 @@ ALIGN 16
     mov edx, dword ptr [?swr_v@@3HA]
     push esi
     push edi
-    lea edi, [ecx+ecx*1]
+    lea edi, [ecx+ecx]
     mov dword ptr [ebp-10h], ebx
     mov ebx, dword ptr [?swr_zb@@3PAGA]
     mov esi, eax
@@ -376616,7 +375258,7 @@ loc_53D7FF:
     mov edi, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edi*1], 0
+    cmp byte ptr [ecx+edi], 0
     jz loc_53D870
     mov ebx, dword ptr [ebp-0Ch]
     mov ecx, dword ptr [ebp-10h]
@@ -376636,7 +375278,7 @@ loc_53D7FF:
     and ecx, edi
     or ebx, ecx
     mov ecx, dword ptr [?swr_src@@3PAXA]
-    mov cl, byte ptr [ebx+ecx*1]
+    mov cl, byte ptr [ebx+ecx]
     test cl, cl
     mov byte ptr [ebp-18h], cl
     jz loc_53D870
@@ -376723,7 +375365,7 @@ loc_53D937:
     mov ebx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, eax
     and ecx, 7
-    cmp byte ptr [ecx+ebx*1], 0
+    cmp byte ptr [ecx+ebx], 0
     jz loc_53D9AC
     mov ebx, dword ptr [ebp-8]
     mov ecx, dword ptr [?swr_texmask@@3HA]
@@ -376736,7 +375378,7 @@ loc_53D937:
     and ecx, dword ptr [?swr_texmask@@3HA]
     or ebx, ecx
     mov ecx, dword ptr [?swr_src@@3PAXA]
-    mov cl, byte ptr [ebx+ecx*1]
+    mov cl, byte ptr [ebx+ecx]
     test cl, cl
     mov byte ptr [ebp-14h], cl
     jz loc_53D9AC
@@ -376832,7 +375474,7 @@ loc_53DA6F:
     and ecx, edx
     or eax, ecx
     mov ecx, dword ptr [ebp-10h]
-    mov al, byte ptr [eax+ecx*1]
+    mov al, byte ptr [eax+ecx]
     test al, al
     mov byte ptr [ebp-14h], al
     jz loc_53DABF
@@ -376883,7 +375525,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-18h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-4], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -376933,7 +375575,7 @@ loc_53DB84:
     and ecx, eax
     mov eax, dword ptr [ebp-18h]
     or edx, ecx
-    mov al, byte ptr [edx+eax*1]
+    mov al, byte ptr [edx+eax]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_53DBE9
@@ -376994,7 +375636,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-18h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-4], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -377045,7 +375687,7 @@ loc_53DCCC:
     and ecx, edx
     or eax, ecx
     mov ecx, dword ptr [ebp-18h]
-    mov al, byte ptr [eax+ecx*1]
+    mov al, byte ptr [eax+ecx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_53DD34
@@ -377132,7 +375774,7 @@ loc_53DDF3:
     mov eax, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+eax*1], 0
+    cmp byte ptr [ecx+eax], 0
     jz loc_53DE53
     mov ecx, dword ptr [?swr_texshift@@3HA]
     mov eax, ebx
@@ -377144,7 +375786,7 @@ loc_53DDF3:
     and ecx, edx
     or eax, ecx
     mov ecx, dword ptr [ebp-10h]
-    mov al, byte ptr [eax+ecx*1]
+    mov al, byte ptr [eax+ecx]
     test al, al
     mov byte ptr [ebp-14h], al
     jz loc_53DE53
@@ -377199,7 +375841,7 @@ ALIGN 16
     push ebx
     mov dword ptr [ebp-18h], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -377233,7 +375875,7 @@ loc_53DF26:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_53DF97
     mov edx, dword ptr [ebp-0Ch]
     mov eax, dword ptr [ebp-10h]
@@ -377253,7 +375895,7 @@ loc_53DF26:
     and ecx, eax
     mov eax, dword ptr [ebp-18h]
     or edx, ecx
-    mov al, byte ptr [edx+eax*1]
+    mov al, byte ptr [edx+eax]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_53DF97
@@ -377314,7 +375956,7 @@ ALIGN 16
     push ebx
     mov dword ptr [ebp-18h], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -377350,7 +375992,7 @@ loc_53E07E:
     mov eax, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+eax*1], 0
+    cmp byte ptr [ecx+eax], 0
     jz loc_53E0F1
     mov eax, dword ptr [ebp-8]
     xor ecx, ecx
@@ -377369,7 +376011,7 @@ loc_53E07E:
     and ecx, edx
     or eax, ecx
     mov ecx, dword ptr [ebp-18h]
-    mov al, byte ptr [eax+ecx*1]
+    mov al, byte ptr [eax+ecx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_53E0F1
@@ -377474,7 +376116,7 @@ loc_53E19D:
     or ebx, eax
     mov eax, dword ptr [ebp-10h]
     mov esi, dword ptr [ebp-14h]
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-8]
     mov ebx, dword ptr [ebp-4]
     add eax, 2
@@ -377509,7 +376151,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-18h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -377571,7 +376213,7 @@ loc_53E29D:
     or ebx, eax
     mov eax, dword ptr [ebp-18h]
     xor edx, edx
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-0Ch]
     mov ebx, dword ptr [ebp-10h]
     mov dx, word ptr [ecx+edx*2]
@@ -377630,7 +376272,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-1Ch], esi
     mov esi, dword ptr [?swr_zb@@3PAGA]
-    lea edx, [ecx+ecx*1]
+    lea edx, [ecx+ecx]
     push edi
     mov dword ptr [ebp-8], eax
     add eax, edx
@@ -377679,7 +376321,7 @@ loc_53E3C7:
     or ebx, eax
     mov eax, dword ptr [ebp-18h]
     xor edx, edx
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-8]
     mov ebx, dword ptr [ebp-10h]
     mov dx, word ptr [ecx+edx*2]
@@ -377749,7 +376391,7 @@ loc_53E4C2:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_53E521
     sar eax, 10h
     mov ecx, eax
@@ -377774,7 +376416,7 @@ loc_53E4C2:
     or ebx, eax
     mov eax, dword ptr [ebp-10h]
     xor edx, edx
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov ebx, dword ptr [ebp-8]
     mov eax, dword ptr [ebp-4]
     mov dx, word ptr [ecx+edx*2]
@@ -377825,7 +376467,7 @@ ALIGN 16
     mov dword ptr [ebp-1Ch], esi
     mov esi, dword ptr [?swr_zb@@3PAGA]
     push edi
-    lea edx, [ecx+ecx*1]
+    lea edx, [ecx+ecx]
     mov edi, eax
     add eax, edx
     mov dword ptr [ebp-4], esi
@@ -377846,7 +376488,7 @@ loc_53E5C7:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_53E638
     mov esi, dword ptr [ebp-4]
     mov ecx, dword ptr [ebp-8]
@@ -377878,7 +376520,7 @@ loc_53E5C7:
     or ebx, eax
     mov eax, dword ptr [ebp-18h]
     xor edx, edx
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov ebx, dword ptr [ebp-10h]
     mov eax, dword ptr [ebp-0Ch]
     mov dx, word ptr [ecx+edx*2]
@@ -377960,7 +376602,7 @@ loc_53E6FE:
     mov esi, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+esi*1], 0
+    cmp byte ptr [ecx+esi], 0
     jz loc_53E772
     mov ecx, dword ptr [ebp-4]
     xor esi, esi
@@ -377992,7 +376634,7 @@ loc_53E6FE:
     or ebx, eax
     mov eax, dword ptr [ebp-18h]
     xor edx, edx
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov ebx, dword ptr [ebp-10h]
     mov eax, dword ptr [ebp-0Ch]
     mov dx, word ptr [ecx+edx*2]
@@ -378080,7 +376722,7 @@ loc_53E817:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-14h], al
     jz loc_53E871
@@ -378126,7 +376768,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-18h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -378185,7 +376827,7 @@ loc_53E92E:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_53E99A
@@ -378239,7 +376881,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-18h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -378291,7 +376933,7 @@ loc_53EA6E:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_53EADD
@@ -378378,7 +377020,7 @@ loc_53EB87:
     mov ecx, dword ptr [ebp-4]
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_53EBF3
     mov eax, edi
     sar eax, 10h
@@ -378401,7 +377043,7 @@ loc_53EB87:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-14h], al
     jz loc_53EBF3
@@ -378447,7 +377089,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-18h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-4], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -378481,7 +377123,7 @@ loc_53ECAE:
     mov ecx, dword ptr [ebp-4]
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_53ED2C
     mov edx, dword ptr [ebp-8]
     mov eax, dword ptr [ebp-0Ch]
@@ -378511,7 +377153,7 @@ loc_53ECAE:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_53ED2C
@@ -378567,7 +377209,7 @@ ALIGN 16
     push ebx
     mov dword ptr [ebp-18h], eax
     push edi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov edi, edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -378600,7 +377242,7 @@ loc_53EE00:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_53EE80
     mov eax, ebx
     mov ebx, dword ptr [ebp-4]
@@ -378624,7 +377266,7 @@ loc_53EE00:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_53EE80
@@ -378728,7 +377370,7 @@ loc_53EF27:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-14h], al
     jz loc_53EF8E
@@ -378778,7 +377420,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-18h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -378837,7 +377479,7 @@ loc_53F04E:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_53F0C7
@@ -378895,7 +377537,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-18h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-8], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -378955,7 +377597,7 @@ loc_53F19A:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_53F213
@@ -379036,7 +377678,7 @@ loc_53F2B8:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_53F32B
     sar eax, 10h
     mov ecx, eax
@@ -379058,7 +377700,7 @@ loc_53F2B8:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-14h], al
     jz loc_53F32B
@@ -379108,7 +377750,7 @@ ALIGN 16
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-14h], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     push edi
@@ -379140,7 +377782,7 @@ loc_53F3E7:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_53F47F
     mov edx, dword ptr [ebp-8]
     mov eax, dword ptr [ebp-0Ch]
@@ -379173,7 +377815,7 @@ loc_53F3E7:
     and ecx, dword ptr [?swr_texmask@@3HA]
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_53F47F
@@ -379229,7 +377871,7 @@ ALIGN 16
     push ebx
     mov dword ptr [ebp-18h], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -379262,7 +377904,7 @@ loc_53F54C:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_53F5E2
     mov eax, dword ptr [ebp-8]
     xor ecx, ecx
@@ -379294,7 +377936,7 @@ loc_53F54C:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_53F5DF
@@ -379402,7 +378044,7 @@ loc_53F685:
     or ebx, eax
     mov eax, dword ptr [ebp-10h]
     mov esi, dword ptr [ebp-18h]
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov ebx, dword ptr [ebp-14h]
     mov eax, dword ptr [ebp-8]
     add edi, esi
@@ -379439,7 +378081,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-18h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -379503,7 +378145,7 @@ loc_53F796:
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     or ebx, eax
     mov eax, dword ptr [ebp-18h]
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-1Ch]
     mov ebx, dword ptr [ebp-10h]
     mov dx, word ptr [ecx+edx*2]
@@ -379566,7 +378208,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-20h], esi
     mov esi, dword ptr [?swr_zb@@3PAGA]
-    lea edx, [ecx+ecx*1]
+    lea edx, [ecx+ecx]
     push edi
     mov dword ptr [ebp-8], eax
     add eax, edx
@@ -379615,7 +378257,7 @@ loc_53F8D0:
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     or ebx, eax
     mov eax, dword ptr [ebp-18h]
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-1Ch]
     mov ebx, dword ptr [ebp-10h]
     mov dx, word ptr [ecx+edx*2]
@@ -379689,7 +378331,7 @@ loc_53F9DB:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_53FA3F
     sar eax, 10h
     mov ecx, eax
@@ -379714,7 +378356,7 @@ loc_53F9DB:
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     or ebx, eax
     mov eax, dword ptr [ebp-10h]
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-14h]
     mov ebx, dword ptr [ebp-8]
     mov dx, word ptr [ecx+edx*2]
@@ -379769,7 +378411,7 @@ ALIGN 16
     mov dword ptr [ebp-20h], esi
     mov esi, dword ptr [?swr_zb@@3PAGA]
     push edi
-    lea edx, [ecx+ecx*1]
+    lea edx, [ecx+ecx]
     mov edi, eax
     add eax, edx
     mov dword ptr [ebp-4], esi
@@ -379790,7 +378432,7 @@ loc_53FAF0:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_53FB66
     mov esi, dword ptr [ebp-4]
     mov ecx, dword ptr [ebp-8]
@@ -379822,7 +378464,7 @@ loc_53FAF0:
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     or ebx, eax
     mov eax, dword ptr [ebp-18h]
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-1Ch]
     mov ebx, dword ptr [ebp-10h]
     mov dx, word ptr [ecx+edx*2]
@@ -379908,7 +378550,7 @@ loc_53FC37:
     mov esi, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+esi*1], 0
+    cmp byte ptr [ecx+esi], 0
     jz loc_53FCB0
     mov ecx, dword ptr [ebp-4]
     xor esi, esi
@@ -379940,7 +378582,7 @@ loc_53FC37:
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     or ebx, eax
     mov eax, dword ptr [ebp-18h]
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-1Ch]
     mov ebx, dword ptr [ebp-10h]
     mov dx, word ptr [ecx+edx*2]
@@ -380032,7 +378674,7 @@ loc_53FD5F:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-14h], al
     jz loc_53FDBE
@@ -380080,7 +378722,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-18h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -380141,7 +378783,7 @@ loc_53FE87:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_53FEF8
@@ -380211,7 +378853,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-24h], esi
     mov esi, dword ptr [?swr_zb@@3PAGA]
-    lea edx, [ecx+ecx*1]
+    lea edx, [ecx+ecx]
     push edi
     mov dword ptr [ebp-8], eax
     add eax, edx
@@ -380251,7 +378893,7 @@ loc_53FFD6:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_540045
@@ -380340,7 +378982,7 @@ loc_540101:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54016C
     sar eax, 10h
     mov ecx, eax
@@ -380362,7 +379004,7 @@ loc_540101:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-14h], al
     jz loc_54016C
@@ -380411,7 +379053,7 @@ ALIGN 16
     push ebx
     mov dword ptr [ebp-18h], eax
     push edi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov edi, edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -380446,7 +379088,7 @@ loc_540239:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_5402BB
     mov edx, dword ptr [ebp-8]
     mov eax, dword ptr [ebp-0Ch]
@@ -380477,7 +379119,7 @@ loc_540239:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_5402BB
@@ -380534,7 +379176,7 @@ ALIGN 16
     push ebx
     mov dword ptr [ebp-18h], eax
     push edi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov edi, edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -380569,7 +379211,7 @@ loc_540399:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54041E
     mov eax, ebx
     mov ebx, dword ptr [ebp-4]
@@ -380593,7 +379235,7 @@ loc_540399:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_54041E
@@ -380699,7 +379341,7 @@ loc_5404C7:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-14h], al
     jz loc_54052E
@@ -380749,7 +379391,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-18h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -380808,7 +379450,7 @@ loc_5405EE:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_540667
@@ -380866,7 +379508,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-18h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-8], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -380926,7 +379568,7 @@ loc_54073A:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_5407B3
@@ -381007,7 +379649,7 @@ loc_540858:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_5408CB
     sar eax, 10h
     mov ecx, eax
@@ -381029,7 +379671,7 @@ loc_540858:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-14h], al
     jz loc_5408CB
@@ -381079,7 +379721,7 @@ ALIGN 16
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-14h], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     push edi
@@ -381111,7 +379753,7 @@ loc_540987:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_540A1F
     mov edx, dword ptr [ebp-8]
     mov eax, dword ptr [ebp-0Ch]
@@ -381144,7 +379786,7 @@ loc_540987:
     and ecx, dword ptr [?swr_texmask@@3HA]
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_540A1F
@@ -381200,7 +379842,7 @@ ALIGN 16
     push ebx
     mov dword ptr [ebp-18h], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -381233,7 +379875,7 @@ loc_540AEC:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_540B82
     mov eax, dword ptr [ebp-8]
     xor ecx, ecx
@@ -381265,7 +379907,7 @@ loc_540AEC:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_540B7F
@@ -381375,7 +380017,7 @@ loc_540C32:
     or ebx, eax
     mov eax, dword ptr [ebp-18h]
     mov esi, dword ptr [ebp-1Ch]
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov ebx, dword ptr [ebp-4]
     mov ax, word ptr [ecx+edx*2]
     mov edx, dword ptr [ebp-10h]
@@ -381422,7 +380064,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-28h], ebx
     mov ebx, dword ptr [?swr_z@@3HA]
-    lea edx, [ecx+ecx*1]
+    lea edx, [ecx+ecx]
     mov dword ptr [ebp-0Ch], ebx
     mov ebx, dword ptr [?swr_dz@@3HA]
     mov dword ptr [ebp-20h], ebx
@@ -381480,7 +380122,7 @@ loc_540D54:
     or ebx, eax
     mov eax, dword ptr [ebp-1Ch]
     xor edx, edx
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-10h]
     mov dx, word ptr [ecx+edx*2]
     mov word ptr [eax], dx
@@ -381532,7 +380174,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-1Ch], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-8], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -381597,7 +380239,7 @@ loc_540EA9:
     or ebx, eax
     mov eax, dword ptr [ebp-1Ch]
     xor edx, edx
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-8]
     mov ebx, dword ptr [ebp-0Ch]
     mov dx, word ptr [ecx+edx*2]
@@ -381675,7 +380317,7 @@ loc_540FD4:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_541033
     sar eax, 10h
     mov ecx, eax
@@ -381700,7 +380342,7 @@ loc_540FD4:
     or ebx, eax
     mov eax, dword ptr [ebp-18h]
     xor edx, edx
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov ebx, dword ptr [ebp-8]
     mov eax, dword ptr [ebp-4]
     mov dx, word ptr [ecx+edx*2]
@@ -381746,7 +380388,7 @@ ALIGN 16
     push ebx
     mov dword ptr [ebp-1Ch], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -381781,7 +380423,7 @@ loc_541109:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54117D
     mov edx, dword ptr [ebp-4]
     mov eax, dword ptr [ebp-8]
@@ -381814,7 +380456,7 @@ loc_541109:
     or ebx, eax
     mov eax, dword ptr [ebp-1Ch]
     xor edx, edx
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov ebx, dword ptr [ebp-0Ch]
     mov dx, word ptr [ecx+edx*2]
     mov word ptr [esi], dx
@@ -381904,7 +380546,7 @@ loc_541270:
     mov esi, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+esi*1], 0
+    cmp byte ptr [ecx+esi], 0
     jz loc_5412E4
     mov ecx, dword ptr [ebp-4]
     xor esi, esi
@@ -381936,7 +380578,7 @@ loc_541270:
     or ebx, eax
     mov eax, dword ptr [ebp-20h]
     xor edx, edx
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov ebx, dword ptr [ebp-14h]
     mov eax, dword ptr [ebp-10h]
     mov dx, word ptr [ecx+edx*2]
@@ -382035,7 +380677,7 @@ loc_5413A8:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_541402
@@ -382087,7 +380729,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-1Ch], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -382151,7 +380793,7 @@ loc_5414D7:
     and ecx, dword ptr [?swr_texmask@@3HA]
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_54154F
@@ -382208,7 +380850,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-1Ch], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -382265,7 +380907,7 @@ loc_541637:
     and ecx, dword ptr [?swr_texmask@@3HA]
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_5416B2
@@ -382359,7 +381001,7 @@ loc_541778:
     mov ecx, dword ptr [ebp-4]
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_5417E4
     mov eax, edi
     sar eax, 10h
@@ -382382,7 +381024,7 @@ loc_541778:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_5417E4
@@ -382434,7 +381076,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-1Ch], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-4], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -382470,7 +381112,7 @@ loc_5418B7:
     mov ecx, dword ptr [ebp-4]
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_541941
     mov edx, dword ptr [ebp-8]
     mov eax, dword ptr [ebp-0Ch]
@@ -382503,7 +381145,7 @@ loc_5418B7:
     and ecx, dword ptr [?swr_texmask@@3HA]
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_541941
@@ -382562,7 +381204,7 @@ ALIGN 16
     push ebx
     mov dword ptr [ebp-1Ch], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -382598,7 +381240,7 @@ loc_541A2B:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_541AB2
     mov eax, ebx
     mov ebx, dword ptr [?swr_texmask@@3HA]
@@ -382624,7 +381266,7 @@ loc_541A2B:
     and ecx, dword ptr [?swr_texmask@@3HA]
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_541AB2
@@ -382734,7 +381376,7 @@ loc_541B78:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_541BDF
@@ -382790,7 +381432,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-1Ch], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -382854,7 +381496,7 @@ loc_541CB7:
     and ecx, dword ptr [?swr_texmask@@3HA]
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_541D3C
@@ -382915,7 +381557,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-20h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-8], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -382980,7 +381622,7 @@ loc_541E2C:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-24h], al
     jz loc_541EA7
@@ -383072,7 +381714,7 @@ loc_541F7A:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_541FED
     sar eax, 10h
     mov ecx, eax
@@ -383094,7 +381736,7 @@ loc_541F7A:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_541FED
@@ -383149,7 +381791,7 @@ ALIGN 16
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-1Ch], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     push edi
@@ -383185,7 +381827,7 @@ loc_5420C9:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_542161
     mov edx, dword ptr [ebp-8]
     mov eax, dword ptr [ebp-0Ch]
@@ -383218,7 +381860,7 @@ loc_5420C9:
     and ecx, dword ptr [?swr_texmask@@3HA]
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_542161
@@ -383280,7 +381922,7 @@ ALIGN 16
     push ebx
     mov dword ptr [ebp-20h], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -383317,7 +381959,7 @@ loc_54224E:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_5422E4
     mov eax, ebx
     xor ecx, ecx
@@ -383349,7 +381991,7 @@ loc_54224E:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-24h], al
     jz loc_5422E1
@@ -383468,7 +382110,7 @@ loc_5423BA:
     or ebx, eax
     mov eax, dword ptr [ebp-18h]
     mov esi, dword ptr [ebp-20h]
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov ebx, dword ptr [ebp-4]
     mov ax, word ptr [ecx+edx*2]
     mov ecx, dword ptr [ebp-1Ch]
@@ -383511,7 +382153,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-20h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -383579,7 +382221,7 @@ loc_5424F8:
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     or ebx, eax
     mov eax, dword ptr [ebp-20h]
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-24h]
     mov ebx, dword ptr [ebp-10h]
     mov dx, word ptr [ecx+edx*2]
@@ -383652,7 +382294,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-28h], esi
     mov esi, dword ptr [?swr_zb@@3PAGA]
-    lea edx, [ecx+ecx*1]
+    lea edx, [ecx+ecx]
     push edi
     mov dword ptr [ebp-8], eax
     add eax, edx
@@ -383701,7 +382343,7 @@ loc_542652:
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     or ebx, eax
     mov eax, dword ptr [ebp-20h]
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-24h]
     mov ebx, dword ptr [ebp-10h]
     mov dx, word ptr [ecx+edx*2]
@@ -383785,7 +382427,7 @@ loc_54277D:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_5427E1
     sar eax, 10h
     mov ecx, eax
@@ -383810,7 +382452,7 @@ loc_54277D:
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     or ebx, eax
     mov eax, dword ptr [ebp-18h]
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-1Ch]
     mov ebx, dword ptr [ebp-8]
     mov dx, word ptr [ecx+edx*2]
@@ -383858,7 +382500,7 @@ ALIGN 16
     push ebx
     mov dword ptr [ebp-1Ch], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -383895,7 +382537,7 @@ loc_5428C2:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54293B
     mov edx, dword ptr [ebp-4]
     mov eax, dword ptr [ebp-8]
@@ -383928,7 +382570,7 @@ loc_5428C2:
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     or ebx, eax
     mov eax, dword ptr [ebp-1Ch]
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-20h]
     mov ebx, dword ptr [ebp-0Ch]
     mov dx, word ptr [ecx+edx*2]
@@ -384022,7 +382664,7 @@ loc_542A29:
     mov esi, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+esi*1], 0
+    cmp byte ptr [ecx+esi], 0
     jz loc_542AA2
     mov ecx, dword ptr [ebp-4]
     xor esi, esi
@@ -384054,7 +382696,7 @@ loc_542A29:
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     or ebx, eax
     mov eax, dword ptr [ebp-20h]
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-24h]
     mov ebx, dword ptr [ebp-14h]
     mov dx, word ptr [ecx+edx*2]
@@ -384157,7 +382799,7 @@ loc_542B70:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_542BCF
@@ -384211,7 +382853,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-1Ch], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -384277,7 +382919,7 @@ loc_542CB0:
     and ecx, dword ptr [?swr_texmask@@3HA]
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_542D2D
@@ -384336,7 +382978,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-1Ch], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-8], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -384394,7 +383036,7 @@ loc_542E22:
     and ecx, dword ptr [?swr_texmask@@3HA]
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_542E97
@@ -384490,7 +383132,7 @@ loc_542F63:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_542FCE
     sar eax, 10h
     mov ecx, eax
@@ -384512,7 +383154,7 @@ loc_542F63:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_542FCE
@@ -384565,7 +383207,7 @@ ALIGN 16
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-1Ch], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     push edi
@@ -384603,7 +383245,7 @@ loc_5430B2:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54313E
     mov edx, dword ptr [ebp-8]
     mov eax, dword ptr [ebp-0Ch]
@@ -384636,7 +383278,7 @@ loc_5430B2:
     and ecx, dword ptr [?swr_texmask@@3HA]
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_54313E
@@ -384696,7 +383338,7 @@ ALIGN 16
     push ebx
     mov dword ptr [ebp-1Ch], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -384734,7 +383376,7 @@ loc_543234:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_5432C0
     mov eax, ebx
     mov ebx, dword ptr [?swr_texmask@@3HA]
@@ -384760,7 +383402,7 @@ loc_543234:
     and ecx, dword ptr [?swr_texmask@@3HA]
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_5432C0
@@ -384872,7 +383514,7 @@ loc_543388:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_5433EF
@@ -384928,7 +383570,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-1Ch], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -384992,7 +383634,7 @@ loc_5434C7:
     and ecx, dword ptr [?swr_texmask@@3HA]
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_54354C
@@ -385053,7 +383695,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-20h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-8], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -385118,7 +383760,7 @@ loc_54363C:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-24h], al
     jz loc_5436B7
@@ -385210,7 +383852,7 @@ loc_54378A:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_5437FD
     sar eax, 10h
     mov ecx, eax
@@ -385232,7 +383874,7 @@ loc_54378A:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_5437FD
@@ -385287,7 +383929,7 @@ ALIGN 16
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-1Ch], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     push edi
@@ -385323,7 +383965,7 @@ loc_5438D9:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_543971
     mov edx, dword ptr [ebp-8]
     mov eax, dword ptr [ebp-0Ch]
@@ -385356,7 +383998,7 @@ loc_5438D9:
     and ecx, dword ptr [?swr_texmask@@3HA]
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_543971
@@ -385418,7 +384060,7 @@ ALIGN 16
     push ebx
     mov dword ptr [ebp-20h], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -385455,7 +384097,7 @@ loc_543A5E:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_543AF4
     mov eax, ebx
     xor ecx, ecx
@@ -385487,7 +384129,7 @@ loc_543A5E:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-24h], al
     jz loc_543AF1
@@ -385599,7 +384241,7 @@ loc_543BAA:
     xor ecx, ecx
     or ebx, eax
     mov eax, dword ptr [?swCurrentLut@@3PAGA]
-    mov cl, byte ptr [ebx+edx*1]
+    mov cl, byte ptr [ebx+edx]
     mov ebx, dword ptr [ebp-10h]
     mov edx, dword ptr [ebp-14h]
     add esi, ebx
@@ -385633,7 +384275,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-14h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -385695,7 +384337,7 @@ loc_543CAA:
     or ebx, eax
     mov eax, dword ptr [?swCurrentLut@@3PAGA]
     xor ecx, ecx
-    mov cl, byte ptr [ebx+edx*1]
+    mov cl, byte ptr [ebx+edx]
     mov edx, dword ptr [ebp-0Ch]
     mov cx, word ptr [eax+ecx*2]
     mov eax, 2
@@ -385750,7 +384392,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-4], esi
     mov esi, dword ptr [?swr_dz@@3HA]
-    lea edx, [ecx+ecx*1]
+    lea edx, [ecx+ecx]
     mov dword ptr [ebp-8], eax
     mov dword ptr [ebp-18h], esi
     add eax, edx
@@ -385801,7 +384443,7 @@ loc_543DD4:
     or ebx, eax
     mov eax, dword ptr [?swCurrentLut@@3PAGA]
     xor ecx, ecx
-    mov cl, byte ptr [ebx+edx*1]
+    mov cl, byte ptr [ebx+edx]
     mov edx, dword ptr [ebp-8]
     mov cx, word ptr [eax+ecx*2]
     mov eax, dword ptr [ebp-0Ch]
@@ -385868,7 +384510,7 @@ loc_543ECB:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_543F28
     sar eax, 10h
     mov ecx, eax
@@ -385894,7 +384536,7 @@ loc_543ECB:
     or ebx, eax
     mov eax, dword ptr [?swCurrentLut@@3PAGA]
     xor ecx, ecx
-    mov cl, byte ptr [ebx+edx*1]
+    mov cl, byte ptr [ebx+edx]
     mov cx, word ptr [eax+ecx*2]
     mov eax, dword ptr [ebp-4]
     mov word ptr [esi], cx
@@ -385941,7 +384583,7 @@ ALIGN 16
     mov ebx, dword ptr [?swr_dz@@3HA]
     mov dword ptr [ebp-18h], ebx
     mov ebx, dword ptr [?swr_zb@@3PAGA]
-    lea edx, [ecx+ecx*1]
+    lea edx, [ecx+ecx]
     mov esi, eax
     add eax, edx
     mov dword ptr [ebp-4], ebx
@@ -385963,7 +384605,7 @@ loc_543FD4:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_544043
     mov ebx, dword ptr [ebp-4]
     mov ecx, dword ptr [ebp-8]
@@ -385996,7 +384638,7 @@ loc_543FD4:
     or ebx, eax
     mov eax, dword ptr [?swCurrentLut@@3PAGA]
     xor ecx, ecx
-    mov cl, byte ptr [ebx+edx*1]
+    mov cl, byte ptr [ebx+edx]
     mov cx, word ptr [eax+ecx*2]
     mov eax, dword ptr [ebp-0Ch]
     mov word ptr [esi], cx
@@ -386075,7 +384717,7 @@ loc_54410B:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_544184
     mov ecx, dword ptr [ebp-4]
     xor edx, edx
@@ -386110,7 +384752,7 @@ loc_54410B:
     or ecx, eax
     mov eax, dword ptr [ebp-18h]
     xor edx, edx
-    mov dl, byte ptr [ecx+eax*1]
+    mov dl, byte ptr [ecx+eax]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov eax, dword ptr [ebp-0Ch]
     mov dx, word ptr [ecx+edx*2]
@@ -386196,7 +384838,7 @@ loc_544224:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-10h], al
     jz loc_544280
@@ -386238,7 +384880,7 @@ ALIGN 16
     mov ebp, esp
     sub esp, 24h
     mov eax, dword ptr [?swr_src@@3PAXA]
-    lea edx, [ecx+ecx*1]
+    lea edx, [ecx+ecx]
     mov dword ptr [ebp-14h], eax
     mov eax, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-8], eax
@@ -386298,7 +384940,7 @@ loc_544326:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_544391
@@ -386350,7 +384992,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-14h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -386402,7 +385044,7 @@ loc_54445B:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_5444CC
@@ -386486,7 +385128,7 @@ loc_544574:
     mov ecx, dword ptr [ebp-4]
     mov eax, dword ptr [?swStippleTest@@3PAEA]
     and ecx, 7
-    cmp byte ptr [ecx+eax*1], 0
+    cmp byte ptr [ecx+eax], 0
     jz loc_5445E1
     mov eax, edi
     sar eax, 10h
@@ -386510,7 +385152,7 @@ loc_544574:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-10h], al
     jz loc_5445E1
@@ -386554,7 +385196,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-14h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-4], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -386587,7 +385229,7 @@ loc_54469B:
     mov ecx, dword ptr [ebp-4]
     mov eax, dword ptr [?swStippleTest@@3PAEA]
     and ecx, 7
-    cmp byte ptr [ecx+eax*1], 0
+    cmp byte ptr [ecx+eax], 0
     jz loc_54471A
     mov ebx, dword ptr [ebp-8]
     mov ecx, dword ptr [ebp-0Ch]
@@ -386618,7 +385260,7 @@ loc_54469B:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_54471A
@@ -386672,7 +385314,7 @@ ALIGN 16
     push ebx
     mov dword ptr [ebp-18h], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -386705,7 +385347,7 @@ loc_5447EF:
     mov eax, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+eax*1], 0
+    cmp byte ptr [ecx+eax], 0
     jz loc_544874
     mov eax, dword ptr [ebp-4]
     sar eax, 10h
@@ -386732,7 +385374,7 @@ loc_5447EF:
     and eax, edx
     or ecx, eax
     mov eax, dword ptr [ebp-18h]
-    mov al, byte ptr [ecx+eax*1]
+    mov al, byte ptr [ecx+eax]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_544874
@@ -386832,7 +385474,7 @@ loc_544914:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-10h], al
     jz loc_544980
@@ -386879,7 +385521,7 @@ ALIGN 16
     mov ebp, esp
     sub esp, 24h
     mov eax, dword ptr [?swr_src@@3PAXA]
-    lea edx, [ecx+ecx*1]
+    lea edx, [ecx+ecx]
     mov dword ptr [ebp-14h], eax
     mov eax, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-8], eax
@@ -386939,7 +385581,7 @@ loc_544A36:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_544AB1
@@ -386996,7 +385638,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-14h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-8], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -387056,7 +385698,7 @@ loc_544B77:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_544BF5
@@ -387135,7 +385777,7 @@ loc_544C95:
     mov ebx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+ebx*1], 0
+    cmp byte ptr [ecx+ebx], 0
     jz loc_544D0D
     sar eax, 10h
     mov ecx, eax
@@ -387158,7 +385800,7 @@ loc_544C95:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-10h], al
     jz loc_544D0D
@@ -387207,7 +385849,7 @@ ALIGN 16
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-14h], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     push edi
@@ -387240,7 +385882,7 @@ loc_544DBD:
     mov eax, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+eax*1], 0
+    cmp byte ptr [ecx+eax], 0
     jz loc_544E49
     mov ebx, dword ptr [ebp-8]
     mov ecx, dword ptr [ebp-0Ch]
@@ -387271,7 +385913,7 @@ loc_544DBD:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_544E49
@@ -387328,7 +385970,7 @@ ALIGN 16
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-14h], eax
     push ebx
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov ebx, edx
     add edx, eax
     push esi
@@ -387361,7 +386003,7 @@ loc_544F19:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, ebx
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_544FB2
     mov eax, dword ptr [ebp-8]
     xor ecx, ecx
@@ -387393,7 +386035,7 @@ loc_544F19:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_544FAF
@@ -387499,7 +386141,7 @@ loc_545052:
     xor ecx, ecx
     or ebx, eax
     mov eax, dword ptr [?swCurrentLut@@3PAGA]
-    mov cl, byte ptr [ebx+edx*1]
+    mov cl, byte ptr [ebx+edx]
     mov ebx, dword ptr [ebp-14h]
     mov edx, dword ptr [ebp-18h]
     add esi, ebx
@@ -387535,7 +386177,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-14h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -387599,7 +386241,7 @@ loc_545163:
     xor ecx, ecx
     or ebx, eax
     mov eax, dword ptr [?swCurrentLut@@3PAGA]
-    mov cl, byte ptr [ebx+edx*1]
+    mov cl, byte ptr [ebx+edx]
     mov edx, dword ptr [ebp-0Ch]
     mov cx, word ptr [eax+ecx*2]
     mov eax, dword ptr [ebp-18h]
@@ -387658,7 +386300,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-4], esi
     mov esi, dword ptr [?swr_dz@@3HA]
-    lea edx, [ecx+ecx*1]
+    lea edx, [ecx+ecx]
     mov dword ptr [ebp-8], eax
     mov dword ptr [ebp-1Ch], esi
     add eax, edx
@@ -387709,7 +386351,7 @@ loc_54529D:
     xor ecx, ecx
     or ebx, eax
     mov eax, dword ptr [?swCurrentLut@@3PAGA]
-    mov cl, byte ptr [ebx+edx*1]
+    mov cl, byte ptr [ebx+edx]
     mov edx, dword ptr [ebp-8]
     mov cx, word ptr [eax+ecx*2]
     mov eax, dword ptr [ebp-18h]
@@ -387780,7 +386422,7 @@ loc_5453A8:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54540A
     sar eax, 10h
     mov ecx, eax
@@ -387806,7 +386448,7 @@ loc_5453A8:
     xor ecx, ecx
     or ebx, eax
     mov eax, dword ptr [?swCurrentLut@@3PAGA]
-    mov cl, byte ptr [ebx+edx*1]
+    mov cl, byte ptr [ebx+edx]
     mov cx, word ptr [eax+ecx*2]
     mov eax, dword ptr [ebp-10h]
     and ecx, eax
@@ -387857,7 +386499,7 @@ ALIGN 16
     mov ebx, dword ptr [?swr_dz@@3HA]
     mov dword ptr [ebp-1Ch], ebx
     mov ebx, dword ptr [?swr_zb@@3PAGA]
-    lea edx, [ecx+ecx*1]
+    lea edx, [ecx+ecx]
     mov esi, eax
     add eax, edx
     mov dword ptr [ebp-4], ebx
@@ -387879,7 +386521,7 @@ loc_5454BD:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_545531
     mov ebx, dword ptr [ebp-4]
     mov ecx, dword ptr [ebp-8]
@@ -387912,7 +386554,7 @@ loc_5454BD:
     xor ecx, ecx
     or ebx, eax
     mov eax, dword ptr [?swCurrentLut@@3PAGA]
-    mov cl, byte ptr [ebx+edx*1]
+    mov cl, byte ptr [ebx+edx]
     mov cx, word ptr [eax+ecx*2]
     mov eax, dword ptr [ebp-18h]
     and ecx, eax
@@ -387995,7 +386637,7 @@ loc_545604:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_545682
     mov ecx, dword ptr [ebp-4]
     xor edx, edx
@@ -388030,7 +386672,7 @@ loc_545604:
     xor edx, edx
     or ecx, eax
     mov eax, dword ptr [ebp-18h]
-    mov dl, byte ptr [ecx+eax*1]
+    mov dl, byte ptr [ecx+eax]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov eax, dword ptr [ebp-1Ch]
     mov dx, word ptr [ecx+edx*2]
@@ -388120,7 +386762,7 @@ loc_54572C:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-10h], al
     jz loc_54578D
@@ -388164,7 +386806,7 @@ ALIGN 16
     mov ebp, esp
     sub esp, 28h
     mov eax, dword ptr [?swr_src@@3PAXA]
-    lea edx, [ecx+ecx*1]
+    lea edx, [ecx+ecx]
     mov dword ptr [ebp-14h], eax
     mov eax, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-8], eax
@@ -388226,7 +386868,7 @@ loc_54583E:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_5458AE
@@ -388292,7 +386934,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-4], esi
     mov esi, dword ptr [?swr_dz@@3HA]
-    lea edx, [ecx+ecx*1]
+    lea edx, [ecx+ecx]
     mov dword ptr [ebp-8], eax
     mov dword ptr [ebp-20h], esi
     add eax, edx
@@ -388334,7 +386976,7 @@ loc_545983:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_5459F4
@@ -388420,7 +387062,7 @@ loc_545A9E:
     mov ebx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+ebx*1], 0
+    cmp byte ptr [ecx+ebx], 0
     jz loc_545B0B
     sar eax, 10h
     mov ecx, eax
@@ -388443,7 +387085,7 @@ loc_545A9E:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-10h], al
     jz loc_545B0B
@@ -388489,7 +387131,7 @@ ALIGN 16
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-14h], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     push edi
@@ -388524,7 +387166,7 @@ loc_545BC6:
     mov eax, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+eax*1], 0
+    cmp byte ptr [ecx+eax], 0
     jz loc_545C47
     mov ebx, dword ptr [ebp-8]
     mov ecx, dword ptr [ebp-0Ch]
@@ -388555,7 +387197,7 @@ loc_545BC6:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_545C47
@@ -388610,7 +387252,7 @@ ALIGN 16
     push ebx
     mov dword ptr [ebp-18h], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -388645,7 +387287,7 @@ loc_545D28:
     mov eax, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+eax*1], 0
+    cmp byte ptr [ecx+eax], 0
     jz loc_545DB2
     mov eax, dword ptr [ebp-4]
     sar eax, 10h
@@ -388672,7 +387314,7 @@ loc_545D28:
     and eax, edx
     or ecx, eax
     mov eax, dword ptr [ebp-18h]
-    mov al, byte ptr [ecx+eax*1]
+    mov al, byte ptr [ecx+eax]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_545DB2
@@ -388774,7 +387416,7 @@ loc_545E54:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-10h], al
     jz loc_545EC0
@@ -388821,7 +387463,7 @@ ALIGN 16
     mov ebp, esp
     sub esp, 24h
     mov eax, dword ptr [?swr_src@@3PAXA]
-    lea edx, [ecx+ecx*1]
+    lea edx, [ecx+ecx]
     mov dword ptr [ebp-14h], eax
     mov eax, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-8], eax
@@ -388881,7 +387523,7 @@ loc_545F76:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_545FF1
@@ -388938,7 +387580,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-14h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-8], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -388998,7 +387640,7 @@ loc_5460B7:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_546135
@@ -389077,7 +387719,7 @@ loc_5461D5:
     mov ebx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+ebx*1], 0
+    cmp byte ptr [ecx+ebx], 0
     jz loc_54624D
     sar eax, 10h
     mov ecx, eax
@@ -389100,7 +387742,7 @@ loc_5461D5:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-10h], al
     jz loc_54624D
@@ -389149,7 +387791,7 @@ ALIGN 16
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-14h], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     push edi
@@ -389182,7 +387824,7 @@ loc_5462FD:
     mov eax, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+eax*1], 0
+    cmp byte ptr [ecx+eax], 0
     jz loc_546389
     mov ebx, dword ptr [ebp-8]
     mov ecx, dword ptr [ebp-0Ch]
@@ -389213,7 +387855,7 @@ loc_5462FD:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_546389
@@ -389270,7 +387912,7 @@ ALIGN 16
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-14h], eax
     push ebx
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov ebx, edx
     add edx, eax
     push esi
@@ -389303,7 +387945,7 @@ loc_546459:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, ebx
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_5464F2
     mov eax, dword ptr [ebp-8]
     xor ecx, ecx
@@ -389335,7 +387977,7 @@ loc_546459:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_5464EF
@@ -389443,7 +388085,7 @@ loc_54659B:
     xor ecx, ecx
     or ebx, eax
     mov eax, dword ptr [?swCurrentLut@@3PAGA]
-    mov cl, byte ptr [ebx+edx*1]
+    mov cl, byte ptr [ebx+edx]
     mov edx, dword ptr [ebp-0Ch]
     mov ebx, dword ptr [ebp-18h]
     add edx, 2
@@ -389548,7 +388190,7 @@ loc_5466B4:
     or ebx, eax
     mov eax, dword ptr [ebp-18h]
     xor ecx, ecx
-    mov cl, byte ptr [ebx+eax*1]
+    mov cl, byte ptr [ebx+eax]
     mov eax, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [eax+ecx*2]
     mov eax, dword ptr [ebp-0Ch]
@@ -389613,7 +388255,7 @@ ALIGN 16
     mov dword ptr [ebp-4], edx
     mov edx, dword ptr [?swr_dz@@3HA]
     push esi
-    lea esi, [ecx+ecx*1]
+    lea esi, [ecx+ecx]
     mov dword ptr [ebp-8], eax
     mov dword ptr [ebp-20h], edx
     add eax, esi
@@ -389663,7 +388305,7 @@ loc_546806:
     or ebx, eax
     mov eax, dword ptr [ebp-1Ch]
     xor ecx, ecx
-    mov cl, byte ptr [ebx+eax*1]
+    mov cl, byte ptr [ebx+eax]
     mov eax, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [eax+ecx*2]
     mov eax, dword ptr [ebp-8]
@@ -389741,7 +388383,7 @@ loc_546921:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54697E
     sar eax, 10h
     mov ecx, eax
@@ -389767,7 +388409,7 @@ loc_546921:
     or ebx, eax
     mov eax, dword ptr [?swCurrentLut@@3PAGA]
     xor ecx, ecx
-    mov cl, byte ptr [ebx+edx*1]
+    mov cl, byte ptr [ebx+edx]
     mov cx, word ptr [eax+ecx*2]
     mov eax, dword ptr [ebp-4]
     mov word ptr [esi], cx
@@ -389824,7 +388466,7 @@ ALIGN 16
     mov ebx, dword ptr [?swr_dz@@3HA]
     mov dword ptr [ebp-20h], ebx
     mov ebx, dword ptr [?swr_zb@@3PAGA]
-    lea esi, [ecx+ecx*1]
+    lea esi, [ecx+ecx]
     mov edx, eax
     add eax, esi
     mov dword ptr [ebp-4], ebx
@@ -389846,7 +388488,7 @@ loc_546A46:
     mov esi, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edx
     and ecx, 7
-    cmp byte ptr [ecx+esi*1], 0
+    cmp byte ptr [ecx+esi], 0
     jz loc_546AB5
     mov ebx, dword ptr [ebp-4]
     mov ecx, dword ptr [ebp-8]
@@ -389878,7 +388520,7 @@ loc_546A46:
     or ebx, eax
     mov eax, dword ptr [ebp-1Ch]
     xor ecx, ecx
-    mov cl, byte ptr [ebx+eax*1]
+    mov cl, byte ptr [ebx+eax]
     mov eax, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [eax+ecx*2]
     mov eax, dword ptr [ebp-0Ch]
@@ -389968,7 +388610,7 @@ loc_546B9D:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_546C16
     mov ecx, dword ptr [ebp-4]
     xor edx, edx
@@ -390003,7 +388645,7 @@ loc_546B9D:
     or ecx, eax
     mov eax, dword ptr [ebp-20h]
     xor edx, edx
-    mov dl, byte ptr [ecx+eax*1]
+    mov dl, byte ptr [ecx+eax]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov eax, dword ptr [ebp-10h]
     mov dx, word ptr [ecx+edx*2]
@@ -390100,7 +388742,7 @@ loc_546CD5:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_546D31
@@ -390150,7 +388792,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov dword ptr [ebp-14h], ecx
     mov dword ptr [ebp-18h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov ecx, dword ptr [?swr_dv@@3HA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-10h], ecx
@@ -390214,7 +388856,7 @@ loc_546E0A:
     and eax, ecx
     mov ecx, dword ptr [ebp-18h]
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_546E7F
@@ -390283,7 +388925,7 @@ ALIGN 16
     mov dword ptr [ebp-4], edi
     mov edi, dword ptr [?swr_dz@@3HA]
     mov dword ptr [ebp-18h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-20h], edi
     mov dword ptr [ebp-8], edx
     mov edi, ebx
@@ -390324,7 +388966,7 @@ loc_546F56:
     and eax, ecx
     mov ecx, dword ptr [ebp-18h]
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_546FCE
@@ -390413,7 +389055,7 @@ loc_547085:
     mov ecx, dword ptr [ebp-4]
     mov eax, dword ptr [?swStippleTest@@3PAEA]
     and ecx, 7
-    cmp byte ptr [ecx+eax*1], 0
+    cmp byte ptr [ecx+eax], 0
     jz loc_5470F2
     mov eax, edi
     sar eax, 10h
@@ -390437,7 +389079,7 @@ loc_547085:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_5470F2
@@ -390504,7 +389146,7 @@ ALIGN 16
     mov esi, dword ptr [?swr_v@@3HA]
     mov dword ptr [ebp-18h], eax
     push edi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov edi, edx
     mov dword ptr [ebp-4], ebx
     add edx, eax
@@ -390523,7 +389165,7 @@ loc_5471C6:
     mov eax, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+eax*1], 0
+    cmp byte ptr [ecx+eax], 0
     jz loc_54724B
     mov ebx, dword ptr [ebp-4]
     mov ecx, dword ptr [ebp-8]
@@ -390556,7 +389198,7 @@ loc_5471C6:
     and eax, ecx
     mov ecx, dword ptr [ebp-18h]
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_54724B
@@ -390611,7 +389253,7 @@ ALIGN 16
     push esi
     mov esi, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-18h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov edx, esi
     add esi, eax
     mov dword ptr [?swr_dest@@3PAXA], esi
@@ -390646,7 +389288,7 @@ loc_547328:
     mov eax, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edx
     and ecx, 7
-    cmp byte ptr [ecx+eax*1], 0
+    cmp byte ptr [ecx+eax], 0
     jz loc_5473AE
     mov eax, dword ptr [ebp-4]
     mov ebx, dword ptr [?swr_texmask@@3HA]
@@ -390672,7 +389314,7 @@ loc_547328:
     and eax, ecx
     mov ecx, dword ptr [ebp-18h]
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_5473AE
@@ -390780,7 +389422,7 @@ loc_547475:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_5474E1
@@ -390835,7 +389477,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-18h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-4], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -390898,7 +389540,7 @@ loc_5475B4:
     and eax, ecx
     mov ecx, dword ptr [ebp-18h]
     or edx, eax
-    mov al, byte ptr [edx+ecx*1]
+    mov al, byte ptr [edx+ecx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_54763F
@@ -390959,7 +389601,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-1Ch], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-8], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -391023,7 +389665,7 @@ loc_547729:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_5477A7
@@ -391113,7 +389755,7 @@ loc_547877:
     mov ebx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+ebx*1], 0
+    cmp byte ptr [ecx+ebx], 0
     jz loc_5478EF
     sar eax, 10h
     mov ecx, eax
@@ -391136,7 +389778,7 @@ loc_547877:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_5478EF
@@ -391191,7 +389833,7 @@ ALIGN 16
     push ebx
     mov dword ptr [ebp-18h], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -391225,7 +389867,7 @@ loc_5479B6:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_547A50
     mov edx, dword ptr [ebp-4]
     mov eax, dword ptr [ebp-8]
@@ -391258,7 +389900,7 @@ loc_5479B6:
     and eax, ecx
     mov ecx, dword ptr [ebp-18h]
     or edx, eax
-    mov al, byte ptr [edx+ecx*1]
+    mov al, byte ptr [edx+ecx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_547A50
@@ -391317,7 +389959,7 @@ ALIGN 16
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-1Ch], eax
     push ebx
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov ebx, edx
     add edx, eax
     push esi
@@ -391354,7 +389996,7 @@ loc_547B3B:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, ebx
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_547BD4
     mov eax, dword ptr [ebp-8]
     xor ecx, ecx
@@ -391386,7 +390028,7 @@ loc_547B3B:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_547BD1
@@ -391502,7 +390144,7 @@ loc_547C97:
     xor ecx, ecx
     or ebx, eax
     mov eax, dword ptr [?swCurrentLut@@3PAGA]
-    mov cl, byte ptr [ebx+edx*1]
+    mov cl, byte ptr [ebx+edx]
     mov edx, dword ptr [ebp-18h]
     mov ebx, dword ptr [ebp-1Ch]
     mov cx, word ptr [eax+ecx*2]
@@ -391544,7 +390186,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-1Ch], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -391612,7 +390254,7 @@ loc_547DC5:
     xor ecx, ecx
     or ebx, eax
     mov eax, dword ptr [?swCurrentLut@@3PAGA]
-    mov cl, byte ptr [ebx+edx*1]
+    mov cl, byte ptr [ebx+edx]
     mov edx, dword ptr [ebp-0Ch]
     mov cx, word ptr [eax+ecx*2]
     mov eax, dword ptr [ebp-20h]
@@ -391681,7 +390323,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-4], esi
     mov esi, dword ptr [?swr_dz@@3HA]
-    lea edx, [ecx+ecx*1]
+    lea edx, [ecx+ecx]
     mov dword ptr [ebp-8], eax
     mov dword ptr [ebp-24h], esi
     add eax, edx
@@ -391732,7 +390374,7 @@ loc_547F1F:
     xor ecx, ecx
     or ebx, eax
     mov eax, dword ptr [?swCurrentLut@@3PAGA]
-    mov cl, byte ptr [ebx+edx*1]
+    mov cl, byte ptr [ebx+edx]
     mov edx, dword ptr [ebp-8]
     mov cx, word ptr [eax+ecx*2]
     mov eax, dword ptr [ebp-20h]
@@ -391813,7 +390455,7 @@ loc_54804A:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_5480AC
     sar eax, 10h
     mov ecx, eax
@@ -391839,7 +390481,7 @@ loc_54804A:
     xor ecx, ecx
     or ebx, eax
     mov eax, dword ptr [?swCurrentLut@@3PAGA]
-    mov cl, byte ptr [ebx+edx*1]
+    mov cl, byte ptr [ebx+edx]
     mov cx, word ptr [eax+ecx*2]
     mov eax, dword ptr [ebp-18h]
     and ecx, eax
@@ -391900,7 +390542,7 @@ ALIGN 16
     mov ebx, dword ptr [?swr_dz@@3HA]
     mov dword ptr [ebp-24h], ebx
     mov ebx, dword ptr [?swr_zb@@3PAGA]
-    lea esi, [ecx+ecx*1]
+    lea esi, [ecx+ecx]
     mov edx, eax
     add eax, esi
     mov dword ptr [ebp-4], ebx
@@ -391922,7 +390564,7 @@ loc_54817F:
     mov esi, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edx
     and ecx, 7
-    cmp byte ptr [ecx+esi*1], 0
+    cmp byte ptr [ecx+esi], 0
     jz loc_5481F3
     mov ebx, dword ptr [ebp-4]
     mov ecx, dword ptr [ebp-8]
@@ -391954,7 +390596,7 @@ loc_54817F:
     xor ecx, ecx
     or ebx, eax
     mov eax, dword ptr [ebp-1Ch]
-    mov cl, byte ptr [ebx+eax*1]
+    mov cl, byte ptr [ebx+eax]
     mov eax, dword ptr [?swCurrentLut@@3PAGA]
     mov cx, word ptr [eax+ecx*2]
     mov eax, dword ptr [ebp-20h]
@@ -392048,7 +390690,7 @@ loc_5482E6:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_548364
     mov ecx, dword ptr [ebp-4]
     xor edx, edx
@@ -392083,7 +390725,7 @@ loc_5482E6:
     xor edx, edx
     or ecx, eax
     mov eax, dword ptr [ebp-20h]
-    mov dl, byte ptr [ecx+eax*1]
+    mov dl, byte ptr [ecx+eax]
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     mov eax, dword ptr [ebp-24h]
     mov dx, word ptr [ecx+edx*2]
@@ -392184,7 +390826,7 @@ loc_54842D:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_54848E
@@ -392236,7 +390878,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov dword ptr [ebp-14h], ecx
     mov dword ptr [ebp-18h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov ecx, dword ptr [?swr_dv@@3HA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-10h], ecx
@@ -392302,7 +390944,7 @@ loc_548573:
     and eax, ecx
     mov ecx, dword ptr [ebp-18h]
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_5485ED
@@ -392357,7 +390999,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-18h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-8], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -392416,7 +391058,7 @@ loc_5486CF:
     and eax, ecx
     mov ecx, dword ptr [ebp-18h]
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_54874C
@@ -392509,7 +391151,7 @@ loc_548810:
     mov ebx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+ebx*1], 0
+    cmp byte ptr [ecx+ebx], 0
     jz loc_54887D
     sar eax, 10h
     mov ecx, eax
@@ -392532,7 +391174,7 @@ loc_548810:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_54887D
@@ -392599,7 +391241,7 @@ ALIGN 16
     mov ebx, dword ptr [?swr_dz@@3HA]
     mov dword ptr [ebp-24h], ebx
     mov ebx, dword ptr [?swr_zb@@3PAGA]
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov edx, esi
     mov dword ptr [ebp-4], ebx
     add esi, eax
@@ -392620,7 +391262,7 @@ loc_54894F:
     mov eax, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edx
     and ecx, 7
-    cmp byte ptr [ecx+eax*1], 0
+    cmp byte ptr [ecx+eax], 0
     jz loc_5489D9
     mov ebx, dword ptr [ebp-4]
     mov ecx, dword ptr [ebp-8]
@@ -392653,7 +391295,7 @@ loc_54894F:
     and eax, ecx
     mov ecx, dword ptr [ebp-18h]
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_5489D9
@@ -392710,7 +391352,7 @@ ALIGN 16
     push esi
     mov esi, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-18h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov edx, esi
     add esi, eax
     mov dword ptr [?swr_dest@@3PAXA], esi
@@ -392747,7 +391389,7 @@ loc_548AC1:
     mov eax, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edx
     and ecx, 7
-    cmp byte ptr [ecx+eax*1], 0
+    cmp byte ptr [ecx+eax], 0
     jz loc_548B4C
     mov eax, dword ptr [ebp-4]
     mov ebx, dword ptr [?swr_texmask@@3HA]
@@ -392773,7 +391415,7 @@ loc_548AC1:
     and eax, ecx
     mov ecx, dword ptr [ebp-18h]
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_548B4C
@@ -392883,7 +391525,7 @@ loc_548C05:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_548C71
@@ -392938,7 +391580,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-18h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-4], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -393001,7 +391643,7 @@ loc_548D44:
     and eax, ecx
     mov ecx, dword ptr [ebp-18h]
     or edx, eax
-    mov al, byte ptr [edx+ecx*1]
+    mov al, byte ptr [edx+ecx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_548DCF
@@ -393062,7 +391704,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-1Ch], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-8], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -393126,7 +391768,7 @@ loc_548EB9:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_548F37
@@ -393216,7 +391858,7 @@ loc_549007:
     mov ebx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+ebx*1], 0
+    cmp byte ptr [ecx+ebx], 0
     jz loc_54907F
     sar eax, 10h
     mov ecx, eax
@@ -393239,7 +391881,7 @@ loc_549007:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_54907F
@@ -393294,7 +391936,7 @@ ALIGN 16
     push ebx
     mov dword ptr [ebp-18h], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -393328,7 +391970,7 @@ loc_549146:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_5491E0
     mov edx, dword ptr [ebp-4]
     mov eax, dword ptr [ebp-8]
@@ -393361,7 +392003,7 @@ loc_549146:
     and eax, ecx
     mov ecx, dword ptr [ebp-18h]
     or edx, eax
-    mov al, byte ptr [edx+ecx*1]
+    mov al, byte ptr [edx+ecx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_5491E0
@@ -393420,7 +392062,7 @@ ALIGN 16
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-1Ch], eax
     push ebx
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov ebx, edx
     add edx, eax
     push esi
@@ -393457,7 +392099,7 @@ loc_5492CB:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, ebx
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_549364
     mov eax, dword ptr [ebp-8]
     xor ecx, ecx
@@ -393489,7 +392131,7 @@ loc_5492CB:
     sar eax, 10h
     and eax, edx
     or ebx, eax
-    mov al, byte ptr [ebx+ecx*1]
+    mov al, byte ptr [ebx+ecx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_549361
@@ -393616,7 +392258,7 @@ loc_549411:
     mov eax, dword ptr [ebp-10h]
     add edi, esi
     mov esi, dword ptr [ebp-4]
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-8]
     add eax, 2
     mov dx, word ptr [ecx+edx*2]
@@ -393649,7 +392291,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-18h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -393726,7 +392368,7 @@ loc_54953D:
     or ebx, eax
     mov eax, dword ptr [ebp-18h]
     xor edx, edx
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-0Ch]
     mov dx, word ptr [ecx+edx*2]
     mov word ptr [eax], dx
@@ -393784,7 +392426,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-4], edi
     mov edi, dword ptr [?swr_dz@@3HA]
-    lea edx, [ecx+ecx*1]
+    lea edx, [ecx+ecx]
     mov dword ptr [ebp-8], eax
     mov dword ptr [ebp-1Ch], edi
     add eax, edx
@@ -393848,7 +392490,7 @@ loc_549697:
     or ebx, eax
     mov eax, dword ptr [ebp-18h]
     xor edx, edx
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-8]
     mov dx, word ptr [ecx+edx*2]
     mov word ptr [eax], dx
@@ -393917,7 +392559,7 @@ loc_5497C2:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_549846
     sar eax, 10h
     mov ecx, eax
@@ -393957,7 +392599,7 @@ loc_5497C2:
     or ebx, eax
     mov eax, dword ptr [ebp-10h]
     xor edx, edx
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-4]
     mov dx, word ptr [ecx+edx*2]
     mov word ptr [edi], dx
@@ -394007,7 +392649,7 @@ ALIGN 16
     mov dword ptr [ebp-1Ch], ebx
     mov ebx, dword ptr [?swr_zb@@3PAGA]
     push edi
-    lea edx, [ecx+ecx*1]
+    lea edx, [ecx+ecx]
     mov edi, eax
     add eax, edx
     mov dword ptr [ebp-4], ebx
@@ -394028,7 +392670,7 @@ loc_5498F7:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_549991
     mov ebx, dword ptr [ebp-4]
     mov ecx, dword ptr [ebp-8]
@@ -394075,7 +392717,7 @@ loc_5498F7:
     or ebx, eax
     mov eax, dword ptr [ebp-18h]
     xor edx, edx
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-0Ch]
     mov dx, word ptr [ecx+edx*2]
     mov word ptr [edi], dx
@@ -394156,7 +392798,7 @@ loc_549A5E:
     mov ebx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+ebx*1], 0
+    cmp byte ptr [ecx+ebx], 0
     jz loc_549AFB
     mov ecx, dword ptr [ebp-4]
     xor ebx, ebx
@@ -394203,7 +392845,7 @@ loc_549A5E:
     or ebx, eax
     mov eax, dword ptr [ebp-18h]
     xor edx, edx
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-0Ch]
     mov dx, word ptr [ecx+edx*2]
     mov word ptr [edi], dx
@@ -394306,7 +392948,7 @@ loc_549B96:
     and ecx, edi
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_549C1C
@@ -394353,7 +392995,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-1Ch], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -394428,7 +393070,7 @@ loc_549CDE:
     and ecx, ebx
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_549D79
@@ -394482,7 +393124,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-1Ch], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-10h], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -394550,7 +393192,7 @@ loc_549E4E:
     and ecx, edi
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_549EE9
@@ -394638,7 +393280,7 @@ loc_549F97:
     mov ecx, dword ptr [ebp-4]
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54A032
     mov eax, ebx
     sar eax, 10h
@@ -394677,7 +393319,7 @@ loc_549F97:
     and ecx, edi
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_54A032
@@ -394723,7 +393365,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-1Ch], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-4], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -394757,7 +393399,7 @@ loc_54A0EE:
     mov ecx, dword ptr [ebp-4]
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54A19F
     mov edx, dword ptr [ebp-8]
     mov eax, dword ptr [ebp-0Ch]
@@ -394803,7 +393445,7 @@ loc_54A0EE:
     and ecx, edi
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_54A19F
@@ -394857,7 +393499,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-1Ch], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-4], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -394891,7 +393533,7 @@ loc_54A26E:
     mov ecx, dword ptr [ebp-4]
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54A31E
     mov eax, ebx
     sar eax, 10h
@@ -394930,7 +393572,7 @@ loc_54A26E:
     and ecx, edi
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_54A31E
@@ -395051,7 +393693,7 @@ loc_54A3C6:
     and ecx, edi
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_54A459
@@ -395102,7 +393744,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-1Ch], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -395177,7 +393819,7 @@ loc_54A51E:
     and ecx, ebx
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_54A5C6
@@ -395235,7 +393877,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-18h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-8], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -395309,7 +393951,7 @@ loc_54A69A:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_54A73C
@@ -395390,7 +394032,7 @@ loc_54A7E8:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, ebx
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54A88A
     sar eax, 10h
     mov ecx, eax
@@ -395428,7 +394070,7 @@ loc_54A7E8:
     and ecx, edi
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_54A88A
@@ -395478,7 +394120,7 @@ ALIGN 16
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-1Ch], eax
     push ebx
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov ebx, edx
     add edx, eax
     push esi
@@ -395512,7 +394154,7 @@ loc_54A950:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, ebx
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54AA0B
     mov edx, dword ptr [ebp-8]
     mov eax, dword ptr [ebp-0Ch]
@@ -395558,7 +394200,7 @@ loc_54A950:
     and ecx, edi
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_54AA0B
@@ -395615,7 +394257,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-18h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-4], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -395649,7 +394291,7 @@ loc_54AADA:
     mov ecx, dword ptr [ebp-4]
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54AB92
     mov eax, dword ptr [ebp-8]
     xor ecx, ecx
@@ -395694,7 +394336,7 @@ loc_54AADA:
     and ecx, esi
     or edi, ecx
     or edi, eax
-    mov al, byte ptr [edi+edx*1]
+    mov al, byte ptr [edi+edx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_54AB92
@@ -395814,7 +394456,7 @@ loc_54AC39:
     mov eax, dword ptr [ebp-10h]
     add edi, esi
     mov esi, dword ptr [ebp-4]
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov ebx, dword ptr [ebp-14h]
     mov eax, dword ptr [ebp-8]
     mov dx, word ptr [ecx+edx*2]
@@ -395849,7 +394491,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-18h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -395928,7 +394570,7 @@ loc_54AD76:
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     or ebx, eax
     mov eax, dword ptr [ebp-18h]
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-1Ch]
     mov dx, word ptr [ecx+edx*2]
     and edx, eax
@@ -395990,7 +394632,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-4], edi
     mov edi, dword ptr [?swr_dz@@3HA]
-    lea edx, [ecx+ecx*1]
+    lea edx, [ecx+ecx]
     mov dword ptr [ebp-8], eax
     mov dword ptr [ebp-20h], edi
     add eax, edx
@@ -396054,7 +394696,7 @@ loc_54AED0:
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     or ebx, eax
     mov eax, dword ptr [ebp-18h]
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-1Ch]
     mov dx, word ptr [ecx+edx*2]
     and edx, eax
@@ -396127,7 +394769,7 @@ loc_54B00B:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54B094
     sar eax, 10h
     mov ecx, eax
@@ -396167,7 +394809,7 @@ loc_54B00B:
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     or ebx, eax
     mov eax, dword ptr [ebp-10h]
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-14h]
     mov dx, word ptr [ecx+edx*2]
     and edx, eax
@@ -396221,7 +394863,7 @@ ALIGN 16
     mov dword ptr [ebp-20h], ebx
     mov ebx, dword ptr [?swr_zb@@3PAGA]
     push edi
-    lea edx, [ecx+ecx*1]
+    lea edx, [ecx+ecx]
     mov edi, eax
     add eax, edx
     mov dword ptr [ebp-4], ebx
@@ -396242,7 +394884,7 @@ loc_54B150:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54B1EF
     mov ebx, dword ptr [ebp-4]
     mov ecx, dword ptr [ebp-8]
@@ -396289,7 +394931,7 @@ loc_54B150:
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     or ebx, eax
     mov eax, dword ptr [ebp-18h]
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-1Ch]
     mov dx, word ptr [ecx+edx*2]
     and edx, eax
@@ -396374,7 +395016,7 @@ loc_54B2C7:
     mov ebx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+ebx*1], 0
+    cmp byte ptr [ecx+ebx], 0
     jz loc_54B369
     mov ecx, dword ptr [ebp-4]
     xor ebx, ebx
@@ -396421,7 +395063,7 @@ loc_54B2C7:
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     or ebx, eax
     mov eax, dword ptr [ebp-18h]
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-1Ch]
     mov dx, word ptr [ecx+edx*2]
     and edx, eax
@@ -396528,7 +395170,7 @@ loc_54B40F:
     and ecx, edi
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_54B49A
@@ -396577,7 +395219,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-1Ch], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -396654,7 +395296,7 @@ loc_54B567:
     and ecx, ebx
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_54B607
@@ -396710,7 +395352,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-1Ch], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-10h], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -396780,7 +395422,7 @@ loc_54B6E7:
     and ecx, edi
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_54B787
@@ -396872,7 +395514,7 @@ loc_54B83F:
     mov eax, dword ptr [ebp-4]
     mov ecx, dword ptr [?swStippleTest@@3PAEA]
     and eax, 7
-    cmp byte ptr [eax+ecx*1], 0
+    cmp byte ptr [eax+ecx], 0
     jz loc_54B8DF
     mov eax, ebx
     mov ecx, esi
@@ -396911,7 +395553,7 @@ loc_54B83F:
     and ecx, edi
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_54B8DF
@@ -396959,7 +395601,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-1Ch], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-4], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -396995,7 +395637,7 @@ loc_54B9A7:
     mov ecx, dword ptr [ebp-4]
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54BA5D
     mov edx, dword ptr [ebp-8]
     mov eax, dword ptr [ebp-0Ch]
@@ -397041,7 +395683,7 @@ loc_54B9A7:
     and ecx, edi
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_54BA5D
@@ -397098,7 +395740,7 @@ ALIGN 16
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-1Ch], eax
     push ebx
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov ebx, edx
     add edx, eax
     push esi
@@ -397134,7 +395776,7 @@ loc_54BB39:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, ebx
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54BBEB
     mov eax, esi
     sar eax, 10h
@@ -397173,7 +395815,7 @@ loc_54BB39:
     and ecx, edi
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_54BBEB
@@ -397295,7 +395937,7 @@ loc_54BC96:
     and ecx, edi
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_54BD29
@@ -397346,7 +395988,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-1Ch], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -397421,7 +396063,7 @@ loc_54BDEE:
     and ecx, ebx
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_54BE96
@@ -397479,7 +396121,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-18h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-8], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -397553,7 +396195,7 @@ loc_54BF6A:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_54C00C
@@ -397634,7 +396276,7 @@ loc_54C0B8:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, ebx
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54C15A
     sar eax, 10h
     mov ecx, eax
@@ -397672,7 +396314,7 @@ loc_54C0B8:
     and ecx, edi
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-18h], al
     jz loc_54C15A
@@ -397722,7 +396364,7 @@ ALIGN 16
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-1Ch], eax
     push ebx
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov ebx, edx
     add edx, eax
     push esi
@@ -397756,7 +396398,7 @@ loc_54C220:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, ebx
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54C2DB
     mov edx, dword ptr [ebp-8]
     mov eax, dword ptr [ebp-0Ch]
@@ -397802,7 +396444,7 @@ loc_54C220:
     and ecx, edi
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_54C2DB
@@ -397859,7 +396501,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-18h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-4], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -397893,7 +396535,7 @@ loc_54C3AA:
     mov ecx, dword ptr [ebp-4]
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54C462
     mov eax, dword ptr [ebp-8]
     xor ecx, ecx
@@ -397938,7 +396580,7 @@ loc_54C3AA:
     and ecx, esi
     or edi, ecx
     or edi, eax
-    mov al, byte ptr [edi+edx*1]
+    mov al, byte ptr [edi+edx]
     test al, al
     mov byte ptr [ebp-1Ch], al
     jz loc_54C462
@@ -398058,7 +396700,7 @@ loc_54C512:
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     or ebx, eax
     mov eax, dword ptr [ebp-18h]
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-8]
     mov ebx, dword ptr [ebp-1Ch]
     add edi, eax
@@ -398099,7 +396741,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-20h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -398180,7 +396822,7 @@ loc_54C65F:
     or ebx, eax
     mov eax, dword ptr [ebp-20h]
     xor edx, edx
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-0Ch]
     mov dx, word ptr [ecx+edx*2]
     mov word ptr [eax], dx
@@ -398248,7 +396890,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-4], edi
     mov edi, dword ptr [?swr_dz@@3HA]
-    lea edx, [ecx+ecx*1]
+    lea edx, [ecx+ecx]
     mov dword ptr [ebp-8], eax
     mov dword ptr [ebp-24h], edi
     add eax, edx
@@ -398312,7 +396954,7 @@ loc_54C7D9:
     or ebx, eax
     mov eax, dword ptr [ebp-20h]
     xor edx, edx
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-8]
     mov dx, word ptr [ecx+edx*2]
     mov word ptr [eax], dx
@@ -398391,7 +397033,7 @@ loc_54C924:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54C9A8
     sar eax, 10h
     mov ecx, eax
@@ -398431,7 +397073,7 @@ loc_54C924:
     or ebx, eax
     mov eax, dword ptr [ebp-18h]
     xor edx, edx
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-4]
     mov dx, word ptr [ecx+edx*2]
     mov word ptr [edi], dx
@@ -398491,7 +397133,7 @@ ALIGN 16
     mov dword ptr [ebp-24h], ebx
     mov ebx, dword ptr [?swr_zb@@3PAGA]
     push edi
-    lea edx, [ecx+ecx*1]
+    lea edx, [ecx+ecx]
     mov edi, eax
     add eax, edx
     mov dword ptr [ebp-4], ebx
@@ -398512,7 +397154,7 @@ loc_54CA79:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54CB13
     mov ebx, dword ptr [ebp-4]
     mov ecx, dword ptr [ebp-8]
@@ -398559,7 +397201,7 @@ loc_54CA79:
     or ebx, eax
     mov eax, dword ptr [ebp-20h]
     xor edx, edx
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-0Ch]
     mov dx, word ptr [ecx+edx*2]
     mov word ptr [edi], dx
@@ -398650,7 +397292,7 @@ loc_54CC00:
     mov ebx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+ebx*1], 0
+    cmp byte ptr [ecx+ebx], 0
     jz loc_54CC9D
     mov ecx, dword ptr [ebp-4]
     xor ebx, ebx
@@ -398697,7 +397339,7 @@ loc_54CC00:
     or ebx, eax
     mov eax, dword ptr [ebp-20h]
     xor edx, edx
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-10h]
     mov dx, word ptr [ecx+edx*2]
     mov word ptr [edi], dx
@@ -398811,7 +397453,7 @@ loc_54CD67:
     and ecx, edi
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_54CDED
@@ -398864,7 +397506,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-24h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -398942,7 +397584,7 @@ loc_54CED0:
     and ecx, ebx
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-28h], al
     jz loc_54CF69
@@ -399002,7 +397644,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-24h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -399074,7 +397716,7 @@ loc_54D060:
     and ecx, ebx
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-28h], al
     jz loc_54D0FA
@@ -399170,7 +397812,7 @@ loc_54D1C8:
     mov ecx, dword ptr [ebp-4]
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54D263
     mov eax, ebx
     sar eax, 10h
@@ -399209,7 +397851,7 @@ loc_54D1C8:
     and ecx, edi
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_54D263
@@ -399261,7 +397903,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-24h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-4], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -399299,7 +397941,7 @@ loc_54D340:
     mov ecx, dword ptr [ebp-4]
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54D3EF
     mov ecx, dword ptr [ebp-0Ch]
     xor eax, eax
@@ -399344,7 +397986,7 @@ loc_54D340:
     and ecx, edi
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-28h], al
     jz loc_54D3EF
@@ -399404,7 +398046,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-24h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-4], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -399442,7 +398084,7 @@ loc_54D4E0:
     mov ecx, dword ptr [ebp-4]
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54D590
     mov eax, ebx
     sar eax, 10h
@@ -399481,7 +398123,7 @@ loc_54D4E0:
     and ecx, edi
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-28h], al
     jz loc_54D590
@@ -399611,7 +398253,7 @@ loc_54D657:
     and ecx, edi
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_54D6EA
@@ -399668,7 +398310,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-24h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -399746,7 +398388,7 @@ loc_54D7D0:
     and ecx, ebx
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-28h], al
     jz loc_54D876
@@ -399810,7 +398452,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-20h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-8], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -399888,7 +398530,7 @@ loc_54D96C:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-24h], al
     jz loc_54DA0E
@@ -399980,7 +398622,7 @@ loc_54DADA:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, ebx
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54DB7C
     sar eax, 10h
     mov ecx, eax
@@ -400018,7 +398660,7 @@ loc_54DADA:
     and ecx, edi
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_54DB7C
@@ -400074,7 +398716,7 @@ ALIGN 16
     push esi
     mov dword ptr [ebp-24h], eax
     push edi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov edi, edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -400111,7 +398753,7 @@ loc_54DC62:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54DD1B
     mov ecx, dword ptr [ebp-0Ch]
     xor eax, eax
@@ -400156,7 +398798,7 @@ loc_54DC62:
     and ecx, ebx
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-28h], al
     jz loc_54DD1B
@@ -400222,7 +398864,7 @@ ALIGN 16
     push ebx
     mov dword ptr [ebp-20h], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -400259,7 +398901,7 @@ loc_54DE0E:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54DECB
     mov eax, ebx
     xor ecx, ecx
@@ -400304,7 +398946,7 @@ loc_54DE0E:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-24h], al
     jz loc_54DEC8
@@ -400437,7 +399079,7 @@ loc_54DF9A:
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     or ebx, eax
     mov eax, dword ptr [ebp-18h]
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-8]
     mov ebx, dword ptr [ebp-20h]
     add edi, eax
@@ -400480,7 +399122,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-20h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -400563,7 +399205,7 @@ loc_54E0F8:
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     or ebx, eax
     mov eax, dword ptr [ebp-20h]
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-24h]
     mov dx, word ptr [ecx+edx*2]
     and edx, eax
@@ -400635,7 +399277,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-4], edi
     mov edi, dword ptr [?swr_dz@@3HA]
-    lea edx, [ecx+ecx*1]
+    lea edx, [ecx+ecx]
     mov dword ptr [ebp-8], eax
     mov dword ptr [ebp-28h], edi
     add eax, edx
@@ -400699,7 +399341,7 @@ loc_54E282:
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     or ebx, eax
     mov eax, dword ptr [ebp-20h]
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-24h]
     mov dx, word ptr [ecx+edx*2]
     and edx, eax
@@ -400782,7 +399424,7 @@ loc_54E3DD:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54E466
     sar eax, 10h
     mov ecx, eax
@@ -400822,7 +399464,7 @@ loc_54E3DD:
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     or ebx, eax
     mov eax, dword ptr [ebp-18h]
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-1Ch]
     mov dx, word ptr [ecx+edx*2]
     and edx, eax
@@ -400886,7 +399528,7 @@ ALIGN 16
     mov dword ptr [ebp-28h], ebx
     mov ebx, dword ptr [?swr_zb@@3PAGA]
     push edi
-    lea edx, [ecx+ecx*1]
+    lea edx, [ecx+ecx]
     mov edi, eax
     add eax, edx
     mov dword ptr [ebp-4], ebx
@@ -400907,7 +399549,7 @@ loc_54E542:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54E5E1
     mov ebx, dword ptr [ebp-4]
     mov ecx, dword ptr [ebp-8]
@@ -400954,7 +399596,7 @@ loc_54E542:
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     or ebx, eax
     mov eax, dword ptr [ebp-20h]
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-24h]
     mov dx, word ptr [ecx+edx*2]
     and edx, eax
@@ -401049,7 +399691,7 @@ loc_54E6D9:
     mov ebx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+ebx*1], 0
+    cmp byte ptr [ecx+ebx], 0
     jz loc_54E77B
     mov ecx, dword ptr [ebp-4]
     xor ebx, ebx
@@ -401096,7 +399738,7 @@ loc_54E6D9:
     mov ecx, dword ptr [?swCurrentLut@@3PAGA]
     or ebx, eax
     mov eax, dword ptr [ebp-20h]
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-24h]
     mov dx, word ptr [ecx+edx*2]
     and edx, eax
@@ -401214,7 +399856,7 @@ loc_54E850:
     and ecx, edi
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_54E8DB
@@ -401269,7 +399911,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-24h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -401349,7 +399991,7 @@ loc_54E9C9:
     and ecx, ebx
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-28h], al
     jz loc_54EA67
@@ -401411,7 +400053,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-24h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -401485,7 +400127,7 @@ loc_54EB69:
     and ecx, ebx
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-28h], al
     jz loc_54EC08
@@ -401585,7 +400227,7 @@ loc_54ECE0:
     mov eax, dword ptr [ebp-4]
     mov ecx, dword ptr [?swStippleTest@@3PAEA]
     and eax, 7
-    cmp byte ptr [eax+ecx*1], 0
+    cmp byte ptr [eax+ecx], 0
     jz loc_54ED80
     mov eax, ebx
     mov ecx, esi
@@ -401624,7 +400266,7 @@ loc_54ECE0:
     and ecx, edi
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_54ED80
@@ -401678,7 +400320,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-24h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-4], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -401718,7 +400360,7 @@ loc_54EE69:
     mov ecx, dword ptr [ebp-4]
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54EF1D
     mov ecx, dword ptr [ebp-0Ch]
     xor eax, eax
@@ -401763,7 +400405,7 @@ loc_54EE69:
     and ecx, edi
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-28h], al
     jz loc_54EF1D
@@ -401826,7 +400468,7 @@ ALIGN 16
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-24h], eax
     push ebx
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov ebx, edx
     add edx, eax
     push esi
@@ -401866,7 +400508,7 @@ loc_54F01B:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, ebx
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54F0CD
     mov eax, esi
     sar eax, 10h
@@ -401905,7 +400547,7 @@ loc_54F01B:
     and ecx, edi
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-28h], al
     jz loc_54F0CD
@@ -402037,7 +400679,7 @@ loc_54F197:
     and ecx, edi
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_54F22A
@@ -402094,7 +400736,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-24h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-0Ch], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -402172,7 +400814,7 @@ loc_54F310:
     and ecx, ebx
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-28h], al
     jz loc_54F3B6
@@ -402236,7 +400878,7 @@ ALIGN 16
     mov eax, dword ptr [?swr_src@@3PAXA]
     mov edx, dword ptr [?swr_dest@@3PAXA]
     mov dword ptr [ebp-20h], eax
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov dword ptr [ebp-8], edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -402314,7 +400956,7 @@ loc_54F4AC:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-24h], al
     jz loc_54F54E
@@ -402406,7 +401048,7 @@ loc_54F61A:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, ebx
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54F6BC
     sar eax, 10h
     mov ecx, eax
@@ -402444,7 +401086,7 @@ loc_54F61A:
     and ecx, edi
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-20h], al
     jz loc_54F6BC
@@ -402500,7 +401142,7 @@ ALIGN 16
     push esi
     mov dword ptr [ebp-24h], eax
     push edi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov edi, edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -402537,7 +401179,7 @@ loc_54F7A2:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, edi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54F85B
     mov ecx, dword ptr [ebp-0Ch]
     xor eax, eax
@@ -402582,7 +401224,7 @@ loc_54F7A2:
     and ecx, ebx
     or esi, ecx
     or esi, eax
-    mov al, byte ptr [esi+edx*1]
+    mov al, byte ptr [esi+edx]
     test al, al
     mov byte ptr [ebp-28h], al
     jz loc_54F85B
@@ -402648,7 +401290,7 @@ ALIGN 16
     push ebx
     mov dword ptr [ebp-20h], eax
     push esi
-    lea eax, [ecx+ecx*1]
+    lea eax, [ecx+ecx]
     mov esi, edx
     add edx, eax
     mov dword ptr [?swr_dest@@3PAXA], edx
@@ -402685,7 +401327,7 @@ loc_54F94E:
     mov edx, dword ptr [?swStippleTest@@3PAEA]
     mov ecx, esi
     and ecx, 7
-    cmp byte ptr [ecx+edx*1], 0
+    cmp byte ptr [ecx+edx], 0
     jz loc_54FA0B
     mov eax, ebx
     xor ecx, ecx
@@ -402730,7 +401372,7 @@ loc_54F94E:
     and ecx, esi
     or ebx, ecx
     or ebx, eax
-    mov al, byte ptr [ebx+edx*1]
+    mov al, byte ptr [ebx+edx]
     test al, al
     mov byte ptr [ebp-24h], al
     jz loc_54FA08
@@ -403260,8 +401902,8 @@ loc_54FF92:
 loc_54FF9F:
     mov edx, eax
     shl edx, 9
-    lea edi, byte_7A0020[edx+ecx*1]
-    mov dl, byte ptr byte_7A0020[edx+ecx*1]
+    lea edi, byte_7A0020[edx+ecx]
+    mov dl, byte ptr byte_7A0020[edx+ecx]
     test dl, dl
     jz loc_54FFD1
     and edx, 0FFh
@@ -403329,8 +401971,8 @@ loc_55005B:
 loc_550068:
     mov edx, eax
     shl edx, 9
-    lea edi, byte_7A0020[edx+ecx*1]
-    mov dl, byte ptr byte_7A0020[edx+ecx*1]
+    lea edi, byte_7A0020[edx+ecx]
+    mov dl, byte ptr byte_7A0020[edx+ecx]
     test dl, dl
     jz loc_55009A
     and edx, 0FFh
@@ -403403,8 +402045,8 @@ loc_55012E:
 loc_55013B:
     mov edx, eax
     shl edx, 9
-    lea edi, byte_7A0020[edx+ecx*1]
-    mov dl, byte ptr byte_7A0020[edx+ecx*1]
+    lea edi, byte_7A0020[edx+ecx]
+    mov dl, byte ptr byte_7A0020[edx+ecx]
     test dl, dl
     jz loc_55016D
     and edx, 0FFh
@@ -403472,8 +402114,8 @@ loc_5501F5:
 loc_550202:
     mov edx, eax
     shl edx, 9
-    lea edi, byte_7A0020[edx+ecx*1]
-    mov dl, byte ptr byte_7A0020[edx+ecx*1]
+    lea edi, byte_7A0020[edx+ecx]
+    mov dl, byte ptr byte_7A0020[edx+ecx]
     test dl, dl
     jz loc_550237
     and edx, 0FFh
@@ -403542,8 +402184,8 @@ loc_5502C1:
 loc_5502CC:
     mov edx, eax
     shl edx, 9
-    lea edi, byte_7A0020[edx+ecx*1]
-    mov dl, byte ptr byte_7A0020[edx+ecx*1]
+    lea edi, byte_7A0020[edx+ecx]
+    mov dl, byte ptr byte_7A0020[edx+ecx]
     test dl, dl
     jz loc_5502FE
     and edx, 0FFh
@@ -403607,7 +402249,7 @@ loc_550350:
     mov dword ptr [ebp-18h], ecx
 
 loc_55037A:
-    mov eax, dword ptr [ebp+ecx*1-42Ch]
+    mov eax, dword ptr [ebp+ecx-42Ch]
     mov edi, eax
     mov edx, eax
     shr edi, 10h
@@ -403615,9 +402257,9 @@ loc_55037A:
     and edx, 7FFFh
     shl esi, 9
     test ah, 80h
-    mov byte ptr byte_7A0020[edx+esi*1], 0
+    mov byte ptr byte_7A0020[edx+esi], 0
     jnz loc_550547
-    mov cx, word ptr [ebp+ecx*1-82Ch]
+    mov cx, word ptr [ebp+ecx-82Ch]
     test cx, cx
     jz loc_5503CE
     mov edx, offset ?agiTexLib@@3V?$agiLib@VagiTexParameters@@VagiTexDef@@@@A+2000h
@@ -403687,7 +402329,7 @@ loc_55040B:
 
 loc_55046C:
     mov ecx, dword ptr [ebp-10h]
-    lea ebx, [ecx+eax*1]
+    lea ebx, [ecx+eax]
     mov eax, dword ptr [ebp-10h]
     mov ecx, 8
     mov edi, ebx
@@ -403745,7 +402387,7 @@ loc_55046C:
     mov eax, dword ptr [?VertexCount@agiSurfRenderer@@1HA]
     mov esi, dword ptr [ebp-14h]
     mov ecx, dword ptr [ebp-1Ch]
-    lea edi, [esi+eax*1]
+    lea edi, [esi+eax]
     mov ecx, dword ptr [ecx+0Ch]
     push edi
     mov edi, dword ptr [ebp-0Ch]
@@ -403888,7 +402530,7 @@ loc_550619:
 
 loc_550681:
     mov ecx, dword ptr [ebp-24h]
-    lea ebx, [ecx+eax*1]
+    lea ebx, [ecx+eax]
     mov eax, dword ptr [ebp-24h]
     mov ecx, 8
     mov edi, ebx
@@ -403946,7 +402588,7 @@ loc_550681:
     mov eax, dword ptr [?VertexCount@agiSurfRenderer@@1HA]
     mov esi, dword ptr [ebp-4]
     mov ecx, dword ptr [ebp-1Ch]
-    lea edi, [esi+eax*1]
+    lea edi, [esi+eax]
     mov ecx, dword ptr [ecx+0Ch]
     push edi
     mov edi, dword ptr [ebp-0Ch]
@@ -404561,22 +403203,22 @@ loc_550D0D:
     mov ecx, dword ptr [esi+0A0h]
     mov dx, word ptr [ebp-4]
     mov dword ptr [ebp-2Ch], 0
-    mov word ptr [eax+ecx*1+4], dx
+    mov word ptr [eax+ecx+4], dx
     mov ecx, dword ptr [esi+0A0h]
     mov dx, word ptr [edi+0Ch]
-    mov word ptr [eax+ecx*1+6], dx
+    mov word ptr [eax+ecx+6], dx
     mov ecx, dword ptr [esi+0A0h]
     mov dx, word ptr [edi]
-    mov word ptr [eax+ecx*1+8], dx
+    mov word ptr [eax+ecx+8], dx
     mov ecx, dword ptr [esi+0A0h]
     mov dx, word ptr [edi+2]
-    mov word ptr [eax+ecx*1+0Ah], dx
+    mov word ptr [eax+ecx+0Ah], dx
     mov ecx, dword ptr [esi+0A0h]
     mov dx, word ptr [edi+6]
-    mov word ptr [eax+ecx*1+0Ch], dx
+    mov word ptr [eax+ecx+0Ch], dx
     mov ecx, dword ptr [esi+0A0h]
     mov dx, word ptr [edi+4]
-    mov word ptr [eax+ecx*1+0Eh], dx
+    mov word ptr [eax+ecx+0Eh], dx
     mov edx, dword ptr [esi+5Ch]
     movsx ecx, word ptr [edi+0Ah]
     mov edx, dword ptr [edx+2Ch]
@@ -404584,13 +403226,13 @@ loc_550D0D:
     add eax, 10h
     mov cx, word ptr [edx+ecx*2]
     mov dword ptr [ebp-30h], eax
-    mov word ptr [eax+ebx*1-10h], cx
+    mov word ptr [eax+ebx-10h], cx
     mov ecx, dword ptr [esi+5Ch]
     movsx edx, word ptr [edi+8]
     mov ecx, dword ptr [ecx+28h]
     mov ebx, dword ptr [esi+0A0h]
     mov dx, word ptr [ecx+edx*2]
-    mov word ptr [eax+ebx*1-0Eh], dx
+    mov word ptr [eax+ebx-0Eh], dx
     mov ebx, dword ptr [ebp-1Ch]
     inc ebx
     cmp word ptr [edi+0Ch], 0
@@ -404613,15 +403255,15 @@ loc_550DC4:
     fsub dword ptr [esi+84h]
     lea eax, [edx+eax*4]
     mov edx, dword ptr [esi+94h]
-    fstp dword ptr [ebx+edx*1]
+    fstp dword ptr [ebx+edx]
     fld dword ptr [eax+4]
     fsub dword ptr [esi+88h]
     mov edx, dword ptr [esi+94h]
-    fstp dword ptr [ebx+edx*1+4]
+    fstp dword ptr [ebx+edx+4]
     fld dword ptr [eax+8]
     fsub dword ptr [esi+8Ch]
     mov eax, dword ptr [esi+94h]
-    fstp dword ptr [ebx+eax*1+8]
+    fstp dword ptr [ebx+eax+8]
     test byte ptr [edi+6], 1
     jz loc_550E20
     lea eax, [ecx+0Ch]
@@ -404709,9 +403351,9 @@ loc_550F0E:
     mov edx, dword ptr [esi+94h]
     mov ecx, dword ptr [ebp-0Ch]
     mov dword ptr [ebp-8], 0
-    mov dword ptr [ebx+edx*1+0Ch], eax
+    mov dword ptr [ebx+edx+0Ch], eax
     mov eax, dword ptr [esi+94h]
-    mov dword ptr [ebx+eax*1+10h], ecx
+    mov dword ptr [ebx+eax+10h], ecx
     mov ax, word ptr [edi+0Ah]
     test ax, ax
     jz loc_550F63
@@ -404786,16 +403428,16 @@ loc_550F83:
 loc_550FFF:
     mov edx, dword ptr [esi+94h]
     mov eax, dword ptr [ebp-0Ch]
-    mov dword ptr [ebx+edx*1+14h], eax
+    mov dword ptr [ebx+edx+14h], eax
     mov eax, dword ptr [ebp-28h]
     mov ecx, dword ptr [esi+94h]
     add ebx, 20h
     mov edx, dword ptr [eax+4]
-    mov dword ptr [ebx+ecx*1-8], edx
+    mov dword ptr [ebx+ecx-8], edx
     mov ecx, dword ptr [esi+94h]
     mov edx, dword ptr [eax+8]
     mov eax, dword ptr [ebp-2Ch]
-    mov dword ptr [ebx+ecx*1-4], edx
+    mov dword ptr [ebx+ecx-4], edx
     mov ecx, dword ptr [ebp-4]
     inc ecx
     inc eax
@@ -405013,7 +403655,7 @@ ALIGN 16
 
 loc_551218:
     mov eax, dword ptr [esi+94h]
-    mov eax, dword ptr [eax+edi*1+0Ch]
+    mov eax, dword ptr [eax+edi+0Ch]
     test eax, eax
     jz loc_55122F
     push eax
@@ -405211,7 +403853,7 @@ loc_5513EE:
     shl edi, 4
     mov edx, dword ptr [ecx+0A0h]
     inc ebx
-    mov word ptr [edi+edx*1], ax
+    mov word ptr [edi+edx], ax
     mov eax, dword ptr [esi+18h]
     cmp ebx, eax
     jl loc_5513C7
@@ -405233,7 +403875,7 @@ loc_551411:
 loc_551423:
     mov eax, dword ptr [eax+0A0h]
     inc ecx
-    mov word ptr [eax+edx*1], di
+    mov word ptr [eax+edx], di
     mov eax, dword ptr [esi+24h]
     add edx, 10h
     cmp ecx, dword ptr [eax+44h]
@@ -405356,15 +403998,15 @@ ALIGN 16
 
 loc_551568:
     mov ecx, dword ptr [esi+98h]
-    mov bx, word ptr [ecx+eax*1+0Ch]
-    lea ecx, [ecx+eax*1+0Ch]
+    mov bx, word ptr [ecx+eax+0Ch]
+    lea ecx, [ecx+eax+0Ch]
     and ebx, edx
     or ebx, edi
     or ebx, 10h
     mov word ptr [ecx], bx
     mov ecx, dword ptr [esi+98h]
-    mov bx, word ptr [ecx+eax*1+0Eh]
-    lea ecx, [ecx+eax*1+0Eh]
+    mov bx, word ptr [ecx+eax+0Eh]
+    lea ecx, [ecx+eax+0Eh]
     and ebx, edx
     add eax, 20h
     or ebx, edi
@@ -405390,7 +404032,7 @@ loc_5515B0:
 loc_5515C0:
     mov edi, dword ptr [esi+94h]
     inc ecx
-    mov dword ptr [edi+edx*1+0Ch], eax
+    mov dword ptr [edi+edx+0Ch], eax
     mov edi, dword ptr [esi+40h]
     add edx, 20h
     cmp ecx, edi
@@ -407552,7 +406194,7 @@ loc_552FC8:
     mov ebx, dword ptr [ebp+8]
     mov dword ptr [ecx], ebx
     xor ebx, ebx
-    lea esi, [edx+edi*1]
+    lea esi, [edx+edi]
     mov word ptr [ecx+4], di
     mov word ptr [ecx+8], si
     mov word ptr [ecx+0Ah], bx
@@ -407567,7 +406209,7 @@ loc_552FC8:
 
 loc_552FF9:
     mov ecx, dword ptr [?SurfaceCount@agiSurfRenderer@@1HA]
-    lea edx, [ecx+eax*1-2]
+    lea edx, [ecx+eax-2]
     mov dword ptr [?SurfaceCount@agiSurfRenderer@@1HA], edx
 
 loc_553009:
@@ -407774,7 +406416,7 @@ sub_553180 PROC PRIVATE
     mov esi, dword ptr [ebp+0Ch]
     xor edx, edx
     lea ecx, [ebx-1]
-    lea eax, [ebx+esi*1]
+    lea eax, [ebx+esi]
     push edi
     shl eax, 5
     mov dword ptr [ebp-8], edx
@@ -407854,7 +406496,7 @@ loc_553262:
     mov eax, dword ptr [ebp-1Ch]
     mov edi, dword ptr [ebp+8]
     mov byte ptr ?Adj@agiProjVtx@@2PAUagiAdjunctData@@A[ebx], 0
-    lea esi, ?Vtx@agiProjVtx@@2PATagiVtx@@A[ecx+eax*1]
+    lea esi, ?Vtx@agiProjVtx@@2PATagiVtx@@A[ecx+eax]
     mov ecx, 8
     rep movsd
     mov ecx, dword ptr [ebp+0Ch]
@@ -408128,7 +406770,7 @@ sub_553580 PROC PRIVATE
     mov esi, dword ptr [ebp+0Ch]
     xor edx, edx
     lea ecx, [ebx-1]
-    lea eax, [ebx+esi*1]
+    lea eax, [ebx+esi]
     push edi
     shl eax, 5
     mov dword ptr [ebp-8], edx
@@ -408206,7 +406848,7 @@ loc_55365E:
     mov eax, dword ptr [ebp-1Ch]
     mov edi, dword ptr [ebp+8]
     mov byte ptr ?Adj@agiProjVtx@@2PAUagiAdjunctData@@A[ebx], 0
-    lea esi, ?Vtx@agiProjVtx@@2PATagiVtx@@A[ecx+eax*1]
+    lea esi, ?Vtx@agiProjVtx@@2PATagiVtx@@A[ecx+eax]
     mov ecx, 8
     rep movsd
     mov ecx, dword ptr [ebp+0Ch]
@@ -408402,7 +407044,7 @@ sub_553890 PROC PRIVATE
     mov esi, dword ptr [ebp+0Ch]
     xor edx, edx
     lea ecx, [ebx-1]
-    lea eax, [ebx+esi*1]
+    lea eax, [ebx+esi]
     push edi
     shl eax, 5
     mov dword ptr [ebp-8], edx
@@ -408482,7 +407124,7 @@ loc_553973:
     mov eax, dword ptr [ebp-1Ch]
     mov edi, dword ptr [ebp+8]
     mov byte ptr ?Adj@agiProjVtx@@2PAUagiAdjunctData@@A[ebx], 0
-    lea esi, ?Vtx@agiProjVtx@@2PATagiVtx@@A[ecx+eax*1]
+    lea esi, ?Vtx@agiProjVtx@@2PATagiVtx@@A[ecx+eax]
     mov ecx, 8
     rep movsd
     mov ecx, dword ptr [ebp+0Ch]
@@ -408678,7 +407320,7 @@ sub_553BB0 PROC PRIVATE
     mov esi, dword ptr [ebp+0Ch]
     xor edx, edx
     lea ecx, [ebx-1]
-    lea eax, [ebx+esi*1]
+    lea eax, [ebx+esi]
     push edi
     shl eax, 5
     mov dword ptr [ebp-8], edx
@@ -408756,7 +407398,7 @@ loc_553C8F:
     mov eax, dword ptr [ebp-1Ch]
     mov edi, dword ptr [ebp+8]
     mov byte ptr ?Adj@agiProjVtx@@2PAUagiAdjunctData@@A[ebx], 0
-    lea esi, ?Vtx@agiProjVtx@@2PATagiVtx@@A[ecx+eax*1]
+    lea esi, ?Vtx@agiProjVtx@@2PATagiVtx@@A[ecx+eax]
     mov ecx, 8
     rep movsd
     mov ecx, dword ptr [ebp+0Ch]
@@ -408951,7 +407593,7 @@ sub_553EC0 PROC PRIVATE
     mov esi, dword ptr [ebp+0Ch]
     xor edx, edx
     lea ecx, [ebx-1]
-    lea eax, [ebx+esi*1]
+    lea eax, [ebx+esi]
     push edi
     shl eax, 5
     mov dword ptr [ebp-8], edx
@@ -409031,7 +407673,7 @@ loc_553FA3:
     mov eax, dword ptr [ebp-1Ch]
     mov edi, dword ptr [ebp+8]
     mov byte ptr ?Adj@agiProjVtx@@2PAUagiAdjunctData@@A[ebx], 0
-    lea esi, ?Vtx@agiProjVtx@@2PATagiVtx@@A[ecx+eax*1]
+    lea esi, ?Vtx@agiProjVtx@@2PATagiVtx@@A[ecx+eax]
     mov ecx, 8
     rep movsd
     mov ecx, dword ptr [ebp+0Ch]
@@ -409227,7 +407869,7 @@ sub_5541E0 PROC PRIVATE
     mov esi, dword ptr [ebp+0Ch]
     xor edx, edx
     lea ecx, [ebx-1]
-    lea eax, [ebx+esi*1]
+    lea eax, [ebx+esi]
     push edi
     shl eax, 5
     mov dword ptr [ebp-8], edx
@@ -409305,7 +407947,7 @@ loc_5542BF:
     mov eax, dword ptr [ebp-1Ch]
     mov edi, dword ptr [ebp+8]
     mov byte ptr ?Adj@agiProjVtx@@2PAUagiAdjunctData@@A[ebx], 0
-    lea esi, ?Vtx@agiProjVtx@@2PATagiVtx@@A[ecx+eax*1]
+    lea esi, ?Vtx@agiProjVtx@@2PATagiVtx@@A[ecx+eax]
     mov ecx, 8
     rep movsd
     mov ecx, dword ptr [ebp+0Ch]
@@ -409630,7 +408272,7 @@ loc_554669:
 loc_554671:
     mov eax, dword ptr [ebp-10h]
     mov edx, dword ptr [ebp+0Ch]
-    cmp byte ptr [eax+edx*1], 0FFh
+    cmp byte ptr [eax+edx], 0FFh
     jnz loc_55469F
     mov edx, dword ptr [ebp+8]
     mov ecx, eax
@@ -409647,7 +408289,7 @@ loc_554671:
 
 loc_55469F:
     mov edx, dword ptr [ebp+0Ch]
-    cmp byte ptr [ecx+edx*1], 0FFh
+    cmp byte ptr [ecx+edx], 0FFh
     jnz loc_5546CA
     mov edx, dword ptr [ebp+8]
     mov eax, ecx
@@ -409664,7 +408306,7 @@ loc_55469F:
 
 loc_5546CA:
     mov edx, dword ptr [ebp+0Ch]
-    cmp byte ptr [esi+edx*1], 0FFh
+    cmp byte ptr [esi+edx], 0FFh
     jnz loc_5546F6
     mov ecx, dword ptr [ebp+8]
     mov eax, esi
@@ -409673,7 +408315,7 @@ loc_5546CA:
     add edx, eax
     mov eax, dword ptr [ebp-8]
     push edx
-    lea ecx, [esi+eax*1]
+    lea ecx, [esi+eax]
     push ecx
     call ?Project@agiProjVtx@@SAHHPAUagiLitVtx@@@Z
     mov ecx, dword ptr [ebp-0Ch]
@@ -409683,7 +408325,7 @@ loc_5546F6:
     test edi, edi
     jz loc_554731
     mov edx, dword ptr [ebp+0Ch]
-    cmp byte ptr [edi+edx*1], 0FFh
+    cmp byte ptr [edi+edx], 0FFh
     jnz loc_554726
     mov ecx, dword ptr [ebp+8]
     mov eax, edi
@@ -409692,7 +408334,7 @@ loc_5546F6:
     add edx, eax
     mov eax, dword ptr [ebp-8]
     push edx
-    lea ecx, [edi+eax*1]
+    lea ecx, [edi+eax]
     push ecx
     call ?Project@agiProjVtx@@SAHHPAUagiLitVtx@@@Z
     mov ecx, dword ptr [ebp-0Ch]
@@ -412581,7 +411223,7 @@ loc_558D6F:
     mov edi, dword ptr [ebx+24h]
     xor eax, eax
     mov ax, word ptr [edi+ecx*2]
-    cmp byte ptr [eax+edx*1], 0
+    cmp byte ptr [eax+edx], 0
     jnz loc_558D98
     mov edx, dword ptr [esi+24h]
     mov edi, dword ptr [ebp-4]
@@ -412590,7 +411232,7 @@ loc_558D6F:
     and eax, 0FFFFh
     inc edi
     mov dword ptr [ebp-4], edi
-    mov byte ptr [edx+eax*1], 1
+    mov byte ptr [edx+eax], 1
 
 loc_558D98:
     mov eax, dword ptr [ebx+20h]
@@ -412626,7 +411268,7 @@ loc_558DB0:
 loc_558DE1:
     mov ecx, dword ptr [ebx+10h]
     mov eax, dword ptr [ebp-0Ch]
-    mov edi, dword ptr [eax+ecx*1]
+    mov edi, dword ptr [eax+ecx]
     mov eax, dword ptr [esi+20h]
     cmp edi, eax
     jl loc_558E10
@@ -412639,10 +411281,10 @@ loc_558DE1:
     add esp, 10h
 
 loc_558E10:
-    cmp byte ptr [edi+edx*1], 0
+    cmp byte ptr [edi+edx], 0
     jnz loc_558E29
     mov eax, dword ptr [ebp-4]
-    mov byte ptr [edi+edx*1], 1
+    mov byte ptr [edi+edx], 1
     mov ecx, dword ptr [esi+24h]
     inc eax
     mov dword ptr [ebp-4], eax
@@ -413109,7 +411751,7 @@ loc_55964A:
 
 loc_55964D:
     mov edx, dword ptr [ecx+4]
-    lea esi, [edi+ebx*1]
+    lea esi, [edi+ebx]
     sar esi, 1
     mov ecx, dword ptr [ebp+8]
     push 1Fh
@@ -413195,9 +411837,9 @@ loc_5596D4:
 
 loc_5596E7:
     mov ecx, dword ptr [esi+0Ch]
-    and word ptr [ecx+edi*1+4], -2
+    and word ptr [ecx+edi+4], -2
     inc edx
-    lea ecx, [ecx+edi*1+4]
+    lea ecx, [ecx+edi+4]
     add edi, 18h
     cmp edx, dword ptr [esi+8]
     jl loc_5596E7
@@ -413277,9 +411919,9 @@ loc_559778:
 
 loc_559792:
     mov eax, dword ptr [esi+0Ch]
-    or word ptr [eax+edx*1+4], di
+    or word ptr [eax+edx+4], di
     inc ecx
-    lea eax, [eax+edx*1+4]
+    lea eax, [eax+edx+4]
     add edx, 18h
     cmp ecx, dword ptr [esi+8]
     jl loc_559792
@@ -413432,7 +412074,7 @@ loc_559A95:
     mov eax, dword ptr [ecx+10h]
     mov ebx, dword ptr [ebx+14h]
     fld dword ptr [edx]
-    mov eax, dword ptr [esi+eax*1]
+    mov eax, dword ptr [esi+eax]
     lea eax, [eax+eax*2]
     lea eax, [ebx+eax*4]
     mov ebx, dword ptr [eax]
@@ -413676,8 +412318,8 @@ loc_55A84B:
     repne scasb
     not ecx
     dec ecx
-    mov al, byte ptr [ebx+ecx*1+1]
-    lea ebx, [ebx+ecx*1+1]
+    mov al, byte ptr [ebx+ecx+1]
+    lea ebx, [ebx+ecx+1]
     test al, al
     jz loc_55A8A1
     mov edx, dword ptr [ebp+8]
@@ -414106,59 +412748,59 @@ loc_55AC86:
     lea eax, [edx+edx*2]
     mov edx, dword ptr [ebp-4]
     xor ecx, ecx
-    mov cl, byte ptr [edx+eax*1]
+    mov cl, byte ptr [edx+eax]
     xor edx, edx
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     imul ecx, edi
     imul edx, dword ptr [ebp-10h]
     add ecx, edx
     mov edx, dword ptr [ebp-4]
     xor eax, eax
-    mov al, byte ptr [edx+esi*1]
+    mov al, byte ptr [edx+esi]
     mov edx, dword ptr [ebp+0Ch]
     imul edx, eax
     xor eax, eax
     add ecx, edx
-    mov al, byte ptr [ebx+esi*1]
+    mov al, byte ptr [ebx+esi]
     mov edx, dword ptr [ebp-14h]
     imul edx, eax
     add ecx, edx
     mov edx, dword ptr [ebp-4]
     xor eax, eax
     xor ebx, ebx
-    mov al, byte ptr [edx+esi*1+4]
-    mov bl, byte ptr [edx+esi*1+1]
+    mov al, byte ptr [edx+esi+4]
+    mov bl, byte ptr [edx+esi+1]
     imul ebx, dword ptr [ebp+0Ch]
     imul eax, edi
     add eax, ebx
     mov ebx, dword ptr [ebp+10h]
     xor edx, edx
-    mov dl, byte ptr [ebx+esi*1+4]
+    mov dl, byte ptr [ebx+esi+4]
     imul edx, dword ptr [ebp-10h]
     add eax, edx
     xor edx, edx
-    mov dl, byte ptr [ebx+esi*1+1]
+    mov dl, byte ptr [ebx+esi+1]
     xor ebx, ebx
     imul edx, dword ptr [ebp-14h]
     add eax, edx
     mov edx, dword ptr [ebp-4]
     shr ecx, 0Fh
-    mov bl, byte ptr [edx+esi*1+5]
+    mov bl, byte ptr [edx+esi+5]
     imul ebx, edi
     mov dword ptr [ebp-30h], ebx
     xor ebx, ebx
-    mov bl, byte ptr [edx+esi*1+2]
+    mov bl, byte ptr [edx+esi+2]
     mov edi, dword ptr [ebp-30h]
     imul ebx, dword ptr [ebp+0Ch]
     add edi, ebx
     mov ebx, dword ptr [ebp+10h]
     xor edx, edx
     mov dword ptr [ebp+0Ch], edi
-    mov dl, byte ptr [ebx+esi*1+5]
+    mov dl, byte ptr [ebx+esi+5]
     imul edx, dword ptr [ebp-10h]
     add edi, edx
     xor edx, edx
-    mov dl, byte ptr [ebx+esi*1+2]
+    mov dl, byte ptr [ebx+esi+2]
     imul edx, dword ptr [ebp-14h]
     add edi, edx
     shr eax, 0Fh
@@ -414283,8 +412925,8 @@ loc_55AE75:
     not ecx
     dec ecx
     mov edi, dword ptr [ebp-4]
-    mov al, byte ptr [ebx+ecx*1+1]
-    lea ebx, [ebx+ecx*1+1]
+    mov al, byte ptr [ebx+ecx+1]
+    lea ebx, [ebx+ecx+1]
     test al, al
     jz loc_55AECA
     jmp loc_55AE31
@@ -414450,13 +413092,13 @@ loc_55B074:
     xor ecx, ecx
 
 loc_55B076:
-    mov bl, byte ptr [esi+eax*1]
+    mov bl, byte ptr [esi+eax]
     mov edx, 80h
     sar edx, cl
     and dl, bl
     neg dl
     sbb edx, edx
-    mov byte ptr [ecx+edi*1], dl
+    mov byte ptr [ecx+edi], dl
     inc ecx
     cmp ecx, 8
     jl loc_55B076
@@ -414513,7 +413155,7 @@ loc_55B0F7:
     xor ecx, ecx
 
 loc_55B0F9:
-    mov bl, byte ptr [edi+eax*1]
+    mov bl, byte ptr [edi+eax]
     mov edx, 80h
     sar edx, cl
     and dl, bl
@@ -415582,7 +414224,7 @@ ALIGN 16
     lea ecx, [ecx+edx*2]
     mov edx, dword ptr [eax+24h]
     mov ax, word ptr [ebp+14h]
-    mov word ptr [ecx+edx*1], ax
+    mov word ptr [ecx+edx], ax
     pop ebp
     retn 10h
 ?SetPixel@agiColorModelRGB555@@UAEXPAVagiSurfaceDesc@@HHI@Z ENDP
@@ -415747,7 +414389,7 @@ ALIGN 16
     lea ecx, [ecx+edx*2]
     mov edx, dword ptr [eax+24h]
     mov ax, word ptr [ebp+14h]
-    mov word ptr [ecx+edx*1], ax
+    mov word ptr [ecx+edx], ax
     pop ebp
     retn 10h
 ?SetPixel@agiColorModelRGB565@@UAEXPAVagiSurfaceDesc@@HHI@Z ENDP
@@ -416077,7 +414719,7 @@ ALIGN 16
     lea ecx, [ecx+edx*2]
     mov edx, dword ptr [eax+24h]
     mov ax, word ptr [ebp+14h]
-    mov word ptr [ecx+edx*1], ax
+    mov word ptr [ecx+edx], ax
     pop ebp
     retn 10h
 ?SetPixel@agiColorModelRGB565_Rev@@UAEXPAVagiSurfaceDesc@@HHI@Z ENDP
@@ -416222,7 +414864,7 @@ ALIGN 16
     lea ecx, [ecx+edx*4]
     mov edx, dword ptr [eax+24h]
     mov eax, dword ptr [ebp+14h]
-    mov dword ptr [ecx+edx*1], eax
+    mov dword ptr [ecx+edx], eax
     pop ebp
     retn 10h
 ?SetPixel@agiColorModelRGB888@@UAEXPAVagiSurfaceDesc@@HHI@Z ENDP
@@ -416751,7 +415393,7 @@ ALIGN 16
     lea ecx, [ecx+edx*2]
     mov edx, dword ptr [eax+24h]
     mov ax, word ptr [ebp+14h]
-    mov word ptr [ecx+edx*1], ax
+    mov word ptr [ecx+edx], ax
     pop ebp
     retn 10h
 ?SetPixel@agiColorModelRGBA4444@@UAEXPAVagiSurfaceDesc@@HHI@Z ENDP
@@ -417917,7 +416559,7 @@ loc_55E168:
 loc_55E177:
     mov eax, dword ptr [ecx+10h]
     mov ebx, dword ptr [esi+5Ch]
-    mov eax, dword ptr [edi+eax*1]
+    mov eax, dword ptr [edi+eax]
     mov ebx, dword ptr [ebx+14h]
     add edi, 28h
     lea eax, [eax+eax*2]
@@ -417964,7 +416606,7 @@ loc_55E1E2:
     movsx edx, ax
     movsx ecx, cx
     dec ecx
-    lea eax, [edx+edx*1-2]
+    lea eax, [edx+edx-2]
     imul ecx, eax
     jmp loc_55E215
 
@@ -418319,8 +416961,8 @@ loc_55E54E:
 
 loc_55E551:
     mov eax, dword ptr [eax+0Ch]
-    mov bx, word ptr [eax+edx*1+6]
-    lea eax, [eax+edx*1+6]
+    mov bx, word ptr [eax+edx+6]
+    lea eax, [eax+edx+6]
     and ebx, edi
     mov edi, dword ptr [ebp+0Ch]
     or ebx, edi
@@ -418482,7 +417124,7 @@ loc_55E6E5:
     xor ecx, ecx
     mov cx, word ptr [esi+eax*2]
     inc eax
-    mov byte ptr [ecx+edx*1], 1
+    mov byte ptr [ecx+edx], 1
     mov ecx, dword ptr [ebp-30h]
     cmp eax, ecx
     jl loc_55E6E5
@@ -418515,7 +417157,7 @@ loc_55E72E:
     xor ecx, ecx
     mov cx, word ptr [edx+eax*2]
     inc eax
-    mov byte ptr [ecx+ebx*1], 1
+    mov byte ptr [ecx+ebx], 1
     mov ecx, dword ptr [ebp-38h]
     cmp eax, ecx
     jl loc_55E72E
@@ -418562,7 +417204,7 @@ loc_55E7A2:
     test byte ptr [ecx+1Ch], 10h
     jz loc_55E7C9
     mov edx, dword ptr [ebp-24h]
-    cmp byte ptr [edi+edx*1], 0
+    cmp byte ptr [edi+edx], 0
     jz loc_55E7C6
     cmp dword ptr [ebp-10h], 2
     jnz loc_55E7C3
@@ -418585,8 +417227,8 @@ loc_55E7C9:
 
 loc_55E7D3:
     mov edi, dword ptr [eax+10h]
-    mov edi, dword ptr [edx+edi*1]
-    cmp byte ptr [edi+ebx*1], 0
+    mov edi, dword ptr [edx+edi]
+    cmp byte ptr [edi+ebx], 0
     jz loc_55E7FC
     cmp dword ptr [ebp-10h], 2
     jnz loc_55E7F9
@@ -419610,27 +418252,27 @@ ALIGN 16
 
 loc_565C84:
     fld dword ptr [eax]
-    fsub dword ptr [edi+eax*1]
-    fld dword ptr [edi+eax*1]
+    fsub dword ptr [edi+eax]
+    fld dword ptr [edi+eax]
     fsub dword ptr [eax]
     fxch st(1)
     fmul dword ptr [flt_621B7C]
-    fld dword ptr [ecx+eax*1]
+    fld dword ptr [ecx+eax]
     fxch st(1)
-    fsubr dword ptr [edx+eax*1]
+    fsubr dword ptr [edx+eax]
     fxch st(1)
     fadd st, st
     fxch st(2)
     fmul dword ptr [flt_621B78]
     fxch st(1)
-    fadd dword ptr [ecx+eax*1]
-    fld dword ptr [ecx+eax*1]
+    fadd dword ptr [ecx+eax]
+    fld dword ptr [ecx+eax]
     fxch st(3)
     fsubp st(2), st
     fxch st(2)
     fstp dword ptr [ebp-18h]
     mov esi, dword ptr [eax]
-    fsub dword ptr [edx+eax*1]
+    fsub dword ptr [edx+eax]
     fxch st(1)
     fmul dword ptr [ebp+8]
     fxch st(1)
@@ -419645,7 +418287,7 @@ loc_565C84:
     fadd dword ptr [ebp-18h]
     fmul dword ptr [ebp+8]
     fadd dword ptr [ebp-1Ch]
-    fstp dword ptr [ebx+eax*1-4]
+    fstp dword ptr [ebx+eax-4]
     jnz loc_565C84
     pop edi
     pop esi
@@ -431983,7 +430625,7 @@ loc_572722:
     fld dword ptr [edx+20h]
     mov eax, ecx
     shl eax, 4
-    fcomp dword ptr [eax+edx*1]
+    fcomp dword ptr [eax+edx]
     fnstsw ax
     test ah, 41h
     jnz loc_57273C
@@ -432000,11 +430642,11 @@ loc_57273C:
     mov eax, esi
     shl eax, 4
     shl ecx, 4
-    fld dword ptr [eax+edx*1]
-    fadd dword ptr [ecx+edx*1]
+    fld dword ptr [eax+edx]
+    fadd dword ptr [ecx+edx]
     shl ebx, 4
     mov ecx, dword ptr [ebp-4]
-    fsubr dword ptr [ebx+edx*1]
+    fsubr dword ptr [ebx+edx]
     fsub dword ptr [flt_621D1C]
     fsqrt
     fcom dword ptr [flt_621D18]
@@ -432037,8 +430679,8 @@ loc_572797:
     mov ebx, dword ptr [ebp-8]
     mov edi, dword ptr [ebp-4]
     fmul st, st(1)
-    fstp dword ptr [edi+ebx*1]
-    lea ebx, [esi+ecx*1]
+    fstp dword ptr [edi+ebx]
+    lea ebx, [esi+ecx]
     lea ecx, [esi+esi*2]
     add eax, ecx
     fld dword ptr [edx+ebx*4]
@@ -433079,9 +431721,9 @@ ALIGN 16
     cmp eax, edx
     jge loc_57989C
     mov al, byte ptr [ebp+8]
-    mov byte ptr [ecx+esi*1], al
+    mov byte ptr [ecx+esi], al
     mov edx, dword ptr [ebx]
-    mov byte ptr [ecx+edx*1+1], 0
+    mov byte ptr [ecx+edx+1], 0
     pop edi
     pop esi
     pop ebx
@@ -433113,8 +431755,8 @@ loc_57989C:
     rep movsb
     mov esi, dword ptr [ebp-4]
     mov cl, byte ptr [ebp+8]
-    mov byte ptr [edx+esi*1], cl
-    mov byte ptr [edx+esi*1+1], 0
+    mov byte ptr [edx+esi], cl
+    mov byte ptr [edx+esi+1], 0
     mov edx, dword ptr [ebx]
     push edx
     call ?arts_operator_delete@@YAXPAX@Z
@@ -433193,7 +431835,7 @@ loc_579983:
     cmp bl, cl
     jz loc_579994
     mov ecx, dword ptr [ebp-1Ch]
-    mov byte ptr [eax+ecx*1], bl
+    mov byte ptr [eax+ecx], bl
     jmp loc_5799C5
 
 loc_579994:
@@ -433204,7 +431846,7 @@ loc_579994:
 loc_57999A:
     test cl, cl
     jz loc_5799A8
-    mov cl, byte ptr [esi+eax*1+1]
+    mov cl, byte ptr [esi+eax+1]
     inc edi
     inc eax
     cmp cl, byte ptr [eax]
@@ -433212,7 +431854,7 @@ loc_57999A:
 
 loc_5799A8:
     mov eax, dword ptr [ebp+0Ch]
-    cmp byte ptr [edi+eax*1], 0
+    cmp byte ptr [edi+eax], 0
     jnz loc_5799BC
     mov eax, dword ptr [ebp-10h]
     add edx, edi
@@ -433223,7 +431865,7 @@ loc_5799A8:
 loc_5799BC:
     mov ecx, dword ptr [ebp-10h]
     mov eax, dword ptr [ebp-1Ch]
-    mov byte ptr [ecx+eax*1], bl
+    mov byte ptr [ecx+eax], bl
 
 loc_5799C5:
     inc edx
@@ -433241,7 +431883,7 @@ loc_5799D3:
     mov ebx, dword ptr [ebp+8]
     mov edi, esi
     or ecx, -1
-    mov byte ptr [eax+esi*1], 0
+    mov byte ptr [eax+esi], 0
     xor eax, eax
     mov dword ptr [ebx+4], 0
     mov dword ptr [ebx], 0
@@ -433672,7 +432314,7 @@ loc_57A335:
     js loc_57A36A
 
 loc_57A35D:
-    cmp byte ptr [ebx+esi*1], 5Ch
+    cmp byte ptr [ebx+esi], 5Ch
     jz loc_57A401
     dec ebx
     jns loc_57A35D
@@ -433693,7 +432335,7 @@ loc_57A36D:
     js loc_57A3F8
 
 loc_57A380:
-    cmp byte ptr [ebx+edx*1], 2Eh
+    cmp byte ptr [ebx+edx], 2Eh
     jz loc_57A392
     dec ebx
     jns loc_57A380
@@ -433705,7 +432347,7 @@ loc_57A380:
     retn 0Ch
 
 loc_57A392:
-    lea esi, [ebx+edx*1]
+    lea esi, [ebx+edx]
     or ecx, -1
     mov edi, esi
     xor eax, eax
@@ -433750,7 +432392,7 @@ loc_57A3DD:
     and ecx, 3
     rep movsb
     mov ecx, dword ptr [eax]
-    mov byte ptr [ecx+ebx*1], 0
+    mov byte ptr [ecx+ebx], 0
 
 loc_57A3F8:
     pop edi
@@ -433790,10 +432432,10 @@ loc_57A425:
     and ecx, 3
     rep movsb
     mov ecx, dword ptr [eax]
-    mov byte ptr [ecx+ebx*1], 0
+    mov byte ptr [ecx+ebx], 0
     mov eax, dword ptr [edx]
     or ecx, -1
-    lea esi, [eax+ebx*1+1]
+    lea esi, [eax+ebx+1]
     xor eax, eax
     mov edi, esi
     mov ebx, dword ptr [ebp+0Ch]
@@ -433898,7 +432540,7 @@ loc_57AB82:
     call _strncpy
     add esp, 0Ch
     lea ecx, [ebp-6Ch]
-    mov byte ptr [ebp+esi*1-6Dh], 0
+    mov byte ptr [ebp+esi-6Dh], 0
     push ecx
     call _getenv
     add esp, 4
@@ -434047,7 +432689,7 @@ ALIGN 16
 
 loc_57ACCF:
     mov eax, dword ptr [edi]
-    mov al, byte ptr [eax+esi*1]
+    mov al, byte ptr [eax+esi]
     test al, al
     jz loc_57AD00
     cmp al, 7Ch
@@ -434060,7 +432702,7 @@ loc_57ACDF:
     test eax, eax
     jz loc_57ACF5
     mov ecx, dword ptr [edi]
-    mov al, byte ptr [ecx+esi*1+1]
+    mov al, byte ptr [ecx+esi+1]
     test al, al
     jz loc_57AD00
     inc esi
@@ -434078,7 +432720,7 @@ loc_57AD00:
     cmp ecx, eax
     jnz loc_57AD4F
     mov ecx, dword ptr [edi]
-    mov al, byte ptr [ecx+esi*1]
+    mov al, byte ptr [ecx+esi]
     test al, al
     jz loc_57AD4F
 
@@ -434090,8 +432732,8 @@ loc_57AD13:
     test eax, eax
     jz loc_57AD39
     mov edx, dword ptr [edi]
-    mov cl, byte ptr [edx+esi*1+1]
-    lea eax, [edx+esi*1]
+    mov cl, byte ptr [edx+esi+1]
+    lea eax, [edx+esi]
     test cl, cl
     jz loc_57AD4F
     mov al, byte ptr [eax]
@@ -434102,11 +432744,11 @@ loc_57AD13:
 loc_57AD39:
     mov ecx, dword ptr [edi]
     inc ebx
-    mov dl, byte ptr [ecx+esi*1]
+    mov dl, byte ptr [ecx+esi]
     inc esi
     mov byte ptr byte_90B140[ebx-1], dl
     mov eax, dword ptr [edi]
-    mov al, byte ptr [eax+esi*1]
+    mov al, byte ptr [eax+esi]
     test al, al
     jnz loc_57AD13
 
@@ -434170,7 +432812,7 @@ ALIGN 16
     mov ebx, dword ptr [__imp__IsDBCSLeadByte@4]
 
 loc_57ADDF:
-    mov al, byte ptr [esi+eax*1]
+    mov al, byte ptr [esi+eax]
     cmp al, 7Ch
     jnz loc_57ADE9
     inc dword ptr [ebp-4]
@@ -434181,7 +432823,7 @@ loc_57ADE9:
     test eax, eax
     jz loc_57ADFB
     mov eax, dword ptr [edi]
-    mov cl, byte ptr [eax+esi*1+1]
+    mov cl, byte ptr [eax+esi+1]
     test cl, cl
     jz loc_57AE04
     inc esi
@@ -434189,7 +432831,7 @@ loc_57ADE9:
 loc_57ADFB:
     mov eax, dword ptr [edi]
     inc esi
-    cmp byte ptr [esi+eax*1], 0
+    cmp byte ptr [esi+eax], 0
     jnz loc_57ADDF
 
 loc_57AE04:
@@ -434594,9 +433236,9 @@ ALIGN 16
     jle loc_57B8F8
 
 loc_57B89C:
-    mov cl, byte ptr [eax+edi*1+4]
+    mov cl, byte ptr [eax+edi+4]
     test cl, cl
-    mov byte ptr [eax+ebx*1], cl
+    mov byte ptr [eax+ebx], cl
     jz loc_57B8F8
     mov ecx, dword ptr [esi+8]
     inc eax
@@ -437391,7 +436033,7 @@ loc_57E476:
 loc_57E497:
     mov dl, byte ptr [esi]
     dec edi
-    mov byte ptr [ebp+eax*1-1Ch], dl
+    mov byte ptr [ebp+eax-1Ch], dl
     inc esi
     inc eax
     cmp eax, ecx
@@ -437484,7 +436126,7 @@ sub_57E540 PROC PRIVATE
     push esi
     push edi
     mov edi, dword ptr [ebp+0Ch]
-    lea ebx, [ecx+eax*1]
+    lea ebx, [ecx+eax]
     cmp eax, 0Eh
     mov cl, 46h
     jb loc_57E6D2
@@ -438198,7 +436840,7 @@ loc_57ED3A:
     mov byte ptr [eax], 1
     mov byte ptr [eax+10h], dl
     inc eax
-    lea edi, [ecx+eax*1]
+    lea edi, [ecx+eax]
     cmp edi, 10h
     jl loc_57ED3A
     mov edx, dword ptr [esi+194h]
@@ -438691,7 +437333,7 @@ loc_57F1B4:
     mov eax, dword ptr [ebp-10h]
     mov edx, dword ptr [ebp-8]
     add esp, 8
-    lea ecx, [eax+eax*1+6]
+    lea ecx, [eax+eax+6]
     cmp edx, ecx
     jnz loc_57F1F1
     cmp eax, 1
@@ -439054,7 +437696,7 @@ loc_57F53D:
     mov dword ptr [ebp+8], ecx
     xor ecx, ecx
     mov cl, al
-    mov byte ptr [ebp+edi*1-24h], al
+    mov byte ptr [ebp+edi-24h], al
     inc esi
     add edx, ecx
     inc edi
@@ -439173,7 +437815,7 @@ loc_57F6A9:
     mov edx, dword ptr [ebp+8]
     mov cl, byte ptr [esi]
     dec edx
-    mov byte ptr [ebp+eax*1-128h], cl
+    mov byte ptr [ebp+eax-128h], cl
     inc esi
     inc eax
     cmp eax, edi
@@ -440062,7 +438704,7 @@ loc_57FEDD:
     mov esi, eax
 
 loc_57FEEA:
-    lea edx, [esi+edi*1]
+    lea edx, [esi+edi]
     push edx
     push ebx
     call ?jpeg_get_small@@YAPAXPAUjpeg_common_struct@@I@Z
@@ -440080,7 +438722,7 @@ loc_57FEFB:
     add esp, 8
 
 loc_57FF0D:
-    lea eax, [esi+edi*1]
+    lea eax, [esi+edi]
     push eax
     push ebx
     call ?jpeg_get_small@@YAPAXPAUjpeg_common_struct@@I@Z
@@ -440090,7 +438732,7 @@ loc_57FF0D:
 
 loc_57FF1E:
     mov ecx, dword ptr [ebp-4]
-    lea edx, [esi+edi*1]
+    lea edx, [esi+edi]
     mov edi, dword ptr [ecx+4Ch]
     add edi, edx
     mov edx, dword ptr [ebp+10h]
@@ -440114,7 +438756,7 @@ loc_57FF53:
 
 loc_57FF56:
     mov ecx, dword ptr [eax+4]
-    lea edx, [eax+ecx*1+10h]
+    lea edx, [eax+ecx+10h]
     add ecx, edi
     mov dword ptr [eax+4], ecx
     mov ecx, dword ptr [eax+8]
@@ -440711,7 +439353,7 @@ sub_580430 PROC PRIVATE
     push ebx
     push esi
     mov esi, dword ptr [ebp+0Ch]
-    lea ebx, [eax+ecx*1]
+    lea ebx, [eax+ecx]
     push edi
     cmp ebx, dword ptr [esi+4]
     ja loc_580451
@@ -440977,7 +439619,7 @@ sub_580620 PROC PRIVATE
     push esi
     mov esi, dword ptr [ebp+0Ch]
     push edi
-    lea edi, [eax+ecx*1]
+    lea edi, [eax+ecx]
     mov ecx, dword ptr [esi+4]
     mov dword ptr [ebp+14h], edi
     cmp edi, ecx
@@ -441311,7 +439953,7 @@ loc_5808AC:
     mov edx, dword ptr [eax+8]
     mov ecx, dword ptr [eax+4]
     mov edi, dword ptr [eax]
-    lea ebx, [edx+ecx*1+10h]
+    lea ebx, [edx+ecx+10h]
     mov edx, dword ptr [ebp+8]
     push ebx
     push eax
@@ -441336,7 +439978,7 @@ loc_5808E7:
     mov ecx, dword ptr [eax+8]
     mov edx, dword ptr [eax+4]
     mov edi, dword ptr [eax]
-    lea ebx, [ecx+edx*1+10h]
+    lea ebx, [ecx+edx+10h]
     push ebx
     push eax
     mov eax, dword ptr [ebp+8]
@@ -441807,7 +440449,7 @@ sub_580CC0 PROC PRIVATE
     rep stosd
 
 loc_580CF5:
-    mov byte ptr [eax+edx*1], al
+    mov byte ptr [eax+edx], al
     inc eax
     cmp eax, 0FFh
     jle loc_580CF5
@@ -442003,7 +440645,7 @@ ALIGN 16
     mov ebp, esp
     mov ecx, dword ptr [ebp+0Ch]
     mov eax, dword ptr [ebp+8]
-    lea eax, [ecx+eax*1-1]
+    lea eax, [ecx+eax-1]
     cdq
     idiv ecx
     pop ebp
@@ -442017,7 +440659,7 @@ ALIGN 16
     mov eax, dword ptr [ebp+8]
     push esi
     mov esi, dword ptr [ebp+0Ch]
-    lea ecx, [eax+esi*1-1]
+    lea ecx, [eax+esi-1]
     mov eax, ecx
     cdq
     idiv esi
@@ -442430,11 +441072,11 @@ loc_5812C5:
     mov edx, dword ptr [edi+38h]
     lea ecx, [ebx*4]
     mov ebx, dword ptr [ebp-10h]
-    mov esi, dword ptr [edx+ecx*1]
+    mov esi, dword ptr [edx+ecx]
     mov edx, dword ptr [edi+3Ch]
     add ebx, 2
     mov dword ptr [ebp-4], esi
-    mov edx, dword ptr [edx+ecx*1]
+    mov edx, dword ptr [edx+ecx]
     mov ecx, dword ptr [ebp-8]
     mov edi, dword ptr [ecx]
     mov ecx, eax
@@ -442452,9 +441094,9 @@ loc_5812C5:
 loc_58130D:
     mov ecx, dword ptr [ebp-20h]
     add esi, 4
-    mov ecx, dword ptr [ecx+esi*1-4]
+    mov ecx, dword ptr [ecx+esi-4]
     mov dword ptr [esi-4], ecx
-    mov dword ptr [ebx+esi*1-4], ecx
+    mov dword ptr [ebx+esi-4], ecx
     mov ecx, dword ptr [ebp-0Ch]
     dec ecx
     mov dword ptr [ebp-0Ch], ecx
@@ -442462,7 +441104,7 @@ loc_58130D:
     mov esi, dword ptr [ebp-4]
 
 loc_58132A:
-    lea ecx, [eax+eax*1]
+    lea ecx, [eax+eax]
     test ecx, ecx
     jle loc_58136E
     mov ecx, dword ptr [ebp-10h]
@@ -442475,13 +441117,13 @@ loc_58132A:
     sub ebx, edx
     lea ecx, [edi+ecx*4]
     sub edx, edi
-    lea edi, [eax+eax*1]
+    lea edi, [eax+eax]
     mov dword ptr [ebp-0Ch], edi
 
 loc_581351:
-    mov edi, dword ptr [esi+ebx*1]
+    mov edi, dword ptr [esi+ebx]
     add esi, 4
-    mov dword ptr [edx+ecx*1], edi
+    mov dword ptr [edx+ecx], edi
     mov edi, dword ptr [ecx]
     mov dword ptr [esi-4], edi
     mov edi, dword ptr [ebp-0Ch]
@@ -442504,7 +441146,7 @@ loc_58137D:
     sub eax, edi
     add ecx, 4
     dec edx
-    mov dword ptr [esi+eax*1], ebx
+    mov dword ptr [esi+eax], ebx
     jnz loc_58137D
 
 loc_58138C:
@@ -442746,8 +441388,8 @@ loc_5815BF:
     mov edx, dword ptr [ebx+38h]
     mov ebx, dword ptr [ebx+3Ch]
     shl esi, 2
-    mov edx, dword ptr [edx+esi*1]
-    mov esi, dword ptr [ebx+esi*1]
+    mov edx, dword ptr [edx+esi]
+    mov esi, dword ptr [ebx+esi]
     mov dword ptr [ebp-24h], edx
     test eax, eax
     jle loc_58165B
@@ -442768,25 +441410,25 @@ loc_5815BF:
 
 loc_58160C:
     mov ebx, dword ptr [ebp-4]
-    mov edi, dword ptr [edx+edi*1]
+    mov edi, dword ptr [edx+edi]
     mov eax, ecx
     sub eax, ebx
     mov ebx, dword ptr [ebp-24h]
-    mov dword ptr [ebx+eax*1], edi
+    mov dword ptr [ebx+eax], edi
     mov edi, dword ptr [ebp-4]
     mov eax, ecx
     sub eax, edi
     mov edi, dword ptr [ebp-8]
     mov ebx, dword ptr [edi]
     add edi, 4
-    mov dword ptr [esi+eax*1], ebx
-    lea eax, [esi+ecx*1]
+    mov dword ptr [esi+eax], ebx
+    lea eax, [esi+ecx]
     add ecx, 4
     mov dword ptr [ebp-8], edi
-    mov ebx, dword ptr [edx+eax*1]
+    mov ebx, dword ptr [edx+eax]
     mov eax, dword ptr [ebp-0Ch]
-    mov dword ptr [edx+eax*1], ebx
-    mov ebx, dword ptr [esi+ecx*1-4]
+    mov dword ptr [edx+eax], ebx
+    mov ebx, dword ptr [esi+ecx-4]
     mov dword ptr [eax], ebx
     add eax, 4
     mov dword ptr [ebp-0Ch], eax
@@ -442872,7 +441514,7 @@ loc_5816E9:
 loc_5816EC:
     mov edx, dword ptr [eax+40h]
     mov eax, dword ptr [eax+edx*4+38h]
-    lea edx, [edi+edi*1]
+    lea edx, [edi+edi]
     test edx, edx
     mov eax, dword ptr [eax+ecx*4]
     jle loc_581710
@@ -443346,11 +441988,11 @@ loc_581B43:
 
 loc_581B46:
     xor edx, edx
-    mov dl, byte ptr [ebx+esi*1]
+    mov dl, byte ptr [ebx+esi]
     mov esi, edx
     test esi, esi
     jl loc_581B5B
-    lea eax, [esi+edi*1]
+    lea eax, [esi+edi]
     cmp eax, 100h
     jle loc_581B6F
 
@@ -443375,7 +442017,7 @@ loc_581B6F:
     mov eax, ebx
     mov edx, ecx
     shl eax, 10h
-    lea edi, [ebp+edi*1-11Ch]
+    lea edi, [ebp+edi-11Ch]
     mov ax, bx
     shr ecx, 2
     rep stosd
@@ -443392,7 +442034,7 @@ loc_581BA5:
     cmp ebx, 10h
     mov dword ptr [ebp-4], ebx
     jle loc_581B43
-    mov byte ptr [ebp+edi*1-11Ch], 0
+    mov byte ptr [ebp+edi-11Ch], 0
     mov al, byte ptr [ebp-11Ch]
     mov dword ptr [ebp-14h], edi
     xor ebx, ebx
@@ -443402,13 +442044,13 @@ loc_581BA5:
     jz loc_581C1F
 
 loc_581BCA:
-    movsx eax, byte ptr [ebp+edi*1-11Ch]
+    movsx eax, byte ptr [ebp+edi-11Ch]
     cmp eax, esi
     jnz loc_581BF0
     lea eax, [ebp+edi*4-520h]
 
 loc_581BDD:
-    movsx ecx, byte ptr [ebp+edi*1-11Bh]
+    movsx ecx, byte ptr [ebp+edi-11Bh]
     inc edi
     mov dword ptr [eax], ebx
     add eax, 4
@@ -443431,7 +442073,7 @@ loc_581BF0:
     add esp, 4
 
 loc_581C11:
-    mov al, byte ptr [ebp+edi*1-11Ch]
+    mov al, byte ptr [ebp+edi-11Ch]
     shl ebx, 1
     inc esi
     test al, al
@@ -443445,13 +442087,13 @@ loc_581C1F:
 
 loc_581C2C:
     mov esi, dword ptr [ebp+10h]
-    cmp byte ptr [eax+esi*1], 0
+    cmp byte ptr [eax+esi], 0
     jz loc_581C53
     mov ebx, edi
     sub ebx, dword ptr [ebp+edi*4-520h]
     mov dword ptr [ecx+48h], ebx
     xor ebx, ebx
-    mov bl, byte ptr [eax+esi*1]
+    mov bl, byte ptr [eax+esi]
     add edi, ebx
     mov ebx, dword ptr [ebp+edi*4-524h]
     mov dword ptr [ecx], ebx
@@ -443476,14 +442118,14 @@ loc_581C59:
     mov dword ptr [ebp-0Ch], ecx
 
 loc_581C88:
-    mov dl, byte ptr [ebx+esi*1]
+    mov dl, byte ptr [ebx+esi]
     mov dword ptr [ebp-4], 1
     cmp dl, 1
     jb loc_581D0E
     mov edx, dword ptr [ebp+10h]
     mov esi, 1
     shl esi, cl
-    lea edi, [eax+edx*1+11h]
+    lea edi, [eax+edx+11h]
     lea eax, [ebp+eax*4-520h]
     mov dword ptr [ebp-8], eax
     mov dword ptr [ebp-18h], esi
@@ -443495,7 +442137,7 @@ loc_581CB2:
     test esi, esi
     jle loc_581CE1
     mov ecx, dword ptr [ebp-10h]
-    lea edx, [eax+ecx*1+490h]
+    lea edx, [eax+ecx+490h]
     lea eax, [ecx+eax*4+90h]
 
 loc_581CCE:
@@ -443522,7 +442164,7 @@ loc_581CE1:
     mov eax, dword ptr [ebp+10h]
     xor edx, edx
     inc edi
-    mov dl, byte ptr [ebx+eax*1]
+    mov dl, byte ptr [ebx+eax]
     mov eax, dword ptr [ebp-4]
     cmp eax, edx
     jle loc_581CB2
@@ -443544,7 +442186,7 @@ loc_581D0E:
 
 loc_581D29:
     xor eax, eax
-    mov al, byte ptr [edi+esi*1+11h]
+    mov al, byte ptr [edi+esi+11h]
     test eax, eax
     jl loc_581D38
     cmp eax, 0Fh
@@ -443827,7 +442469,7 @@ loc_581F5D:
     mov eax, dword ptr [ecx+8Ch]
     add edx, eax
     xor eax, eax
-    mov al, byte ptr [edx+esi*1+11h]
+    mov al, byte ptr [edx+esi+11h]
     pop edi
     pop esi
     pop ebx
@@ -443971,16 +442613,16 @@ loc_5820AB:
     mov bl, byte ptr [eax+30h]
     test bl, bl
     jz loc_5820EB
-    mov byte ptr [ecx+esi*1+98h], 1
+    mov byte ptr [ecx+esi+98h], 1
     xor ebx, ebx
     cmp dword ptr [eax+24h], 1
     setnle bl
-    mov byte ptr [ecx+esi*1+0A2h], bl
+    mov byte ptr [ecx+esi+0A2h], bl
     jmp loc_5820FB
 
 loc_5820EB:
-    mov byte ptr [ecx+esi*1+0A2h], 0
-    mov byte ptr [ecx+esi*1+98h], 0
+    mov byte ptr [ecx+esi+0A2h], 0
+    mov byte ptr [ecx+esi+98h], 0
 
 loc_5820FB:
     mov eax, dword ptr [ebp+8]
@@ -444107,7 +442749,7 @@ loc_582214:
     jz loc_58223B
     sub eax, ecx
     xor ecx, ecx
-    mov cl, byte ptr [edx+esi*1+490h]
+    mov cl, byte ptr [edx+esi+490h]
     mov esi, ecx
     jmp loc_582260
 
@@ -444172,7 +442814,7 @@ loc_5822B1:
 loc_5822B4:
     mov edx, dword ptr [ebp-8]
     mov ecx, dword ptr [ebp-18h]
-    cmp byte ptr [edx+ecx*1+98h], 0
+    cmp byte ptr [edx+ecx+98h], 0
     jz loc_5822D9
     mov ecx, dword ptr [ebp-14h]
     mov ecx, dword ptr [ecx]
@@ -444184,7 +442826,7 @@ loc_5822B4:
 
 loc_5822D9:
     mov ecx, dword ptr [ebp-18h]
-    cmp byte ptr [edx+ecx*1+0A2h], 0
+    cmp byte ptr [edx+ecx+0A2h], 0
     jz loc_5823FC
     mov ebx, 1
 
@@ -444219,7 +442861,7 @@ loc_58231E:
     mov esi, dword ptr [ebp-4]
     sub eax, ecx
     xor ecx, ecx
-    mov cl, byte ptr [edx+esi*1+490h]
+    mov cl, byte ptr [edx+esi+490h]
     mov esi, ecx
     jmp loc_582373
 
@@ -444333,7 +442975,7 @@ loc_582432:
     jz loc_582459
     sub eax, ecx
     xor ecx, ecx
-    mov cl, byte ptr [edx+ebx*1+490h]
+    mov cl, byte ptr [edx+ebx+490h]
     mov esi, ecx
     jmp loc_58247E
 
@@ -444720,7 +443362,7 @@ loc_5827C0:
     mov esi, 40h
 
 loc_5827CF:
-    movsx edi, word ptr [edx+eax*1]
+    movsx edi, word ptr [edx+eax]
     xor ebx, ebx
     add ecx, 4
     mov bx, word ptr [eax]
@@ -445062,7 +443704,7 @@ loc_582B10:
     cmp edx, edi
     jnz loc_582B45
     mov eax, dword ptr [ebp-10h]
-    lea edx, [ecx+ecx*1]
+    lea edx, [ecx+ecx]
     cmp edx, eax
     jnz loc_582B45
     mov al, byte ptr [ebp+0Bh]
@@ -445098,12 +443740,12 @@ loc_582B45:
     idiv edi
     mov edi, dword ptr [ebp-18h]
     mov edx, dword ptr [ebp-0Ch]
-    mov byte ptr [edx+edi*1+8Ch], al
+    mov byte ptr [edx+edi+8Ch], al
     mov eax, dword ptr [ebp-10h]
     cdq
     idiv ecx
     mov ecx, dword ptr [ebp-0Ch]
-    mov byte ptr [ecx+edi*1+96h], al
+    mov byte ptr [ecx+edi+96h], al
     jmp loc_582B97
 
 loc_582B86:
@@ -445436,7 +444078,7 @@ sub_582E30 PROC PRIVATE
 
 loc_582E57:
     mov eax, dword ptr [edi]
-    mov esi, dword ptr [edx+edi*1]
+    mov esi, dword ptr [edx+edi]
     mov ecx, eax
     add ecx, dword ptr [ebx+5Ch]
     cmp eax, ecx
@@ -445565,7 +444207,7 @@ sub_582F20 PROC PRIVATE
     mov dword ptr [ebp+10h], esi
 
 loc_582F4B:
-    mov ecx, dword ptr [esi+edi*1]
+    mov ecx, dword ptr [esi+edi]
     mov eax, dword ptr [edi]
     xor edx, edx
     xor ebx, ebx
@@ -445575,7 +444217,7 @@ loc_582F4B:
     inc eax
     mov bl, byte ptr [ecx]
     lea edx, [edx+edx*2]
-    lea edx, [edx+ebx*1+2]
+    lea edx, [edx+ebx+2]
     sar edx, 2
     mov byte ptr [eax], dl
     mov edx, dword ptr [ebp+0Ch]
@@ -445592,13 +444234,13 @@ loc_582F76:
     lea esi, [edx+edx*2]
     xor edx, edx
     mov dl, byte ptr [ecx-2]
-    lea edx, [edx+esi*1+1]
+    lea edx, [edx+esi+1]
     sar edx, 2
     mov byte ptr [eax], dl
     xor edx, edx
     mov dl, byte ptr [ecx]
     inc eax
-    lea edx, [edx+esi*1+2]
+    lea edx, [edx+esi+2]
     sar edx, 2
     mov byte ptr [eax], dl
     inc eax
@@ -445613,7 +444255,7 @@ loc_582FA1:
     mov bl, byte ptr [ecx-1]
     add edi, 4
     lea ecx, [edx+edx*2]
-    lea ecx, [ebx+ecx*1+1]
+    lea ecx, [ebx+ecx+1]
     sar ecx, 2
     mov byte ptr [eax], cl
     mov byte ptr [eax+1], dl
@@ -445705,7 +444347,7 @@ loc_583036:
     lea ebx, [eax+esi*2]
     inc edi
     inc edx
-    lea ebx, [esi+ebx*1+7]
+    lea ebx, [esi+ebx+7]
     inc ecx
     sar ebx, 4
     mov byte ptr [ecx], bl
@@ -445731,11 +444373,11 @@ loc_583096:
     mov ebx, dword ptr [ebp-0Ch]
     inc edi
     inc edx
-    lea ebx, [esi+ebx*1+8]
+    lea ebx, [esi+ebx+8]
     mov esi, dword ptr [ebp-0Ch]
     sar ebx, 4
     mov byte ptr [ecx], bl
-    lea ebx, [eax+esi*1+7]
+    lea ebx, [eax+esi+7]
     mov esi, dword ptr [ebp-10h]
     inc ecx
     sar ebx, 4
@@ -445752,7 +444394,7 @@ loc_583096:
 loc_5830DC:
     mov edx, dword ptr [ebp+14h]
     lea edx, [edx+eax*2]
-    lea edx, [eax+edx*1+8]
+    lea edx, [eax+edx+8]
     lea eax, [eax*4+7]
     sar edx, 4
     sar eax, 4
@@ -445945,7 +444587,7 @@ loc_5832A2:
 loc_5832B7:
     mov edx, dword ptr [esi+0C4h]
     inc eax
-    mov byte ptr [ecx+edx*1+30h], 0
+    mov byte ptr [ecx+edx+30h], 0
     mov edx, dword ptr [esi+24h]
     add ecx, 54h
     cmp eax, edx
@@ -446022,18 +444664,18 @@ loc_583376:
     mov ebx, dword ptr [esi+8]
     mov edi, edx
     sar edi, 10h
-    mov dword ptr [ebx+eax*1], edi
+    mov dword ptr [ebx+eax], edi
     mov edi, dword ptr [ebp+8]
     mov ebx, dword ptr [esi+0Ch]
     add edx, 166E9h
     sar edi, 10h
-    mov dword ptr [ebx+eax*1], edi
+    mov dword ptr [ebx+eax], edi
     mov ebx, dword ptr [esi+10h]
     mov edi, dword ptr [ebp-4]
-    mov dword ptr [ebx+eax*1], edi
+    mov dword ptr [ebx+eax], edi
     mov ebx, dword ptr [esi+14h]
     sub edi, 0B6D2h
-    mov dword ptr [ebx+eax*1], ecx
+    mov dword ptr [ebx+eax], ecx
     mov ebx, dword ptr [ebp+8]
     sub ecx, 581Ah
     add ebx, 1C5A2h
@@ -446085,14 +444727,14 @@ loc_583420:
     mov ecx, dword ptr [esi]
     mov ebx, dword ptr [ebp+14h]
     add ebx, 4
-    mov ecx, dword ptr [ecx+eax*1]
+    mov ecx, dword ptr [ecx+eax]
     mov dword ptr [ebp+14h], ebx
     mov dword ptr [ebp+8], ecx
     mov ecx, dword ptr [esi+4]
-    mov edi, dword ptr [ecx+eax*1]
+    mov edi, dword ptr [ecx+eax]
     mov ecx, dword ptr [esi+8]
     mov dword ptr [ebp-8], edi
-    mov ecx, dword ptr [ecx+eax*1]
+    mov ecx, dword ptr [ecx+eax]
     add eax, 4
     mov dword ptr [ebp+10h], ecx
     mov ecx, dword ptr [ebx-4]
@@ -446117,38 +444759,38 @@ loc_58346E:
 loc_583474:
     xor ebx, ebx
     add ecx, 3
-    mov bl, byte ptr [esi+eax*1]
+    mov bl, byte ptr [esi+eax]
     mov esi, ebx
     xor ebx, ebx
     mov bl, byte ptr [eax]
     mov dword ptr [ebp-8], ebx
     xor ebx, ebx
-    mov bl, byte ptr [edi+eax*1]
+    mov bl, byte ptr [edi+eax]
     mov edi, ebx
     mov ebx, dword ptr [ebp-10h]
     shl edi, 2
-    mov ebx, dword ptr [ebx+edi*1]
+    mov ebx, dword ptr [ebx+edi]
     add ebx, edx
-    mov dl, byte ptr [ebx+esi*1]
+    mov dl, byte ptr [ebx+esi]
     mov ebx, dword ptr [ebp-14h]
     mov byte ptr [ecx-3], dl
     mov edx, dword ptr [ebp-8]
     shl edx, 2
     mov dword ptr [ebp-8], edx
-    mov ebx, dword ptr [ebx+edx*1]
+    mov ebx, dword ptr [ebx+edx]
     mov edx, dword ptr [ebp-18h]
-    add ebx, dword ptr [edx+edi*1]
+    add ebx, dword ptr [edx+edi]
     mov edx, dword ptr [ebp-1Ch]
     mov edi, dword ptr [ebp-20h]
     sar ebx, 10h
     add ebx, edx
-    mov bl, byte ptr [ebx+esi*1]
+    mov bl, byte ptr [ebx+esi]
     mov byte ptr [ecx-2], bl
     mov ebx, dword ptr [ebp-8]
-    mov edi, dword ptr [edi+ebx*1]
+    mov edi, dword ptr [edi+ebx]
     add edi, edx
     inc eax
-    mov bl, byte ptr [edi+esi*1]
+    mov bl, byte ptr [edi+esi]
     mov esi, dword ptr [ebp+8]
     mov byte ptr [ecx-1], bl
     dec esi
@@ -446204,7 +444846,7 @@ loc_583538:
     mov eax, dword ptr [edx]
     mov ecx, dword ptr [ebp+8]
     mov ebx, dword ptr [ebp+14h]
-    mov ecx, dword ptr [eax+ecx*1]
+    mov ecx, dword ptr [eax+ecx]
     mov eax, esi
     add eax, dword ptr [ebx]
     test edi, edi
@@ -446299,13 +444941,13 @@ loc_5835E0:
     mov eax, dword ptr [edx]
     xor edx, edx
     test edi, edi
-    mov esi, dword ptr [eax+ebx*1-4]
+    mov esi, dword ptr [eax+ebx-4]
     mov eax, dword ptr [ecx-4]
     mov dword ptr [ebp+14h], ecx
     jbe loc_583611
 
 loc_5835FE:
-    mov cl, byte ptr [edx+esi*1]
+    mov cl, byte ptr [edx+esi]
     mov byte ptr [eax+2], cl
     mov byte ptr [eax+1], cl
     mov byte ptr [eax], cl
@@ -446363,17 +445005,17 @@ loc_583674:
     mov eax, dword ptr [esi]
     mov ecx, dword ptr [esi+4]
     mov ebx, dword ptr [ebp+14h]
-    mov edi, dword ptr [eax+edx*1]
-    mov eax, dword ptr [ecx+edx*1]
+    mov edi, dword ptr [eax+edx]
+    mov eax, dword ptr [ecx+edx]
     mov ecx, dword ptr [esi+8]
     add ebx, 4
     mov dword ptr [ebp+14h], ebx
-    mov ecx, dword ptr [ecx+edx*1]
+    mov ecx, dword ptr [ecx+edx]
     add edx, 4
     mov dword ptr [ebp+18h], ecx
     mov ecx, dword ptr [esi+0Ch]
     mov dword ptr [ebp-28h], edx
-    mov ecx, dword ptr [ecx+edx*1-4]
+    mov ecx, dword ptr [ecx+edx-4]
     mov dword ptr [ebp-8], ecx
     mov ecx, dword ptr [ebx-4]
     mov ebx, dword ptr [ebp-4]
@@ -446398,17 +445040,17 @@ loc_5836CB:
 loc_5836D1:
     xor edx, edx
     mov ebx, dword ptr [ebp-14h]
-    mov dl, byte ptr [esi+eax*1]
+    mov dl, byte ptr [esi+eax]
     add ecx, 4
     mov esi, edx
     xor edx, edx
     mov dl, byte ptr [eax]
     mov dword ptr [ebp-8], edx
     xor edx, edx
-    mov dl, byte ptr [edi+eax*1]
+    mov dl, byte ptr [edi+eax]
     lea edi, [edx*4]
     mov edx, dword ptr [ebp+8]
-    sub edx, dword ptr [ebx+edi*1]
+    sub edx, dword ptr [ebx+edi]
     mov ebx, dword ptr [ebp-18h]
     sub edx, esi
     mov dl, byte ptr [edx+0FFh]
@@ -446416,9 +445058,9 @@ loc_5836D1:
     mov edx, dword ptr [ebp-8]
     shl edx, 2
     mov dword ptr [ebp-8], edx
-    mov edx, dword ptr [ebx+edx*1]
+    mov edx, dword ptr [ebx+edx]
     mov ebx, dword ptr [ebp-1Ch]
-    add edx, dword ptr [ebx+edi*1]
+    add edx, dword ptr [ebx+edi]
     mov edi, dword ptr [ebp+8]
     mov ebx, edi
     sar edx, 10h
@@ -446428,13 +445070,13 @@ loc_5836D1:
     mov ebx, dword ptr [ebp-8]
     mov byte ptr [ecx-3], dl
     mov edx, dword ptr [ebp-20h]
-    sub edi, dword ptr [edx+ebx*1]
+    sub edi, dword ptr [edx+ebx]
     sub edi, esi
     inc eax
     mov dl, byte ptr [edi+0FFh]
     mov byte ptr [ecx-2], dl
     mov edx, dword ptr [ebp-24h]
-    mov dl, byte ptr [edx+eax*1-1]
+    mov dl, byte ptr [edx+eax-1]
     mov byte ptr [ecx-1], dl
     mov edx, dword ptr [ebp+18h]
     dec edx
@@ -446568,7 +445210,7 @@ loc_58383A:
     mov dword ptr [ebp-20h], esi
     mov esi, dword ptr [ebp+8]
     shl edx, 0Dh
-    lea ebx, [esi+edx*1]
+    lea ebx, [esi+edx]
     sub edx, esi
     movsx esi, word ptr [edi+50h]
     imul esi, dword ptr [eax+0A0h]
@@ -446583,14 +445225,14 @@ loc_58383A:
     mov dword ptr [ebp+8], edi
     imul eax, ebx
     mov dword ptr [ebp-18h], eax
-    lea ebx, [eax+edx*1]
+    lea ebx, [eax+edx]
     add eax, esi
     mov dword ptr [ebp+10h], ebx
-    lea ebx, [edi+esi*1]
+    lea ebx, [edi+esi]
     add edi, edx
     mov dword ptr [ebp+0Ch], ebx
     mov dword ptr [ebp-0Ch], eax
-    lea ebx, [eax+edi*1]
+    lea ebx, [eax+edi]
     lea eax, [ebx+ebx*4]
     shl eax, 6
     add eax, ebx
@@ -446656,7 +445298,7 @@ loc_58383A:
     lea ebx, [ebx+edi*2]
     add ebx, eax
     mov eax, dword ptr [ebp-2Ch]
-    lea edi, [eax+ebx*1+400h]
+    lea edi, [eax+ebx+400h]
     sub eax, ebx
     add eax, 400h
     sar edi, 0Bh
@@ -446665,14 +445307,14 @@ loc_58383A:
     mov edi, dword ptr [ebp+8]
     mov dword ptr [ecx+0E0h], eax
     mov eax, dword ptr [ebp-1Ch]
-    lea ebx, [eax+edi*1+400h]
+    lea ebx, [eax+edi+400h]
     sub eax, edi
     add eax, 400h
     sar eax, 0Bh
     mov dword ptr [ecx+0C0h], eax
     mov eax, dword ptr [ebp-24h]
     sar ebx, 0Bh
-    lea edi, [eax+esi*1+400h]
+    lea edi, [eax+esi+400h]
     sub eax, esi
     add eax, 400h
     mov dword ptr [ecx+20h], ebx
@@ -446680,7 +445322,7 @@ loc_58383A:
     mov dword ptr [ecx+0A0h], eax
     mov eax, dword ptr [ebp-20h]
     sar edi, 0Bh
-    lea esi, [eax+edx*1+400h]
+    lea esi, [eax+edx+400h]
     mov dword ptr [ecx+40h], edi
     sar esi, 0Bh
     mov dword ptr [ecx+60h], esi
@@ -446737,7 +445379,7 @@ loc_583A80:
     add eax, 10h
     sar eax, 5
     and eax, 3FFh
-    mov al, byte ptr [eax+ebx*1]
+    mov al, byte ptr [eax+ebx]
     mov byte ptr [ecx], al
     mov byte ptr [ecx+1], al
     mov byte ptr [ecx+2], al
@@ -446751,7 +445393,7 @@ loc_583A80:
 loc_583AE7:
     mov esi, dword ptr [edx+8]
     mov eax, dword ptr [edx+18h]
-    lea edi, [eax+esi*1]
+    lea edi, [eax+esi]
     lea ebx, [edi+edi*2]
     shl ebx, 3
     sub ebx, edi
@@ -446777,17 +445419,17 @@ loc_583AE7:
     lea eax, [ebx+eax*2]
     mov ebx, dword ptr [edx+10h]
     mov dword ptr [ebp-18h], eax
-    lea eax, [esi+ebx*1]
+    lea eax, [esi+ebx]
     sub esi, ebx
     mov ebx, dword ptr [ebp-18h]
     shl eax, 0Dh
     shl esi, 0Dh
     mov dword ptr [ebp+14h], esi
-    lea esi, [ebx+eax*1]
+    lea esi, [ebx+eax]
     sub eax, ebx
     mov dword ptr [ebp-20h], eax
     mov eax, dword ptr [ebp+14h]
-    lea ebx, [edi+eax*1]
+    lea ebx, [edi+eax]
     sub eax, edi
     mov dword ptr [ebp-1Ch], ebx
     mov ebx, dword ptr [edx+0Ch]
@@ -446881,55 +445523,55 @@ loc_583AE7:
     lea edi, [edi+ebx*2]
     mov ebx, dword ptr [ebp-28h]
     add edi, eax
-    lea eax, [esi+edi*1+20000h]
+    lea eax, [esi+edi+20000h]
     sub esi, edi
     sar eax, 12h
     add esi, 20000h
     mov edi, dword ptr [ebp+8]
     and eax, 3FFh
     sar esi, 12h
-    mov al, byte ptr [eax+ebx*1]
+    mov al, byte ptr [eax+ebx]
     and esi, 3FFh
     mov byte ptr [ecx], al
-    mov al, byte ptr [esi+ebx*1]
+    mov al, byte ptr [esi+ebx]
     mov esi, dword ptr [ebp-1Ch]
     mov byte ptr [ecx+7], al
-    lea eax, [esi+edi*1+20000h]
+    lea eax, [esi+edi+20000h]
     sub esi, edi
     sar eax, 12h
     add esi, 20000h
     mov edi, dword ptr [ebp+14h]
     and eax, 3FFh
     sar esi, 12h
-    mov al, byte ptr [eax+ebx*1]
+    mov al, byte ptr [eax+ebx]
     and esi, 3FFh
     mov byte ptr [ecx+1], al
-    mov al, byte ptr [esi+ebx*1]
+    mov al, byte ptr [esi+ebx]
     mov esi, dword ptr [ebp-24h]
     mov byte ptr [ecx+6], al
-    lea eax, [esi+edi*1+20000h]
+    lea eax, [esi+edi+20000h]
     sar eax, 12h
     and eax, 3FFh
-    mov al, byte ptr [eax+ebx*1]
+    mov al, byte ptr [eax+ebx]
     sub esi, edi
     mov edi, dword ptr [ebp-8]
     add esi, 20000h
     mov byte ptr [ecx+2], al
     sar esi, 12h
     and esi, 3FFh
-    mov al, byte ptr [esi+ebx*1]
+    mov al, byte ptr [esi+ebx]
     mov esi, dword ptr [ebp-20h]
     mov byte ptr [ecx+5], al
-    lea eax, [esi+edi*1+20000h]
+    lea eax, [esi+edi+20000h]
     sub esi, edi
     sar eax, 12h
     add esi, 20000h
     and eax, 3FFh
     sar esi, 12h
-    mov al, byte ptr [eax+ebx*1]
+    mov al, byte ptr [eax+ebx]
     and esi, 3FFh
     mov byte ptr [ecx+3], al
-    mov al, byte ptr [esi+ebx*1]
+    mov al, byte ptr [esi+ebx]
     mov byte ptr [ecx+4], al
 
 loc_583D16:
@@ -447015,7 +445657,7 @@ loc_583DDC:
     sub edx, ebx
     mov dword ptr [ebp+10h], edx
     mov edx, dword ptr [ebp-8]
-    lea ebx, [edx+edi*1]
+    lea ebx, [edx+edi]
     sub edi, edx
     mov dword ptr [ebp+8], ebx
     lea edx, [edi+edi*4]
@@ -447031,7 +445673,7 @@ loc_583DDC:
     sub edx, ebx
     mov dword ptr [ebp-8], edx
     mov edx, dword ptr [ebp+10h]
-    lea ebx, [edi+edx*1]
+    lea ebx, [edi+edx]
     sub edx, edi
     movsx edi, word ptr [esi+10h]
     mov dword ptr [ebp+0Ch], edx
@@ -447114,19 +445756,19 @@ loc_583DDC:
     sub edi, ebx
     mov dword ptr [eax+0E0h], edi
     mov edi, dword ptr [ebp-18h]
-    lea ebx, [edx+edi*1]
+    lea ebx, [edx+edi]
     sub edi, edx
     mov edx, dword ptr [ebp+0Ch]
     mov dword ptr [eax+0C0h], edi
     mov edi, dword ptr [ebp+10h]
     mov dword ptr [eax+20h], ebx
-    lea ebx, [edi+edx*1]
+    lea ebx, [edi+edx]
     sub edx, edi
     mov edi, dword ptr [ebp-4]
     mov dword ptr [eax+0A0h], edx
     mov edx, dword ptr [ebp-8]
     mov dword ptr [eax+40h], ebx
-    lea ebx, [edi+edx*1]
+    lea ebx, [edi+edx]
     sub edx, edi
     mov edi, dword ptr [ebp-20h]
     mov dword ptr [eax+80h], ebx
@@ -447173,7 +445815,7 @@ loc_583F90:
     mov ecx, dword ptr [edx]
     sar ecx, 5
     and ecx, 3FFh
-    mov cl, byte ptr [ecx+edi*1]
+    mov cl, byte ptr [ecx+edi]
     mov byte ptr [eax], cl
     mov byte ptr [eax+1], cl
     mov byte ptr [eax+2], cl
@@ -447187,7 +445829,7 @@ loc_583F90:
 loc_583FF8:
     mov ebx, dword ptr [edx+10h]
     mov ecx, dword ptr [edx]
-    lea esi, [ecx+ebx*1]
+    lea esi, [ecx+ebx]
     sub ecx, ebx
     mov ebx, dword ptr [edx+18h]
     mov dword ptr [ebp+10h], ecx
@@ -447209,13 +445851,13 @@ loc_583FF8:
     sub esi, ebx
     mov dword ptr [ebp-8], esi
     mov esi, dword ptr [ebp+10h]
-    lea ebx, [ecx+esi*1]
+    lea ebx, [ecx+esi]
     sub esi, ecx
     mov ecx, dword ptr [edx+14h]
     mov dword ptr [ebp+0Ch], esi
     mov esi, dword ptr [edx+0Ch]
     mov dword ptr [ebp-18h], ebx
-    lea ebx, [ecx+esi*1]
+    lea ebx, [ecx+esi]
     sub ecx, esi
     mov dword ptr [ebp-10h], ebx
     mov ebx, dword ptr [edx+1Ch]
@@ -447278,48 +445920,48 @@ loc_583FF8:
     add ebx, ecx
     sar ebx, 5
     and ebx, 3FFh
-    mov bl, byte ptr [ebx+edi*1]
+    mov bl, byte ptr [ebx+edi]
     mov byte ptr [eax], bl
     mov ebx, dword ptr [ebp+8]
     sub ecx, ebx
     sar ecx, 5
     and ecx, 3FFh
-    mov cl, byte ptr [ecx+edi*1]
+    mov cl, byte ptr [ecx+edi]
     mov byte ptr [eax+7], cl
     mov ecx, dword ptr [ebp-18h]
-    lea ebx, [esi+ecx*1]
+    lea ebx, [esi+ecx]
     sub ecx, esi
     sar ebx, 5
     and ebx, 3FFh
     mov esi, dword ptr [ebp+0Ch]
     sar ecx, 5
-    mov bl, byte ptr [ebx+edi*1]
+    mov bl, byte ptr [ebx+edi]
     and ecx, 3FFh
     mov byte ptr [eax+1], bl
-    mov cl, byte ptr [ecx+edi*1]
+    mov cl, byte ptr [ecx+edi]
     mov byte ptr [eax+6], cl
     mov ecx, dword ptr [ebp+10h]
-    lea ebx, [ecx+esi*1]
+    lea ebx, [ecx+esi]
     sub esi, ecx
     sar ebx, 5
     and ebx, 3FFh
     sar esi, 5
-    mov bl, byte ptr [ebx+edi*1]
+    mov bl, byte ptr [ebx+edi]
     and esi, 3FFh
     mov byte ptr [eax+2], bl
-    mov cl, byte ptr [esi+edi*1]
+    mov cl, byte ptr [esi+edi]
     mov esi, dword ptr [ebp-8]
     mov byte ptr [eax+5], cl
     mov ecx, dword ptr [ebp-4]
-    lea ebx, [ecx+esi*1]
+    lea ebx, [ecx+esi]
     sub esi, ecx
     sar ebx, 5
     and ebx, 3FFh
     sar esi, 5
-    mov bl, byte ptr [ebx+edi*1]
+    mov bl, byte ptr [ebx+edi]
     and esi, 3FFh
     mov byte ptr [eax+4], bl
-    mov cl, byte ptr [esi+edi*1]
+    mov cl, byte ptr [esi+edi]
     mov byte ptr [eax+3], cl
 
 loc_584184:
@@ -447696,7 +446338,7 @@ loc_584495:
     fsub dword ptr [ebp-0Ch]
     and ebx, 3FFh
     fsub dword ptr [flt_622378]
-    mov bl, byte ptr [ebx+esi*1]
+    mov bl, byte ptr [ebx+esi]
     mov byte ptr [ecx], bl
     fstp dword ptr [ebp+10h]
     fld dword ptr [ebp-4]
@@ -447704,7 +446346,7 @@ loc_584495:
     mov ebx, dword ptr [ebp+10h]
     and ebx, 3FFh
     fsub dword ptr [flt_622378]
-    mov bl, byte ptr [ebx+esi*1]
+    mov bl, byte ptr [ebx+esi]
     mov byte ptr [ecx+7], bl
     fstp dword ptr [ebp+10h]
     fld dword ptr [ebp+0Ch]
@@ -447712,7 +446354,7 @@ loc_584495:
     mov ebx, dword ptr [ebp+10h]
     and ebx, 3FFh
     fsub dword ptr [flt_622378]
-    mov bl, byte ptr [ebx+esi*1]
+    mov bl, byte ptr [ebx+esi]
     mov byte ptr [ecx+1], bl
     fstp dword ptr [ebp+10h]
     fld dword ptr [ebp+8]
@@ -447720,7 +446362,7 @@ loc_584495:
     mov ebx, dword ptr [ebp+10h]
     and ebx, 3FFh
     fsub dword ptr [flt_622378]
-    mov bl, byte ptr [ebx+esi*1]
+    mov bl, byte ptr [ebx+esi]
     mov byte ptr [ecx+6], bl
     fstp dword ptr [ebp+10h]
     fld dword ptr [ebp-14h]
@@ -447728,7 +446370,7 @@ loc_584495:
     mov ebx, dword ptr [ebp+10h]
     and ebx, 3FFh
     fsub dword ptr [flt_622378]
-    mov bl, byte ptr [ebx+esi*1]
+    mov bl, byte ptr [ebx+esi]
     mov byte ptr [ecx+2], bl
     fstp dword ptr [ebp+8]
     fld dword ptr [ebp-8]
@@ -447736,7 +446378,7 @@ loc_584495:
     mov ebx, dword ptr [ebp+8]
     and ebx, 3FFh
     fsub dword ptr [flt_622378]
-    mov bl, byte ptr [ebx+esi*1]
+    mov bl, byte ptr [ebx+esi]
     mov byte ptr [ecx+5], bl
     fstp dword ptr [ebp+8]
     fld dword ptr [ebp-18h]
@@ -447744,7 +446386,7 @@ loc_584495:
     mov ebx, dword ptr [ebp+8]
     and ebx, 3FFh
     fsub dword ptr [flt_622378]
-    mov bl, byte ptr [ebx+esi*1]
+    mov bl, byte ptr [ebx+esi]
     mov byte ptr [ecx+4], bl
     fstp dword ptr [ebp+8]
     mov ebx, dword ptr [ebp+8]
@@ -447752,7 +446394,7 @@ loc_584495:
     and ebx, 3FFh
     add edi, 4
     dec edx
-    mov bl, byte ptr [ebx+esi*1]
+    mov bl, byte ptr [ebx+esi]
     mov byte ptr [ecx+3], bl
     jnz loc_584495
     pop edi
@@ -458918,114 +457560,6 @@ loc_6154F0:
     jmp ___CxxFrameHandler
 ?Init@mmJoyMan@@QAEHPAUHINSTANCE__@@PAUHWND__@@@Z_SEH ENDP
 
-loc_615510:
-    mov ecx, dword ptr [ebp-10h]
-    add ecx, 2D8h
-    jmp ??1mmJaxis@@QAE@XZ
-
-loc_61551E:
-    mov ecx, dword ptr [ebp-10h]
-    add ecx, 2F4h
-    jmp ??1mmJaxis@@QAE@XZ
-
-loc_61552C:
-    mov ecx, dword ptr [ebp-10h]
-    add ecx, 310h
-    jmp ??1mmJaxis@@QAE@XZ
-
-loc_61553A:
-    mov ecx, dword ptr [ebp-10h]
-    add ecx, 32Ch
-    jmp ??1mmJaxis@@QAE@XZ
-
-loc_615548:
-    mov ecx, dword ptr [ebp-10h]
-    add ecx, 348h
-    jmp ??1mmJaxis@@QAE@XZ
-
-loc_615556:
-    mov ecx, dword ptr [ebp-10h]
-    add ecx, 364h
-    jmp ??1mmJaxis@@QAE@XZ
-
-??0mmJoystick@@QAE@XZ_SEH PROC PRIVATE
-    mov eax, offset stru_62EF28
-    jmp ___CxxFrameHandler
-??0mmJoystick@@QAE@XZ_SEH ENDP
-
-loc_61556E:
-    mov ecx, dword ptr [ebp-10h]
-    add ecx, 2D8h
-    jmp ??1mmJaxis@@QAE@XZ
-
-loc_61557C:
-    mov ecx, dword ptr [ebp-10h]
-    add ecx, 2F4h
-    jmp ??1mmJaxis@@QAE@XZ
-
-loc_61558A:
-    mov ecx, dword ptr [ebp-10h]
-    add ecx, 310h
-    jmp ??1mmJaxis@@QAE@XZ
-
-loc_615598:
-    mov ecx, dword ptr [ebp-10h]
-    add ecx, 32Ch
-    jmp ??1mmJaxis@@QAE@XZ
-
-loc_6155A6:
-    mov ecx, dword ptr [ebp-10h]
-    add ecx, 348h
-    jmp ??1mmJaxis@@QAE@XZ
-
-loc_6155B4:
-    mov ecx, dword ptr [ebp-10h]
-    add ecx, 364h
-    jmp ??1mmJaxis@@QAE@XZ
-
-loc_6155C2:
-    mov ecx, dword ptr [ebp-10h]
-    add ecx, 380h
-    jmp ??1mmJaxis@@QAE@XZ
-
-??1mmJoystick@@QAE@XZ_SEH PROC PRIVATE
-    mov eax, offset stru_62EF78
-    jmp ___CxxFrameHandler
-??1mmJoystick@@QAE@XZ_SEH ENDP
-
-loc_6155DA:
-    mov eax, dword ptr [ebp-10h]
-    push eax
-    call ?arts_operator_delete@@YAXPAX@Z
-    pop ecx
-    retn
-
-loc_6155E5:
-    mov eax, dword ptr [ebp-10h]
-    push eax
-    call ?arts_operator_delete@@YAXPAX@Z
-    pop ecx
-    retn
-
-loc_6155F0:
-    mov eax, dword ptr [ebp-10h]
-    push eax
-    call ?arts_operator_delete@@YAXPAX@Z
-    pop ecx
-    retn
-
-loc_6155FB:
-    mov eax, dword ptr [ebp-10h]
-    push eax
-    call ?arts_operator_delete@@YAXPAX@Z
-    pop ecx
-    retn
-
-?InputCreateEffect@mmJoystick@@QAEXXZ_SEH PROC PRIVATE
-    mov eax, offset stru_62EFD0
-    jmp ___CxxFrameHandler
-?InputCreateEffect@mmJoystick@@QAEXXZ_SEH ENDP
-
 loc_615610:
     mov ecx, dword ptr [ebp-10h]
     jmp ??1asNode@@UAE@XZ
@@ -462976,48 +461510,6 @@ dbl_61C000 dq 03F9EB851EB851EB8r
 
 ALIGN 4
 flt_61C00C dd 040800000r
-
-ALIGN 4
-flt_61C078 dd 000000000r
-
-ALIGN 4
-flt_61C084 dd 03F800000r
-
-ALIGN 8
-dbl_61C090 dq 04010000000000000r
-
-ALIGN 8
-dbl_61C098 dq 03F747AE147AE147Br
-
-ALIGN 4
-flt_61C0A0 dd 0461C4000r
-
-ALIGN 4
-flt_61C0A4 dd 040A00000r
-
-ALIGN 4
-flt_61C0A8 dd 0C2652EE0r
-
-ALIGN 8
-dbl_61C0B0 dq 04076800000000000r
-
-ALIGN 4
-flt_61C0B8 dd 043B40000r
-
-ALIGN 4
-flt_61C0BC dd 03C23D70Ar
-
-ALIGN 4
-flt_61C0C0 dd 03DCCCCCDr
-
-ALIGN 8
-dbl_61C0C8 dq 03FD0000000000000r
-
-ALIGN 4
-SparkMultiplier dd 0.533333 ; PATCH Scale by frametime (16.0 / 30.0)
-
-ALIGN 8
-dbl_61C0D8 dq 04072C00000000000r
 
 ALIGN 4
 flt_61C138 dd 03F800000r
@@ -467197,54 +465689,6 @@ flt_61FCC8 dd 0461C4000r
 
 ALIGN 4
 flt_61FCCC dd 000000000r
-
-ALIGN 4
-??_7mmFrictionFF@@6B@ dd offset ?Init@mmFrictionFF@@UAEHPAUIDirectInputDevice2A@@@Z
-    dd offset ?Play@mmFrictionFF@@UAEHXZ
-    dd offset ?Stop@mmFrictionFF@@UAEHXZ
-    dd offset ?SetValues@mmFrictionFF@@UAEHMM@Z
-
-ALIGN 4
-??_7mmCollideFF@@6B@ dd offset ?Init@mmCollideFF@@UAEHPAUIDirectInputDevice2A@@@Z
-    dd offset ?Play@mmCollideFF@@UAEHXZ
-    dd offset ?Stop@mmCollideFF@@UAEHXZ
-    dd offset ?SetValues@mmCollideFF@@UAEHMM@Z
-
-ALIGN 4
-??_7mmSpringFF@@6B@ dd offset ?Init@mmSpringFF@@UAEHPAUIDirectInputDevice2A@@@Z
-    dd offset ?Play@mmSpringFF@@UAEHXZ
-    dd offset ?Stop@mmSpringFF@@UAEHXZ
-    dd offset ?SetValues@mmSpringFF@@UAEHMM@Z
-
-ALIGN 4
-??_7mmRoadFF@@6B@ dd offset ?Init@mmRoadFF@@UAEHPAUIDirectInputDevice2A@@@Z
-    dd offset ?Play@mmRoadFF@@UAEHXZ
-    dd offset ?Stop@mmRoadFF@@UAEHXZ
-    dd offset ?SetValues@mmRoadFF@@UAEHMM@Z
-
-ALIGN 4
-??_7mmEffectFF@@6B@ dd offset __purecall
-    dd offset ?Play@mmEffectFF@@UAEHXZ
-    dd offset ?Stop@mmEffectFF@@UAEHXZ
-    dd offset ?SetValues@mmEffectFF@@UAEHMM@Z
-
-ALIGN 4
-flt_61FD20 dd 049742400r
-
-ALIGN 4
-flt_61FD24 dd 0461C4000r
-
-ALIGN 4
-flt_61FD28 dd 000000000r
-
-ALIGN 4
-flt_61FD2C dd 0461C4000r
-
-ALIGN 4
-flt_61FD30 dd 049742400r
-
-ALIGN 4
-flt_61FD34 dd 000000000r
 
 ALIGN 4
 flt_61FD38 dd 0461C4000r
@@ -477624,73 +476068,6 @@ stru_62EF00 dd 19930520h
 ALIGN 4
 stru_62EF20 dd 0FFFFFFFFh
     dd offset loc_6154F0
-
-ALIGN 4
-stru_62EF28 dd 19930520h
-    dd 6
-    dd offset stru_62EF48
-    dd 0
-    dd 0
-    dd 0
-    dd 0
-
-ALIGN 4
-stru_62EF48 dd 0FFFFFFFFh
-    dd offset loc_615510
-    dd 0
-    dd offset loc_61551E
-    dd 1
-    dd offset loc_61552C
-    dd 2
-    dd offset loc_61553A
-    dd 3
-    dd offset loc_615548
-    dd 4
-    dd offset loc_615556
-
-ALIGN 4
-stru_62EF78 dd 19930520h
-    dd 7
-    dd offset stru_62EF98
-    dd 0
-    dd 0
-    dd 0
-    dd 0
-
-ALIGN 4
-stru_62EF98 dd 0FFFFFFFFh
-    dd offset loc_61556E
-    dd 0
-    dd offset loc_61557C
-    dd 1
-    dd offset loc_61558A
-    dd 2
-    dd offset loc_615598
-    dd 3
-    dd offset loc_6155A6
-    dd 4
-    dd offset loc_6155B4
-    dd 5
-    dd offset loc_6155C2
-
-ALIGN 4
-stru_62EFD0 dd 19930520h
-    dd 4
-    dd offset stru_62EFF0
-    dd 0
-    dd 0
-    dd 0
-    dd 0
-
-ALIGN 4
-stru_62EFF0 dd 0FFFFFFFFh
-    dd offset loc_6155DA
-    dd 0FFFFFFFFh
-    dd offset loc_6155E5
-    dd 0FFFFFFFFh
-    dd offset loc_6155F0
-    dd 0FFFFFFFFh
-    dd offset loc_6155FB
 
 ALIGN 4
 stru_62F010 dd 19930520h
@@ -490191,53 +488568,6 @@ asc_6464DC db 'Unknown Error',0
 
 ALIGN 4
 asc_6464EC db 'DI_KEYS.DLL',0
-
-ALIGN 4
-asc_6464F8 db 'Enum Effect GUID = %x',0
-
-ALIGN 4
-asc_646510 db 'EnumEffects(Constant Force) failed',0Ah
-    db 0
-
-ALIGN 4
-asc_646534 db 'The device or device instance is not registered with DirectInput',0
-
-ALIGN 4
-asc_646578 db 'The device is full',0
-
-ALIGN 4
-asc_64658C db 'An invalid parameter was passed to the returning function',0
-
-ALIGN 4
-asc_6465C8 db 'This object has not been initialized',0
-
-ALIGN 4
-asc_6465F0 db 'mmCollideFF::Assign failed - %08Xh',0Ah
-    db 0
-
-ALIGN 4
-asc_646614 db 'mmCollideFF::Play failed',0Ah
-    db 0
-
-ALIGN 4
-asc_646654 db 'EnumEffects(Periodic Force) failed',0Ah
-    db 0
-
-ALIGN 4
-asc_646678 db 'mmRoadFF::CreateEffect failed - %08Xh',0Ah
-    db 0
-
-ALIGN 4
-asc_6466A0 db 'mmRoadFF::Assign failed - %08Xh',0Ah
-    db 0
-
-ALIGN 4
-asc_6466C4 db 'mmRoadFF::Play failed',0Ah
-    db 0
-
-ALIGN 4
-asc_6466DC db 'mmRoadFF::Stop failed - %08Xh',0Ah
-    db 0
 
 ALIGN 4
 asc_6466FC db 'EnumEffects(Constant Force) failed',0Ah
@@ -508430,10 +506760,6 @@ PUBLIC ?TotalUpdateTime@mmCar@@2MA
 ?TotalUpdateTime@mmCar@@2MA dd ?
 
 ALIGN 8
-PUBLIC ?ffval@@3MA
-?ffval@@3MA dd ?
-
-ALIGN 8
 PUBLIC ?mmCarMetaClass@@3VMetaClass@@A
 ?mmCarMetaClass@@3VMetaClass@@A db 40 dup (?)
 
@@ -508444,10 +506770,6 @@ PUBLIC ?UpdateTime@mmCar@@2MA
 ALIGN 8
 PUBLIC ?PostUpdateTime@mmCar@@2MA
 ?PostUpdateTime@mmCar@@2MA dd ?
-
-ALIGN 4
-PUBLIC ?LastDamageFF@@3MA
-?LastDamageFF@@3MA dd ?
 
 ALIGN 4
 dword_6A7E74 dd 2 dup (?)
@@ -511015,6 +509337,7 @@ EXTERN ??0mmIODev@@QAE@XZ:PROC
 EXTERN ??0mmInfoBase@@QAE@XZ:PROC
 EXTERN ??0mmInstChain@@QAE@XZ:PROC
 EXTERN ??0mmInstance@@QAE@XZ:PROC
+EXTERN ??0mmJoystick@@QAE@XZ:PROC
 EXTERN ??0mmMatrixInstance@@QAE@XZ:PROC
 EXTERN ??0mmNetObject@@QAE@XZ:PROC
 EXTERN ??0mmNumber@@QAE@XZ:PROC
@@ -511163,7 +509486,7 @@ EXTERN ??1mmInfoBase@@UAE@XZ:PROC
 EXTERN ??1mmInstChain@@QAE@XZ:PROC
 EXTERN ??1mmInstance@@UAE@XZ:PROC
 EXTERN ??1mmInterface@@UAE@XZ:PROC
-EXTERN ??1mmJaxis@@QAE@XZ:PROC
+EXTERN ??1mmJoystick@@QAE@XZ:PROC
 EXTERN ??1mmMatrixInstance@@UAE@XZ:PROC
 EXTERN ??1mmMouseSteerBar@@UAE@XZ:PROC
 EXTERN ??1mmNetObject@@UAE@XZ:PROC
@@ -511545,6 +509868,7 @@ EXTERN ?ISECTS@@3PAVmmIntersection@@A:BYTE
 EXTERN ?Identity@Matrix34@@QAEXXZ:PROC
 EXTERN ?IgnoreToken@Tokenizer@@QAEXXZ:PROC
 EXTERN ?Impact@aiVehicleSpline@@UAEXH@Z:PROC
+EXTERN ?Impact@mmCar@@QAEXPAVmmIntersection@@PAVVector3@@MH1@Z:PROC
 EXTERN ?Impact@mmInstance@@UAEXPAV1@PAVVector3@@@Z:PROC
 EXTERN ?Impact@mmUnhitBangerInstance@@UAEXPAVmmInstance@@PAVVector3@@@Z:PROC
 EXTERN ?ImpactAudioReaction@aiVehicleSpline@@UAEXM@Z:PROC
@@ -511585,6 +509909,9 @@ EXTERN ?InitTrigger@mmBridgeSet@@QAEXXZ:PROC
 EXTERN ?InitVScroll@UITextScroll@@QAEXMMM@Z:PROC
 EXTERN ?InitViewport@agiMeshSet@@KIXAAVagiViewParameters@@@Z:PROC
 EXTERN ?Initialize@asNetwork@@QAEHHHH@Z:PROC
+EXTERN ?InputCreateEffect@mmJoystick@@QAEXXZ:PROC
+EXTERN ?InputInitEffect@mmJoystick@@QAEXXZ:PROC
+EXTERN ?InputStopEffect@mmJoystick@@QAEXXZ:PROC
 EXTERN ?Insert@HashTable@@QAEHPBDPAX@Z:PROC
 EXTERN ?Insert@List@@QAEHHPAX@Z:PROC
 EXTERN ?InsertChild@asNode@@QAEHHPAV1@@Z:PROC
@@ -511690,7 +510017,6 @@ EXTERN ?Parent@mmInstChain@@QAEXPAVmmInstance@@F@Z:PROC
 EXTERN ?PassMask@asRenderWeb@@2HA:BYTE
 EXTERN ?Path@aiMap@@QAEPAVaiPath@@H@Z:PROC
 EXTERN ?PhysUpdate@@3MA:BYTE
-EXTERN ?Play@mmEffectFF@@UAEHXZ:PROC
 EXTERN ?PlayCar@mmImpactAudio@@QAEXM@Z:PROC
 EXTERN ?PlayHorn@aiVehicleSpline@@UAEXMM@Z:PROC
 EXTERN ?PlayTrack@CDMan@@QAEKEE@Z:PROC
@@ -511860,7 +510186,6 @@ EXTERN ?Stats@aiMap@@QAEXXZ:PROC
 EXTERN ?Statsf@@YAXPBDZZ:PROC
 EXTERN ?StealGold@mmMultiCR@@AAEXPAVmmCar@@@Z:PROC
 EXTERN ?Stop@CDMan@@QAEKXZ:PROC
-EXTERN ?Stop@mmEffectFF@@UAEHXZ:PROC
 EXTERN ?Stop@mmTimer@@QAEXXZ:PROC
 EXTERN ?StopSiren@mmCar@@QAEXXZ:PROC
 EXTERN ?StopVoice@aiVehicleSpline@@UAEXXZ:PROC
@@ -511967,12 +510292,14 @@ EXTERN ?dxiRendererChoice@@3HA:BYTE
 EXTERN ?dxiRendererCount@@3HA:BYTE
 EXTERN ?dxiResGetRecommended@@YAHHH@Z:PROC
 EXTERN ?dxiWriteConfigFile@@YAXXZ:PROC
+EXTERN ?ffval@@3MA:BYTE
 EXTERN ?firstFacet@agiMeshSet@@1PAFA:BYTE
 EXTERN ?fix_lighting@@YAXXZ:PROC
 EXTERN ?fogout@agiMeshSet@@1PAEA:BYTE
 EXTERN ?fsVerbose@@3HA:BYTE
 EXTERN ?hwndMain@@3PAUHWND__@@A:BYTE
 EXTERN ?indexCounts@agiMeshSet@@1PAFA:BYTE
+EXTERN ?inputEnumEffectTypeProc@@YGHPBUDIEFFECTINFOA@@PAX@Z:PROC
 EXTERN ?jpeg_mem_init@@YAJPAUjpeg_common_struct@@@Z:PROC
 EXTERN ?jpeg_mem_term@@YAXPAUjpeg_common_struct@@@Z:PROC
 EXTERN ?lpDI@@3PAUIDirectInputA@@A:BYTE

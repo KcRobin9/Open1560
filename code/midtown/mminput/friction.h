@@ -23,22 +23,23 @@
 class mmFrictionFF final : public mmEffectFF
 {
 public:
-    // ?Assign@mmFrictionFF@@QAEHJ@Z
-    ARTS_IMPORT i32 Assign(ilong arg1);
-
     // ?Init@mmFrictionFF@@UAEHPAUIDirectInputDevice2A@@@Z
-    ARTS_IMPORT i32 Init(IDirectInputDevice2A* arg1) override;
+    ARTS_IMPORT b32 Init(IDirectInputDevice2A* device) override;
 
     // ?Play@mmFrictionFF@@UAEHXZ
-    ARTS_IMPORT i32 Play() override;
-
-    // ?SetValues@mmFrictionFF@@UAEHMM@Z
-    ARTS_IMPORT i32 SetValues(f32 arg1, f32 arg2) override;
+    ARTS_IMPORT b32 Play() override;
 
     // ?Stop@mmFrictionFF@@UAEHXZ
-    ARTS_IMPORT i32 Stop() override;
+    ARTS_IMPORT b32 Stop() override;
 
-    u8 gap80[0x1C];
+    // ?SetValues@mmFrictionFF@@UAEHMM@Z
+    ARTS_IMPORT b32 SetValues(f32 a, f32 b) override;
+
+    // ?Assign@mmFrictionFF@@QAEHJ@Z
+    ARTS_IMPORT b32 Assign(ilong coeff);
+
+private:
+    DICONDITION Condition {};
 };
 
 check_size(mmFrictionFF, 0x9C);

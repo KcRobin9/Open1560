@@ -33,7 +33,7 @@ public:
     ARTS_IMPORT mmJaxis();
 
     // ??1mmJaxis@@QAE@XZ
-    ARTS_EXPORT ~mmJaxis();
+    ~mmJaxis();
 
     // ?Capture@mmJaxis@@QAEHXZ
     ARTS_IMPORT i32 Capture();
@@ -65,10 +65,10 @@ class mmJoystick final
 {
 public:
     // ??0mmJoystick@@QAE@XZ
-    ARTS_IMPORT mmJoystick();
+    ARTS_EXPORT mmJoystick();
 
     // ??1mmJoystick@@QAE@XZ
-    ARTS_IMPORT ~mmJoystick();
+    ARTS_EXPORT ~mmJoystick();
 
     // ?DisableAutoCenter@mmJoystick@@QAEHXZ
     ARTS_IMPORT i32 DisableAutoCenter();
@@ -86,13 +86,13 @@ public:
     ARTS_IMPORT i32 Init(IDirectInputDevice2A* arg1, HWND__* arg2);
 
     // ?InputCreateEffect@mmJoystick@@QAEXXZ
-    ARTS_IMPORT void InputCreateEffect();
+    ARTS_EXPORT void InputCreateEffect();
 
     // ?InputInitEffect@mmJoystick@@QAEXXZ
-    ARTS_IMPORT void InputInitEffect();
+    ARTS_EXPORT void InputInitEffect();
 
     // ?InputStopEffect@mmJoystick@@QAEXXZ
-    ARTS_IMPORT void InputStopEffect();
+    ARTS_EXPORT void InputStopEffect();
 
     // ?Poll@mmJoystick@@QAEKXZ
     ARTS_EXPORT ulong Poll();
@@ -112,25 +112,25 @@ public:
     // ?inputPrepareDevice@mmJoystick@@QAEHXZ
     ARTS_IMPORT i32 inputPrepareDevice();
 
-    IDirectInputDevice2A* Device;
-    b32 HasFF;
-    DIJOYSTATE JoyState;
-    DIDEVCAPS DevCaps;
-    DIDEVICEINSTANCEA DevInfo;
-    mmSpringFF* SpringFF;
-    mmFrictionFF* FrictionFF;
-    mmRoadFF* RoadFF;
-    mmCollideFF* CollideFF;
-    mmJaxis XAxis;
-    mmJaxis YAxis;
-    mmJaxis ZAxis;
-    mmJaxis RAxis;
-    mmJaxis UAxis;
-    mmJaxis VAxis;
-    mmJaxis PovAxis;
-    u32 ButtonFlags;
-    u32 Capture;
-    i32 State;
+    IDirectInputDevice2A* Device {};
+    b32 HasFF {};
+    DIJOYSTATE JoyState {};
+    DIDEVCAPS DevCaps {};
+    DIDEVICEINSTANCEA DevInfo {};
+    Ptr<mmSpringFF> SpringFF;
+    Ptr<mmFrictionFF> FrictionFF;
+    Ptr<mmRoadFF> RoadFF;
+    Ptr<mmCollideFF> CollideFF;
+    mmJaxis XAxis {};
+    mmJaxis YAxis {};
+    mmJaxis ZAxis {};
+    mmJaxis RAxis {};
+    mmJaxis UAxis {};
+    mmJaxis VAxis {};
+    mmJaxis PovAxis {};
+    u32 ButtonFlags {};
+    u32 Capture {};
+    i32 State {};
 };
 
 check_size(mmJoystick, 0x3A8);

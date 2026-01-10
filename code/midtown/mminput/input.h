@@ -208,6 +208,11 @@ class eqEventQ;
 class mmIO;
 class mmJoyMan;
 
+#define MM_FF_FRICTION 0
+#define MM_FF_COLLIDE 1
+#define MM_FF_ROAD 2
+#define MM_FF_SPRING 3
+
 class mmInput final : public asNode
 {
 public:

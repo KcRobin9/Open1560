@@ -372,8 +372,9 @@ def print_operand(insn, op, oi, ftype):
             if not first_part:
                 emit('+')
             emit_reg(index_reg)
-            emit('*')
-            emit_hex(1 << sib_scale)
+            if sib_scale != 0:
+                emit('*')
+                emit_hex(1 << sib_scale)
             first_part = False
 
         if first_part:

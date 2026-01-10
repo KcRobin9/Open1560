@@ -30,7 +30,7 @@ public:
     virtual ~mmVehList();
 
     // ?GetVehicleID@mmVehList@@QAEHPAD@Z
-    ARTS_EXPORT i32 GetVehicleID(char* name);
+    ARTS_EXPORT i32 GetVehicleID(aconst char* name);
 
     // ?GetVehicleInfo@mmVehList@@QAEPAVmmVehInfo@@PAD@Z
     mmVehInfo* GetVehicleInfo(const char* name);
@@ -42,7 +42,7 @@ public:
     void Init(i32 arg1);
 
     // ?Load@mmVehList@@QAEXPAD@Z
-    void Load(char* name);
+    void Load(const char* name);
 
     // ?LoadAll@mmVehList@@QAEXXZ
     ARTS_EXPORT void LoadAll();
