@@ -286,6 +286,7 @@ private:
 
     void SwitchNow(i32 id);
 
+public:
     Ptr<eqEventQ> event_q_;
     Ptr<asCamera> menu_camera_;
     Ptr<asViewCS> menu_cs_;
@@ -303,22 +304,22 @@ private:
     Ptr<MArray> menu_array_;
     string controller_names_;
     string string64;
-    string string6C;
-    string string74;
-    string string7C;
+    string object_detail;
+    string texture_resolution;
+    string checkpoint_names;
     string string84;
     string string8C;
     string string94;
-    string string9C;
-    string stringA4;
+    string circuit_names;
+    string blitz_names;
     string stringAC;
     f32 start_x_;
     f32 start_y_;
     f32 scale_x_;
     f32 scale_y_;
     Ptr<sfPointer> pointer_;
-    i32 field_C8;
-    i32 field_CC;
+    i32 font_height_1;
+    i32 font_height_2;
     b32 field_D0;
     f32 field_D4;
     f32 field_D8;
