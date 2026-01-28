@@ -221,14 +221,47 @@ void mmCullCity::Init(char* name, asCamera* camera)
 
     LoadBangers(name);
 
-    switch (MMSTATE.GameMode)
+
+
+    switch (MMSTATE.Difficulty)
     {
-        case mmGameMode::Cruise: LoadBangers(arts_formatf<64>("%s_roam", name)); break;
-        case mmGameMode::Checkpoint: LoadBangers(arts_formatf<64>("%s_r%d", name, MMSTATE.EventId)); break;
-        case mmGameMode::CnR: LoadBangers(arts_formatf<64>("%s_cops", name)); break;
-        case mmGameMode::Circuit: LoadBangers(arts_formatf<64>("%s_c%d", name, MMSTATE.EventId)); break;
-        case mmGameMode::Blitz: LoadBangers(arts_formatf<64>("%s_b%d", name, MMSTATE.EventId)); break;
+        case mmSkillLevel::Amateur: LoadBangers(arts_formatf<64>("%s_amateur", name)); break;
+        case mmSkillLevel::Professional: LoadBangers(arts_formatf<64>("%s_pro", name)); break;
     }
+
+    switch (MMSTATE.TimeOfDay)
+    {
+        case mmTimeOfDay::Morning: LoadBangers(arts_formatf<64>("%s_morning", name)); break;
+        case mmTimeOfDay::Noon: LoadBangers(arts_formatf<64>("%s_noon", name)); break;
+        case mmTimeOfDay::Sunset: LoadBangers(arts_formatf<64>("%s_sunset", name)); break;
+        case mmTimeOfDay::Night: LoadBangers(arts_formatf<64>("%s_night", name)); break;
+    }
+
+    switch (MMSTATE.Weather)
+    {
+        case mmWeather::Sun: LoadBangers(arts_formatf<64>("%s_sun", name)); break;
+        case mmWeather::Fog: LoadBangers(arts_formatf<64>("%s_fog", name)); break;
+        case mmWeather::Rain: LoadBangers(arts_formatf<64>("%s_rain", name)); break;
+        case mmWeather::Snow: LoadBangers(arts_formatf<64>("%s_snow", name)); break;
+    }
+
+    switch (MMSTATE.InputType)
+    {
+        case mmInputType::Mouse: LoadBangers(arts_formatf<64>("%s_mouse", name)); break;
+        case mmInputType::Keyboard: LoadBangers(arts_formatf<64>("%s_keyboard", name)); break;
+        case mmInputType::Joystick: LoadBangers(arts_formatf<64>("%s_joystick", name)); break;
+        case mmInputType::Gamepad: LoadBangers(arts_formatf<64>("%s_gamepad", name)); break;
+        case mmInputType::Wheel2Axis: LoadBangers(arts_formatf<64>("%s_wheel", name)); break;
+    }
+
+    //switch (MMSTATE.GameMode)
+    //{
+    //    case mmGameMode::Cruise: LoadBangers(arts_formatf<64>("%s_roam", name)); break;
+    //    case mmGameMode::Checkpoint: LoadBangers(arts_formatf<64>("%s_r%d", name, MMSTATE.EventId)); break;
+    //    case mmGameMode::CnR: LoadBangers(arts_formatf<64>("%s_cops", name)); break;
+    //    case mmGameMode::Circuit: LoadBangers(arts_formatf<64>("%s_c%d", name, MMSTATE.EventId)); break;
+    //    case mmGameMode::Blitz: LoadBangers(arts_formatf<64>("%s_b%d", name, MMSTATE.EventId)); break;
+    //}
 
     EndOfBangers = new mmYInstance();
 
