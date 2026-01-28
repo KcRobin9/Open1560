@@ -53,10 +53,10 @@ public:
     i32 HitId;
     i32* Inst;
     Vector3 Position;
-    i32 Heading;
+    f32 Heading;
     i32 Type;
-    i32 Radius;
-    i32 RadiusSqr;
+    f32 Radius;
+    f32 RadiusSqr;
 };
 
 check_size(mmWaypointObject, 0x4C);

@@ -18,7 +18,15 @@
 
 #pragma once
 
+#include "wpobject.h"
+
 #include "arts7/node.h"
+#include "data7/str.h"
+#include "mmaudio/sound.h"
+#include "mmaudio/mmvoicecommentary.h"
+#include "vector7/vector2.h"
+#include "vector7/vector3.h"
+#include "vector7/vector4.h"
 
 class mmPlayer;
 
@@ -95,7 +103,7 @@ public:
     ARTS_IMPORT i32 LineIntersect(Vector2 arg1, Vector2 arg2, Vector2 arg3, Vector2 arg4, f32 arg5);
 
     // ?LoadCSV@mmWaypoints@@QAEHPADH@Z
-    ARTS_IMPORT i32 LoadCSV(char* arg1, i32 arg2);
+    ARTS_EXPORT i32 LoadCSV(char* race_name, i32 reverse);
 
     // ?Reset@mmWaypoints@@UAEXXZ
     ARTS_IMPORT void Reset() override;
@@ -118,7 +126,66 @@ public:
     // ?WPHit@mmWaypoints@@QAEHHVVector3@@HH@Z
     ARTS_IMPORT i32 WPHit(i32 arg1, Vector3 arg2, i32 arg3, i32 arg4);
 
-    u8 gap20[0x8C];
+private:
+    // Helper methods for LoadCSV
+    void AllocateWaypointArrays(i32 count);
+    void SetStartPosition(i32 positionIndex);
+    mmWaypointObject* CreateWaypointObject(Vector4& position, const char* typeName, i32 waypointIndex, f32 radius, f32 defaultRadius);
+    void SetupGatePointsForWaypoint(i32 waypointIndex, i32 positionIndex);
+    void SetupGatePointsForPreviousWaypoint(i32 waypointIndex, i32 positionIndex);
+    f32 CalculateHeadingBetweenPositions(i32 fromIndex, i32 toIndex);
+
+    void LoadBlitzWaypoints(i32 reverse);
+    void LoadCheckpointWaypoints(i32 reverse);
+    void LoadCircuitWaypoints(i32 reverse);
+
+public:
+    i32 RaceType;                       // 0x20: Type of race
+    i32 field_24;                       // 0x24
+
+    i32 CurrentWaypoint;                // 0x28: Current waypoint index
+    i32 PositionCount;                  // 0x2C: Number of waypoint positions
+
+    i32 field_30;                       // 0x30
+    i32 HitId;                          // 0x34: ID of last hit waypoint
+
+    i32 field_38;                       // 0x38
+    i32 field_3C;                       // 0x3C
+    i32 field_40;                       // 0x40
+
+    i32 NumLaps;                        // 0x44: Number of laps for circuit races
+    i32 dword48;                        // 0x48
+    i32 dword4C;                        // 0x4C
+
+    i32 field_50;                       // 0x50
+    i32 LastWaypoint;                   // 0x54: Last waypoint index
+
+    i32 dword58;                        // 0x58
+    Vector3* Positions;                 // 0x5C: Array of waypoint positions
+
+    Vector2* GatePointsLeft;            // 0x60: Left gate points for each waypoint
+    Vector2* GatePointsRight;           // 0x64: Right gate points for each waypoint
+
+    Vector3 StartPos;                   // 0x68: Starting position
+
+    Vector2 field_74;                   // 0x74
+
+    Vector2 field_7C;                   // 0x7C
+
+    f32 StartAngle;                     // 0x84: Starting heading angle
+
+    mmWaypointObject** Waypoints;       // 0x88: Array of waypoint objects
+    i32 dword8C;                        // 0x8C
+
+    mmPlayer* Player;                   // 0x90: Player reference
+    AudSound* WaypointSound;            // 0x94: Sound for waypoint hits
+
+    i32 field_98;                       // 0x98
+
+    AudSound* LastWaypointSound;        // 0x9C: Sound for last waypoint
+    mmVoiceCommentary* VoiceCommentary; // 0xA0: Voice commentary system
+
+    string stringA4;                     // 0xA4: String storage
 };
 
 check_size(mmWaypoints, 0xAC);
