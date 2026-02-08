@@ -23,23 +23,227 @@ define_dummy_symbol(mmgame_waypoints);
 #include "wpobject.h"
 
 #include "data7/printer.h"
+#include "mmaudio/sound.h"
+#include "mmcity/cullcity.h"
 #include "mmcity/positions.h"
 #include "mmcityinfo/state.h"
+#include "mmgame/hud.h"
+#include "mmgame/player.h"
 #include "vector7/matrix34.h"
 
-// Conversion constants
-static constexpr f32 RAD_TO_DEG = 57.295776f;   // 180 / PI
-static constexpr f32 DEG_TO_RAD = 0.017453292f; // PI / 180
 
-// Maximum checkpoints for Blitz mode
+static constexpr f32 PI = 3.1415926;
+static constexpr f32 DEG_TO_RAD = PI / 180.0f;
+static constexpr f32 RAD_TO_DEG = 180.0f / PI;
 static constexpr i32 MAX_BLITZ_CHECKPOINTS = 6;
-
-// Default waypoint radius values
 static constexpr f32 DEFAULT_RADIUS_NORMAL = 7.5f;
 static constexpr f32 DEFAULT_RADIUS_BLITZ_EVENT_8 = 7.0f;
+static constexpr i32 DEFAULT_RECALL_RADIUS = 15;
 
 void mmWaypoints::Cull()
 {}
+
+/////////////////////////////////////////////////////////////////////////////
+
+// arts_sprintf(path, "race\\%swaypoints.csv", race_name);
+
+// Ergerns anders ook dit gebruiken?
+
+// pos.x --> size       niet mogelijk (vec3 naar vec4)
+
+/////////////////////////////////////////////////////////////////////////////
+
+void mmWaypoints::SetArrow()
+{
+    Player->Hud.Arrow.SetInterest(&Positions[CurrentWaypoint]);
+}
+
+f32 mmWaypoints::GetHeading(i32 index)
+{
+    if (index >= PositionCount)
+        return 0.0f;
+    return Waypoints[index]->Heading;
+}
+
+i32 mmWaypoints::GetHitRoom(i32 index)
+{
+    return Waypoints[index]->HitId;
+}
+
+void mmWaypoints::GetLastWaypoint()
+{
+    CycleCurrentWaypoint(0);
+}
+
+void mmWaypoints::GetNextWaypoint()
+{
+    CycleCurrentWaypoint(1);
+}
+
+f32 mmWaypoints::GetStartAngle()
+{
+    if (Waypoints)
+        return StartAngle;
+    return 0.0f;
+}
+
+void mmWaypoints::GetWaypoint(i32 index, Vector3& out_pos)
+{
+    if (index >= PositionCount)
+    {
+        out_pos = {0.0f, 0.0f, 0.0f}; // of: out.Set(...)
+    }
+    else
+    {
+        out_pos = Waypoints[index]->Position;
+    }
+}
+
+void mmWaypoints::GetStart(Vector3& out_pos)
+{
+    if (PositionCount <= 0)
+    {
+        out_pos = {0.0f, 0.0f, 0.0f}; // of: out.Set(...)
+    }
+    else
+    {
+        out_pos = StartPos;
+    }
+}
+
+void mmWaypoints::ResetAllTags()
+{
+    for (i32 i = 0; i < PositionCount; ++i)
+    {
+        Waypoints[i]->Initialized = false;
+        Waypoints[i]->Activate();
+    }
+}
+
+void mmWaypoints::DeactivateFinish()
+{
+    Waypoints[PositionCount - 1]->Deactivate();
+}
+
+void mmWaypoints::UpdateWPHUD()
+{
+    Vector3 diff;
+    Vector3 wp_pos = Waypoints[CurrentWaypoint]->Position;
+    Vector3 car_pos = Player->Car.Sim.ICS.Matrix.m3;
+
+    diff = wp_pos - car_pos;
+
+    Player->Hud.WaypointDist = diff.Mag();
+}
+
+void mmWaypoints::SetCurrentGoals(i32 wp_idx)
+{
+    i32 max_idx = PositionCount - 1;
+
+    i32 target = wp_idx;
+
+    if (target > 0)
+    {
+        if (target >= max_idx)
+            target = max_idx;
+
+        CurrentWaypoint = target;
+        HitId = GetHitRoom(target);
+    }
+    else
+    {
+        CurrentWaypoint = 0;
+        HitId = GetHitRoom(0);
+    }
+}
+
+void mmWaypoints::GenerateHitRooms()
+{
+    for (i32 i = 0; i < PositionCount; ++i)
+    {
+        Vector3 pos = Waypoints[i]->Position;
+        Waypoints[i]->HitId = CullCity()->GetHitId(pos);
+    }
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+i32 mmWaypoints::Init(mmPlayer* player, char* race_name, i32 race_type, i32 reverse, i32 total_laps, i32 num_laps)
+{
+    Player = player;
+    RaceType = race_type;
+
+    if (race_type == 3) // mmGameMode::Blitz
+        NumLaps = num_laps;
+
+    WaypointSound->Load((char*) "Waypoint", 1); // Load(WaypointSound, "Waypoint", 0);
+    WaypointSound->SetVolume(0.91f, -1);
+    WaypointSound->SetPriority(23);
+
+    LastWaypointSound->Load((char*)"Lastwaypoint", 0);  // Load(WaypointSound, "Lastwaypoint", 0);
+    LastWaypointSound->SetVolume(0.91f, -1);
+    LastWaypointSound->SetPriority(23);
+
+    char dest[80];
+    sprintf(dest, "%swaypoints", race_name);
+
+    if (LoadCSV(race_name, reverse))
+    {
+        GenerateHitRooms();
+        TotalLaps = total_laps;
+        Reset();
+
+        Vector3& dim = Player->Car.Sim.Dimensions;
+        Size = dim;
+        Size.x *= 0.5f;     // make shorter?
+        Size.z *= 0.5f;     // make shorter?
+        return 1;
+    }
+
+    Errorf("No waypoints specified");
+    return 0;
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+void mmWaypoints::GetClosestWaypoint()
+{
+    i32 best_idx = CurrentWaypoint;
+    f32 min_dist_sq = 1000000000.0f;
+    i32 limit = PositionCount - 1;
+    i32 found = 0;
+
+    Vector3 car_pos = Player->Car.Sim.ICS.Matrix.m3;
+
+    if (limit > 1)
+    {
+        for (i32 i = 1; i < limit; ++i)
+        {
+            if (!Waypoints[i]->Initialized)
+            {
+                f32 dist_sq = car_pos.Dist2(Waypoints[i]->Position);    // een andere functie kon ik ook Dist2 gebruiken
+                found++;
+
+                if (dist_sq < min_dist_sq && best_idx != 0 && best_idx != limit)
+                {
+                    min_dist_sq = dist_sq;
+                    best_idx = i;
+                }
+            }
+        }
+    }
+
+    if (!found)
+        best_idx = limit;
+
+    SetCurrentGoals(best_idx);
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+// hier weer verder...
+
+/////////////////////////////////////////////////////////////////////////////
 
 void mmWaypoints::AllocateWaypointArrays(i32 count)
 {
@@ -57,36 +261,27 @@ void mmWaypoints::SetStartPosition(i32 pos_idx)
     StartPos.z = pos.z;
 }
 
-mmWaypointObject* mmWaypoints::CreateWaypointObject(
-    Vector4& position, const char* type_name, i32 wp_idx, f32 radius, f32 default_rad)
-{
-    i32 ident_mask = 1 << wp_idx;
-    i32 type = 3;
-
-    return new mmWaypointObject(position, const_cast<char*>(type_name), ident_mask, radius, type, default_rad);
-}
-
-f32 mmWaypoints::CalculateHeadingBetweenPositions(i32 from_idx, i32 to_idx)
+f32 mmWaypoints::CalcHeading(i32 from_idx, i32 to_idx)
 {
     f32 dx = Positions[from_idx].x - Positions[to_idx].x;
     f32 dz = Positions[from_idx].z - Positions[to_idx].z;
 
-    return std::atan2(dx, dz) * -RAD_TO_DEG;
+    return std::atan2(dx, dz) * -RAD_TO_DEG; // better formula?
 }
 
-void mmWaypoints::SetupGatePointsForWaypoint(i32 wp_idx, i32 pos_idx)
+void mmWaypoints::ComputeGatePoints(i32 wp_idx, i32 pos_idx)
 {
     mmWaypointObject* wp = Waypoints[wp_idx];
     f32 heading_rad = wp->Heading * DEG_TO_RAD;
 
-    Vector2 left_point, right_point;
-    CalculateGatePoints(Positions[pos_idx], heading_rad, wp->Radius, &left_point, &right_point);
+    Vector2 left, right;
+    CalculateGatePoints(Positions[pos_idx], heading_rad, wp->Radius, &left, &right);
 
-    GatePointsLeft[wp_idx] = left_point;
-    GatePointsRight[wp_idx] = right_point;
+    GatePointsLeft[wp_idx] = left;
+    GatePointsRight[wp_idx] = right;
 }
 
-void mmWaypoints::SetupGatePointsForPreviousWaypoint(i32 wp_idx, i32 pos_idx)
+void mmWaypoints::ComputePrevGatePoints(i32 wp_idx, i32 pos_idx)
 {
     if (wp_idx <= 1)
         return;
@@ -94,169 +289,133 @@ void mmWaypoints::SetupGatePointsForPreviousWaypoint(i32 wp_idx, i32 pos_idx)
     i32 prev_idx = wp_idx - 1;
     mmWaypointObject* prev_wp = Waypoints[prev_idx];
 
-    // Auto-calculate heading if not set
     if (prev_wp->Heading == 0.0f)
-    {
-        f32 heading = CalculateHeadingBetweenPositions(pos_idx - 1, pos_idx);
-        prev_wp->SetHeading(heading);
-    }
+        prev_wp->SetHeading(CalcHeading(pos_idx - 1, pos_idx));
 
     f32 heading_rad = prev_wp->Heading * DEG_TO_RAD;
 
-    Vector2 left_point, right_point;
-    CalculateGatePoints(Positions[pos_idx - 1], heading_rad, prev_wp->Radius, &left_point, &right_point);
+    Vector2 left, right;
+    CalculateGatePoints(Positions[pos_idx - 1], heading_rad, prev_wp->Radius, &left, &right);
 
-    GatePointsLeft[prev_idx] = left_point;
-    GatePointsRight[prev_idx] = right_point;
+    GatePointsLeft[prev_idx] = left;
+    GatePointsRight[prev_idx] = right;
+}
+
+f32 mmWaypoints::RecallRadius(i32 csv_idx)
+{
+    Matrix34 matrix;
+    i32 radius = 0;
+    RecallPosition(csv_idx, &matrix, &radius, nullptr);
+
+    if (radius == 0)
+        radius = DEFAULT_RECALL_RADIUS;
+
+    return static_cast<f32>(radius);
+}
+
+mmWaypointObject* mmWaypoints::CreateWaypoint(Vector4& pos, const char* type, i32 wp_idx, f32 radius, f32 default_rad)
+{
+    i32 ident_mask = 1 << wp_idx;
+
+    return new mmWaypointObject(pos, const_cast<char*>(type), ident_mask, radius, 3, default_rad);
+}
+
+i32 mmWaypoints::ResolveCsvIndex(i32 csv_idx, i32 reverse)
+{
+    return reverse ? (PositionCount - csv_idx - 1) : csv_idx;
+}
+
+void mmWaypoints::ReadPosition(i32 csv_idx, i32 wp_idx, Vector4& out_pos, f32& out_radius, i32 reverse)
+{
+    i32 read_idx = ResolveCsvIndex(csv_idx, reverse);
+    out_pos = GetPositionVector4(read_idx);
+
+    Positions[wp_idx].x = out_pos.x;
+    Positions[wp_idx].y = out_pos.y;
+    Positions[wp_idx].z = out_pos.z;
+
+    out_radius = RecallRadius(read_idx);
+}
+
+void mmWaypoints::AddWaypoint(i32 wp_idx, i32 pos_idx, mmWaypointObject* wp, b32 is_last)
+{
+    Waypoints[wp_idx] = wp;
+
+    ComputePrevGatePoints(wp_idx, pos_idx);
+
+    if (is_last)
+        ComputeGatePoints(wp_idx, pos_idx);
+
+    AddChild(wp);
 }
 
 void mmWaypoints::LoadBlitzWaypoints(i32 reverse)
 {
-    // Validate checkpoint count for Blitz mode
     if (PositionCount > MAX_BLITZ_CHECKPOINTS)
     {
         Errorf("Blitz checkpoint count greater than 6!  Fred lied to me.");
         PositionCount = MAX_BLITZ_CHECKPOINTS;
     }
 
-    // Clamp NumLaps to valid range
     if (NumLaps > PositionCount || NumLaps <= 0)
         NumLaps = PositionCount;
 
     i32 wp_count = NumLaps + 1;
     AllocateWaypointArrays(wp_count);
-
-    // Set starting position
-    i32 start_idx = reverse ? NumLaps : 0;
-    SetStartPosition(start_idx);
+    SetStartPosition(reverse ? NumLaps : 0);
 
     i32 wp_idx = 0;
     i32 pos_idx = 0;
 
     for (i32 csv_idx = 0; csv_idx < PositionCount; ++csv_idx)
     {
-        // Skip waypoints that should be removed (based on Blitz rules)
         if (BlitzRemove(csv_idx))
             continue;
 
-        // Get position from CSV (handle reverse direction)
-        i32 read_idx = reverse ? (PositionCount - csv_idx - 1) : csv_idx;
-        Vector4 pos = GetPositionVector4(read_idx);
+        Vector4 pos;
+        f32 wp_rad;
+        ReadPosition(csv_idx, pos_idx, pos, wp_rad, reverse);
 
-        // Store position
-        Positions[pos_idx].x = pos.x;
-        Positions[pos_idx].y = pos.y;
-        Positions[pos_idx].z = pos.z;
+        b32 is_last = (csv_idx == PositionCount - 1);
 
-        // Get waypoint radius from position data
-        Matrix34 matrix;
-        i32 radius = 0;
-        i32 recall_idx = reverse ? (PositionCount - csv_idx - 1) : csv_idx;
-        RecallPosition(recall_idx, &matrix, &radius, nullptr);
-
-        if (radius == 0)
-            radius = 15;
-
-        f32 wp_rad = static_cast<f32>(radius);
-
-        // Create waypoint object
-        mmWaypointObject* wp = nullptr;
-        bool is_last_wp = (csv_idx == PositionCount - 1);
-
-        if (is_last_wp)
+        mmWaypointObject* wp;
+        if (is_last)
         {
-            // Last waypoint is the finish
             f32 default_rad = (MMSTATE.EventId == 8) ? DEFAULT_RADIUS_BLITZ_EVENT_8 : DEFAULT_RADIUS_NORMAL;
-            wp = CreateWaypointObject(pos, "pt_finish", wp_idx, wp_rad, default_rad);
+            wp = CreateWaypoint(pos, "pt_finish", wp_idx, wp_rad, default_rad);
         }
         else
         {
-            // Intermediate checkpoint
-            wp = CreateWaypointObject(pos, "pt_check", wp_idx, wp_rad, DEFAULT_RADIUS_NORMAL);
+            wp = CreateWaypoint(pos, "pt_check", wp_idx, wp_rad, DEFAULT_RADIUS_NORMAL);
         }
 
-        Waypoints[wp_idx] = wp;
+        AddWaypoint(wp_idx, pos_idx, wp, is_last);
 
-        // Setup gate points for previous waypoint
-        SetupGatePointsForPreviousWaypoint(wp_idx, pos_idx);
-
-        // Setup gate points for last waypoint
-        if (is_last_wp)
-        {
-            SetupGatePointsForWaypoint(wp_idx, pos_idx);
-        }
-
-        // Add waypoint as child node
-        AddChild(wp);
-
-        Displayf("LoadCSV: Blitz Vert %d = %f, %f, %f", wp_idx, Positions[pos_idx].x, Positions[pos_idx].y,
-            Positions[pos_idx].z);
+        Displayf("LoadCSV: Blitz Vert %d = %f, %f, %f", wp_idx, Positions[pos_idx].x, Positions[pos_idx].y, Positions[pos_idx].z);
 
         ++wp_idx;
         ++pos_idx;
     }
 
-    // Update position count to actual waypoint count
     PositionCount = NumLaps + 1;
 }
 
 void mmWaypoints::LoadCheckpointWaypoints(i32 reverse)
 {
     AllocateWaypointArrays(PositionCount);
-
-    // Set starting position
-    i32 start_idx = reverse ? (PositionCount - 1) : 0;
-    SetStartPosition(start_idx);
+    SetStartPosition(reverse ? (PositionCount - 1) : 0);
 
     for (i32 i = 0; i < PositionCount; ++i)
     {
-        // Get position from CSV (handle reverse direction)
-        i32 read_idx = reverse ? (PositionCount - i - 1) : i;
-        Vector4 pos = GetPositionVector4(read_idx);
+        Vector4 pos;
+        f32 wp_rad;
+        ReadPosition(i, i, pos, wp_rad, reverse);
 
-        // Store position
-        Positions[i].x = pos.x;
-        Positions[i].y = pos.y;
-        Positions[i].z = pos.z;
+        b32 is_last = (i == PositionCount - 1);
+        const char* type = is_last ? "pt_finish" : "pt_check";
+        mmWaypointObject* wp = CreateWaypoint(pos, type, i, wp_rad, DEFAULT_RADIUS_NORMAL);
 
-        // Get waypoint radius from position data
-        Matrix34 matrix;
-        i32 radius = 0;
-        RecallPosition(read_idx, &matrix, &radius, nullptr);
-
-        if (radius == 0)
-            radius = 15;
-
-        f32 wp_rad = static_cast<f32>(radius);
-
-        // Create waypoint object
-        mmWaypointObject* wp = nullptr;
-        bool is_last_wp = (i == PositionCount - 1);
-
-        if (is_last_wp)
-        {
-            // Last waypoint is the finish
-            wp = CreateWaypointObject(pos, "pt_finish", i, wp_rad, DEFAULT_RADIUS_NORMAL);
-        }
-        else
-        {
-            // Intermediate checkpoint
-            wp = CreateWaypointObject(pos, "pt_check", i, wp_rad, DEFAULT_RADIUS_NORMAL);
-        }
-
-        Waypoints[i] = wp;
-
-        // Setup gate points for previous waypoint
-        SetupGatePointsForPreviousWaypoint(i, i);
-
-        // Setup gate points for last waypoint
-        if (is_last_wp)
-        {
-            SetupGatePointsForWaypoint(i, i);
-        }
-
-        // Add waypoint as child node
-        AddChild(wp);
+        AddWaypoint(i, i, wp, is_last);
 
         Displayf("LoadCSV: Waypoint Vert = %f, %f, %f", Positions[i].x, Positions[i].y, Positions[i].z);
     }
@@ -265,78 +424,46 @@ void mmWaypoints::LoadCheckpointWaypoints(i32 reverse)
 void mmWaypoints::LoadCircuitWaypoints(i32 reverse)
 {
     AllocateWaypointArrays(PositionCount);
-
-    // Set starting position (always from position 0 for circuit)
     SetStartPosition(0);
 
     for (i32 i = 0; i < PositionCount; ++i)
     {
-        // Get position from CSV (handle reverse direction)
-        // Note: For circuit races, reverse uses (count - i) not (count - i - 1)
+        // Circuit reverse uses (count - i), not (count - i - 1)
         i32 read_idx = reverse ? (PositionCount - i) : i;
         Vector4 pos = GetPositionVector4(read_idx);
 
-        // Store position
         Positions[i].x = pos.x;
         Positions[i].y = pos.y;
         Positions[i].z = pos.z;
 
-        // Get waypoint radius from position data
-        Matrix34 matrix;
-        i32 radius = 0;
-        i32 recall_idx = reverse ? (PositionCount - i) : i;
-        RecallPosition(recall_idx, &matrix, &radius, nullptr);
+        f32 wp_rad = RecallRadius(read_idx);
 
-        if (radius == 0)
-            radius = 15;
-
-        f32 wp_rad = static_cast<f32>(radius);
-
-        // Create waypoint object
-        mmWaypointObject* wp = nullptr;
-
-        if (i == 0)
-        {
-            // First waypoint is the start/finish line for circuit races
-            wp = CreateWaypointObject(pos, "pt_finish", i, wp_rad, DEFAULT_RADIUS_NORMAL);
-        }
-        else
-        {
-            // Intermediate checkpoint
-            wp = CreateWaypointObject(pos, "pt_check", i, wp_rad, DEFAULT_RADIUS_NORMAL);
-        }
+        // First waypoint is the start/finish line
+        const char* type = (i == 0) ? "pt_finish" : "pt_check";
+        mmWaypointObject* wp = CreateWaypoint(pos, type, i, wp_rad, DEFAULT_RADIUS_NORMAL);
 
         Waypoints[i] = wp;
 
-        // Setup gate points for first waypoint (start/finish)
         if (i == 0)
-        {
-            SetupGatePointsForWaypoint(0, 0);
-        }
+            ComputeGatePoints(0, 0);
 
-        // Setup gate points for previous waypoint
-        SetupGatePointsForPreviousWaypoint(i, i);
+        ComputePrevGatePoints(i, i);
 
-        // Setup gate points for last waypoint
+        // Last waypoint: auto-calculate heading pointing back to start
         if (i == PositionCount - 1)
         {
-            // Auto-calculate heading pointing back to start if not set
             if (pos.w == 0.0f)
-            {
-                f32 heading = CalculateHeadingBetweenPositions(i, 0);
-                Waypoints[i]->SetHeading(heading);
-            }
+                Waypoints[i]->SetHeading(CalcHeading(i, 0));
 
             f32 heading_rad = Waypoints[i]->Heading * DEG_TO_RAD;
 
-            Vector2 left_point, right_point;
-            CalculateGatePoints(Positions[i], heading_rad, wp_rad, &left_point, &right_point);
+            Vector2 left, right;
+            CalculateGatePoints(Positions[i], heading_rad, wp_rad, &left, &right);
 
-            GatePointsLeft[i] = left_point;
-            GatePointsRight[i] = right_point;
+            GatePointsLeft[i] = left;
+            GatePointsRight[i] = right;
         }
 
-        // Add waypoint as child node
         AddChild(wp);
 
         Displayf("LoadCSV: Waypoint Vert = %f, %f, %f", Positions[i].x, Positions[i].y, Positions[i].z);
@@ -345,11 +472,9 @@ void mmWaypoints::LoadCircuitWaypoints(i32 reverse)
 
 i32 mmWaypoints::LoadCSV(char* race_name, i32 reverse)
 {
-    // Build path to waypoints CSV file
     char path[128];
     arts_sprintf(path, "race\\%swaypoints.csv", race_name);
 
-    // Initialize and load position data from CSV
     InitPositions();
     LoadPositions(path);
 
@@ -358,7 +483,6 @@ i32 mmWaypoints::LoadCSV(char* race_name, i32 reverse)
     if (PositionCount == 0)
         return 0;
 
-    // Load waypoints based on race type (RaceType stores mmGameMode value)
     switch (static_cast<mmGameMode>(RaceType))
     {
         case mmGameMode::Checkpoint: LoadCheckpointWaypoints(reverse); break;
@@ -367,13 +491,9 @@ i32 mmWaypoints::LoadCSV(char* race_name, i32 reverse)
         default: break;
     }
 
-    // Store starting angle from first waypoint
     if (Waypoints && Waypoints[0])
-    {
         StartAngle = Waypoints[0]->Heading;
-    }
 
-    // Clean up position system
     InitPositions();
 
     return 1;

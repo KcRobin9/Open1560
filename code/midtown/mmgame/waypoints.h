@@ -22,8 +22,8 @@
 
 #include "arts7/node.h"
 #include "data7/str.h"
-#include "mmaudio/sound.h"
 #include "mmaudio/mmvoicecommentary.h"
+#include "mmaudio/sound.h"
 #include "vector7/vector2.h"
 #include "vector7/vector3.h"
 #include "vector7/vector4.h"
@@ -127,65 +127,69 @@ public:
     ARTS_IMPORT i32 WPHit(i32 arg1, Vector3 arg2, i32 arg3, i32 arg4);
 
 private:
-    // Helper methods for LoadCSV
-    void AllocateWaypointArrays(i32 count);
-    void SetStartPosition(i32 positionIndex);
-    mmWaypointObject* CreateWaypointObject(Vector4& position, const char* typeName, i32 waypointIndex, f32 radius, f32 defaultRadius);
-    void SetupGatePointsForWaypoint(i32 waypointIndex, i32 positionIndex);
-    void SetupGatePointsForPreviousWaypoint(i32 waypointIndex, i32 positionIndex);
-    f32 CalculateHeadingBetweenPositions(i32 fromIndex, i32 toIndex);
-
     void LoadBlitzWaypoints(i32 reverse);
     void LoadCheckpointWaypoints(i32 reverse);
     void LoadCircuitWaypoints(i32 reverse);
 
+    void AllocateWaypointArrays(i32 count);
+    i32 ResolveCsvIndex(i32 csv_idx, i32 reverse);
+    void ReadPosition(i32 csv_idx, i32 wp_idx, Vector4& out_pos, f32& out_radius, i32 reverse);
+    mmWaypointObject* CreateWaypoint(Vector4& pos, const char* type, i32 wp_idx, f32 radius, f32 default_rad);
+    void AddWaypoint(i32 wp_idx, i32 pos_idx, mmWaypointObject* wp, b32 is_last);
+
+    void SetStartPosition(i32 pos_idx);
+    f32 RecallRadius(i32 csv_idx);
+    f32 CalcHeading(i32 from_idx, i32 to_idx);
+    void ComputeGatePoints(i32 wp_idx, i32 pos_idx);
+    void ComputePrevGatePoints(i32 wp_idx, i32 pos_idx);
+
 public:
-    i32 RaceType;                       // 0x20: Type of race
-    i32 field_24;                       // 0x24
+    i32 RaceType; // 0x20
+    i32 field_24; // 0x24
 
-    i32 CurrentWaypoint;                // 0x28: Current waypoint index
-    i32 PositionCount;                  // 0x2C: Number of waypoint positions
+    i32 CurrentWaypoint; // 0x28
+    i32 PositionCount;   // 0x2C
 
-    i32 field_30;                       // 0x30
-    i32 HitId;                          // 0x34: ID of last hit waypoint
+    i32 field_30; // 0x30
+    i32 HitId;    // 0x34
 
-    i32 field_38;                       // 0x38
-    i32 field_3C;                       // 0x3C
-    i32 field_40;                       // 0x40
+    i32 field_38; // 0x38
+    i32 TotalLaps; // 0x3C
+    i32 field_40; // 0x40
 
-    i32 NumLaps;                        // 0x44: Number of laps for circuit races
-    i32 dword48;                        // 0x48
-    i32 dword4C;                        // 0x4C
+    i32 NumLaps; // 0x44
+    i32 dword48; // 0x48
+    i32 dword4C; // 0x4C
 
-    i32 field_50;                       // 0x50
-    i32 LastWaypoint;                   // 0x54: Last waypoint index
+    i32 field_50;     // 0x50
+    i32 LastWaypoint; // 0x54
 
-    i32 dword58;                        // 0x58
-    Vector3* Positions;                 // 0x5C: Array of waypoint positions
+    i32 dword58;        // 0x58
+    Vector3* Positions; // 0x5C
 
-    Vector2* GatePointsLeft;            // 0x60: Left gate points for each waypoint
-    Vector2* GatePointsRight;           // 0x64: Right gate points for each waypoint
+    Vector2* GatePointsLeft;  // 0x60
+    Vector2* GatePointsRight; // 0x64
 
-    Vector3 StartPos;                   // 0x68: Starting position
+    Vector3 StartPos; // 0x68
 
-    Vector2 field_74;                   // 0x74
+    Vector2 field_74; // 0x74
 
-    Vector2 field_7C;                   // 0x7C
+    Vector2 field_7C; // 0x7C
 
-    f32 StartAngle;                     // 0x84: Starting heading angle
+    f32 StartAngle; // 0x84
 
-    mmWaypointObject** Waypoints;       // 0x88: Array of waypoint objects
-    i32 dword8C;                        // 0x8C
+    mmWaypointObject** Waypoints; // 0x88
+    i32 dword8C;                  // 0x8C
 
-    mmPlayer* Player;                   // 0x90: Player reference
-    AudSound* WaypointSound;            // 0x94: Sound for waypoint hits
+    mmPlayer* Player;        // 0x90
+    AudSound* WaypointSound; // 0x94
 
-    i32 field_98;                       // 0x98
+    i32 field_98; // 0x98
 
-    AudSound* LastWaypointSound;        // 0x9C: Sound for last waypoint
-    mmVoiceCommentary* VoiceCommentary; // 0xA0: Voice commentary system
+    AudSound* LastWaypointSound;        // 0x9C
+    mmVoiceCommentary* VoiceCommentary; // 0xA0
 
-    string stringA4;                     // 0xA4: String storage
+    string stringA4; // 0xA4
 };
 
 check_size(mmWaypoints, 0xAC);
