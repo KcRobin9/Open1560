@@ -6,17 +6,17 @@
 
 # Versions
 
-| Build | Build Date | Name | Details |
-| --- | --- | --- | --- |
-| `1386` | `Feb 16 1999 12:24:33` | midtown.exe | Beta, Symbols, Debug |
-| `1427` | `Mar  1 1999 18:23:06` | midtown.exe | Beta, Symbols, Debug |
-| `1549` | `Mar 31 1999 17:02:43` | midtown.exe | Beta, Executable Only, SafeDisc |
-| `1560` | `Apr  2 1999 19:09:02` | midtown.exe | Beta, Symbols |
-| `1560` | `Apr  2 1999 19:10:27` | test1560.exe | Beta, Sybmols, Debug |
-| `1588` | `Apr 14 1999 15:07:10` | midtown.exe | Retail, Symbols, SafeDisc |
-| `1532 / NET DEMO` | `Jul 26 1999 18:50:44` | midtrial.exe | Trial |
-| `1532 / VW DEMO`  | `Jul 29 1999 15:03:55` | midvwtrial.exe | Trial |
-| `1589` | `Sep 16 1999 11:00:21` | midtown.exe | Retail, SafeDisc + Clean |
+| Version String | Build Timestamp (PST/PDT) | Build Timestamp (Hex) | Name | Details |
+| --- | --- | --- | --- | --- |
+| `Angel: 1386 / Feb 16 1999 12:24:33` | `Feb 16 1999 13:56:20` | `0x36C9E984` | midtown.exe | Beta, Symbols, Debug |
+| `Angel: 1427 / Mar  1 1999 18:23:06` | `Mar  1 1999 18:23:25` | `0x36DB4B9D` | midtown.exe | Beta, Symbols, Debug |
+| `Angel: 1549 / Mar 31 1999 17:02:43` | `Mar 31 1999 17:53:37` | `0x3702D1A1` | midtown.exe | Beta, Executable Only, SafeDisc |
+| `Angel: 1560 / Apr  2 1999 19:09:02` | `Apr  2 1999 19:09:19` | `0x3705865F` | midtown.exe | Beta, Symbols |
+| `Angel: 1560 / Apr  2 1999 19:10:27` | `Apr  2 1999 19:10:44` | `0x370586B4` | test1560.exe | Beta, Sybmols, Debug |
+| `Angel: 1588 / Apr 14 1999 15:07:10` | `Apr 15 1999 09:24:13` | `0x371612AD` | midtown.exe | Retail, Symbols, SafeDisc |
+| `Angel: 1532 / NET DEMO Jul 26 1999 18:50:44` | `Jul 26 1999 18:50:59` | `0x379D1083` | midtrial.exe | Trial |
+| `Angel: 1532 / VW DEMO Jul 29 1999 15:03:55` | `Jul 29 1999 15:04:14` | `0x37A0CFDE` | midvwtrial.exe | Trial |
+| `Angel: 1589 / Sep 16 1999 11:00:21` | `Sep 16 1999 11:00:30` | `0x37E1303E` | midtown.exe | Retail, SafeDisc + Clean |
 
 ## 1386
 Earliest known build. 
