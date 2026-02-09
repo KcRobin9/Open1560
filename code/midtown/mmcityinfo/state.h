@@ -93,6 +93,13 @@ enum class mmTimeOfDay : i32
     Night = 3,
 };
 
+enum class mmHUDMessageType : i32
+{
+    CurrentTime = 0, // Display current/elapsed time
+    LapTime = 1,     // "Lap time" message with elapsed time
+    FinalLap = 2,    // "Final lap!" message with elapsed time
+};
+
 struct mmStatePack
 {
     i32 CurrentCar;

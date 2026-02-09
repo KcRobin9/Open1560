@@ -23,6 +23,7 @@ define_dummy_symbol(mmgame_waypoints);
 #include "wpobject.h"
 
 #include "data7/printer.h"
+#include "localize/localize.h"
 #include "mmaudio/sound.h"
 #include "mmcity/cullcity.h"
 #include "mmcity/positions.h"
@@ -31,14 +32,13 @@ define_dummy_symbol(mmgame_waypoints);
 #include "mmgame/player.h"
 #include "vector7/matrix34.h"
 
-
 static constexpr f32 PI = 3.1415926;
 static constexpr f32 DEG_TO_RAD = PI / 180.0f;
 static constexpr f32 RAD_TO_DEG = 180.0f / PI;
 static constexpr i32 MAX_BLITZ_CHECKPOINTS = 6;
 static constexpr f32 DEFAULT_RADIUS_NORMAL = 7.5f;
 static constexpr f32 DEFAULT_RADIUS_BLITZ_EVENT_8 = 7.0f;
-static constexpr i32 DEFAULT_RECALL_RADIUS = 15;
+static constexpr f32 DEFAULT_RECALL_RADIUS = 15.0f;
 
 void mmWaypoints::Cull()
 {}
@@ -47,7 +47,7 @@ void mmWaypoints::Cull()
 
 // arts_sprintf(path, "race\\%swaypoints.csv", race_name);
 
-// Ergerns anders ook dit gebruiken?
+// Ergenes anders ook dit gebruiken?
 
 // pos.x --> size       niet mogelijk (vec3 naar vec4)
 
@@ -133,7 +133,7 @@ void mmWaypoints::UpdateWPHUD()
 
     diff = wp_pos - car_pos;
 
-    Player->Hud.WaypointDist = diff.Mag();
+    Player->Hud.WaypointDist = diff.Mag(); // better functions?
 }
 
 void mmWaypoints::SetCurrentGoals(i32 wp_idx)
@@ -168,12 +168,12 @@ void mmWaypoints::GenerateHitRooms()
 
 /////////////////////////////////////////////////////////////////////////////
 
-i32 mmWaypoints::Init(mmPlayer* player, char* race_name, i32 race_type, i32 reverse, i32 total_laps, i32 num_laps)
+i32 mmWaypoints::Init(mmPlayer* player, char* race_name, mmGameMode race_type, i32 reverse, i32 total_laps, i32 num_laps)
 {
     Player = player;
     RaceType = race_type;
 
-    if (race_type == 3) // mmGameMode::Blitz
+    if (race_type == mmGameMode::Blitz)
         NumLaps = num_laps;
 
     WaypointSound->Load((char*) "Waypoint", 1); // Load(WaypointSound, "Waypoint", 0);
@@ -221,7 +221,7 @@ void mmWaypoints::GetClosestWaypoint()
         {
             if (!Waypoints[i]->Initialized)
             {
-                f32 dist_sq = car_pos.Dist2(Waypoints[i]->Position);    // een andere functie kon ik ook Dist2 gebruiken
+                f32 dist_sq = car_pos.Dist2(Waypoints[i]->Position); // een andere functie kon ik ook Dist2 gebruiken
                 found++;
 
                 if (dist_sq < min_dist_sq && best_idx != 0 && best_idx != limit)
@@ -239,9 +239,116 @@ void mmWaypoints::GetClosestWaypoint()
     SetCurrentGoals(best_idx);
 }
 
+void mmWaypoints::DisplayHUDMessage(mmHUDMessageType msg_type, i32 wp_index)
+{
+    char time_buffer[16];
+
+    if (msg_type == mmHUDMessageType::CurrentTime)
+    {
+        f32 time = Player->Hud.LapTimer.GetTime();
+
+        if (MMSTATE.GameMode == mmGameMode::Blitz)
+            time -= LapStartTime;
+
+        Player->Hud.GetTime(time_buffer, time);
+        Player->Hud.SetMessage(LOC_TEXT(time_buffer), 1.0f, false);
+    }
+    else if (msg_type == mmHUDMessageType::LapTime)
+    {
+        f32 elapsed = Player->Hud.LapTimer.GetTime() - LapStartTime;
+
+        Player->Hud.GetTime(time_buffer, elapsed);
+        Player->Hud.SetMessage(LOC_STRING(MM_IDS_LAP_TIME), 1.0f, false);
+        Player->Hud.SetMessage2(LOC_TEXT(time_buffer));
+    }
+    else if (msg_type == mmHUDMessageType::FinalLap)
+    {
+        f32 elapsed = Player->Hud.LapTimer.GetTime() - LapStartTime;
+
+        Player->Hud.GetTime(time_buffer, elapsed);
+        Player->Hud.SetMessage(LOC_STRING(MM_IDS_FINAL_LAP), 1.0f, false);
+        Player->Hud.SetMessage2(LOC_TEXT(time_buffer));
+    }
+}
+
+void mmWaypoints::ClearWaypoint(i32 wp_index)
+{
+    LastClearedWP = wp_index;
+
+    mmWaypointObject* wp = Waypoints[wp_index];
+
+    if (!wp->Initialized)
+        IdentMask |= wp->IdentMask;
+
+    wp->Initialized = true;
+    wp->Deactivate();
+
+    ++LastWaypoint;
+
+    // Play sounds based on race type
+    if ((RaceType == mmGameMode::CnR || RaceType == mmGameMode::Circuit) && LastWaypoint != PositionCount - 1)
+    {
+        WaypointSound->PlayOnce(-1.0f, -1.0f);
+    }
+
+    if (RaceType == mmGameMode::Checkpoint)
+    {
+        // Play lap completion sound at start/finish, regular sound otherwise
+        if ((LastWaypoint - 1) % PositionCount == 0)
+            LastWaypointSound->PlayOnce(-1.0f, -1.0f);
+        else
+            WaypointSound->PlayOnce(-1.0f, -1.0f);
+    }
+
+    DisplayHUDMessage(mmHUDMessageType::CurrentTime, wp_index);
+}
+
 /////////////////////////////////////////////////////////////////////////////
 
-// hier weer verder...
+// WIP
+
+void mmWaypoints::CycleCurrentWaypoint(i32 direction)
+{
+    i32 last_wp = PositionCount - 1;
+
+    if (LastWaypoint == last_wp)
+    {
+        CurrentWaypoint = last_wp;
+        return;
+    }
+
+    i32 step = (direction == 1) ? 1 : -1;
+    i32 next_wp = CurrentWaypoint;
+
+    while (true)
+    {
+        next_wp = (next_wp + step) % PositionCount;
+
+        // Handle negative modulo for backwards cycling
+        if (next_wp < 0)
+            next_wp += PositionCount;
+
+        // Skip start (0) and finish (last_wp) waypoints in cycling
+        if (next_wp == 0 || next_wp == last_wp)
+        {
+            next_wp = (step == 1) ? 1 : PositionCount - 2;
+        }
+
+        // Found an uninitialized (available) waypoint
+        if (!Waypoints[next_wp]->Initialized)
+            break;
+
+        // Cycled back to starting point without finding available waypoint
+        if (next_wp == CurrentWaypoint)
+            return;
+    }
+
+    SetCurrentGoals(next_wp);
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+// continue here...
 
 /////////////////////////////////////////////////////////////////////////////
 
@@ -308,9 +415,9 @@ f32 mmWaypoints::RecallRadius(i32 csv_idx)
     RecallPosition(csv_idx, &matrix, &radius, nullptr);
 
     if (radius == 0)
-        radius = DEFAULT_RECALL_RADIUS;
+        radius = DEFAULT_RECALL_RADIUS; // check
 
-    return static_cast<f32>(radius);
+    return radius;
 }
 
 mmWaypointObject* mmWaypoints::CreateWaypoint(Vector4& pos, const char* type, i32 wp_idx, f32 radius, f32 default_rad)

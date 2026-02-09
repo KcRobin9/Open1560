@@ -67,7 +67,7 @@ public:
     ARTS_IMPORT void DeactivateFinish();
 
     // ?DisplayHUDMessage@mmWaypoints@@QAEXHH@Z
-    ARTS_IMPORT void DisplayHUDMessage(i32 arg1, i32 arg2);
+    ARTS_IMPORT void DisplayHUDMessage(mmHUDMessageType msg_type, i32 wp_index);
 
     // ?GenerateHitRooms@mmWaypoints@@QAEXXZ
     ARTS_IMPORT void GenerateHitRooms();
@@ -144,7 +144,7 @@ private:
     void ComputePrevGatePoints(i32 wp_idx, i32 pos_idx);
 
 public:
-    i32 RaceType; // 0x20
+    mmGameMode RaceType; // 0x20
     i32 field_24; // 0x24
 
     i32 CurrentWaypoint; // 0x28
@@ -159,12 +159,12 @@ public:
 
     i32 NumLaps; // 0x44
     i32 dword48; // 0x48
-    i32 dword4C; // 0x4C
+    i32 LastClearedWP; // 0x4C
 
-    i32 field_50;     // 0x50
+    f32 LapStartTime;     // 0x50
     i32 LastWaypoint; // 0x54
 
-    i32 dword58;        // 0x58
+    i32 IdentMask;      // 0x58
     Vector3* Positions; // 0x5C
 
     Vector2* GatePointsLeft;  // 0x60
@@ -182,11 +182,11 @@ public:
     i32 dword8C;                  // 0x8C
 
     mmPlayer* Player;        // 0x90
-    AudSound* WaypointSound; // 0x94
+    Ptr<AudSound> WaypointSound; // 0x94
 
     i32 field_98; // 0x98
 
-    AudSound* LastWaypointSound;        // 0x9C
+    Ptr<AudSound> LastWaypointSound;        // 0x9C
     mmVoiceCommentary* VoiceCommentary; // 0xA0
 
     string stringA4; // 0xA4

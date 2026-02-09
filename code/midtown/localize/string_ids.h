@@ -245,8 +245,8 @@
 #define MM_IDS_225 225
 #define MM_IDS_226 226
 #define MM_IDS_227 227
-#define MM_IDS_228 228
-#define MM_IDS_229 229
+#define MM_IDS_LAP_TIME 228
+#define MM_IDS_FINAL_LAP 229
 #define MM_IDS_230 230
 #define MM_IDS_231 231
 #define MM_IDS_232 232
