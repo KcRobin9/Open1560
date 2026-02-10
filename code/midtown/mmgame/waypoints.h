@@ -40,13 +40,13 @@ public:
     ARTS_EXPORT ~mmWaypoints() override;
 
     // ?AIWPHit@mmWaypoints@@QAEHHHVMatrix34@@VVector3@@M@Z
-    ARTS_IMPORT i32 AIWPHit(i32 arg1, i32 arg2, Matrix34 arg3, Vector3 arg4, f32 arg5);
+    ARTS_EXPORT b32 AIWPHit(i32 wp_index, i32 arg2, Matrix34 matrix, Vector3 dimensions, f32 tolerance);
 
     // ?AnyAIWPHit@mmWaypoints@@QAEHAAIHVMatrix34@@VVector3@@M@Z
-    ARTS_IMPORT i32 AnyAIWPHit(u32& arg1, i32 arg2, Matrix34 arg3, Vector3 arg4, f32 arg5);
+    ARTS_EXPORT i32 AnyAIWPHit(u32& hit_mask, i32 arg2, Matrix34 matrix, Vector3 dimensions, f32 tolerance);
 
     // ?AnyWPHits@mmWaypoints@@QAEHH@Z
-    ARTS_IMPORT i32 AnyWPHits(i32 chain_id);
+    ARTS_EXPORT i32 AnyWPHits(i32 chain_id);
 
     // ?BlitzRemove@mmWaypoints@@QAEHH@Z
     ARTS_EXPORT b32 BlitzRemove(i32 index);
@@ -100,7 +100,7 @@ public:
     ARTS_EXPORT i32 Init(mmPlayer* player, char* race_name, mmGameMode race_type, i32 reverse, i32 total_laps, i32 num_laps);
 
     // ?LineIntersect@mmWaypoints@@QAEHVVector2@@000M@Z
-    ARTS_IMPORT i32 LineIntersect(Vector2 arg1, Vector2 arg2, Vector2 arg3, Vector2 arg4, f32 arg5);
+    ARTS_EXPORT b32 LineIntersect(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, f32 tolerance);
 
     // ?LoadCSV@mmWaypoints@@QAEHPADH@Z
     ARTS_EXPORT i32 LoadCSV(char* race_name, i32 reverse);
@@ -124,7 +124,7 @@ public:
     ARTS_EXPORT void UpdateWPHUD();
 
     // ?WPHit@mmWaypoints@@QAEHHVVector3@@HH@Z
-    ARTS_IMPORT i32 WPHit(i32 wp_index, Vector3 car_pos, i32 chain_id, i32 arg4);
+    ARTS_EXPORT b32 WPHit(i32 wp_index, Vector3 pos, i32 chain_id, i32 arg4);
 
 private:
     void LoadBlitzWaypoints(i32 reverse);

@@ -92,6 +92,110 @@ mmWaypoints::~mmWaypoints()
         delete reinterpret_cast<asNode*>(dword8C);
 }
 
+b32 mmWaypoints::AIWPHit(i32 wp_index, i32 arg2, Matrix34 matrix, Vector3 dimensions, f32 tolerance)
+{
+    Vector2 gate_left = GatePointsLeft[wp_index];
+    Vector2 gate_right = GatePointsRight[wp_index];
+
+    f32 tol_width = tolerance + dimensions.x;  // Tests 1 & 2: widened by car width
+    f32 tol_length = tolerance + dimensions.z; // Test 3: widened by car length
+
+    // Test 1: Z-axis pair (front/rear of car)
+    {
+        Vector3 front = Vector3 {0.0f, 0.0f, dimensions.z} ^ matrix;
+        Vector3 rear = Vector3 {0.0f, 0.0f, -dimensions.z} ^ matrix;
+
+        if (LineIntersect({front.x, front.z}, {rear.x, rear.z}, gate_left, gate_right, tol_width))
+            return true;
+    }
+
+    // Test 2: Y-axis pair (catches tilted/sloped car scenarios)
+    {
+        Vector3 top = Vector3 {0.0f, dimensions.y, 0.0f} ^ matrix;
+        Vector3 bottom = Vector3 {0.0f, -dimensions.y, 0.0f} ^ matrix;
+
+        if (LineIntersect({top.x, top.z}, {bottom.x, bottom.z}, gate_left, gate_right, tol_width))
+            return true;
+    }
+
+    // Test 3: X-axis pair (left/right sides of car)
+    {
+        Vector3 right = Vector3 {dimensions.x, 0.0f, 0.0f} ^ matrix;
+        Vector3 left = Vector3 {-dimensions.x, 0.0f, 0.0f} ^ matrix;
+
+        return LineIntersect({right.x, right.z}, {left.x, left.z}, gate_left, gate_right, tol_length);
+    }
+}
+
+i32 mmWaypoints::AnyAIWPHit(u32& hit_mask, i32 arg2, Matrix34 matrix, Vector3 dimensions, f32 tolerance)
+{
+    if (PositionCount <= 1)
+        return 0;
+
+    for (i32 i = 1; i < PositionCount; ++i)
+    {
+        // Skip waypoints already hit this race
+        if (hit_mask & (1 << i))
+            continue;
+
+        // Cull waypoints further than 50 units away (dist² <= 50² = 2500)
+        Vector3 delta = matrix.m3 - Positions[i];
+        if (delta.Mag2() > 2500.0f)
+            continue;
+
+        if (AIWPHit(i, arg2, matrix, dimensions, tolerance))
+        {
+            hit_mask |= (1 << i);
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
+i32 mmWaypoints::AnyWPHits(i32 chain_id)
+{
+    if (PositionCount <= 0)
+        return -1;
+
+    asInertialCS* ics = Player->Car.GetICS();
+
+    // Test 2: Y-axis pair - pre-compute once before the loop
+    Vector3 y_bottom_w = Vector3 {0.0f, -Size.y, 0.0f} ^ ics->Matrix;
+    Vector3 y_top_w = Vector3 {0.0f, Size.y, 0.0f} ^ ics->Matrix;
+    Vector2 y_bottom = {y_bottom_w.x, y_bottom_w.z};
+    Vector2 y_top = {y_top_w.x, y_top_w.z};
+
+    // Test 3: X-axis pair - pre-compute once before the loop
+    Vector3 x_left_w = Vector3 {-Size.x, 0.0f, 0.0f} ^ ics->Matrix;
+    Vector3 x_right_w = Vector3 {Size.x, 0.0f, 0.0f} ^ ics->Matrix;
+    Vector2 x_left = {x_left_w.x, x_left_w.z};
+    Vector2 x_right = {x_right_w.x, x_right_w.z};
+
+    for (i32 i = 0; i < PositionCount; ++i)
+    {
+        if (Waypoints[i]->Initialized)
+            continue;
+
+        Vector2 gate_left = GatePointsLeft[i];
+        Vector2 gate_right = GatePointsRight[i];
+
+        // Test 1: Front/rear of car (pre-computed in UpdateCarBounds)
+        if (LineIntersect(CarRearPos, CarFrontPos, gate_left, gate_right, Size.x))
+            return i;
+
+        // Test 2: Y-axis pair (catches tilted car scenarios)
+        if (LineIntersect(y_bottom, y_top, gate_left, gate_right, Size.x))
+            return i;
+
+        // Test 3: X-axis pair (left/right sides) - no tolerance
+        if (LineIntersect(x_left, x_right, gate_left, gate_right, 0.0f))
+            return i;
+    }
+
+    return -1;
+}
+
 b32 mmWaypoints::BlitzRemove(i32 index)
 {
     i32 last_pos = PositionCount - 1;
@@ -126,8 +230,7 @@ b32 mmWaypoints::BlitzRemove(i32 index)
     return last_pos == 5 && NumLaps == 2 && index != 1 && index != 5;
 }
 
-void mmWaypoints::CalculateGatePoints(
-    Vector3 center, f32 heading_rad, f32 radius, Vector2* out_left, Vector2* out_right)
+void mmWaypoints::CalculateGatePoints(Vector3 center, f32 heading_rad, f32 radius, Vector2* out_left, Vector2* out_right)
 {
     f32 offset_x = std::cos(heading_rad) * radius;
     f32 offset_z = std::sin(heading_rad) * radius;
@@ -317,14 +420,7 @@ void mmWaypoints::GetNextWaypoint()
 
 void mmWaypoints::GetStart(Vector3& out_pos)
 {
-    if (PositionCount <= 0)
-    {
-        out_pos = {0.0f, 0.0f, 0.0f}; // of: out.Set(...)
-    }
-    else
-    {
-        out_pos = StartPos;
-    }
+    out_pos = PositionCount > 0 ? StartPos : Vector3 {0.0f, 0.0f, 0.0f};
 }
 
 f32 mmWaypoints::GetStartAngle()
@@ -336,18 +432,10 @@ f32 mmWaypoints::GetStartAngle()
 
 void mmWaypoints::GetWaypoint(i32 index, Vector3& out_pos)
 {
-    if (index >= PositionCount)
-    {
-        out_pos = {0.0f, 0.0f, 0.0f}; // of: out.Set(...)
-    }
-    else
-    {
-        out_pos = Waypoints[index]->Position;
-    }
+    out_pos = index < PositionCount ? Waypoints[index]->Position : Vector3 {0.0f, 0.0f, 0.0f};
 }
 
-i32 mmWaypoints::Init(
-    mmPlayer* player, char* race_name, mmGameMode race_type, i32 reverse, i32 total_laps, i32 num_laps)
+i32 mmWaypoints::Init(mmPlayer* player, char* race_name, mmGameMode race_type, i32 reverse, i32 total_laps, i32 num_laps)
 {
     Player = player;
     RaceType = race_type;
@@ -381,6 +469,54 @@ i32 mmWaypoints::Init(
 
     Errorf("No waypoints specified");
     return 0;
+}
+
+b32 mmWaypoints::LineIntersect(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, f32 tolerance)
+{
+    // Padded bounding boxes for both segments
+    f32 min_x1 = (p1.x < p2.x ? p1.x : p2.x) - tolerance;
+    f32 min_y1 = (p1.y < p2.y ? p1.y : p2.y) - tolerance;
+    f32 max_x1 = (p1.x > p2.x ? p1.x : p2.x) + tolerance;
+    f32 max_y1 = (p1.y > p2.y ? p1.y : p2.y) + tolerance;
+
+    f32 min_x2 = (p3.x < p4.x ? p3.x : p4.x) - tolerance;
+    f32 min_y2 = (p3.y < p4.y ? p3.y : p4.y) - tolerance;
+    f32 max_x2 = (p3.x > p4.x ? p3.x : p4.x) + tolerance;
+    f32 max_y2 = (p3.y > p4.y ? p3.y : p4.y) + tolerance;
+
+    // Compute slopes and y-intercepts: y = slope * x + intercept
+    f32 dx1 = p1.x - p2.x;
+    f32 slope1 = (p1.y - p2.y) / dx1;
+    f32 slope2 = (p3.y - p4.y) / (p3.x - p4.x);
+
+    f32 intercept1 = p1.y - slope1 * p1.x;
+    f32 intercept2 = p3.y - slope2 * p3.x;
+
+    // Find intersection point
+    f32 ix, iy;
+
+    if (slope1 == slope2)
+    {
+        // Parallel: project p1 onto line 2
+        ix = p1.x;
+        iy = slope2 * ix + intercept2;
+    }
+    else if (dx1 == 0.0f)
+    {
+        // Line 1 is vertical: project p3 onto line 1
+        ix = p3.x;
+        iy = slope1 * ix + intercept1;
+    }
+    else
+    {
+        // General case: solve slope1 * x + b1 = slope2 * x + b2
+        ix = (intercept2 - intercept1) / (slope1 - slope2);
+        iy = slope1 * ix + intercept1;
+    }
+
+    // Check intersection point lies within both padded bounding boxes
+    return ix >= min_x1 && ix <= max_x1 && iy >= min_y1 && iy <= max_y1 && ix >= min_x2 && ix <= max_x2 &&
+        iy >= min_y2 && iy <= max_y2;
 }
 
 i32 mmWaypoints::LoadCSV(char* race_name, i32 reverse)
@@ -453,7 +589,7 @@ void mmWaypoints::Reset()
     if (RaceType != mmGameMode::Checkpoint)
         Waypoints[0]->Initialized = true;
 
-    LastWaypoint = 1; // b32 of i32?
+    LastWaypoint = 1;
 }
 
 void mmWaypoints::ResetAllTags()
@@ -588,6 +724,35 @@ void mmWaypoints::UpdateWPHUD()
     Player->Hud.WaypointDist = Waypoints[CurrentWaypoint]->Position.Dist(Player->Car.Sim.ICS.Matrix.m3);
 }
 
+b32 mmWaypoints::WPHit(i32 wp_index, Vector3 pos, i32 chain_id, i32 arg4)
+{
+    Vector2 gate_left = GatePointsLeft[wp_index];
+    Vector2 gate_right = GatePointsRight[wp_index];
+
+    // Test 1: Front/rear of car (pre-computed in UpdateCarBounds)
+    if (LineIntersect(CarRearPos, CarFrontPos, gate_left, gate_right, Size.x))
+        return true;
+
+    asInertialCS* ics = Player->Car.GetICS();
+
+    // Test 2: Y-axis pair (catches tilted car scenarios)
+    {
+        Vector3 y_bottom_w = Vector3 {0.0f, -Size.y, 0.0f} ^ ics->Matrix;
+        Vector3 y_top_w = Vector3 {0.0f, Size.y, 0.0f} ^ ics->Matrix;
+
+        if (LineIntersect({y_bottom_w.x, y_bottom_w.z}, {y_top_w.x, y_top_w.z}, gate_left, gate_right, Size.x))
+            return true;
+    }
+
+    // Test 3: X-axis pair (left/right sides) - no tolerance
+    {
+        Vector3 x_left_w = Vector3 {-Size.x, 0.0f, 0.0f} ^ ics->Matrix;
+        Vector3 x_right_w = Vector3 {Size.x, 0.0f, 0.0f} ^ ics->Matrix;
+
+        return LineIntersect({x_left_w.x, x_left_w.z}, {x_right_w.x, x_right_w.z}, gate_left, gate_right, 0.0f);
+    }
+}
+
 // ---------------------------------------------------------
 // Internal / Private Helpers
 // ---------------------------------------------------------
@@ -610,16 +775,16 @@ void mmWaypoints::LoadBlitzWaypoints(i32 reverse)
     i32 wp_idx = 0;
     i32 pos_idx = 0;
 
-    for (i32 csv_idx = 0; csv_idx < PositionCount; ++csv_idx)
+    for (i32 i = 0; i < PositionCount; ++i)
     {
-        if (BlitzRemove(csv_idx))
+        if (BlitzRemove(i))
             continue;
 
         Vector4 pos;
         f32 wp_rad;
-        ReadPosition(csv_idx, pos_idx, pos, wp_rad, reverse);
+        ReadPosition(i, pos_idx, pos, wp_rad, reverse);
 
-        b32 is_last = (csv_idx == PositionCount - 1);
+        b32 is_last = (i == PositionCount - 1);
 
         mmWaypointObject* wp;
         if (is_last)
