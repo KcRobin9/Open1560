@@ -150,15 +150,15 @@ public:
     i32 CurrentWaypoint; // 0x28
     i32 PositionCount;   // 0x2C
 
-    i32 field_30; // 0x30
+    i32 Finished; // 0x30
     i32 HitId;    // 0x34
 
     i32 field_38; // 0x38
     i32 TotalLaps; // 0x3C
-    i32 field_40; // 0x40
+    i32 CurrentLap; // 0x40
 
     i32 NumLaps; // 0x44
-    i32 dword48; // 0x48
+    i32 Disabled; // 0x48
     i32 LastClearedWP; // 0x4C
 
     f32 LapStartTime;     // 0x50

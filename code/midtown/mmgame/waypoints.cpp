@@ -348,7 +348,130 @@ void mmWaypoints::CycleCurrentWaypoint(i32 direction)
 
 /////////////////////////////////////////////////////////////////////////////
 
-// continue here...
+void mmWaypoints::Reset()
+{
+    if (!PositionCount)
+        return;
+
+    Disabled = 0;
+    CurrentWaypoint = 1;
+    LastClearedWP = 0;
+    Finished = 0;
+    field_38 = 0;
+    field_24 = 0;
+    IdentMask = 1;
+
+    HitId = GetHitRoom(1);
+    ResetAllTags();
+
+    switch (RaceType)
+    {
+        case mmGameMode::CnR:
+            Waypoints[0]->Deactivate();
+            if (PositionCount > 2)
+                Waypoints[PositionCount - 1]->Deactivate();
+            break;
+
+        case mmGameMode::Checkpoint:
+            for (i32 i = 0; i < PositionCount; ++i)
+            {
+                Waypoints[i]->Activate();
+                Player->Hud.SetWPCleared(0, PositionCount);
+            }
+            Waypoints[CurrentWaypoint]->Activate();
+            CurrentLap = 0;
+            LapStartTime = 0.0f;
+            break;
+
+        case mmGameMode::Blitz: 
+            Waypoints[0]->Deactivate(); break;
+    }
+
+    if (RaceType != mmGameMode::Checkpoint)
+        Waypoints[0]->Initialized = true;
+
+    LastWaypoint = 1; // b32 of i32?
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+b32 mmWaypoints::BlitzRemove(i32 index)
+{
+    i32 last_pos = PositionCount - 1;
+
+    // Always keep the start position
+    if (index == 0)
+        return false;
+
+    // Always keep the finish, or if using all available checkpoints
+    if (last_pos == NumLaps || index == last_pos)
+        return false;
+
+    // Remove second-to-last to improve spacing
+    if (index == last_pos - 1)
+        return true;
+
+    // When using 3 checkpoints: specifically keep checkpoint at position 1
+    if (NumLaps == 3 && index == 1)
+        return false;
+
+    // When there are 2 positions between selected count and finish:
+    // remove all except the one right before finish
+    if (last_pos - NumLaps == 2 && index != last_pos - 2)
+        return true;
+
+    // When using only 1 checkpoint: remove everything except start, one middle, and finish
+    if (NumLaps == 1)
+        return true;
+
+    // Special case for 6 total positions with 2 checkpoints selected:
+    // Keep positions 1 and 5 for even distribution across the map
+    return last_pos == 5 && NumLaps == 2 && index != 1 && index != 5;
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+void mmWaypoints::CalculateGatePoints(Vector3 center, f32 heading_rad, f32 radius, Vector2* out_left, Vector2* out_right)
+{
+    f32 offset_x = std::cos(heading_rad) * radius;
+    f32 offset_z = std::sin(heading_rad) * radius;
+
+    out_left->x = center.x + offset_x;
+    out_left->y = center.z + offset_z;
+
+    out_right->x = center.x - offset_x;
+    out_right->y = center.z - offset_z;
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+mmWaypoints::mmWaypoints()
+{
+    WaypointSound = nullptr;
+    LastWaypointSound = nullptr;
+    dword8C = 0;
+    PositionCount = 0;
+    Disabled = 0;
+    LastClearedWP = 0;
+    NumLaps = 0;
+    IdentMask = 1;
+    GatePointsLeft = nullptr;
+    GatePointsRight = nullptr;
+    Positions = nullptr;
+
+    WaypointSound = arnew AudSound(AudSound::Get2DFlags(), 1, -1);
+    LastWaypointSound = arnew AudSound(AudSound::Get2DFlags(), 1, -1);
+
+    // Build pipe-delimited checkpoint name string: "Checkpoint 1|Checkpoint 2|...|Checkpoint 20"
+    stringA4 = LOC_STR(MM_IDS_CHECKPOINT_1);
+    for (u32 id = MM_IDS_CHECKPOINT_2; id <= MM_IDS_CHECKPOINT_20; ++id)
+    {
+        stringA4 += "|";
+        stringA4 += AngelReadString(id)->Text;
+    }
+
+    VoiceCommentary = nullptr;
+}
 
 /////////////////////////////////////////////////////////////////////////////
 
