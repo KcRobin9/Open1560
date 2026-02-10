@@ -34,10 +34,10 @@ class mmWaypoints final : public asNode
 {
 public:
     // ??0mmWaypoints@@QAE@XZ
-    ARTS_IMPORT mmWaypoints();
+    ARTS_EXPORT mmWaypoints();
 
     // ??1mmWaypoints@@UAE@XZ
-    ARTS_IMPORT ~mmWaypoints() override;
+    ARTS_EXPORT ~mmWaypoints() override;
 
     // ?AIWPHit@mmWaypoints@@QAEHHHVMatrix34@@VVector3@@M@Z
     ARTS_IMPORT i32 AIWPHit(i32 arg1, i32 arg2, Matrix34 arg3, Vector3 arg4, f32 arg5);
@@ -46,58 +46,58 @@ public:
     ARTS_IMPORT i32 AnyAIWPHit(u32& arg1, i32 arg2, Matrix34 arg3, Vector3 arg4, f32 arg5);
 
     // ?AnyWPHits@mmWaypoints@@QAEHH@Z
-    ARTS_IMPORT i32 AnyWPHits(i32 arg1);
+    ARTS_IMPORT i32 AnyWPHits(i32 chain_id);
 
     // ?BlitzRemove@mmWaypoints@@QAEHH@Z
-    ARTS_IMPORT i32 BlitzRemove(i32 arg1);
+    ARTS_EXPORT b32 BlitzRemove(i32 index);
 
     // ?CalculateGatePoints@mmWaypoints@@QAEXVVector3@@MMPAVVector2@@1@Z
-    ARTS_IMPORT void CalculateGatePoints(Vector3 arg1, f32 arg2, f32 arg3, Vector2* arg4, Vector2* arg5);
+    ARTS_EXPORT void CalculateGatePoints(Vector3 center, f32 heading_rad, f32 radius, Vector2* out_left, Vector2* out_right);
 
     // ?ClearWaypoint@mmWaypoints@@QAEXH@Z
-    ARTS_IMPORT void ClearWaypoint(i32 arg1);
+    ARTS_EXPORT void ClearWaypoint(i32 wp_index);
 
     // ?Cull@mmWaypoints@@UAEXXZ
     ARTS_EXPORT void Cull() override;
 
     // ?CycleCurrentWaypoint@mmWaypoints@@QAEXH@Z
-    ARTS_IMPORT void CycleCurrentWaypoint(i32 arg1);
+    ARTS_EXPORT void CycleCurrentWaypoint(i32 direction);
 
     // ?DeactivateFinish@mmWaypoints@@QAEXXZ
-    ARTS_IMPORT void DeactivateFinish();
+    ARTS_EXPORT void DeactivateFinish();
 
     // ?DisplayHUDMessage@mmWaypoints@@QAEXHH@Z
-    ARTS_IMPORT void DisplayHUDMessage(mmHUDMessageType msg_type, i32 wp_index);
+    ARTS_EXPORT void DisplayHUDMessage(mmHUDMessageType msg_type, i32 wp_index);
 
     // ?GenerateHitRooms@mmWaypoints@@QAEXXZ
-    ARTS_IMPORT void GenerateHitRooms();
+    ARTS_EXPORT void GenerateHitRooms();
 
     // ?GetClosestWaypoint@mmWaypoints@@QAEXXZ
-    ARTS_IMPORT void GetClosestWaypoint();
+    ARTS_EXPORT void GetClosestWaypoint();
 
     // ?GetHeading@mmWaypoints@@QAEMH@Z
-    ARTS_IMPORT f32 GetHeading(i32 arg1);
+    ARTS_EXPORT f32 GetHeading(i32 index);
 
     // ?GetHitRoom@mmWaypoints@@QAEHH@Z
-    ARTS_IMPORT i32 GetHitRoom(i32 arg1);
+    ARTS_EXPORT i32 GetHitRoom(i32 index);
 
     // ?GetLastWaypoint@mmWaypoints@@QAEXXZ
-    ARTS_IMPORT void GetLastWaypoint();
+    ARTS_EXPORT void GetLastWaypoint();
 
     // ?GetNextWaypoint@mmWaypoints@@QAEXXZ
-    ARTS_IMPORT void GetNextWaypoint();
+    ARTS_EXPORT void GetNextWaypoint();
 
     // ?GetStart@mmWaypoints@@QAEXAAVVector3@@@Z
-    ARTS_IMPORT void GetStart(Vector3& arg1);
+    ARTS_EXPORT void GetStart(Vector3& out_pos);
 
     // ?GetStartAngle@mmWaypoints@@QAEMXZ
-    ARTS_IMPORT f32 GetStartAngle();
+    ARTS_EXPORT f32 GetStartAngle();
 
     // ?GetWaypoint@mmWaypoints@@QAEXHAAVVector3@@@Z
-    ARTS_IMPORT void GetWaypoint(i32 arg1, Vector3& arg2);
+    ARTS_EXPORT void GetWaypoint(i32 index, Vector3& out_pos);
 
     // ?Init@mmWaypoints@@QAEHPAVmmPlayer@@PADHHHH@Z
-    ARTS_IMPORT i32 Init(mmPlayer* arg1, char* arg2, i32 arg3, i32 arg4, i32 arg5, i32 arg6);
+    ARTS_EXPORT i32 Init(mmPlayer* player, char* race_name, mmGameMode race_type, i32 reverse, i32 total_laps, i32 num_laps);
 
     // ?LineIntersect@mmWaypoints@@QAEHVVector2@@000M@Z
     ARTS_IMPORT i32 LineIntersect(Vector2 arg1, Vector2 arg2, Vector2 arg3, Vector2 arg4, f32 arg5);
@@ -106,25 +106,25 @@ public:
     ARTS_EXPORT i32 LoadCSV(char* race_name, i32 reverse);
 
     // ?Reset@mmWaypoints@@UAEXXZ
-    ARTS_IMPORT void Reset() override;
+    ARTS_EXPORT void Reset() override;
 
     // ?ResetAllTags@mmWaypoints@@QAEXXZ
-    ARTS_IMPORT void ResetAllTags();
+    ARTS_EXPORT void ResetAllTags();
 
     // ?SetArrow@mmWaypoints@@QAEXXZ
-    ARTS_IMPORT void SetArrow();
+    ARTS_EXPORT void SetArrow();
 
     // ?SetCurrentGoals@mmWaypoints@@QAEXH@Z
-    ARTS_IMPORT void SetCurrentGoals(i32 arg1);
+    ARTS_EXPORT void SetCurrentGoals(i32 wp_idx);
 
     // ?Update@mmWaypoints@@UAEXXZ
-    ARTS_IMPORT void Update() override;
+    ARTS_EXPORT void Update() override;
 
     // ?UpdateWPHUD@mmWaypoints@@QAEXXZ
-    ARTS_IMPORT void UpdateWPHUD();
+    ARTS_EXPORT void UpdateWPHUD();
 
     // ?WPHit@mmWaypoints@@QAEHHVVector3@@HH@Z
-    ARTS_IMPORT i32 WPHit(i32 arg1, Vector3 arg2, i32 arg3, i32 arg4);
+    ARTS_IMPORT i32 WPHit(i32 wp_index, Vector3 car_pos, i32 chain_id, i32 arg4);
 
 private:
     void LoadBlitzWaypoints(i32 reverse);
@@ -143,9 +143,12 @@ private:
     void ComputeGatePoints(i32 wp_idx, i32 pos_idx);
     void ComputePrevGatePoints(i32 wp_idx, i32 pos_idx);
 
+    void UpdateCarBounds();
+    void HandleWaypointHit(i32 hit);
+
 public:
     mmGameMode RaceType; // 0x20
-    i32 field_24; // 0x24
+    i32 field_24;        // 0x24
 
     i32 CurrentWaypoint; // 0x28
     i32 PositionCount;   // 0x2C
@@ -153,15 +156,15 @@ public:
     i32 Finished; // 0x30
     i32 HitId;    // 0x34
 
-    i32 field_38; // 0x38
-    i32 TotalLaps; // 0x3C
+    i32 field_38;   // 0x38
+    i32 TotalLaps;  // 0x3C
     i32 CurrentLap; // 0x40
 
-    i32 NumLaps; // 0x44
-    i32 Disabled; // 0x48
+    i32 NumLaps;       // 0x44
+    i32 Disabled;      // 0x48
     i32 LastClearedWP; // 0x4C
 
-    f32 LapStartTime;     // 0x50
+    f32 LapStartTime; // 0x50
     i32 LastWaypoint; // 0x54
 
     i32 IdentMask;      // 0x58
@@ -172,21 +175,20 @@ public:
 
     Vector3 StartPos; // 0x68
 
-    Vector2 field_74; // 0x74
-
-    Vector2 field_7C; // 0x7C
+    Vector2 CarRearPos;  // 0x74
+    Vector2 CarFrontPos; // 0x7C
 
     f32 StartAngle; // 0x84
 
     mmWaypointObject** Waypoints; // 0x88
     i32 dword8C;                  // 0x8C
 
-    mmPlayer* Player;        // 0x90
+    mmPlayer* Player;            // 0x90
     Ptr<AudSound> WaypointSound; // 0x94
 
     i32 field_98; // 0x98
 
-    Ptr<AudSound> LastWaypointSound;        // 0x9C
+    Ptr<AudSound> LastWaypointSound;    // 0x9C
     mmVoiceCommentary* VoiceCommentary; // 0xA0
 
     string stringA4; // 0xA4
