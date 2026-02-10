@@ -77,6 +77,14 @@ public:
         return static_cast<i32>(reinterpret_cast<isize>(lookup_.Access(buffer)));
     }
 
+    void Insert(const char* name, i32 index)
+    {
+        char buffer[64];
+        arts_strcpy(buffer, name);
+        arts_strupr(buffer);
+        lookup_.Insert(name, reinterpret_cast<void*>(static_cast<isize>(index)));
+    }
+
     ARTS_EXPORT i32 Add(Param& param)
     {
         i32 index = Lookup(param.Name);
@@ -86,7 +94,7 @@ public:
             ArAssert(count_ < agiLibMax, "Too many values");
 
             params_[count_] = new Param(param);
-            lookup_.Insert(param.Name, reinterpret_cast<void*>(static_cast<isize>(count_ + 1)));
+            Insert(param.Name, count_ + 1);
             defs_[count_] = nullptr;
 
             index = count_ + 1;
@@ -104,7 +112,7 @@ public:
         {
             ArAssert(count_ + count <= agiLibMax, "Too many values");
 
-            lookup_.Insert(param.Name, reinterpret_cast<void*>(count_ + 1));
+            Insert(param.Name, count_ + 1);
 
             for (i32 i = 0; i < count; ++i)
             {
@@ -129,7 +137,7 @@ public:
         for (i32 i = 0; i < count_; ++i)
         {
             params_[i]->Load(input);
-            lookup_.Insert(params_[i]->Name, reinterpret_cast<void*>(static_cast<isize>(i + 1)));
+            Insert(params_[i]->Name, i + 1);
         }
     }
 
