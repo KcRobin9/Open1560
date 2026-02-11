@@ -238,7 +238,7 @@ public:
     mmTextNode ChatMessages;
     mmNumberFont NumberFont;
     i32 TimerCountDown;
-    i32 WaypointDist;
+    f32 WaypointDist;
     i32 field_AE4;
     i32 ShowTimer;
     agiBitmap* Bitmaps[11];

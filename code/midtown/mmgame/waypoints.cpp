@@ -92,7 +92,7 @@ mmWaypoints::~mmWaypoints()
         delete reinterpret_cast<asNode*>(dword8C);
 }
 
-b32 mmWaypoints::AIWPHit(i32 wp_index, i32 arg2, Matrix34 matrix, Vector3 dimensions, f32 tolerance)
+b32 mmWaypoints::AIWPHit(i32 wp_index, i32 /* arg2 */, Matrix34 matrix, Vector3 dimensions, f32 tolerance)
 {
     Vector2 gate_left = GatePointsLeft[wp_index];
     Vector2 gate_right = GatePointsRight[wp_index];
@@ -138,9 +138,9 @@ i32 mmWaypoints::AnyAIWPHit(u32& hit_mask, i32 arg2, Matrix34 matrix, Vector3 di
         if (hit_mask & (1 << i))
             continue;
 
-        // Cull waypoints further than 50 units away (dist² <= 50² = 2500)
+        // Cull waypoints further than 50 units away
         Vector3 delta = matrix.m3 - Positions[i];
-        if (delta.Mag2() > 2500.0f)
+        if (delta.Mag2() > 50.0f * 50.0f)
             continue;
 
         if (AIWPHit(i, arg2, matrix, dimensions, tolerance))
@@ -153,7 +153,7 @@ i32 mmWaypoints::AnyAIWPHit(u32& hit_mask, i32 arg2, Matrix34 matrix, Vector3 di
     return 0;
 }
 
-i32 mmWaypoints::AnyWPHits(i32 chain_id)
+i32 mmWaypoints::AnyWPHits(i32 /* chain_id */)
 {
     if (PositionCount <= 0)
         return -1;
@@ -230,7 +230,8 @@ b32 mmWaypoints::BlitzRemove(i32 index)
     return last_pos == 5 && NumLaps == 2 && index != 1 && index != 5;
 }
 
-void mmWaypoints::CalculateGatePoints(Vector3 center, f32 heading_rad, f32 radius, Vector2* out_left, Vector2* out_right)
+void mmWaypoints::CalculateGatePoints(
+    Vector3 center, f32 heading_rad, f32 radius, Vector2* out_left, Vector2* out_right)
 {
     f32 offset_x = std::cos(heading_rad) * radius;
     f32 offset_z = std::sin(heading_rad) * radius;
@@ -321,7 +322,7 @@ void mmWaypoints::DeactivateFinish()
     Waypoints[PositionCount - 1]->Deactivate();
 }
 
-void mmWaypoints::DisplayHUDMessage(mmHUDMessageType msg_type, i32 wp_index)
+void mmWaypoints::DisplayHUDMessage(mmHUDMessageType msg_type, i32 /* wp_index */)
 {
     char time_buffer[16];
 
@@ -435,12 +436,12 @@ void mmWaypoints::GetWaypoint(i32 index, Vector3& out_pos)
     out_pos = index < PositionCount ? Waypoints[index]->Position : Vector3 {0.0f, 0.0f, 0.0f};
 }
 
-i32 mmWaypoints::Init(mmPlayer* player, char* race_name, mmGameMode race_type, i32 reverse, i32 total_laps, i32 num_laps)
+i32 mmWaypoints::Init(mmPlayer* player, char* race_name, i32 race_type, i32 reverse, i32 total_laps, i32 num_laps)
 {
     Player = player;
-    RaceType = race_type;
+    RaceType = static_cast<mmGameMode>(race_type); // RaceType = race_type;
 
-    if (race_type == mmGameMode::Blitz)
+    if (RaceType == mmGameMode::Blitz)
         NumLaps = num_laps;
 
     WaypointSound->Load((char*) "Waypoint", 1); // Load(WaypointSound, "Waypoint", 0);
@@ -452,7 +453,7 @@ i32 mmWaypoints::Init(mmPlayer* player, char* race_name, mmGameMode race_type, i
     LastWaypointSound->SetPriority(23);
 
     char dest[80];
-    sprintf(dest, "%swaypoints", race_name);
+    arts_sprintf(dest, "%swaypoints", race_name);
 
     if (LoadCSV(race_name, reverse))
     {
@@ -724,7 +725,7 @@ void mmWaypoints::UpdateWPHUD()
     Player->Hud.WaypointDist = Waypoints[CurrentWaypoint]->Position.Dist(Player->Car.Sim.ICS.Matrix.m3);
 }
 
-b32 mmWaypoints::WPHit(i32 wp_index, Vector3 pos, i32 chain_id, i32 arg4)
+b32 mmWaypoints::WPHit(i32 wp_index, Vector3 /* pos */, i32 /* chain_id */, i32 /* arg4 */)
 {
     Vector2 gate_left = GatePointsLeft[wp_index];
     Vector2 gate_right = GatePointsRight[wp_index];

@@ -24,6 +24,7 @@
 #include "data7/str.h"
 #include "mmaudio/mmvoicecommentary.h"
 #include "mmaudio/sound.h"
+#include "mmcityinfo/state.h"
 #include "vector7/vector2.h"
 #include "vector7/vector3.h"
 #include "vector7/vector4.h"
@@ -37,49 +38,49 @@ public:
     ARTS_EXPORT mmWaypoints();
 
     // ??1mmWaypoints@@UAE@XZ
-    ARTS_EXPORT ~mmWaypoints() override;
+    ~mmWaypoints() override;
 
     // ?AIWPHit@mmWaypoints@@QAEHHHVMatrix34@@VVector3@@M@Z
-    ARTS_EXPORT b32 AIWPHit(i32 wp_index, i32 arg2, Matrix34 matrix, Vector3 dimensions, f32 tolerance);
+    ARTS_EXPORT b32 AIWPHit(i32 wp_index, i32 /* arg2 */, Matrix34 matrix, Vector3 dimensions, f32 tolerance);
 
     // ?AnyAIWPHit@mmWaypoints@@QAEHAAIHVMatrix34@@VVector3@@M@Z
     ARTS_EXPORT i32 AnyAIWPHit(u32& hit_mask, i32 arg2, Matrix34 matrix, Vector3 dimensions, f32 tolerance);
 
     // ?AnyWPHits@mmWaypoints@@QAEHH@Z
-    ARTS_EXPORT i32 AnyWPHits(i32 chain_id);
+    i32 AnyWPHits(i32 /* chain_id */);
 
     // ?BlitzRemove@mmWaypoints@@QAEHH@Z
-    ARTS_EXPORT b32 BlitzRemove(i32 index);
+    b32 BlitzRemove(i32 index);
 
     // ?CalculateGatePoints@mmWaypoints@@QAEXVVector3@@MMPAVVector2@@1@Z
-    ARTS_EXPORT void CalculateGatePoints(Vector3 center, f32 heading_rad, f32 radius, Vector2* out_left, Vector2* out_right);
+    void CalculateGatePoints(Vector3 center, f32 heading_rad, f32 radius, Vector2* out_left, Vector2* out_right);
 
     // ?ClearWaypoint@mmWaypoints@@QAEXH@Z
-    ARTS_EXPORT void ClearWaypoint(i32 wp_index);
+    void ClearWaypoint(i32 wp_index);
 
     // ?Cull@mmWaypoints@@UAEXXZ
-    ARTS_EXPORT void Cull() override;
+    void Cull() override;
 
     // ?CycleCurrentWaypoint@mmWaypoints@@QAEXH@Z
-    ARTS_EXPORT void CycleCurrentWaypoint(i32 direction);
+    void CycleCurrentWaypoint(i32 direction);
 
     // ?DeactivateFinish@mmWaypoints@@QAEXXZ
     ARTS_EXPORT void DeactivateFinish();
 
     // ?DisplayHUDMessage@mmWaypoints@@QAEXHH@Z
-    ARTS_EXPORT void DisplayHUDMessage(mmHUDMessageType msg_type, i32 wp_index);
+    void DisplayHUDMessage(mmHUDMessageType msg_type, i32 wp_index);
 
     // ?GenerateHitRooms@mmWaypoints@@QAEXXZ
-    ARTS_EXPORT void GenerateHitRooms();
+    void GenerateHitRooms();
 
     // ?GetClosestWaypoint@mmWaypoints@@QAEXXZ
-    ARTS_EXPORT void GetClosestWaypoint();
+    void GetClosestWaypoint();
 
     // ?GetHeading@mmWaypoints@@QAEMH@Z
     ARTS_EXPORT f32 GetHeading(i32 index);
 
     // ?GetHitRoom@mmWaypoints@@QAEHH@Z
-    ARTS_EXPORT i32 GetHitRoom(i32 index);
+    i32 GetHitRoom(i32 index);
 
     // ?GetLastWaypoint@mmWaypoints@@QAEXXZ
     ARTS_EXPORT void GetLastWaypoint();
@@ -97,34 +98,34 @@ public:
     ARTS_EXPORT void GetWaypoint(i32 index, Vector3& out_pos);
 
     // ?Init@mmWaypoints@@QAEHPAVmmPlayer@@PADHHHH@Z
-    ARTS_EXPORT i32 Init(mmPlayer* player, char* race_name, mmGameMode race_type, i32 reverse, i32 total_laps, i32 num_laps);
+    ARTS_EXPORT i32 Init(mmPlayer* player, char* race_name, i32 race_type, i32 reverse, i32 total_laps, i32 num_laps);
 
     // ?LineIntersect@mmWaypoints@@QAEHVVector2@@000M@Z
-    ARTS_EXPORT b32 LineIntersect(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, f32 tolerance);
+    b32 LineIntersect(Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, f32 tolerance);
 
     // ?LoadCSV@mmWaypoints@@QAEHPADH@Z
-    ARTS_EXPORT i32 LoadCSV(char* race_name, i32 reverse);
+    i32 LoadCSV(char* race_name, i32 reverse);
 
     // ?Reset@mmWaypoints@@UAEXXZ
-    ARTS_EXPORT void Reset() override;
+    void Reset() override;
 
     // ?ResetAllTags@mmWaypoints@@QAEXXZ
-    ARTS_EXPORT void ResetAllTags();
+    void ResetAllTags();
 
     // ?SetArrow@mmWaypoints@@QAEXXZ
-    ARTS_EXPORT void SetArrow();
+    void SetArrow();
 
     // ?SetCurrentGoals@mmWaypoints@@QAEXH@Z
-    ARTS_EXPORT void SetCurrentGoals(i32 wp_idx);
+    void SetCurrentGoals(i32 wp_idx);
 
     // ?Update@mmWaypoints@@UAEXXZ
-    ARTS_EXPORT void Update() override;
+    void Update() override;
 
     // ?UpdateWPHUD@mmWaypoints@@QAEXXZ
-    ARTS_EXPORT void UpdateWPHUD();
+    void UpdateWPHUD();
 
     // ?WPHit@mmWaypoints@@QAEHHVVector3@@HH@Z
-    ARTS_EXPORT b32 WPHit(i32 wp_index, Vector3 pos, i32 chain_id, i32 arg4);
+    b32 WPHit(i32 wp_index, Vector3 /* pos */, i32 /* chain_id */, i32 /* arg4 */);
 
 private:
     void LoadBlitzWaypoints(i32 reverse);
