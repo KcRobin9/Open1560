@@ -53,6 +53,7 @@ mmWaypoints::mmWaypoints()
     GatePointsLeft = nullptr;
     GatePointsRight = nullptr;
     Positions = nullptr;
+    Waypoints = nullptr;
 
     WaypointSound = arnew AudSound(AudSound::Get2DFlags(), 1, -1);
     LastWaypointSound = arnew AudSound(AudSound::Get2DFlags(), 1, -1);
@@ -354,14 +355,25 @@ void mmWaypoints::DisplayHUDMessage(mmHUDMessageType msg_type, i32 /* wp_index *
     }
 }
 
+//void mmWaypoints::GenerateHitRooms()
+//{
+//    for (i32 i = 0; i < PositionCount; ++i)
+//    {
+//        Vector3 pos = Waypoints[i]->Position;
+//        Waypoints[i]->HitId = CullCity()->GetHitId(pos);
+//    }
+//}
+
+
 void mmWaypoints::GenerateHitRooms()
 {
-    for (i32 i = 0; i < PositionCount; ++i)
+    for (i32 i = 0; i < PositionCount; ++i) // zie hierbovens
     {
         Vector3 pos = Waypoints[i]->Position;
-        Waypoints[i]->HitId = CullCity()->GetHitId(pos);
+        Waypoints[i-1]->HitId = CullCity()->GetHitId(pos);
     }
 }
+
 
 void mmWaypoints::GetClosestWaypoint()
 {
@@ -441,14 +453,24 @@ i32 mmWaypoints::Init(mmPlayer* player, char* race_name, i32 race_type, i32 reve
     Player = player;
     RaceType = static_cast<mmGameMode>(race_type); // RaceType = race_type;
 
-    if (RaceType == mmGameMode::Blitz)
+    if (RaceType == mmGameMode::Circuit)
         NumLaps = num_laps;
 
-    WaypointSound->Load((char*) "Waypoint", 1); // Load(WaypointSound, "Waypoint", 0);
+    // WaypointSound->Load((char*) "Waypoint", 0);
+    // WaypointSound->Load("Waypoint"_xconst, 0);
+
+    char waypointName[] = "Waypoint";
+    WaypointSound->Load(waypointName, 0);
+
     WaypointSound->SetVolume(0.91f, -1);
     WaypointSound->SetPriority(23);
 
-    LastWaypointSound->Load((char*) "Lastwaypoint", 0); // Load(WaypointSound, "Lastwaypoint", 0);
+    // LastWaypointSound->Load((char*) "Lastwaypoint", 0);
+    // LastWaypointSound->Load("Lastwaypoint"_xconst, 0);
+
+    char lastWaypointName[] = "Lastwaypoint";
+    LastWaypointSound->Load(lastWaypointName, 0);
+
     LastWaypointSound->SetVolume(0.91f, -1);
     LastWaypointSound->SetPriority(23);
 
@@ -810,26 +832,70 @@ void mmWaypoints::LoadBlitzWaypoints(i32 reverse)
     PositionCount = NumLaps + 1;
 }
 
+
+// old
+//void mmWaypoints::LoadCheckpointWaypoints(i32 reverse)
+//{
+//    AllocateWaypointArrays(PositionCount);
+//    SetStartPosition(reverse ? (PositionCount - 1) : 0);
+//
+//    for (i32 i = 0; i < PositionCount; ++i)
+//    {
+//        Vector4 pos;
+//        f32 wp_rad;
+//        ReadPosition(i, i, pos, wp_rad, reverse);
+//
+//        b32 is_last = (i == PositionCount - 1);
+//        const char* type = is_last ? "pt_finish" : "pt_check";
+//        mmWaypointObject* wp = CreateWaypoint(pos, type, i, wp_rad, DEFAULT_RADIUS_NORMAL);
+//
+//        AddWaypoint(i, i, wp, is_last);
+//
+//        Displayf("LoadCSV: Waypoint Vert = %f, %f, %f", Positions[i].x, Positions[i].y, Positions[i].z);
+//    }
+//}
+
+
+// new unfinished
 void mmWaypoints::LoadCheckpointWaypoints(i32 reverse)
 {
     AllocateWaypointArrays(PositionCount);
-    SetStartPosition(reverse ? (PositionCount - 1) : 0);
+
+    // Original always uses index 0 for start position
+    Vector4& startPos = GetPositionVector4(0);
+    StartPos.x = startPos.x;
+    StartPos.y = startPos.y;
+    StartPos.z = startPos.z;
 
     for (i32 i = 0; i < PositionCount; ++i)
     {
-        Vector4 pos;
-        f32 wp_rad;
-        ReadPosition(i, i, pos, wp_rad, reverse);
+        i32 read_idx = reverse ? (PositionCount - i) : i; // NOT PositionCount-i-1
+        Vector4 pos = GetPositionVector4(read_idx);
 
-        b32 is_last = (i == PositionCount - 1);
-        const char* type = is_last ? "pt_finish" : "pt_check";
-        mmWaypointObject* wp = CreateWaypoint(pos, type, i, wp_rad, DEFAULT_RADIUS_NORMAL);
+        Positions[i].x = pos.x;
+        Positions[i].y = pos.y;
+        Positions[i].z = pos.z;
 
-        AddWaypoint(i, i, wp, is_last);
+        f32 wp_rad = RecallRadius(reverse ? (PositionCount - i) : i);
+
+        // i==0 is finish/start line, rest are checkpoints
+        const char* type = (i == 0) ? "pt_finish" : "pt_check";
+        i32 ident_mask = (i == 0) ? 1 : (1 << i); // hardcoded 1 for finish
+        mmWaypointObject* wp =
+            new mmWaypointObject(pos, const_cast<char*>(type), ident_mask, wp_rad, 3, DEFAULT_RADIUS_NORMAL);
+
+        Waypoints[i] = wp;
+        ComputePrevGatePoints(i, i);
+        if (i == PositionCount - 1)
+            ComputeGatePoints(i, i);
+        AddChild(wp);
 
         Displayf("LoadCSV: Waypoint Vert = %f, %f, %f", Positions[i].x, Positions[i].y, Positions[i].z);
     }
 }
+
+
+
 
 void mmWaypoints::LoadCircuitWaypoints(i32 reverse)
 {
